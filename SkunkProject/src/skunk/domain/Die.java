@@ -20,7 +20,7 @@ public class Die
 	public void roll() // note how this changes Die's state, but doesn't return
 						// anything
 	{
-		this.lastRoll = (int) (this.numbers.getDieNumebrs());
+		this.lastRoll = (int) (this.numbers.getDieNumbers());
 	}
 
 	@Override

@@ -11,12 +11,20 @@ public class DieNumbers {
 		this.rollNumbers = (int) (Math.random() * 6 + 1);
 	}
 	
-	public int getDieNumebrs() {
+	public int getDieNumbers() {
 		return rollNumbers;
 	}
 
-	public void fixed() {
-		this.rollNumbers = 7;
-		
+	public void fixed(int fixedNumber) {
+		this.rollNumbers = fixedNumber;
+	}
+
+	public void sequencedNumbers() {
+		if(this.rollNumbers == 1) {
+			this.rollNumbers = 3;
+		}
+		else {
+			this.rollNumbers = 1;
+		}
 	}
 }
