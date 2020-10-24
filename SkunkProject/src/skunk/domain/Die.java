@@ -3,11 +3,14 @@ package skunk.domain;
 public class Die
 {
 	private int lastRoll;
-	private DieNumbers numbers; 
+	private DieNumbers numbers = new DieNumbers(); 
 
 	public Die()
+	{ }
+	
+	public Die(int fixedNumber)
 	{
-		this.numbers = new DieNumbers();
+		this.numbers.fixed(fixedNumber);
 	}
 
 	public int getLastRoll() // getter or accessor method
@@ -19,7 +22,6 @@ public class Die
 	public void roll() // note how this changes Die's state, but doesn't return
 						// anything
 	{	
-		numbers.fixed(5);
 		this.lastRoll = (int) (numbers.getDieNumbers());
 	}
 
