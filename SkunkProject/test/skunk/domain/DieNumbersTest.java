@@ -2,6 +2,7 @@ package skunk.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 class DieNumbersTest {
@@ -37,11 +38,15 @@ class DieNumbersTest {
 	@Test
 	void enteredArrayDie_should_return_numbers_from_array() {
 		DieNumbers numbers = new DieNumbers();
-		int [] dieNumbers = {1,2,3,4};
-		numbers.enteredArray(dieNumbers);
-		int result = numbers.getDieNumbers();
-		System.out.println(result);
-		assertTrue(result == 1);
+		int [] expecteds = {1,2,3,4};
+		int [] actuals = {0,0,0,0};
+		for(int i = 0; i < expecteds.length; i++) {
+			numbers.enteredArray(expecteds);
+			int result = numbers.getDieNumbers();
+			actuals[i] = result;
+			System.out.println(result);
+		}
+		Assert.assertArrayEquals(expecteds, actuals);
 	}
 
 	
