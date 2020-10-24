@@ -7,7 +7,6 @@ public class Die
 
 	public Die()
 	{
-		this.roll();
 		this.numbers = new DieNumbers();
 	}
 
@@ -19,8 +18,9 @@ public class Die
 
 	public void roll() // note how this changes Die's state, but doesn't return
 						// anything
-	{
-		this.lastRoll = (int) (this.numbers.getDieNumbers());
+	{	
+		numbers.fixed(5);
+		this.lastRoll = (int) (numbers.getDieNumbers());
 	}
 
 	@Override

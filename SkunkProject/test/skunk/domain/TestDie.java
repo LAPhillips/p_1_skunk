@@ -9,7 +9,10 @@ public class TestDie
 	@Test
 	public void dieShouldReturnDieNumber()
 	{
-		fail();
+		Die die = new Die();
+		die.roll();
+		int result = die.getLastRoll();
+		assertTrue(result == 5);
 	}
 }
 

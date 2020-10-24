@@ -5,8 +5,8 @@ public class DieNumbers {
 	int counter;
 	
 	DieNumbers(){
-		this.rollNumbers = 0;
-		this.counter = 0;
+		this.rollNumbers = 1;
+		this.counter = 1;
 	}
 
 	public void randomOneToSix() {
