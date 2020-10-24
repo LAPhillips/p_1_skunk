@@ -21,15 +21,6 @@ public class DieNumbers {
 		this.rollNumbers = fixedNumber;
 	}
 
-	public void sequencedNumbers() {
-		if(this.rollNumbers == 1) {
-			this.rollNumbers = 3;
-		}
-		else {
-			this.rollNumbers = 1;
-		}
-	}
-
 	public void enteredArray(int [] dieNumbers) {
 		if (this.counter >= dieNumbers.length) {
 		counter = 0;	
