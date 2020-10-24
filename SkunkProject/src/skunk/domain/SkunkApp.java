@@ -7,23 +7,14 @@ public class SkunkApp {
 		
 		System.out.println("Welcome to Skunk");
 		int [] array = {1, 2, 3, 4};
-		Die skunkDice = new Die();
+		Dice skunkDice = new Dice();
 		
 		//rolling dice
-		
+		skunkDice.roll();
+		System.out.println(skunkDice.toString());;
 
-		skunkDice.roll(5);
-		int roll = skunkDice.getLastRoll();
-		System.out.println(roll);
-		skunkDice.roll();
-		roll = skunkDice.getLastRoll();
-		System.out.println(roll);
-		skunkDice.roll();
-		roll = skunkDice.getLastRoll();
-		System.out.println(roll);
-		skunkDice.roll();
-		roll = skunkDice.getLastRoll();
-		System.out.println(roll);
+
+
 	}
 
 }

@@ -16,18 +16,20 @@ public class Die
 		return this.lastRoll;
 	}
 
-	public void roll() // note how this changes Die's state, but doesn't return
-						// anything
+	//Default dice is random; This only changes the die, does not deliver the result
+	public void roll() 
+						
 	{	
 		this.lastRoll = (int) (Math.random() * 6 + 1);
 	}
 	
-	public void roll(int fixed) // note how this changes Die's state, but doesn't return
-	// anything
+	//Method overloaded with int delivered fixed value; This only changes the die, does not deliver the result
+	public void roll(int fixed) 
 	{	
 		this.lastRoll = (int) (fixed);
 	}
 	
+	//Method overloaded with array delivers the values of the array in order; This only changes the die, does not deliver the result
 	public void roll(int [] fixedArray) // note how this changes Die's state, but doesn't return
 	// anything
 	{	
