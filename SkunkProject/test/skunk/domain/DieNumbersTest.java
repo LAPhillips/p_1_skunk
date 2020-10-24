@@ -23,7 +23,7 @@ class DieNumbersTest {
 	}
 	
 	@Test
-	void Sequenceddie_should_return_a_one_or_three() {
+	void SequencedDie_should_return_a_one_or_three() {
 		DieNumbers numbers = new DieNumbers();
 		numbers.sequencedNumbers();
 		int result1 = numbers.getDieNumbers();
@@ -32,6 +32,14 @@ class DieNumbersTest {
 		numbers.sequencedNumbers();
 		int result3 = numbers.getDieNumbers();
 		assertTrue(result1 == 1 && result2 == 3 && result3 == 1);
+	}
+	
+	@Test
+	void enteredArrayDie_should_return_numbers_from_array() {
+		DieNumbers numbers = new DieNumbers();
+		numbers.enteredArray(); 
+		int result = numbers.getDieNumbers();
+		assertTrue(result == 1);
 	}
 
 	

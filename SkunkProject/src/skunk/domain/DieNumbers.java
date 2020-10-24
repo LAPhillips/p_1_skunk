@@ -27,4 +27,9 @@ public class DieNumbers {
 			this.rollNumbers = 1;
 		}
 	}
+
+	public void enteredArray() {
+		this.rollNumbers = 1;
+		
+	}
 }
