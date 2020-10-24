@@ -25,5 +25,21 @@ public class TestDie
 		assertTrue(result > 0 && result < 7);
 	}
 	
+	@Test
+	public void die_should_return_array_die_numbers()
+	{
+		int [] fixedArray = {1,3,5,9};
+		int [] actualRolls = {0,0,0,0};
+		Die die = new Die();
+		for (int i = 0; i < fixedArray.length; i++) {
+			die.roll(fixedArray);
+			int result = die.getLastRoll();
+			actualRolls[i] = result;
+		}
+
+		Assert.assertArrayEquals(fixedArray, actualRolls);
+	}
+
+	
 }
 
