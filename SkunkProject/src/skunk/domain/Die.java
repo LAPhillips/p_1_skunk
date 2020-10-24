@@ -7,20 +7,9 @@ public class Die
 
 	public Die()
 	{ 
-		this.numbers.randomOneToSix();
+
 	}
 	
-	public Die(int fixedNumber)
-	{
-		this.numbers.fixed(fixedNumber);
-	}
-	
-	public Die(int [] fixedArray)
-	{
-		this.numbers.enteredArray(fixedArray);
-	}
-
-
 	public int getLastRoll() // getter or accessor method
 	{
 
@@ -30,8 +19,16 @@ public class Die
 	public void roll() // note how this changes Die's state, but doesn't return
 						// anything
 	{	
+		this.lastRoll = (int) (Math.random() * 6 + 1);
+	}
+	
+	public void roll(int fixed) // note how this changes Die's state, but doesn't return
+	// anything
+	{	
+		numbers.fixed(fixed);
 		this.lastRoll = (int) (numbers.getDieNumbers());
 	}
+	
 
 	@Override
 	public String toString() // this OVERRIDES the default Object.toString()

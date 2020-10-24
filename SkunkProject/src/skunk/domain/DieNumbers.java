@@ -26,6 +26,7 @@ public class DieNumbers {
 		counter = 0;	
 		}
 		this.rollNumbers = dieNumbers[counter];
-		counter++;
+		counter ++;
 	}
+	
 }
