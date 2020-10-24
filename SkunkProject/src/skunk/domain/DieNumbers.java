@@ -15,4 +15,8 @@ public class DieNumbers {
 		return rollNumbers;
 	}
 
+	public void fixed() {
+		this.rollNumbers = 7;
+		
+	}
 }

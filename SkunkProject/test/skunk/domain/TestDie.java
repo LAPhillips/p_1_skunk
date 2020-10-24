@@ -11,8 +11,11 @@ public class TestDie
 	{
 		Die die = new Die();
 		DieNumbers numbers = new DieNumbers();
+		numbers.randomOneToSix();
 		int dieResult = die.getLastRoll();
+		System.out.println(dieResult);
 		int numberResult = numbers.getDieNumebrs();
+		System.out.println(numberResult);
 		assertTrue(dieResult == numberResult);
 		}
 	}
