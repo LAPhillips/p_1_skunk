@@ -14,6 +14,12 @@ public class Die
 	{
 		this.numbers.fixed(fixedNumber);
 	}
+	
+	public Die(int [] fixedArray)
+	{
+		this.numbers.enteredArray(fixedArray);
+	}
+
 
 	public int getLastRoll() // getter or accessor method
 	{
