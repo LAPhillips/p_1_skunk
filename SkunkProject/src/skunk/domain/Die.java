@@ -6,7 +6,9 @@ public class Die
 	private DieNumbers numbers = new DieNumbers(); 
 
 	public Die()
-	{ }
+	{ 
+		this.numbers.randomOneToSix();
+	}
 	
 	public Die(int fixedNumber)
 	{

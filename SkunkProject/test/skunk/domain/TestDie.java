@@ -7,12 +7,22 @@ public class TestDie
 {
 
 	@Test
-	public void dieShouldReturnDieNumber()
+	public void die_should_return_fixed_die_Number()
 	{
-		Die die = new Die(5);
+		Die die = new Die(4);
 		die.roll();
 		int result = die.getLastRoll();
-		assertTrue(result == 5);
+		assertTrue(result == 4);
+	}
+	
+	@Test
+	public void die_should_return_random_die_Number()
+	{
+		Die die = new Die();
+		die.roll();
+		int result = die.getLastRoll();
+		System.out.println(result);
+		assertTrue(result > 0 && result < 7);
 	}
 }
 
