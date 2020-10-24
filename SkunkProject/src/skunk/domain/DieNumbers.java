@@ -3,8 +3,8 @@ package skunk.domain;
 public class DieNumbers {
 
 	public static int randomOneToSix() {
-		// TODO Auto-generated method stub
-		return 2;
+		int result = (int) (Math.random() * 6 + 1);
+		return result;
 	}
 
 }

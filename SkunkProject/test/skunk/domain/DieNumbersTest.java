@@ -11,5 +11,4 @@ class DieNumbersTest {
 		int result = DieNumbers.randomOneToSix();
 		assertTrue(result < 7 && result > 0);
 	}
-
 }
