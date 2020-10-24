@@ -7,9 +7,13 @@ public class TestDie
 {
 
 	@Test
-	public void test()
+	public void dieShouldReturnDieNumber()
 	{
-		fail("Not yet implemented");
+		Die die = new Die();
+		DieNumbers numbers = new DieNumbers();
+		int dieResult = die.getLastRoll();
+		int numberResult = numbers.getDieNumebrs();
+		assertTrue(dieResult == numberResult);
+		}
 	}
 
-}

@@ -1,10 +1,18 @@
 package skunk.domain;
 
 public class DieNumbers {
+	private int rollNumbers;
+	
+	DieNumbers(){
+		this.rollNumbers = 0;
+	}
 
-	public static int randomOneToSix() {
-		int result = (int) (Math.random() * 6 + 1);
-		return result;
+	public void randomOneToSix() {
+		this.rollNumbers = (int) (Math.random() * 6 + 1);
+	}
+	
+	public int getDieNumebrs() {
+		return rollNumbers;
 	}
 
 }

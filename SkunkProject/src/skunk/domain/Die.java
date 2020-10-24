@@ -3,10 +3,12 @@ package skunk.domain;
 public class Die
 {
 	private int lastRoll;
+	private DieNumbers numbers; 
 
 	public Die()
 	{
 		this.roll();
+		this.numbers = new DieNumbers();
 	}
 
 	public int getLastRoll() // getter or accessor method
@@ -18,7 +20,7 @@ public class Die
 	public void roll() // note how this changes Die's state, but doesn't return
 						// anything
 	{
-		this.lastRoll = (int) (6);
+		this.lastRoll = (int) (this.numbers.getDieNumebrs());
 	}
 
 	@Override
