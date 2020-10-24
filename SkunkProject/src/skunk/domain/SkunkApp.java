@@ -7,15 +7,11 @@ public class SkunkApp {
 		
 		System.out.println("Welcome to Skunk");
 		Dice skunkDice = new Dice();
+		
+		//rolling dice
 		skunkDice.roll();
 		int roll = skunkDice.getLastRoll();
 		System.out.println(roll);
-		
-		
-		
-		
-	
-
 	}
 
 }
