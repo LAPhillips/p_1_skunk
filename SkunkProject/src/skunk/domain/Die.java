@@ -25,8 +25,7 @@ public class Die
 	public void roll(int fixed) // note how this changes Die's state, but doesn't return
 	// anything
 	{	
-		numbers.fixed(fixed);
-		this.lastRoll = (int) (numbers.getDieNumbers());
+		this.lastRoll = (int) (fixed);
 	}
 	
 

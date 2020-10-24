@@ -22,7 +22,6 @@ public class TestDie
 		Die die = new Die();
 		die.roll();
 		int result = die.getLastRoll();
-		System.out.println(result);
 		assertTrue(result > 0 && result < 7);
 	}
 	
