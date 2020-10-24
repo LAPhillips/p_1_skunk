@@ -2,9 +2,11 @@ package skunk.domain;
 
 public class DieNumbers {
 	private int rollNumbers;
+	int counter;
 	
 	DieNumbers(){
 		this.rollNumbers = 0;
+		this.counter = 0;
 	}
 
 	public void randomOneToSix() {
@@ -28,8 +30,11 @@ public class DieNumbers {
 		}
 	}
 
-	public void enteredArray() {
-		this.rollNumbers = 1;
-		
+	public void enteredArray(int [] dieNumbers) {
+		if (this.counter >= dieNumbers.length) {
+		counter = 0;	
+		}
+		this.rollNumbers = dieNumbers[counter];
+		counter++;
 	}
 }

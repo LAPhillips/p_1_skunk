@@ -37,8 +37,10 @@ class DieNumbersTest {
 	@Test
 	void enteredArrayDie_should_return_numbers_from_array() {
 		DieNumbers numbers = new DieNumbers();
-		numbers.enteredArray(); 
+		int [] dieNumbers = {1,2,3,4};
+		numbers.enteredArray(dieNumbers);
 		int result = numbers.getDieNumbers();
+		System.out.println(result);
 		assertTrue(result == 1);
 	}
 
