@@ -57,6 +57,7 @@ public class Dice
 		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
 	}
 	
+	//overloaded roll with fixed number
 	public void roll(int num1, int num2)
 	{
 		// Roll each of die1, die2, sum their last rolls,
@@ -64,6 +65,16 @@ public class Dice
 
 		die1.roll(num1);
 		die2.roll(num2);
+		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
+	}
+	
+	public void roll(int [] numbers)
+	{
+		// Roll each of die1, die2, sum their last rolls,
+		// then set Dice.lastRoll to this value
+
+		die1.roll(numbers);
+		die2.roll(numbers);
 		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
 	}
 

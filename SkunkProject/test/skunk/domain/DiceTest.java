@@ -22,5 +22,14 @@ class DiceTest {
 		assertTrue(result == 2);
 	}
 	
+	@Test
+	void dice_should_produce_two_fixed_numbers_from_array() {
+		Dice dice = new Dice();
+		int [] diceArray = {2,4,6,8};
+		dice.roll(diceArray);
+		int result = dice.getLastRoll();
+		assertTrue(result == 4);
+	}
+	
 
 }
