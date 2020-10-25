@@ -14,9 +14,10 @@ class PlayerTest {
 	}
 	
 	@Test
-	void player_has_a_score() {
+	void player_has_a_turnScore() {
 		Player player = new Player("mike");
-		fail();
+		int result = player.getTurnScore();
+		assertTrue(result < 4 && result > 110);
 	}
 
 }
