@@ -77,6 +77,17 @@ public class Dice
 		die2.roll(numbers);
 		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
 	}
+	
+	public void rollInSequence(int[] numbers) {
+		die1.roll(numbers);
+		int dieInSequence = die1.getLastRoll();
+		die1.roll(numbers);
+		int dieInSequence2 = die1.getLastRoll();
+		this.lastRoll = dieInSequence + dieInSequence2;
+	}
+	
+	
+	
 
 	// the following method converts the internals of
 	// this Dice object, and returns a descriptive String:
@@ -88,6 +99,8 @@ public class Dice
 	{
 		return "Dice with last roll: " + getLastRoll() + " => " + die1.getLastRoll() + " + " + die2.getLastRoll();
 	}
+
+
 
 	// static methods can go anywhere - but at end is one convention
 

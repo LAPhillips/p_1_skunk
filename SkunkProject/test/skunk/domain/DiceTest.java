@@ -40,10 +40,23 @@ class DiceTest {
 		for (int i = 0; i < fixedArray.length; i++) {
 			dice.roll(fixedArray);
 			int result = dice.getLastRoll();
+			//have to divide by two because the dice is always going to be double the array input
 			actualRolls[i] = result/2;
 		}
 		Assert.assertArrayEquals(fixedArray, actualRolls);
 	}
+	
+	@Test
+	void dice_should_pull_numbers_from_array_in_sequence() {
+		Dice dice = new Dice();
+		int [] fixedArray = {2,4,6,8};
+		dice.rollInSequence(fixedArray);
+		int result = dice.getLastRoll();
+		System.out.println(result);
+		assertTrue(result == 6);
+	}
+	
+	
 	
 
 }
