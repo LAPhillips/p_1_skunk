@@ -1,19 +1,23 @@
 package myskunk.pl;
 import java.util.Scanner;
 
-import edu.princeton.cs.introcs.*;
-
 public class SkunkUI {
 	private Scanner scan;
-	
+	private String playerName;
+
 	public SkunkUI(){
 		this.scan = new Scanner(System.in);
+		playerName = "no name";
 	}
 	
 	public void enterName() {
 		System.out.println("What is your name?");
 		String playerName = scan.nextLine();
 		System.out.println("Thank you " + playerName);
+	}
+	
+	public String getEnteredName() {
+		return "name";
 	}
 	
 	

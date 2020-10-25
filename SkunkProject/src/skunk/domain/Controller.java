@@ -1,14 +1,15 @@
 package skunk.domain;
+import myskunk.pl.SkunkUI;
 
 public class Controller {
+	SkunkUI ui = new SkunkUI();
 	
 	public Controller() {
 		
 	}
 
 	public String getPlayerNameFromUI() {
-		// TODO Auto-generated method stub
-		return "mike";
+		return ui.getEnteredName();
 	}
 
 }
