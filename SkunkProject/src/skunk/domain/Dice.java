@@ -19,6 +19,8 @@ public class Dice
 	private int lastRoll;
 	private Die die1;
 	private Die die2;
+	int dieOne;
+	int dieTwo;
 
 	// Constructors (object initializers) also can be declared anywhere
 	// Convention: after instance fields/variables
@@ -31,6 +33,8 @@ public class Dice
 		this.die1 = new Die();
 		this.die2 = new Die();
 		this.roll();
+		this.dieOne = 0;
+		this.dieTwo = 0;
 	}
 
 	public Dice(Die die1, Die die2) // overloaded constructor
@@ -54,7 +58,11 @@ public class Dice
 
 		die1.roll();
 		die2.roll();
-		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
+		
+		this.dieOne = die1.getLastRoll();
+		this.dieTwo = die2.getLastRoll();
+		
+		this.lastRoll = dieOne + dieTwo;
 	}
 	
 	//overloaded roll with fixed number
@@ -65,26 +73,30 @@ public class Dice
 
 		die1.roll(num1);
 		die2.roll(num2);
-		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
+		
+		this.dieOne = die1.getLastRoll();
+		this.dieTwo = die2.getLastRoll();
+		
+		this.lastRoll = dieOne + dieTwo;
 	}
 	
 	//overloaded with numbers from an array (both dice have the same number)
 	public void roll(int [] numbers)
 	{
 		die1.roll(numbers);
-		int dieInSequence = die1.getLastRoll();
+		this.dieOne = die1.getLastRoll();
 		die1.roll(numbers);
-		int dieInSequence2 = die1.getLastRoll();
-		this.lastRoll = dieInSequence + dieInSequence2;
-//		System.out.println("total die " + this.lastRoll);
-		
-		
+		this.dieTwo = die1.getLastRoll();
+		this.lastRoll = dieOne + dieTwo;	
 	}
 	
 	public void rollInDoubles(int[] numbers) {
 		die1.roll(numbers);
 		die2.roll(numbers);
-		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
+		
+		this.dieOne = die1.getLastRoll();
+		this.dieTwo = die2.getLastRoll();
+		this.lastRoll = dieOne + dieTwo;
 	}
 	
 	
@@ -98,7 +110,7 @@ public class Dice
 
 	public String toString()
 	{
-		return "Dice with last roll: " + getLastRoll() + " => " + die1.getLastRoll() + " + " + die2.getLastRoll();
+		return "Dice with last roll: " + getLastRoll() + " => " + dieOne + " + " + dieTwo;
 	}
 
 
