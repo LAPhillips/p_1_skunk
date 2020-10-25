@@ -68,22 +68,23 @@ public class Dice
 		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
 	}
 	
+	//overloaded with numbers from an array (both dice have the same number)
 	public void roll(int [] numbers)
 	{
-		// Roll each of die1, die2, sum their last rolls,
-		// then set Dice.lastRoll to this value
-
-		die1.roll(numbers);
-		die2.roll(numbers);
-		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
-	}
-	
-	public void rollInSequence(int[] numbers) {
 		die1.roll(numbers);
 		int dieInSequence = die1.getLastRoll();
 		die1.roll(numbers);
 		int dieInSequence2 = die1.getLastRoll();
 		this.lastRoll = dieInSequence + dieInSequence2;
+//		System.out.println("total die " + this.lastRoll);
+		
+		
+	}
+	
+	public void rollInDoubles(int[] numbers) {
+		die1.roll(numbers);
+		die2.roll(numbers);
+		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
 	}
 	
 	
