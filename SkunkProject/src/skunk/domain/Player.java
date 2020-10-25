@@ -17,7 +17,13 @@ public class Player {
 		int score = this.turnScore.getScoreAfterRoll();
 		System.out.println(score);
 		return score;
-		
 	}
+	
+	@Override
+	public String toString() // this OVERRIDES the default Object.toString()
+	{
+		return "Player " + this.getPlayerName() + " --- Score: " + this.getTurnScore();
+	}
+
 
 }

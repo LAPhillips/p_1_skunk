@@ -5,12 +5,20 @@ import skunk.domain.Dice;
 public class SkunkApp {
 
 	public static void main(String[] args) {
+		SkunkUI ui = new SkunkUI();
 		
 		System.out.println("Welcome to Skunk");
-		int [] array = {1, 2, 3, 4};
-		Dice skunkDice = new Dice();
+		ui.enterName();
+
 	
 		
+		
+		
+		
+		
+		/*
+		int [] array = {1, 2, 3, 4};
+		Dice skunkDice = new Dice();
 		//standard dice is random
 		skunkDice.roll();
 		System.out.println(skunkDice.toString());
@@ -22,7 +30,7 @@ public class SkunkApp {
 		//dice with an array uses just one number per die
 		skunkDice.roll(7, 2);
 		System.out.println(skunkDice.toString());
-
+*/
 	}
 
 }
