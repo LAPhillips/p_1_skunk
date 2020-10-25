@@ -17,7 +17,7 @@ class PlayerTest {
 	void player_has_a_turnScore() {
 		Player player = new Player("mike");
 		int result = player.getTurnScore();
-		assertTrue(result < 4 && result > 110);
+		assertTrue(result > 4 && result < 110);
 	}
 
 }

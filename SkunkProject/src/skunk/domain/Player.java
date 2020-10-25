@@ -2,10 +2,11 @@ package skunk.domain;
 
 public class Player {
 	private String playerName;
-	private TurnScore turnscore; 
+	private TurnScore turnScore; 
 	
 	public Player(String enteredName){
 		this.playerName = enteredName;
+		this.turnScore = new TurnScore(); 
 	}
 
 	public String getPlayerName() {
@@ -13,8 +14,10 @@ public class Player {
 	}
 
 	public int getTurnScore() {
-		// TODO Auto-generated method stub
-		return 0;
+		int score = this.turnScore.getScoreAfterRoll();
+		System.out.println(score);
+		return score;
+		
 	}
 
 }
