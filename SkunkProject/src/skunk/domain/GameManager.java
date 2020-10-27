@@ -11,7 +11,6 @@ public class GameManager {
 
 	public void createPlayer(String playerName) {
 		Player newPlayer = new Player(playerName);
-		System.out.println(player);
 		this.player = newPlayer;
 	}
 	
@@ -22,6 +21,10 @@ public class GameManager {
 	public int playerRollsDice() {
 		dice.roll();
 		return dice.getLastRoll();
+	}
+
+	public int playerRollsFixedDice() {
+		return 5;
 	}
 
 }
