@@ -8,19 +8,18 @@ class GameManagerTest {
 
 	@Test
 	void game_creator_makes_players() {
-		GameManager creator = new GameManager();
-		creator.createPlayer("player1");
-		assertNotNull(creator.getPlayer());
+		GameManager manager = new GameManager();
+		manager.createPlayer("player1");
+		assertNotNull(manager.getPlayer());
 	}
 	
-	/*
+	
 	@Test
 	void game_creator_lets_player_roll_dice() {
 		GameManager manager = new GameManager();
-		manager.playerRollsDice();
-		int result = 0;
-		assertTrue( result == 3);
+		int result = manager.playerRollsDice();
+		assertTrue(result == 3);
 	}
-	*/
+	
 
 }

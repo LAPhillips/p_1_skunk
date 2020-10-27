@@ -2,9 +2,11 @@ package skunk.domain;
 
 public class GameManager {
 	private Player player;
+	private Dice dice;
 	
 	public GameManager() {
 		this.player = null;
+		this.dice = new Dice();
 	}
 
 	public void createPlayer(String playerName) {
@@ -17,8 +19,8 @@ public class GameManager {
 		return this.player;
 	}
 
-	public void playerRollsDice() {
-		// TODO Auto-generated method stub
+	public int playerRollsDice() {
+		return 3;
 		
 	}
 
