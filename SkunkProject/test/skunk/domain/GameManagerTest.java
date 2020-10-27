@@ -29,14 +29,12 @@ class GameManagerTest {
 		assertTrue( result == 5);
 	}
 	
-	
-	
-	/*
 	@Test
 	void game_manager_records_TurnScore() {
-		GameManager creator = new GameManager();	
-		assertNotNull(creator.createPlayer("player 1"));
+		GameManager manager = new GameManager();
+		manager.recordsTheTurnScore();
+		int result = 0;
+		assertTrue(result == 0);
 	}
 
-*/
 }

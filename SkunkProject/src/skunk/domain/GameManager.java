@@ -3,10 +3,12 @@ package skunk.domain;
 public class GameManager {
 	private Player player;
 	private Dice dice;
+	private TurnScore score;
 	
 	public GameManager() {
 		this.player = null;
 		this.dice = new Dice();
+		this.score = null;
 	}
 
 	public void createPlayer(String playerName) {
@@ -25,6 +27,11 @@ public class GameManager {
 
 	public int playerRollsFixedDice() {
 		return 5;
+	}
+
+	public void recordsTheTurnScore() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
