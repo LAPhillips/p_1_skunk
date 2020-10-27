@@ -3,7 +3,7 @@ package skunk.domain;
 public class GameManager {
 	private Player player;
 	private Dice dice;
-	private TurnScore score;
+	private Score score;
 	
 	public GameManager() {
 		this.player = null;

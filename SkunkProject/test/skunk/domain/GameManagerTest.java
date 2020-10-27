@@ -13,13 +13,11 @@ class GameManagerTest {
 		assertNotNull(manager.getPlayer());
 	}
 	
-	
 	@Test
 	void game_manager_lets_player_roll_dice() {
 		GameManager manager = new GameManager();
 		int result = manager.playerRollsDice();
-		System.out.println(result + " is the result");
-		assertTrue( result > 2 && result < 12);
+		assertTrue( result > 2 && result < 13);
 	}
 	
 	@Test
