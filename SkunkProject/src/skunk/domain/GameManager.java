@@ -26,11 +26,12 @@ public class GameManager {
 	}
 
 	public int playerRollsFixedDice() {
-		return 5;
+		dice.roll(2,3);
+		return dice.getLastRoll();
 	}
 
 	public void recordsTheTurnScore() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
