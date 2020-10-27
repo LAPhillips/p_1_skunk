@@ -18,7 +18,7 @@ class GameManagerTest {
 	void game_creator_lets_player_roll_dice() {
 		GameManager manager = new GameManager();
 		int result = manager.playerRollsDice();
-		assertTrue(result == 3);
+		assertEquals(3, result);
 	}
 	
 

@@ -20,8 +20,8 @@ public class GameManager {
 	}
 
 	public int playerRollsDice() {
-		return 3;
-		
+		dice.roll(1,2);
+		return dice.getLastRoll();
 	}
 
 }
