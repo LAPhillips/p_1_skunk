@@ -18,7 +18,7 @@ class GameManagerTest {
 	void game_creator_lets_player_roll_dice() {
 		GameManager manager = new GameManager();
 		int result = manager.playerRollsDice();
-		assertEquals(3, result);
+		assertTrue( result > 2 && result < 12);
 	}
 	
 
