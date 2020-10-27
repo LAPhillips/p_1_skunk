@@ -15,7 +15,6 @@ public class Player {
 
 	public int getTurnScore() {
 		int score = this.turnScore.getScoreAfterRoll();
-		System.out.println(score);
 		return score;
 	}
 	

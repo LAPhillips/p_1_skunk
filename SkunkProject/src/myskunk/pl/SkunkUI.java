@@ -9,13 +9,15 @@ public class SkunkUI {
 
 	public SkunkUI(){
 		this.scan = new Scanner(System.in);
-		playerName = "no name";
+		this.control = new Controller();
+		playerName = "noName";
 	}
 	
 	public void enterName() {
 		System.out.println("What is your name?");
 		String playerName = scan.nextLine();
-		System.out.println("Thank you " + playerName);
+		control.setsPlayerName(playerName);
+		System.out.println("Thank you " + control.getPlayerName());
 	}
 	
 	
