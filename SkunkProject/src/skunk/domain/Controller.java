@@ -2,14 +2,18 @@ package skunk.domain;
 import myskunk.pl.SkunkUI;
 
 public class Controller {
-	SkunkUI ui = new SkunkUI();
+	private String playerName;
 	
 	public Controller() {
+		this.playerName = "noName";
+	}
+
+	public void setsPlayerName() {
 		
 	}
 
-	public String getPlayerNameFromUI() {
-		return ui.getEnteredName();
+	public String getPlayerName() {
+		return this.playerName;
 	}
 
 }

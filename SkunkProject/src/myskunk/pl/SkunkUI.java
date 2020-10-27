@@ -1,9 +1,11 @@
 package myskunk.pl;
 import java.util.Scanner;
+import skunk.domain.Controller;
 
 public class SkunkUI {
 	private Scanner scan;
 	private String playerName;
+	private Controller control; 
 
 	public SkunkUI(){
 		this.scan = new Scanner(System.in);
@@ -16,9 +18,6 @@ public class SkunkUI {
 		System.out.println("Thank you " + playerName);
 	}
 	
-	public String getEnteredName() {
-		return "name";
-	}
 	
 	
 	
