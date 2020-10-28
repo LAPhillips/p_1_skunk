@@ -17,9 +17,5 @@ public class Controller {
 		return this.playerName;
 	}
 
-	//fixed Die for testing
-//	public Dice getFixedRollFromManager(int die1, int die2) {		
-//		return ;
-//	}
 
 }

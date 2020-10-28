@@ -38,6 +38,12 @@ public class Dice
 	public int[] getDicePair() {
 		return this.diePair;
 	}
+	
+	public int giveSpecificDie(int index) {
+		// TODO Auto-generated method stub
+		return 3;
+	}
+
 
 
 	//basic roll is random
@@ -95,7 +101,6 @@ public class Dice
 	{
 		return "Dice with last roll: " + getLastRoll() + " => " + diePair[0] + " + " + diePair[1];
 	}
-
 
 
 

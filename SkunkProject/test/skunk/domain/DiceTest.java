@@ -23,6 +23,14 @@ class DiceTest {
 		assertTrue(newRoll[0] == 2 && newRoll[1] == 3);
 	}
 	
+	@Test
+	void dice_should_share_specific_die_when_asked() {
+		Dice dice = new Dice();
+		dice.roll(2, 3);
+		int firstDie = dice.giveSpecificDie(1);
+		assertEquals(3, firstDie);
+	}
+	
 		@Test
 	void dice_should_produce_two_random_numbers() {
 		Dice dice = new Dice();
@@ -68,5 +76,7 @@ class DiceTest {
 		int [] expectedArray = {6,14,3,10,9};
 		Assert.assertArrayEquals(expectedArray, actualRolls);
 	}
+	
+
 
 }
