@@ -16,8 +16,15 @@ public class Controller {
 	public String getPlayerName() {
 		return this.playerName;
 	}
+	
+	//normal dice
+	public int[] shareRoll() {
+		return manager.playerRollsDice();
+	}
 
+	//fixed dice
 	public int[] shareRoll(int die1, int die2) {
 		return manager.playerRollsDice(die1, die2);
 	}
+	
 }

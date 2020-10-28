@@ -20,7 +20,10 @@ public class SkunkUI {
 	}
 	
 	public void StartTurn() {
-		System.out.println(control.getPlayerName() + " rolls a....");
+		int [] roll = control.shareRoll();
+		System.out.println(control.getPlayerName() + " rolls a.... " + roll[0] + " and " + roll[1]);
+		System.out.println("Total score: " );
+	
 	}
 	
 	
