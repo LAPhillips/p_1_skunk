@@ -23,7 +23,8 @@ public class Score {
 	}
 
 	public void recordScore(int scoreAfterRoll) {
-
+		this.playerScoreBoard.recordRoll(scoreAfterRoll);
 	}
+
 
 }

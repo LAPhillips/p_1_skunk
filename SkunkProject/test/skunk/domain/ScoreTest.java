@@ -2,6 +2,8 @@ package skunk.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 class ScoreTest {
@@ -22,6 +24,23 @@ class ScoreTest {
 		result = score.getScoreAfterRoll();
 		assertEquals(5, result);
 	}
+	
+	/*
+	@Test
+	void after_roll_score_records_roll_on_scoreboard() {
+		Score score = new Score();
+		Scoreboard playerScoreBoard = new Scoreboard();
+		ArrayList<Integer> turnScore = playerScoreBoard.getTurnScores();
+		int roll = 5;
+		score.recordScore(roll);
+		System.out.println(score.getScoreAfterRoll());
+		int result = turnScore.get(0);
+		assertEquals(result, roll);
+		
+
+		
+		
+	}		*/
 	
 
 }

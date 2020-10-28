@@ -16,6 +16,10 @@ public class Scoreboard {
 	public ArrayList<Integer> getTurnScores() {
 		return this.singleTurn;
 	}
+	
+	public int getSpecificTurnScores(int index) {
+		return this.singleTurn.get(index);
+	}
 
 	public void recordRoll(int newRoll) {
 		singleTurn.add(newRoll);
