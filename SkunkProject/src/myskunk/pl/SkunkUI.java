@@ -17,7 +17,10 @@ public class SkunkUI {
 		System.out.println("What is your name?");
 		String playerName = scan.nextLine();
 		control.setsPlayerName(playerName);
-		System.out.println("Thank you " + control.getPlayerName());
+	}
+	
+	public void StartTurn() {
+		System.out.println(control.getPlayerName() + " rolls a....");
 	}
 	
 	

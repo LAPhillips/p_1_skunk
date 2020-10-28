@@ -19,6 +19,7 @@ public class Dice
 	private int lastRoll;
 	private Die die1;
 	private Die die2;
+	private int[] diePair;
 	int dieOne;
 	int dieTwo;
 
@@ -32,9 +33,9 @@ public class Dice
 
 		this.die1 = new Die();
 		this.die2 = new Die();
-		this.roll();
-		this.dieOne = 0;
-		this.dieTwo = 0;
+		this.diePair = new int[2]; //everyDice has two numbers
+	//	this.dieOne = 0;
+	//	this.dieTwo = 0;
 	}
 
 	public Dice(Die die1, Die die2) // overloaded constructor
@@ -51,52 +52,49 @@ public class Dice
 		return this.lastRoll;
 	}
 
+	//basic roll is random
 	public void roll()
 	{
-		// Roll each of die1, die2, sum their last rolls,
-		// then set Dice.lastRoll to this value
-
 		die1.roll();
 		die2.roll();
+		diePair[0] = die1.getLastRoll();
+		diePair[1] = die2.getLastRoll();
 		
-		this.dieOne = die1.getLastRoll();
-		this.dieTwo = die2.getLastRoll();
-		
-		this.lastRoll = dieOne + dieTwo;
+		this.lastRoll = diePair[0] + diePair[1];
 	}
 	
 	//overloaded roll with fixed number
 	public void roll(int num1, int num2)
 	{
-		// Roll each of die1, die2, sum their last rolls,
-		// then set Dice.lastRoll to this value
 
 		die1.roll(num1);
 		die2.roll(num2);
 		
-		this.dieOne = die1.getLastRoll();
-		this.dieTwo = die2.getLastRoll();
+		diePair[0] = die1.getLastRoll();
+		diePair[1] = die2.getLastRoll();
 		
-		this.lastRoll = dieOne + dieTwo;
+		this.lastRoll = diePair[0] + diePair[1];
 	}
 	
-	//overloaded with numbers from an array (both dice have the same number)
+	//overloaded with numbers from an array 
 	public void roll(int [] numbers)
 	{
 		die1.roll(numbers);
-		this.dieOne = die1.getLastRoll();
+		diePair[0] = die1.getLastRoll();
 		die1.roll(numbers);
-		this.dieTwo = die1.getLastRoll();
-		this.lastRoll = dieOne + dieTwo;	
+		diePair[1] = die1.getLastRoll();
+	
+		this.lastRoll = diePair[0] + diePair[1];
 	}
 	
 	public void rollInDoubles(int[] numbers) {
 		die1.roll(numbers);
 		die2.roll(numbers);
 		
-		this.dieOne = die1.getLastRoll();
-		this.dieTwo = die2.getLastRoll();
-		this.lastRoll = dieOne + dieTwo;
+		diePair[0] = die1.getLastRoll();
+		diePair[1] = die2.getLastRoll();
+		
+		this.lastRoll = diePair[0] + diePair[1];
 	}
 	
 	

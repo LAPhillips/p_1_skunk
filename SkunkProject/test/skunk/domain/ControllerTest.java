@@ -9,7 +9,6 @@ class ControllerTest {
 		Controller control = new Controller();
 		String result = control.getPlayerName();
 		assertTrue( result.equals("noName"));
-		
 	}
 	
 	@Test
@@ -19,8 +18,17 @@ class ControllerTest {
 		control.setsPlayerName(newName);
 		String result = control.getPlayerName();
 		assertTrue( result.equals(newName));
-		
 	}
+	
+	/*
+	@Test
+	void controller_gets_roll_from_manager() {
+		Controller control = new Controller();
+		Dice dice = control.getFixedRollFromManager(2,5);
+		assertTrue(dice.dieOne == 2 && dice.dieTwo == 5);
+	}
+	*/
+	
 
 
 }

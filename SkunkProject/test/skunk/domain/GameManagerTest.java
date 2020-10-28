@@ -27,6 +27,9 @@ class GameManagerTest {
 		assertTrue( result == 5);
 	}
 	
+	
+	
+	/*
 	@Test
 	void game_manager_records_TurnScore() {
 		GameManager manager = new GameManager();
@@ -34,5 +37,6 @@ class GameManagerTest {
 		int result = 0;
 		assertTrue(result == 0);
 	}
+	*/
 
 }

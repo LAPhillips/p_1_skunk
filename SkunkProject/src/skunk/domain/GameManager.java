@@ -19,7 +19,7 @@ public class GameManager {
 	public Player getPlayer() {
 		return this.player;
 	}
-
+	
 	public int playerRollsDice() {
 		dice.roll();
 		return dice.getLastRoll();
@@ -29,10 +29,12 @@ public class GameManager {
 		dice.roll(2,3);
 		return dice.getLastRoll();
 	}
+	
+	
 
-	public void recordsTheTurnScore() {
-		
-		
-	}
+	
+	
+//	public void recordsTheTurnScore() {
+//	}
 
 }

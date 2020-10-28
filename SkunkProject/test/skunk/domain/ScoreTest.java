@@ -26,24 +26,13 @@ class ScoreTest {
 	}
 	
 	@Test
-	void score_can_get_score_from_scoreboard() {
+	void score_can_record_score_from_scoreboard() {
 		Score score = new Score();
 		score.recordScore(5);
 		score.recordScore(3);
 		int recordedScore = score.getSpecificRecordedScore(1);
 		assertEquals(recordedScore, 3);
 	}
-	
-	/*
-	@Test
-	void after_roll_new_points_are_recorded() {
-		Score score = new Score();
-		int newPoints = 6;
-		score.recordScore(newPoints);
-		int recordedPoints = score.getScoreAfterRoll();
-		assertEquals(newPoints, recordedPoints);
-	}
-	*/
 
 
 }
