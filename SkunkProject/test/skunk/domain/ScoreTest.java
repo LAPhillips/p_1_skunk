@@ -25,22 +25,14 @@ class ScoreTest {
 		assertEquals(5, result);
 	}
 	
-	/*
 	@Test
-	void after_roll_score_records_roll_on_scoreboard() {
+	void after_roll_new_points_are_recorded() {
 		Score score = new Score();
-		Scoreboard playerScoreBoard = new Scoreboard();
-		ArrayList<Integer> turnScore = playerScoreBoard.getTurnScores();
-		int roll = 5;
-		score.recordScore(roll);
-		System.out.println(score.getScoreAfterRoll());
-		int result = turnScore.get(0);
-		assertEquals(result, roll);
-		
-
-		
-		
-	}		*/
+		int newPoints = 6;
+		int recordedPoints = 6;
+		assertEquals(newPoints, recordedPoints);
+	}
 	
+
 
 }
