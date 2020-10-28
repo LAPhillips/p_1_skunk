@@ -20,15 +20,16 @@ public class GameManager {
 		return this.player;
 	}
 	
-	public int playerRollsDice() {
+	public int[] playerRollsDice() {
 		dice.roll();
-		return dice.getLastRoll();
+		return dice.getDicePair();
 	}
 
-//	public int[] playerRollsFixedDice() {
-//		dice.roll(2,3);
-//		return 0;
-//	}
+	//overloaded method for fixed dice
+	public int[] playerRollsDice(int die1, int die2) {
+		dice.roll(die1, die2);
+		return dice.getDicePair();
+	}
 	
 	
 

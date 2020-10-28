@@ -13,7 +13,7 @@ public class Dice
 
 //Variables
 {   
-	private int lastRoll;
+	private int lastRollSum;
 	private Die die1;
 	private Die die2;
 	private int[] diePair;
@@ -32,7 +32,7 @@ public class Dice
 //Methods
 	public int getLastRoll()
 	{
-		return this.lastRoll;
+		return this.lastRollSum;
 	}
 	
 	public int[] getDicePair() {
@@ -48,7 +48,7 @@ public class Dice
 		diePair[0] = die1.getLastRoll();
 		diePair[1] = die2.getLastRoll();
 		
-		this.lastRoll = diePair[0] + diePair[1];
+		this.lastRollSum = diePair[0] + diePair[1];
 	}
 	
 	//overloaded roll with fixed number
@@ -60,7 +60,7 @@ public class Dice
 		diePair[0] = die1.getLastRoll();
 		diePair[1] = die2.getLastRoll();
 		
-		this.lastRoll = diePair[0] + diePair[1];
+		this.lastRollSum = diePair[0] + diePair[1];
 	}
 	
 	//overloaded with numbers from an array 
@@ -71,7 +71,7 @@ public class Dice
 		die1.roll(numbers);
 		diePair[1] = die1.getLastRoll();
 	
-		this.lastRoll = diePair[0] + diePair[1];
+		this.lastRollSum = diePair[0] + diePair[1];
 	}
 	
 	public void rollInDoubles(int[] numbers) {
@@ -81,7 +81,7 @@ public class Dice
 		diePair[0] = die1.getLastRoll();
 		diePair[1] = die2.getLastRoll();
 		
-		this.lastRoll = diePair[0] + diePair[1];
+		this.lastRollSum = diePair[0] + diePair[1];
 	}
 	
 	

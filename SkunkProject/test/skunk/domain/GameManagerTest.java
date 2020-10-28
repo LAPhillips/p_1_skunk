@@ -16,16 +16,17 @@ class GameManagerTest {
 	@Test
 	void game_manager_lets_player_roll_dice() {
 		GameManager manager = new GameManager();
-		int result = manager.playerRollsDice();
-		assertTrue( result > 2 && result < 13);
+		int[] result = manager.playerRollsDice();
+		int sumOfDice = result[0] + result[1];
+		assertTrue( sumOfDice > 2 && sumOfDice < 13);
 	}
 	
-//	@Test
-//	void game_manager_lets_player_roll_fixed_dice() {
-//		GameManager manager = new GameManager();
-//		int result = manager.playerRollsFixedDice();
-//		assertTrue( result == 5);
-//	}
+	@Test
+	void game_manager_lets_player_roll_fixed_dice() {
+		GameManager manager = new GameManager();
+		int[] result = manager.playerRollsDice(3,4);
+		assertTrue(result[0] == 3 && result[1] == 4);
+	}
 	
 	
 	
