@@ -26,8 +26,8 @@ public class Score {
 		this.playerScoreBoard.recordRoll(scoreAfterRoll);
 	}
 
-	public int getSpecificRecordedScore(int i) {
-		return 0;
+	public int getSpecificRecordedScore(int index) {
+		return this.playerScoreBoard.getSpecificTurnScores(index);
 	}
 
 

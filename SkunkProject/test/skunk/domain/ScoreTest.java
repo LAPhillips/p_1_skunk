@@ -27,9 +27,10 @@ class ScoreTest {
 	
 	@Test
 	void score_can_get_score_from_scoreboard() {
-		Score score = new Score(5);
+		Score score = new Score();
+		score.recordScore(5);
 		int recordedScore = score.getSpecificRecordedScore(0);
-		assertEquals(recordedScore, 0);
+		assertEquals(recordedScore, 5);
 	}
 	
 	/*

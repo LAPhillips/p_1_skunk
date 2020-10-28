@@ -6,11 +6,11 @@ import java.util.List;
 
 public class Scoreboard {
 	private ArrayList<Integer> singleTurn;
-	private HashMap<Integer, List> playerGameScore;
+//	private HashMap<Integer, List> playerGameScore;
 	
 	public Scoreboard() {
 		this.singleTurn = new ArrayList<>();
-		this.playerGameScore = new HashMap<Integer, List>();
+//		this.playerGameScore = new HashMap<Integer, List>();
 	}
 
 	public ArrayList<Integer> getTurnScores() {
