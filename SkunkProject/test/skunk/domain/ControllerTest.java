@@ -20,14 +20,14 @@ class ControllerTest {
 		assertTrue( result.equals(newName));
 	}
 	
-/*	
+	
 	@Test
 	void controller_gets_roll_from_manager() {
 		Controller control = new Controller();
-		Dice dice = control.getRoll(2,5);
-		assertTrue(dice.dieOne == 2 && dice.dieTwo == 5);
+		int[] dice = control.shareRoll(2,5);
+		assertTrue(dice[0] == 2 && dice[1] == 5);
 	}
-	*/
+	
 	
 
 

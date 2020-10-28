@@ -27,7 +27,7 @@ class DiceTest {
 	void dice_should_share_specific_die_when_asked() {
 		Dice dice = new Dice();
 		dice.roll(2, 3);
-		int secondDie = dice.giveSpecificDie(1);
+		int secondDie = dice.getSpecificDie(1);
 		assertEquals(3, secondDie);
 	}
 	

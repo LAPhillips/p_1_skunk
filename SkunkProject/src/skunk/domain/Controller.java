@@ -17,5 +17,7 @@ public class Controller {
 		return this.playerName;
 	}
 
-
+	public int[] shareRoll(int die1, int die2) {
+		return manager.playerRollsDice(die1, die2);
+	}
 }

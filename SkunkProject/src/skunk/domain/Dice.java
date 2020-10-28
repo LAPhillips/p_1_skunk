@@ -39,7 +39,7 @@ public class Dice
 		return this.diePair;
 	}
 	
-	public int giveSpecificDie(int index) {
+	public int getSpecificDie(int index) {
 		return this.diePair[index];
 	}
 
