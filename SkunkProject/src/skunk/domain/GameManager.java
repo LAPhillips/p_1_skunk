@@ -25,10 +25,10 @@ public class GameManager {
 		return dice.getLastRoll();
 	}
 
-	public int playerRollsFixedDice() {
-		dice.roll(2,3);
-		return dice.getLastRoll();
-	}
+//	public int[] playerRollsFixedDice() {
+//		dice.roll(2,3);
+//		return 0;
+//	}
 	
 	
 

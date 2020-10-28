@@ -15,6 +15,14 @@ class DiceTest {
 		assertTrue(result == 5);
 	}
 	
+	@Test
+	void dice_should_share_dice() {
+		Dice dice = new Dice();
+		dice.roll(2, 3); //using fixed dice to test
+		int[] newRoll = dice.getDicePair();
+		assertTrue(newRoll[0] == 2 && newRoll[1] == 3);
+	}
+	
 		@Test
 	void dice_should_produce_two_random_numbers() {
 		Dice dice = new Dice();

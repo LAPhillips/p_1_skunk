@@ -20,12 +20,12 @@ class GameManagerTest {
 		assertTrue( result > 2 && result < 13);
 	}
 	
-	@Test
-	void game_manager_lets_player_roll_fixed_dice() {
-		GameManager manager = new GameManager();
-		int result = manager.playerRollsFixedDice();
-		assertTrue( result == 5);
-	}
+//	@Test
+//	void game_manager_lets_player_roll_fixed_dice() {
+//		GameManager manager = new GameManager();
+//		int result = manager.playerRollsFixedDice();
+//		assertTrue( result == 5);
+//	}
 	
 	
 	
