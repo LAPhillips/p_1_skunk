@@ -40,8 +40,7 @@ public class Dice
 	}
 	
 	public int giveSpecificDie(int index) {
-		// TODO Auto-generated method stub
-		return 3;
+		return this.diePair[index];
 	}
 
 
