@@ -26,5 +26,9 @@ public class Score {
 		this.playerScoreBoard.recordRoll(scoreAfterRoll);
 	}
 
+	public int getSpecificRecordedScore(int i) {
+		return 0;
+	}
+
 
 }
