@@ -1,5 +1,7 @@
 package skunk.domain;
 
+import java.util.ArrayList;
+
 public class GameManager {
 	private Player player;
 	private Dice dice;
@@ -31,11 +33,12 @@ public class GameManager {
 		return dice.getDicePair();
 	}
 	
-	
+	public void recordsTheTurnScore(int[] newScore) {
+	}
 
-	
-	
-//	public void recordsTheTurnScore() {
-//	}
+	public ArrayList<Integer> sharesTurnScores() {
+		return null;
+	}
+
 
 }

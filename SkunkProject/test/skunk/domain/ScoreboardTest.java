@@ -16,12 +16,14 @@ class ScoreboardTest {
 		assertFalse(turnscore.isEmpty());
 	}
 	
+	
 	@Test
 	void scoreboard_records_roll() {
 		Scoreboard scores = new Scoreboard();
 		ArrayList<Integer> turnscore = scores.getTurnScores();
-		scores.recordRoll(6);
-		assertTrue(turnscore.size() == 1);
+		int[] newScore = new int[] {3,2};
+		scores.recordRoll(newScore);
+		assertTrue(turnscore.size() == 2);
 	}
 	
 	@Test

@@ -1,5 +1,5 @@
 package skunk.domain;
-
+//Scoreboard is responsible for storing the scores for a game
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,8 +21,10 @@ public class Scoreboard {
 		return this.singleTurn.get(index);
 	}
 
-	public void recordRoll(int newRoll) {
-		singleTurn.add(newRoll);
+	public void recordRoll(int[] newRoll) {
+		singleTurn.add(newRoll[0]);
+		singleTurn.add(newRoll[1]);
 	}
+
 
 }
