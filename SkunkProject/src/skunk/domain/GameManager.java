@@ -10,7 +10,7 @@ public class GameManager {
 	public GameManager() {
 		this.player = null;
 		this.dice = new Dice();
-		this.score = null;
+		this.score = new Score();
 	}
 
 	public void createPlayer(String playerName) {
@@ -34,10 +34,11 @@ public class GameManager {
 	}
 	
 	public void recordsTheTurnScore(int[] newScore) {
+		score.recordScore(newScore);
 	}
 
 	public ArrayList<Integer> sharesTurnScores() {
-		return null;
+		return score.getTurnScores();
 	}
 
 

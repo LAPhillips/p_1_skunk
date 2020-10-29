@@ -1,9 +1,7 @@
 package skunk.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
 
 class GameManagerTest {
@@ -34,17 +32,21 @@ class GameManagerTest {
 	void game_manager_shares_turn_scores() {
 		GameManager manager = new GameManager();
 		ArrayList<Integer> turnScores = manager.sharesTurnScores();
-		assertNotNull(turnScores);
+		int[] newScore = new int[] {3,6};
+		manager.recordsTheTurnScore(newScore);
+		assertEquals(newScore[1], turnScores.get(1));
 	}
 	
-/*
+
 	@Test
 	void game_manager_records_TurnScore() {
 		GameManager manager = new GameManager();
 		int[] newScore = new int[] {3,4};
 		manager.recordsTheTurnScore(newScore);
-		assertTrue(result == 0);
+		int[] anotherRoll = new int[] {5,2};
+		manager.recordsTheTurnScore(anotherRoll);
+		ArrayList <Integer> scoreboard = manager.sharesTurnScores();
+		assertTrue(scoreboard.size() == 4);
 	}
 
-*/
 }
