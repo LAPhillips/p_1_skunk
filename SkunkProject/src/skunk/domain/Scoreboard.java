@@ -25,6 +25,4 @@ public class Scoreboard {
 		singleTurn.add(newRoll[0]);
 		singleTurn.add(newRoll[1]);
 	}
-
-
 }

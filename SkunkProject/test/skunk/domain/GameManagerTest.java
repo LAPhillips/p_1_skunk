@@ -65,12 +65,26 @@ class GameManagerTest {
 	}
 	
 	@Test
-	void game_manager_shares_total_score() {
+	void game_manager_shares_dice_total_score() {
 		GameManager manager = new GameManager();
 		manager.playerRollsDice(2, 5);
 		int result = manager.diceTotalScore();
 		int expected =7;
 		assertEquals(expected, result);
+	}
+	
+	@Test
+	void game_manager_shares_turn_total_score() {
+		GameManager manager = new GameManager();
+		int die1 = 3;
+		int die2 = 4;
+		int die3 = 6;
+		int die4 = 7;
+		int expected = die1 + die2 + die3 + die4;
+		manager.rollsAfterChecking(die1, die2);
+		manager.rollsAfterChecking(die3, die4);
+		int actual = manager.totalTurnScore();
+		assertEquals(expected, actual);
 	}
 	
 	@Test
@@ -111,6 +125,7 @@ class GameManagerTest {
 		assertTrue(newScore[0]== actualTurnScores.get(0) && newScore[1] == actualTurnScores.get(1));
 	}
 	
+	/*
 	@Test
 	void game_manager_ends_Turn() {
 		GameManager manager = new GameManager();
@@ -119,4 +134,5 @@ class GameManagerTest {
 		manager.endsTurn();
 		assertTrue(playerInput);
 	}
+	*/
 }

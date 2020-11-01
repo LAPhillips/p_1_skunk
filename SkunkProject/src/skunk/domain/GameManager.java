@@ -85,10 +85,14 @@ public class GameManager {
 			this.recordsTheTurnScore(this.currentDiceRoll);
 		}
 	}
-	
 
 	public void endsTurn() {
 		this.Turn++;
+	}
+	
+
+	public int totalTurnScore() {
+		return score.getTotalScoreForTurn();
 	}
 
 

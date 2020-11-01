@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 class ScoreTest {
-	
+	/*
 	@Test
 	void after_roll_score_is_avaliable() {
 		Score score = new Score();
@@ -34,7 +34,7 @@ class ScoreTest {
 		assertEquals(expected1, lastTwo[0]);
 	}
 	
-	/*
+
 	@Test
 	void after_roll_new_score_is_set() {
 		Score score = new Score();

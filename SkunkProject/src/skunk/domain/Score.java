@@ -11,14 +11,6 @@ public class Score {
 		this.playerScoreBoard = new Scoreboard();
 	}
 	
-
-	public int getTotalScoreForRoll() {
-		int[] lastTwo = this.getLastTwoRecorded();
-		int combinedRoll = lastTwo[0] + lastTwo[1];
-		return combinedRoll;
-	}
-
-	
 	public int getTotalScoreForTurn() {
 		ArrayList<Integer> turnTotals = this.getTurnScores();
 		int scoreTotals = 0;
@@ -27,7 +19,7 @@ public class Score {
 		}
 		return scoreTotals;
 	}
-
+	
 	public void recordScore(int[] scoreAfterRoll) {
 		this.playerScoreBoard.recordRoll(scoreAfterRoll);
 	}
@@ -39,15 +31,23 @@ public class Score {
 	public ArrayList<Integer> getTurnScores() {
 		return playerScoreBoard.getTurnScores();
 	}
+	
 
-
+	/* Possibly not needed because we get the single turn die after the die is rolled
+	public int getTotalScoreForRoll() {
+		int[] lastTwo = this.getLastTwoRecorded();
+		int combinedRoll = lastTwo[0] + lastTwo[1];
+		return combinedRoll;
+	}*/
+	
+	/* Possibly not needed because we get the single turn die after the die is rolled
 	public int[] getLastTwoRecorded() {
 		int [] lastTwo = new int[2];
 		int scoreArraySize = this.getTurnScores().size();
 		lastTwo[0] = this.getSpecificRecordedScore(scoreArraySize-2);
 		lastTwo[1] = this.getSpecificRecordedScore(scoreArraySize-1);
 		return lastTwo;
-	}
+	}	}*/
 
 
 }
