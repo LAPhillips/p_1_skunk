@@ -47,5 +47,9 @@ public class Controller {
 	public Boolean startNewRoll() {
 		return manager.getContinueTurn();
 	}
+
+	public int totalTurnScore() {
+		return manager.totalTurnScore();
+	}
 	
 }

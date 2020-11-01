@@ -95,6 +95,4 @@ public class GameManager {
 		return score.getTotalScoreForTurn();
 	}
 
-
-
 }

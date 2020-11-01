@@ -126,6 +126,7 @@ class GameManagerTest {
 	}
 	
 	/*
+	To be worked on
 	@Test
 	void game_manager_ends_Turn() {
 		GameManager manager = new GameManager();
@@ -133,6 +134,6 @@ class GameManagerTest {
 		Boolean playerInput = manager.getContinueTurn();
 		manager.endsTurn();
 		assertTrue(playerInput);
-	}
-	*/
+	} */
+	
 }

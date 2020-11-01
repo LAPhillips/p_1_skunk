@@ -59,4 +59,21 @@ class ControllerTest {
 		Boolean newRoll = control.startNewRoll();
 		assertTrue(newRoll);
 	}
+
+	@Test
+	void controller_shares_total_score() {
+		Controller control = new Controller();
+		int die1 = 3;
+		int die2 = 4;
+		int die3 = 6;
+		int die4 = 7;
+		control.shareRoll(die1, die2);
+		control.shareRoll(die3, die4);
+		int expected = die1 + die2 + die3 + die4;
+		int actual = control.totalTurnScore();
+		assertEquals(expected, actual);
+	}
+
+
+
 }
