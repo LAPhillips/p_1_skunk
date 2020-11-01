@@ -21,12 +21,23 @@ public class Controller {
 	
 	//normal dice
 	public int[] shareRoll() {
-		return manager.playerRollsDice();
+		if (manager.getContinueTurn()) {
+			return manager.playerRollsDice();
+		}
+		else {
+			return null;
+		}
+		
 	}
 
 	//fixed dice
 	public int[] shareRoll(int die1, int die2) {
-		return manager.playerRollsDice(die1, die2);
+		if (manager.getContinueTurn()) {
+			return manager.playerRollsDice(die1, die2);
+		}
+		else {
+			return null;
+		}
 	}
 
 	public int rollTotal() {
@@ -39,6 +50,7 @@ public class Controller {
 
 	public void setPlayerInput(char playerInput) {
 		this.playerControls = playerInput;
+		manager.setContinueTurn(playerInput);
 	}
 
 	public Boolean startNewRoll() {

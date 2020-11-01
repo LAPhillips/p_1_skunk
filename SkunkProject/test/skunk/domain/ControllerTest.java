@@ -60,6 +60,13 @@ class ControllerTest {
 		assertTrue(newRoll);
 	}
 	
+	@Test
+	void controller_checks_turn_status_before_any_roll() {
+		Controller control = new Controller();
+		control.setPlayerInput('N');
+		control.startNewRoll();
+		assertNull(control.shareRoll());
+	}
 
 
 }
