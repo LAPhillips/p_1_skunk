@@ -41,7 +41,7 @@ public class GameManager {
 		return score.getTurnScores();
 	}
 
-	public int totalscore() {
+	public int diceTotalScore() {
 		return dice.getLastRoll();
 	}
 

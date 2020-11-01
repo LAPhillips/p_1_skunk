@@ -13,12 +13,13 @@ class PlayerTest {
 		assertNotNull(result);	
 	}
 	
+	/*
 	@Test
 	void player_has_a_turnScore() {
 		Player player = new Player("player1");
 		int result = player.getTurnScore();
 		assertTrue(result > 4 && result < 110);
 	}
-	
+	*/
 
 }

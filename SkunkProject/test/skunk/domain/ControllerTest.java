@@ -28,6 +28,23 @@ class ControllerTest {
 		assertTrue(dice[0] == 2 && dice[1] == 5);
 	}
 	
+	@Test
+	void controller_gets_total_roll_from_manager() {
+		Controller control = new Controller();
+		control.shareRoll(3, 4);
+		int expected = 7;
+		int actual = control.rollTotal();
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void controller_gets_player_roll_input() {
+		Controller control = new Controller();
+		char playerDecision = control.getsPlayerDecision();
+		assertTrue(playerDecision == 'Y');
+		
+
+	}
 	
 	
 

@@ -53,7 +53,7 @@ class GameManagerTest {
 	void game_manager_shares_total_score() {
 		GameManager manager = new GameManager();
 		manager.playerRollsDice(2, 5);
-		int result = manager.totalscore();
+		int result = manager.diceTotalScore();
 		int expected =7;
 		assertEquals(expected, result);
 	}

@@ -6,22 +6,16 @@ public class Player {
 	
 	public Player(String enteredName){
 		this.playerName = enteredName;
-		this.turnScore = new Score(); 
 	}
 
 	public String getPlayerName() {
 		return this.playerName;
 	}
-
-	public int getTurnScore() {
-		int score = this.turnScore.getTotalScoreForRoll();
-		return score;
-	}
 	
 	@Override
 	public String toString() // this OVERRIDES the default Object.toString()
 	{
-		return "Player " + this.getPlayerName() + " --- Score: " + this.getTurnScore();
+		return "Player " + this.getPlayerName() + " --- Score: " ;
 	}
 
 

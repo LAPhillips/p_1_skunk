@@ -5,12 +5,14 @@ import skunk.domain.Controller;
 public class SkunkUI {
 	private Scanner scan;
 	private String playerName;
+	private char playerInputs;
 	private Controller control; 
 
 	public SkunkUI(){
 		this.scan = new Scanner(System.in);
 		this.control = new Controller();
-		playerName = "noName";
+		this.playerName = control.getPlayerName();
+		this.playerInputs = control.getsPlayerDecision();
 	}
 	
 	public void enterName() {
@@ -19,11 +21,28 @@ public class SkunkUI {
 		control.setsPlayerName(playerName);
 	}
 	
-	public void StartTurn() {
+	public void playerRolls() {
+		String rollLabel1 = "First Die:";
+		String rollLabel2 = "Second Die:";
+		String rollLabel3 = "Roll Total:";
+		String rollLabel4 = "Grand Total:";
+		String format = "%-20s%s%n";
 		int [] roll = control.shareRoll();
-		System.out.println(control.getPlayerName() + " rolls a.... " + roll[0] + " and " + roll[1]);
-		System.out.println("Total score: " );
+		
+		
+		System.out.println(control.getPlayerName() + " rolls .... ");
+		System.out.println();
+		System.out.printf(format, rollLabel1, roll[0]);
+		System.out.printf(format, rollLabel2, roll[1]);
+		System.out.println("------------------------");
+		System.out.printf(format, rollLabel3, control.rollTotal());
+		System.out.printf(format, rollLabel4, 0);
+	}
 	
+	public void anotherRoll() {
+		System.out.println();
+		System.out.println("Do you want to roll again? [Y/N]");
+		playerInputs = scan.next().charAt(0);
 	}
 	
 	

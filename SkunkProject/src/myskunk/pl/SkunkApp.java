@@ -9,7 +9,8 @@ public class SkunkApp {
 		
 	//	System.out.println("Welcome to Skunk");
 	//	ui.enterName();
-		ui.StartTurn();
+		ui.playerRolls();
+		ui.anotherRoll();
 
 	
 		
