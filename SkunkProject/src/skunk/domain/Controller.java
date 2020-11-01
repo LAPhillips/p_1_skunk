@@ -19,6 +19,7 @@ public class Controller {
 		return this.playerName;
 	}
 	
+	/*
 	//normal dice
 	public int[] shareRoll() {
 		if (manager.getContinueTurn()) {
@@ -39,7 +40,7 @@ public class Controller {
 			return null;
 		}
 	}
-
+*/
 	public int rollTotal() {
 		return manager.diceTotalScore();
 	}

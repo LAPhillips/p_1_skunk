@@ -7,12 +7,14 @@ public class GameManager {
 	private Dice dice;
 	private Score score;
 	private Boolean turnTracker;
+	private int [] currentDiceRoll;
 	
 	public GameManager() {
 		this.player = null;
 		this.dice = new Dice();
 		this.score = new Score();
 		this.turnTracker = true;
+		this.currentDiceRoll = new int[2];
 	}
 
 	public void createPlayer(String playerName) {
@@ -24,16 +26,25 @@ public class GameManager {
 		return this.player;
 	}
 	
-	public int[] playerRollsDice() {
+	
+	
+	
+	//Separated returning the dice roll and storing it
+	public void playerRollsDice() {
 		dice.roll();
-		return dice.getDicePair();
+		this.currentDiceRoll = dice.getDicePair();
 	}
 
 	//overloaded method for fixed dice
-	public int[] playerRollsDice(int die1, int die2) {
+	public void playerRollsDice(int die1, int die2) {
 		dice.roll(die1, die2);
-		return dice.getDicePair();
+		this.currentDiceRoll = dice.getDicePair();
 	}
+	
+	public int[] returnDiceRoll() {
+		return this.currentDiceRoll;
+	}
+
 	
 	public void recordsTheTurnScore(int[] newScore) {
 		score.recordScore(newScore);
@@ -59,8 +70,8 @@ public class GameManager {
 		else {
 			this.turnTracker = false;
 		}
-		
 	}
+
 
 
 }

@@ -14,19 +14,33 @@ class GameManagerTest {
 	}
 	
 	@Test
-	void game_manager_lets_player_roll_dice() {
+	void game_manager_returns_dice_array() {
+		GameManager manager = new GameManager();
+		int expected1 = 2;
+		int expected2 = 3;
+		manager.playerRollsDice(expected1, expected2);
+		int[] diceArray = manager.returnDiceRoll();
+		int die1 = diceArray[0];
+		int die2 = diceArray[1];
+		assertTrue(expected1 == die1 && expected2 == die2);
+	}
+	
+	/*
+	@Test
+	void game_manager_has_player_roll_dice() {
 		GameManager manager = new GameManager();
 		int[] result = manager.playerRollsDice();
 		int sumOfDice = result[0] + result[1];
 		assertTrue( sumOfDice > 2 && sumOfDice < 13);
 	}
 	
+
 	@Test
 	void game_manager_lets_player_roll_fixed_dice() {
 		GameManager manager = new GameManager();
 		int[] result = manager.playerRollsDice(3,4);
 		assertTrue(result[0] == 3 && result[1] == 4);
-	}
+	}*/
 	
 	@Test
 	void game_manager_shares_turn_scores() {
@@ -74,5 +88,6 @@ class GameManagerTest {
 		Boolean actual = manager.getContinueTurn();
 		assertEquals(expected, actual);
 	}
+
 
 }
