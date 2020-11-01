@@ -48,5 +48,13 @@ class GameManagerTest {
 		ArrayList <Integer> scoreboard = manager.sharesTurnScores();
 		assertTrue(scoreboard.size() == 4);
 	}
+	
+	@Test
+	void game_manager_shares_total_score() {
+		GameManager manager = new GameManager();
+		int result = manager.totalscore();
+		assertTrue(result == 0);
+		
+	}
 
 }

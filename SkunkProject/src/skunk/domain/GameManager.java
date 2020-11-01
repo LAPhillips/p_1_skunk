@@ -41,5 +41,10 @@ public class GameManager {
 		return score.getTurnScores();
 	}
 
+	public int totalscore() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }
