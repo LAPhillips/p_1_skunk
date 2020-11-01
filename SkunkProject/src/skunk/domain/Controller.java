@@ -40,5 +40,9 @@ public class Controller {
 	public void setPlayerInput(char playerInput) {
 		this.playerControls = playerInput;
 	}
+
+	public Boolean startNewRoll() {
+		return manager.getContinueTurn();
+	}
 	
 }

@@ -53,6 +53,12 @@ class ControllerTest {
 		assertEquals(expected, actual);
 	}
 	
+	@Test
+	void controller_sees_if_the_player_wants_another_round() {
+		Controller control = new Controller();
+		Boolean newRoll = control.startNewRoll();
+		assertTrue(newRoll);
+	}
 	
 
 
