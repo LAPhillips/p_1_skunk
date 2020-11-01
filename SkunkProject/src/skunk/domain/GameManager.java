@@ -78,6 +78,7 @@ public class GameManager {
 	public void rollsAfterChecking(int die1, int die2) {
 		if (turnTracker == true) {
 			this.playerRollsDice(die1, die2);
+			this.recordsTheTurnScore(this.currentDiceRoll);
 		}
 	}
 

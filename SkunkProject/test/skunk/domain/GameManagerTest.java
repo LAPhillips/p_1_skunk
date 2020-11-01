@@ -101,6 +101,13 @@ class GameManagerTest {
 		int actual = diceRoll[1];		
 		assertEquals(expected, actual);
 	}
-
-
+	
+	@Test
+	void game_manager_records_after_successful_roll() {
+		GameManager manager = new GameManager();
+		manager.rollsAfterChecking(5,4);
+		int [] newScore = manager.returnDiceRoll();
+		ArrayList<Integer> actualTurnScores = manager.sharesTurnScores();
+		assertTrue(newScore[0]== actualTurnScores.get(0) && newScore[1] == actualTurnScores.get(1));
+	}
 }
