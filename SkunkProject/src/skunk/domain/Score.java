@@ -18,11 +18,16 @@ public class Score {
 		return combinedRoll;
 	}
 
-	/*
-	public void getTotalScoreForTurn(int rollAmount) {
-		this.combinedRoll = rollAmount;
+	
+	public int getTotalScoreForTurn() {
+		ArrayList<Integer> turnTotals = this.getTurnScores();
+		int scoreTotals = 0;
+		for (int scores : turnTotals) {
+			scoreTotals += scores;
+		}
+		return scoreTotals;
 	}
-*/
+
 	public void recordScore(int[] scoreAfterRoll) {
 		this.playerScoreBoard.recordRoll(scoreAfterRoll);
 	}

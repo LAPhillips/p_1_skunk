@@ -61,18 +61,21 @@ class ScoreTest {
 		ArrayList<Integer> retreivedScore = score.getTurnScores();
 		assertEquals(scores[1], retreivedScore.get(1));
 	}	
-	/*
+	
 	@Test
 	void score_keeps_a_running_tally_for_turn() {
 		Score score = new Score();
-		int [] newScore = new int[] {3,4};
-		score.recordScore(newScore);
-		int totalScore = score.getTotalScoreForRoll();
-		System.out.println(totalScore);
-		
-		fail("fails");
+		int expected1 = 4;
+		int expected2 = 5;
+		int [] firstRoll = new int[] {2,3};
+		score.recordScore(firstRoll);
+		int [] secondRoll = new int[] {expected1, expected2};
+		score.recordScore(secondRoll);
+		int expected = expected1 + expected2 + 2 + 3;
+		int result = score.getTotalScoreForTurn();
+		assertEquals(expected, result);
 	}	
-	*/
+	
 
 
 }
