@@ -52,5 +52,15 @@ public class GameManager {
 		
 	}
 
+	public void setContinueTurn(char playerDecision) {
+		if (playerDecision == 'Y' || playerDecision == 'y') {
+			this.turnTracker = true;
+		}
+		else {
+			this.turnTracker = false;
+		}
+		
+	}
+
 
 }

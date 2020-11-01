@@ -64,5 +64,15 @@ class GameManagerTest {
 		Boolean playerInput = manager.getContinueTurn();
 		assertTrue(playerInput);
 	}
+	
+	@Test
+	void game_manager_sets_player_decision() {
+		GameManager manager = new GameManager();
+		char playerDecision = 'N';
+		Boolean expected = false;
+		manager.setContinueTurn(playerDecision);
+		Boolean actual = manager.getContinueTurn();
+		assertEquals(expected, actual);
+	}
 
 }
