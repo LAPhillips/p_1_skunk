@@ -3,7 +3,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class ControllerTest {
-	/*
+	
 	@Test
 	void controller_gets_player_name() {
 		Controller control = new Controller();
@@ -20,14 +20,14 @@ class ControllerTest {
 		assertTrue( result.equals(newName));
 	}
 	
-	
+
 	@Test
 	void controller_gets_roll_from_manager() {
 		Controller control = new Controller();
 		int[] dice = control.shareRoll(2,5);
 		assertTrue(dice[0] == 2 && dice[1] == 5);
 	}
-	
+	/*
 	@Test
 	void controller_gets_total_roll_from_manager() {
 		Controller control = new Controller();

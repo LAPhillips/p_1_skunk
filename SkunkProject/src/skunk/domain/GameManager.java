@@ -26,10 +26,7 @@ public class GameManager {
 		return this.player;
 	}
 	
-	
-	
-	
-	//Separated returning the dice roll and storing it
+
 	public void playerRollsDice() {
 		dice.roll();
 		this.currentDiceRoll = dice.getDicePair();
@@ -69,6 +66,18 @@ public class GameManager {
 		}
 		else {
 			this.turnTracker = false;
+		}
+	}
+
+	public void rollsAfterChecking() {
+		if (turnTracker == true) {
+			this.playerRollsDice();
+		}
+	}
+	
+	public void rollsAfterChecking(int die1, int die2) {
+		if (turnTracker == true) {
+			this.playerRollsDice(die1, die2);
 		}
 	}
 

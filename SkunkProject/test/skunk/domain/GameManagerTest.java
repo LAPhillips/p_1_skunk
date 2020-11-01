@@ -25,11 +25,12 @@ class GameManagerTest {
 		assertTrue(expected1 == die1 && expected2 == die2);
 	}
 	
-	/*
+	
 	@Test
 	void game_manager_has_player_roll_dice() {
 		GameManager manager = new GameManager();
-		int[] result = manager.playerRollsDice();
+		manager.playerRollsDice();
+		int[] result = manager.returnDiceRoll();
 		int sumOfDice = result[0] + result[1];
 		assertTrue( sumOfDice > 2 && sumOfDice < 13);
 	}
@@ -38,9 +39,10 @@ class GameManagerTest {
 	@Test
 	void game_manager_lets_player_roll_fixed_dice() {
 		GameManager manager = new GameManager();
-		int[] result = manager.playerRollsDice(3,4);
+		manager.playerRollsDice(3,4);
+		int[] result = manager.returnDiceRoll();
 		assertTrue(result[0] == 3 && result[1] == 4);
-	}*/
+	}
 	
 	@Test
 	void game_manager_shares_turn_scores() {
@@ -50,7 +52,6 @@ class GameManagerTest {
 		manager.recordsTheTurnScore(newScore);
 		assertEquals(newScore[1], turnScores.get(1));
 	}
-	
 
 	@Test
 	void game_manager_records_TurnScore() {
@@ -86,6 +87,18 @@ class GameManagerTest {
 		Boolean expected = false;
 		manager.setContinueTurn(playerDecision);
 		Boolean actual = manager.getContinueTurn();
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void game_manager_sees_if_roll_again_before_rolling() {
+		GameManager manager = new GameManager();
+		int expected = 4; 
+		manager.rollsAfterChecking(2, expected);
+		int [] diceRoll = manager.returnDiceRoll();
+		manager.setContinueTurn('N');
+		manager.rollsAfterChecking();
+		int actual = diceRoll[1];		
 		assertEquals(expected, actual);
 	}
 

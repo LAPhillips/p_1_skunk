@@ -19,28 +19,19 @@ public class Controller {
 		return this.playerName;
 	}
 	
-	/*
+	
 	//normal dice
 	public int[] shareRoll() {
-		if (manager.getContinueTurn()) {
-			return manager.playerRollsDice();
-		}
-		else {
-			return null;
-		}
-		
+		manager.rollsAfterChecking();
+		return manager.returnDiceRoll();
 	}
-
+	
 	//fixed dice
 	public int[] shareRoll(int die1, int die2) {
-		if (manager.getContinueTurn()) {
-			return manager.playerRollsDice(die1, die2);
-		}
-		else {
-			return null;
-		}
+		manager.rollsAfterChecking(die1, die2);
+		return manager.returnDiceRoll();
 	}
-*/
+
 	public int rollTotal() {
 		return manager.diceTotalScore();
 	}
