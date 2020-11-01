@@ -57,5 +57,12 @@ class GameManagerTest {
 		int expected =7;
 		assertEquals(expected, result);
 	}
+	
+	@Test
+	void game_manager_reads_player_decision() {
+		GameManager manager = new GameManager();
+		Boolean playerInput = manager.getContinueTurn();
+		assertTrue(playerInput);
+	}
 
 }

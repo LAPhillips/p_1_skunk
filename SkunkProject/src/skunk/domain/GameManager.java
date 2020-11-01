@@ -6,11 +6,13 @@ public class GameManager {
 	private Player player;
 	private Dice dice;
 	private Score score;
+	private Boolean turnTracker;
 	
 	public GameManager() {
 		this.player = null;
 		this.dice = new Dice();
 		this.score = new Score();
+		this.turnTracker = true;
 	}
 
 	public void createPlayer(String playerName) {
@@ -43,6 +45,11 @@ public class GameManager {
 
 	public int diceTotalScore() {
 		return dice.getLastRoll();
+	}
+
+	public Boolean getContinueTurn() {
+		return this.turnTracker;
+		
 	}
 
 
