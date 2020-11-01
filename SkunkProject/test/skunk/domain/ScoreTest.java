@@ -41,6 +41,8 @@ class ScoreTest {
 		ArrayList<Integer> retreivedScore = score.getTurnScores();
 		assertEquals(scores[1], retreivedScore.get(1));
 	}	
+	
+
 
 
 }

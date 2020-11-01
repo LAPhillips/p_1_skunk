@@ -42,8 +42,7 @@ public class GameManager {
 	}
 
 	public int totalscore() {
-		// TODO Auto-generated method stub
-		return 0;
+		return dice.getLastRoll();
 	}
 
 
