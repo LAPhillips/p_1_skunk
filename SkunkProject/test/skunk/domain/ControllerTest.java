@@ -27,7 +27,7 @@ class ControllerTest {
 		int[] dice = control.shareRoll(2,5);
 		assertTrue(dice[0] == 2 && dice[1] == 5);
 	}
-	/*
+	
 	@Test
 	void controller_gets_total_roll_from_manager() {
 		Controller control = new Controller();
@@ -59,15 +59,5 @@ class ControllerTest {
 		Boolean newRoll = control.startNewRoll();
 		assertTrue(newRoll);
 	}
-	
 
-	@Test
-	void controller_checks_turn_status_before_any_roll() {
-		Controller control = new Controller();
-		control.setPlayerInput('N');
-		control.startNewRoll();
-		assertNull(control.shareRoll());
-	}
-
-*/
 }
