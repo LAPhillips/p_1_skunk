@@ -36,5 +36,9 @@ public class Controller {
 	public char getsPlayerDecision() {
 		return this.playerControls;
 	}
+
+	public void setPlayerInput(char playerInput) {
+		this.playerControls = playerInput;
+	}
 	
 }

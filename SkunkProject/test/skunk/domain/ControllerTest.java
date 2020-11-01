@@ -42,8 +42,15 @@ class ControllerTest {
 		Controller control = new Controller();
 		char playerDecision = control.getsPlayerDecision();
 		assertTrue(playerDecision == 'Y');
-		
-
+	}
+	
+	@Test
+	void controller_sets_player_roll_input() {
+		Controller control = new Controller();
+		char expected = 'N';
+		control.setPlayerInput('N');
+		char actual = control.getsPlayerDecision();
+		assertEquals(expected, actual);
 	}
 	
 	
