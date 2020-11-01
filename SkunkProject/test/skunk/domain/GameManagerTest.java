@@ -110,4 +110,13 @@ class GameManagerTest {
 		ArrayList<Integer> actualTurnScores = manager.sharesTurnScores();
 		assertTrue(newScore[0]== actualTurnScores.get(0) && newScore[1] == actualTurnScores.get(1));
 	}
+	
+	@Test
+	void game_manager_ends_Turn() {
+		GameManager manager = new GameManager();
+		manager.setContinueTurn('N');
+		Boolean playerInput = manager.getContinueTurn();
+		manager.endsTurn();
+		assertTrue(playerInput);
+	}
 }

@@ -27,13 +27,13 @@ public class SkunkUI {
 		String rollLabel3 = "Roll Total:";
 		String rollLabel4 = "Grand Total:";
 		String format = "%-20s%s%n";
-//		int [] roll = control.shareRoll();
+		int [] roll = control.shareRoll();
 		
 		System.out.println();
 		System.out.println(control.getPlayerName() + " rolls .... ");
 		System.out.println();
-	//	System.out.printf(format, rollLabel1, roll[0]);
-	//	System.out.printf(format, rollLabel2, roll[1]);
+		System.out.printf(format, rollLabel1, roll[0]);
+		System.out.printf(format, rollLabel2, roll[1]);
 		System.out.println("------------------------");
 		System.out.printf(format, rollLabel3, control.rollTotal());
 		System.out.printf(format, rollLabel4, 0);
@@ -44,12 +44,13 @@ public class SkunkUI {
 		System.out.println("Do you want to roll again? [Y/N]");
 		playerInputs = scan.next().charAt(0);
 		control.setPlayerInput(playerInputs);
-		if (control.startNewRoll() == false) {
-			System.out.println("Turn Ended");
+		if (control.startNewRoll()) {
+			this.playerRolls();
 		}
 		else {
-			playerRolls();
+			System.out.println("End of Turn");
 		}
+		
 	}
 	
 	

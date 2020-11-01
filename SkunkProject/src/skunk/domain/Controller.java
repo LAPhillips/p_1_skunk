@@ -19,7 +19,6 @@ public class Controller {
 		return this.playerName;
 	}
 	
-	
 	//normal dice
 	public int[] shareRoll() {
 		manager.rollsAfterChecking();

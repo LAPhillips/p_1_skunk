@@ -2,29 +2,25 @@ package skunk.domain;
 
 import java.util.ArrayList;
 
-//Score is responsible for moderating the score of a single roll
+//Score is responsible for moderating the score of a single turn
 public class Score {
-	private int combinedRoll;
+
 	private Scoreboard playerScoreBoard;
 	
 	public Score() {
-		this.combinedRoll = 0;
 		this.playerScoreBoard = new Scoreboard();
 	}
 	
-	//overloading for testing
-	public Score(int testingScore) {
-		this.combinedRoll = testingScore;
-	}
 
 	public int getTotalScoreForRoll() {
-		return this.combinedRoll;
+		return 0;
 	}
 
-	public void setScoreForRoll(int rollAmount) {
+	/*
+	public void getTotalScoreForTurn(int rollAmount) {
 		this.combinedRoll = rollAmount;
 	}
-
+*/
 	public void recordScore(int[] scoreAfterRoll) {
 		this.playerScoreBoard.recordRoll(scoreAfterRoll);
 	}
@@ -35,6 +31,15 @@ public class Score {
 
 	public ArrayList<Integer> getTurnScores() {
 		return playerScoreBoard.getTurnScores();
+	}
+
+
+	public int[] getLastTwoRecorded() {
+		int [] lastTwo = new int[2];
+		int scoreArraySize = this.getTurnScores().size();
+		lastTwo[0] = this.getSpecificRecordedScore(scoreArraySize-2);
+		lastTwo[1] = this.getSpecificRecordedScore(scoreArraySize-1);
+		return lastTwo;
 	}
 
 

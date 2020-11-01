@@ -59,5 +59,4 @@ class ControllerTest {
 		Boolean newRoll = control.startNewRoll();
 		assertTrue(newRoll);
 	}
-
 }

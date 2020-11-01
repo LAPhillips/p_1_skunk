@@ -6,6 +6,7 @@ public class GameManager {
 	private Player player;
 	private Dice dice;
 	private Score score;
+	private int Turn;
 	private Boolean turnTracker;
 	private int [] currentDiceRoll;
 	
@@ -15,6 +16,7 @@ public class GameManager {
 		this.score = new Score();
 		this.turnTracker = true;
 		this.currentDiceRoll = new int[2];
+		this.Turn = 0;
 	}
 
 	public void createPlayer(String playerName) {
@@ -25,7 +27,7 @@ public class GameManager {
 	public Player getPlayer() {
 		return this.player;
 	}
-	
+
 
 	public void playerRollsDice() {
 		dice.roll();
@@ -57,7 +59,6 @@ public class GameManager {
 
 	public Boolean getContinueTurn() {
 		return this.turnTracker;
-		
 	}
 
 	public void setContinueTurn(char playerDecision) {
@@ -73,6 +74,9 @@ public class GameManager {
 		if (turnTracker == true) {
 			this.playerRollsDice();
 		}
+		else {
+			this.endsTurn();
+		}
 	}
 	
 	public void rollsAfterChecking(int die1, int die2) {
@@ -80,6 +84,11 @@ public class GameManager {
 			this.playerRollsDice(die1, die2);
 			this.recordsTheTurnScore(this.currentDiceRoll);
 		}
+	}
+	
+
+	public void endsTurn() {
+		this.Turn++;
 	}
 
 
