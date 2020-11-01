@@ -7,13 +7,19 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 class ScoreTest {
-	/*
+	
 	@Test
 	void after_roll_score_is_avaliable() {
 		Score score = new Score();
+		int expected1 = 4;
+		int expected2 = 5;
+		int [] firstRoll = new int[] {2,3};
+		score.recordScore(firstRoll);
+		int [] secondRoll = new int[] {expected1, expected2};
+		score.recordScore(secondRoll);
 		int result = score.getTotalScoreForRoll();
-		assertTrue(result > 0 && result < 12);
-	}	*/
+		assertEquals((expected1+expected2), result);
+	}	
 	
 	@Test
 	void score_can_get_last_two_recorded() {

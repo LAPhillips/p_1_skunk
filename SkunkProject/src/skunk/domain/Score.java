@@ -13,7 +13,9 @@ public class Score {
 	
 
 	public int getTotalScoreForRoll() {
-		return 0;
+		int[] lastTwo = this.getLastTwoRecorded();
+		int combinedRoll = lastTwo[0] + lastTwo[1];
+		return combinedRoll;
 	}
 
 	/*
