@@ -56,5 +56,9 @@ public class Controller {
 	public int reportsSpecificRoll(int rolls) {
 		return manager.sharesTurnScores().get(rolls);
 	}
+
+	public int numberOfRolls() {
+		return 3;
+	}
 	
 }

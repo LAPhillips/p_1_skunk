@@ -88,4 +88,10 @@ class ControllerTest {
 		assertEquals(3, rollData);
 	}
 
+	@Test 
+	void controler_gets_number_of_rolls(){
+		Controller control = new Controller();
+		int numRolls = control.numberOfRolls();
+		assertEquals(3, numRolls);
+	}
 }
