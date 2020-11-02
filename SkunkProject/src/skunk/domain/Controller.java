@@ -21,13 +21,13 @@ public class Controller {
 	
 	//normal dice
 	public int[] shareRoll() {
-		manager.rollsAfterChecking();
+		manager.checkRollRecord();
 		return manager.returnDiceRoll();
 	}
 	
 	//fixed dice
 	public int[] shareRoll(int die1, int die2) {
-		manager.rollsAfterChecking(die1, die2);
+		manager.checkRollRecord(die1, die2);
 		return manager.returnDiceRoll();
 	}
 

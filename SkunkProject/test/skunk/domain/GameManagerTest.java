@@ -81,8 +81,8 @@ class GameManagerTest {
 		int die3 = 6;
 		int die4 = 7;
 		int expected = die1 + die2 + die3 + die4;
-		manager.rollsAfterChecking(die1, die2);
-		manager.rollsAfterChecking(die3, die4);
+		manager.checkRollRecord(die1, die2);
+		manager.checkRollRecord(die3, die4);
 		int actual = manager.totalTurnScore();
 		assertEquals(expected, actual);
 	}
@@ -108,10 +108,10 @@ class GameManagerTest {
 	void game_manager_sees_if_roll_again_before_rolling() {
 		GameManager manager = new GameManager();
 		int expected = 4; 
-		manager.rollsAfterChecking(2, expected);
+		manager.checkRollRecord(2, expected);
 		int [] diceRoll = manager.returnDiceRoll();
 		manager.setContinueTurn('N');
-		manager.rollsAfterChecking();
+		manager.checkRollRecord();
 		int actual = diceRoll[1];		
 		assertEquals(expected, actual);
 	}
@@ -119,10 +119,25 @@ class GameManagerTest {
 	@Test
 	void game_manager_records_after_successful_roll() {
 		GameManager manager = new GameManager();
-		manager.rollsAfterChecking(5,4);
+		manager.checkRollRecord(5,4);
 		int [] newScore = manager.returnDiceRoll();
 		ArrayList<Integer> actualTurnScores = manager.sharesTurnScores();
 		assertTrue(newScore[0]== actualTurnScores.get(0) && newScore[1] == actualTurnScores.get(1));
+	}
+	
+	@Test
+	void game_manager_gets_number_of_rolls() {
+		GameManager manager = new GameManager();
+		int die1 = 3;
+		int die2 = 4;
+		int die3 = 6;
+		int die4 = 7;
+		manager.checkRollRecord(die1, die2);
+		manager.checkRollRecord(die3, die4);
+		manager.checkRollRecord(die2, die4);
+		manager.checkRollRecord(die3, die1);
+		int numberOfRolls = manager.numberOfRolls();
+		assertEquals(4, numberOfRolls);	
 	}
 	
 	/*

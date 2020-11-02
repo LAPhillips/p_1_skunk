@@ -15,6 +15,16 @@ public class SkunkUI {
 		this.playerInputs = control.getsPlayerDecision();
 	}
 	
+	public void doesPlayerRoll() {
+		do {
+			playerRolls();
+			System.out.println("Do you want to roll again? [Y/N]");
+			playerInputs = scan.next().charAt(0);
+			control.setPlayerInput(playerInputs);
+		} while(control.startNewRoll());
+		playerEndsTurn();
+	}
+	
 	public void enterName() {
 		System.out.println("What is your name?");
 		String playerName = scan.nextLine();
@@ -22,37 +32,30 @@ public class SkunkUI {
 	}
 	
 	public void playerRolls() {
+		System.out.println();
+		System.out.println(control.getPlayerName() + " rolls .... ");
+		int [] currentRoll = control.shareRoll();
+		
+		//UI design
 		String rollLabel1 = "First Die:";
 		String rollLabel2 = "Second Die:";
 		String rollLabel3 = "Roll Total:";
 		String rollLabel4 = "Grand Total:";
-		String format = "%-20s%s%n";
-		int [] roll = control.shareRoll();
-		
-		System.out.println();
-		System.out.println(control.getPlayerName() + " rolls .... ");
-		System.out.println();
-		System.out.printf(format, rollLabel1, roll[0]);
-		System.out.printf(format, rollLabel2, roll[1]);
+		String format = "%-20s%s%n";;
+		System.out.printf(format, rollLabel1, currentRoll[0]);
+		System.out.printf(format, rollLabel2, currentRoll[1]);
 		System.out.println("------------------------");
 		System.out.printf(format, rollLabel3, control.rollTotal());
-		System.out.printf(format, rollLabel4, 0);
-	}
-	
-	public void anotherRoll() {
 		System.out.println();
-		System.out.println("Do you want to roll again? [Y/N]");
-		playerInputs = scan.next().charAt(0);
-		control.setPlayerInput(playerInputs);
-		if (control.startNewRoll()) {
-			this.playerRolls();
-		}
-		else {
-			System.out.println("End of Turn");
-		}
-		
+
+		System.out.println("Total Score: " + control.totalTurnScore());
 	}
 	
+
+	public void  playerEndsTurn() {
+		System.out.println(playerName + ", here is your turn review: ");
+	}
+
 	
 	
 	
@@ -67,8 +70,8 @@ public class SkunkUI {
 	 * 		b. do they wish to roll
 	 * 
 	 * 2. Report users roll outcome
-	 * 		a. name of player
-	 * 		b. value of each dice
+	 * 		a. name of player x
+	 * 		b. value of each dice x
 	 * 		c. kind of Skunk (single/deuce/double) if any
 	 * 		d. current turn score for player
 	 *3. Final end of turn summary
