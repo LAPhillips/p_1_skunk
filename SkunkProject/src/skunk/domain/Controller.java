@@ -53,8 +53,8 @@ public class Controller {
 	}
 
 	
-	public int reportsSpecificRoll(int i) {
-		return 3;
+	public int reportsSpecificRoll(int rolls) {
+		return manager.sharesTurnScores().get(rolls);
 	}
 	
 }

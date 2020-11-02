@@ -81,7 +81,10 @@ class ControllerTest {
 	void controller_reports_play_by_play() {
 		Controller control = new Controller();
 		//for three rolls
-		int rollData = control.reportsSpecificRoll(2);
+		for (int i = 0; i < 3; i++) {
+			control.shareRoll(2, 3);
+		}
+		int rollData = control.reportsSpecificRoll(5);
 		assertEquals(3, rollData);
 	}
 
