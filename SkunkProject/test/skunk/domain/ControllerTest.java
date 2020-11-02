@@ -91,7 +91,11 @@ class ControllerTest {
 	@Test 
 	void controler_gets_number_of_rolls(){
 		Controller control = new Controller();
+		//for three rolls
+				for (int i = 0; i < 4; i++) {
+					control.shareRoll(2, 3);
+				}
 		int numRolls = control.numberOfRolls();
-		assertEquals(3, numRolls);
+		assertEquals(4, numRolls);
 	}
 }

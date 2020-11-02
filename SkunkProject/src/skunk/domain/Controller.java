@@ -58,7 +58,7 @@ public class Controller {
 	}
 
 	public int numberOfRolls() {
-		return 3;
+		return manager.numberOfRolls();
 	}
 	
 }
