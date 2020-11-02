@@ -128,16 +128,11 @@ class GameManagerTest {
 	@Test
 	void game_manager_gets_number_of_rolls() {
 		GameManager manager = new GameManager();
-		int die1 = 3;
-		int die2 = 4;
-		int die3 = 6;
-		int die4 = 7;
-		manager.checkRollRecord(die1, die2);
-		manager.checkRollRecord(die3, die4);
-		manager.checkRollRecord(die2, die4);
-		manager.checkRollRecord(die3, die1);
+		for (int i = 0; i < 10; i++) {
+			manager.checkRollRecord(2, 3);
+		}
 		int numberOfRolls = manager.numberOfRolls();
-		assertEquals(4, numberOfRolls);	
+		assertEquals(10, numberOfRolls);	
 	}
 	
 	/*

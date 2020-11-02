@@ -101,7 +101,8 @@ public class GameManager {
 
 	
 	public int numberOfRolls() {
-		return 4;
+		ArrayList<Integer> turnScores = this.sharesTurnScores();
+		return turnScores.size()/2;
 	}
 
 }
