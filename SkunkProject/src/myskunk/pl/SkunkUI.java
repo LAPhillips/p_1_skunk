@@ -54,13 +54,24 @@ public class SkunkUI {
 
 	public void  playerEndsTurn() {
 		System.out.println(playerName + ", here is your turn review: ");
+		System.out.println("----------------------------------------------");
+		int rolls = control.numberOfRolls();
+		int announceRolls = 1;
+		for (int i = 0; i < rolls*2; i++) {
+			System.out.print("(TURN #" + (announceRolls) + ") ");
+			System.out.print(" Die One: " + control.reportsSpecificRoll(i));
+			i++;
+			System.out.println("      Die Two: " + control.reportsSpecificRoll(i));
+			announceRolls++;
+		}
 		
+		System.out.println("TOTAL TURN SCORE:" + control.totalTurnScore());
 	}
 
 	
 	
 	
-	/*
+	/*+
 	 * UI Needs to:
 	 * 
 	 * 
