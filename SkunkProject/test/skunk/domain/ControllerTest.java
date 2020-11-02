@@ -1,5 +1,8 @@
 package skunk.domain;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 class ControllerTest {
@@ -74,6 +77,12 @@ class ControllerTest {
 		assertEquals(expected, actual);
 	}
 
-
+	@Test
+	void controller_reports_play_by_play() {
+		Controller control = new Controller();
+		//for three rolls
+		int rollData = control.reportsSpecificRoll(2);
+		assertEquals(3, rollData);
+	}
 
 }

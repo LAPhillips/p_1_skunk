@@ -100,6 +100,7 @@ public class GameManager {
 	}
 
 	
+	//Is this needed?
 	public int numberOfRolls() {
 		ArrayList<Integer> turnScores = this.sharesTurnScores();
 		return turnScores.size()/2;

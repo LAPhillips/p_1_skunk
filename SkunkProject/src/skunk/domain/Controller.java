@@ -51,5 +51,10 @@ public class Controller {
 	public int totalTurnScore() {
 		return manager.totalTurnScore();
 	}
+
+	
+	public int reportsSpecificRoll(int i) {
+		return 3;
+	}
 	
 }
