@@ -84,7 +84,18 @@ public class GameManager {
 		return turnScores.size()/2;
 	}
 
-	
+	public int totalTurnScore() {
+		return score.getTotalScoreForTurn();
+	}
+
+	public void checkThenRecord(int[] diceRoll) {
+		if (this.isItSpecial(diceRoll)) {
+			System.out.println("SKUNK");
+		}
+		else {
+			this.recordsTheTurnScore(diceRoll);
+		}
+	}
 	
 	//*************Managing Turns*************************************************************
 	public Boolean getContinueTurn() {
@@ -104,11 +115,6 @@ public class GameManager {
 		this.turn++;
 	}
 
-	public int totalTurnScore() {
-		return score.getTotalScoreForTurn();
-	}
-
-	
 	public Boolean isItSpecial(int[] DiceRoll) {
 		if (DiceRoll[0] == 1 || DiceRoll[1] == 1) {
 			return true;
@@ -118,5 +124,8 @@ public class GameManager {
 		}
 		return false;
 	}
+
+
+
 
 }
