@@ -35,5 +35,15 @@ class PlayerTest {
 		int result = player.getChips();
 		assertEquals(result, 52);
 	}
+	
+	@Test
+	void player_keeps_track_of_lost_chips() {
+		Player player = new Player("player1");
+		player.gainChips(1);
+		player.removeChips(5);
+		int result = player.getLostChips();
+		assertEquals(result, 4);
+	}
+	
 
 }

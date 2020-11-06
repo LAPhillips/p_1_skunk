@@ -33,7 +33,7 @@ class ControllerTest {
 	}
 
 	@Test
-	void controller_gets_correct_name_from_manager() {
+	void controller_gets_name_from_manager() {
 		Controller control = new Controller();
 		String newName = "joe";
 		control.giveNametoManager(newName);
@@ -50,7 +50,7 @@ class ControllerTest {
 		int chips = player.getChips();
 		assertEquals(45, chips);
 	}
-	
+
 
 	@Test
 	void controller_gets_roll_from_manager() {

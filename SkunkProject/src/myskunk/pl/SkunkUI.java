@@ -32,8 +32,11 @@ public class SkunkUI {
 	}
 	
 	public void playerRolls() {
+//for testing only
+		control.setsPlayerName("<Your Name>");
+//
 		System.out.println();
-		System.out.println(control.getPlayerName() + " rolls .... ");
+		System.out.println(control.getPlayerNameFromManager() + " rolls .... ");
 		int [] currentRoll = control.shareRoll();
 		
 		//UI design
@@ -49,11 +52,12 @@ public class SkunkUI {
 		System.out.println();
 
 		System.out.println("Total Score: " + control.totalTurnScore());
+		System.out.println("Total Chips: " + control.getPlayerChipsFromManager());
 	}
 	
 
 	public void  playerEndsTurn() {
-		System.out.println(playerName + ", here is your turn review: ");
+		System.out.println(control.getPlayerNameFromManager() + ", here is your turn review: ");
 		System.out.println("----------------------------------------------");
 		int rolls = control.numberOfRolls();
 		int announceRolls = 1;
@@ -90,7 +94,7 @@ public class SkunkUI {
 	 * 		a. player's name x
 	 * 		b. complete sequence of rolls x
 	 * 		c. final turn score x
-	 * 		d. how many chips they lost
+	 * 		d. how many chips they lost x
 	 * 4. Turn ends 
 	 * 		a. after either user declines to roll OR skunk
 	 * 

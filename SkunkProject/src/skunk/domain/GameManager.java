@@ -9,6 +9,7 @@ public class GameManager {
 	private int turn;
 	private Boolean turnTracker;
 	private int [] currentDiceRoll;
+
 	
 	public GameManager() {
 		this.player = null;
