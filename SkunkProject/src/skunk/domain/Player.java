@@ -3,7 +3,7 @@ package skunk.domain;
 public class Player {
 	private String playerName;
 	private int chips;
-	private static final int STARTING_CHIPS = 50;
+	private int chipsAtStartOfTurn;
 	
 	
 	public Player(String enteredName){
@@ -35,7 +35,11 @@ public class Player {
 	}
 
 	public int getLostChips() {
-		return this.STARTING_CHIPS - this.getChips();
+		return this.chipsAtStartOfTurn - this.getChips();
+	}
+
+	public void setChips(int startingChips) {
+		this.chipsAtStartOfTurn = startingChips;
 	}
 
 
