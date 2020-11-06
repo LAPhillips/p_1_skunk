@@ -35,7 +35,7 @@ class ControllerTest {
 	@Test
 	void controller_gets_correct_name_from_manager() {
 		Controller control = new Controller();
-		String newName = "mike";
+		String newName = "joe";
 		control.giveNametoManager(newName);
 		Player player = control.getPlayerFromManager();
 		assertTrue(newName.equals(control.getPlayerNameFromManager()));

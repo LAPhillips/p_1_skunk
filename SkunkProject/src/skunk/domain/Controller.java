@@ -75,8 +75,8 @@ public class Controller {
 	}
 	
 	public String getPlayerNameFromManager() {
-		
-		return "mike";
+		Player player = getPlayerFromManager();
+		return player.getPlayerName();
 	}
 	
 	
