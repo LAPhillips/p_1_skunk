@@ -24,5 +24,9 @@ public class Player {
 		return this.chips;
 	}
 
+	public void removeChips(int chipsLost) {
+		this.chips = this.chips - chipsLost;
+	}
+
 
 }
