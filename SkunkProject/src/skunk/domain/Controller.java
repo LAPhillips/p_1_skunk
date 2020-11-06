@@ -60,5 +60,19 @@ public class Controller {
 	public int numberOfRolls() {
 		return manager.numberOfRolls();
 	}
+
+	public int getPlayerChips() {
+		Player currentPlayer = this.manager.getPlayer();
+		return currentPlayer.getChips();
+	}
+
+	public void giveNametoManager(String name) {
+		this.manager.createPlayer(name);
+	}
+
+	public Player getPlayer() {
+		return null;
+		
+	}
 	
 }

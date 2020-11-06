@@ -23,6 +23,15 @@ class ControllerTest {
 		assertTrue( result.equals(newName));
 	}
 	
+	@Test
+	void controller_tells_manager_to_create_player() {
+		Controller control = new Controller();
+		String name = "george";
+		control.giveNametoManager(name);
+		Player player = control.getPlayer();
+		assertNull(player);
+	}
+	
 
 	@Test
 	void controller_gets_roll_from_manager() {
@@ -98,4 +107,13 @@ class ControllerTest {
 		int numRolls = control.numberOfRolls();
 		assertEquals(4, numRolls);
 	}
+	
+	/*
+	@Test
+	void controler_shares_player_chips() {
+		Controller control = new Controller();
+		int chips = control.getPlayerChips();
+		assertEquals(50, chips);
+	}
+	*/
 }
