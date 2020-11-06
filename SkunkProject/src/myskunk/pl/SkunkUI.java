@@ -52,7 +52,6 @@ public class SkunkUI {
 		System.out.println();
 
 		System.out.println("Total Score: " + control.totalTurnScore());
-		System.out.println("Total Chips: " );
 	}
 	
 
@@ -68,8 +67,9 @@ public class SkunkUI {
 			System.out.println("      Die Two: " + control.reportsSpecificRoll(i));
 			announceRolls++;
 		}
-		
+		System.out.println("----------------------------------------------");
 		System.out.println("TOTAL TURN SCORE:" + control.totalTurnScore());
+		System.out.println("CHIPS LOST: " + control.getLostChips());
 	}
 
 	
