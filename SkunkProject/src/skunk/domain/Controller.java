@@ -70,9 +70,17 @@ public class Controller {
 		this.manager.createPlayer(name);
 	}
 
-	public Player getPlayer() {
-		return null;
-		
+	public Player getPlayerFromManager() {
+		return this.manager.getPlayer();
 	}
+	
+	public String getPlayerNameFromManager() {
+		
+		return "mike";
+	}
+	
+	
+
+
 	
 }

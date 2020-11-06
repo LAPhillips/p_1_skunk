@@ -24,12 +24,21 @@ class ControllerTest {
 	}
 	
 	@Test
-	void controller_tells_manager_to_create_player() {
+	void controller_gives_name_to_manager() {
 		Controller control = new Controller();
-		String name = "george";
-		control.giveNametoManager(name);
-		Player player = control.getPlayer();
-		assertNull(player);
+		String newName = "mike";
+		control.giveNametoManager(newName);
+		Player player = control.getPlayerFromManager();
+		assertNotNull(player);
+	}
+
+	@Test
+	void controller_gets_correct_name_from_manager() {
+		Controller control = new Controller();
+		String newName = "mike";
+		control.giveNametoManager(newName);
+		Player player = control.getPlayerFromManager();
+		assertTrue(newName.equals(control.getPlayerNameFromManager()));
 	}
 	
 
