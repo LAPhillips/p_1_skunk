@@ -139,6 +139,9 @@ class GameManagerTest {
 		int[] roll = new int[] {1, 1};
 		Boolean skunk = manager.isItSpecial(roll);
 		assertTrue(skunk);
+		int[] roll2 = new int[] {2, 1};
+		Boolean skunk2 = manager.isItSpecial(roll2);
+		assertTrue(skunk2);
 	}
 	
 	/*
