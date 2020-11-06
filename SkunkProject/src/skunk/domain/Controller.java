@@ -50,6 +50,12 @@ public class Controller {
 		return player.getChips();
 	}
 	
+	public int getLostChips() {
+		Player player = getPlayerFromManager();
+		return player.getLostChips();
+	}
+
+	
 	//*************Dice/Rolls********************************************************
 	//normal dice
 	public int[] shareRoll() {
@@ -86,5 +92,8 @@ public class Controller {
 	public int numberOfRolls() {
 		return manager.numberOfRolls();
 	}
+
+
+
 
 }

@@ -52,7 +52,7 @@ public class SkunkUI {
 		System.out.println();
 
 		System.out.println("Total Score: " + control.totalTurnScore());
-		System.out.println("Total Chips: " + control.getPlayerChipsFromManager());
+		System.out.println("Total Chips: " );
 	}
 	
 
