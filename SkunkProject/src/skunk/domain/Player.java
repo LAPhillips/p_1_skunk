@@ -2,7 +2,7 @@ package skunk.domain;
 
 public class Player {
 	private String playerName;
-	private Score turnScore; 
+	
 	
 	public Player(String enteredName){
 		this.playerName = enteredName;
@@ -16,6 +16,10 @@ public class Player {
 	public String toString() // this OVERRIDES the default Object.toString()
 	{
 		return "Player " + this.getPlayerName() + " --- Score: " ;
+	}
+
+	public int getChips() {
+		return 0;
 	}
 
 
