@@ -147,6 +147,16 @@ class GameManagerTest {
 		assertFalse(skunk3);
 	}
 	
+	@Test
+	void game_manager_wont_record_special_rolls() {
+		GameManager manager = new GameManager();
+		manager.playerRollsDice(2, 6);
+		int[] roll1 = manager.returnDiceRoll();
+		manager.isItSpecial(roll1);
+		manager.recordsTheTurnScore(roll1);
+		assertEquals(2, roll1[0]);
+	}
+	
 	/*
 	To be worked on
 	@Test
