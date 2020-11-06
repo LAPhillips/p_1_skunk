@@ -154,7 +154,8 @@ class GameManagerTest {
 		int[] roll1 = manager.returnDiceRoll();
 		manager.isItSpecial(roll1);
 		manager.recordsTheTurnScore(roll1);
-		assertEquals(2, roll1[0]);
+		assertEquals(8, manager.diceTotalScore());
+		
 	}
 	
 	/*
