@@ -41,6 +41,15 @@ class ControllerTest {
 		assertTrue(newName.equals(control.getPlayerNameFromManager()));
 	}
 	
+	@Test
+	void controller_gets_chips_from_manager() {
+		Controller control = new Controller();
+		control.giveNametoManager("joe");
+		Player player = control.getPlayerFromManager();
+		int chips = player.getChips();
+		assertEquals(50, chips);
+	}
+	
 
 	@Test
 	void controller_gets_roll_from_manager() {
