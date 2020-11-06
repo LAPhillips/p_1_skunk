@@ -25,7 +25,6 @@ class GameManagerTest {
 		assertTrue(expected1 == die1 && expected2 == die2);
 	}
 	
-	
 	@Test
 	void game_manager_has_player_roll_dice() {
 		GameManager manager = new GameManager();
@@ -35,7 +34,6 @@ class GameManagerTest {
 		assertTrue( sumOfDice > 2 && sumOfDice < 13);
 	}
 	
-
 	@Test
 	void game_manager_lets_player_roll_fixed_dice() {
 		GameManager manager = new GameManager();
@@ -133,6 +131,14 @@ class GameManagerTest {
 		}
 		int numberOfRolls = manager.numberOfRolls();
 		assertEquals(10, numberOfRolls);	
+	}
+	
+	@Test
+	void game_manager_checks_for_specialRolls() {
+		GameManager manager = new GameManager();
+		int[] roll = new int[] {1, 1};
+		Boolean skunk = manager.isItSpecial(roll);
+		assertTrue(skunk);
 	}
 	
 	/*

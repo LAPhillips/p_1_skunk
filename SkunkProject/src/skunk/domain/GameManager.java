@@ -2,6 +2,7 @@ package skunk.domain;
 
 import java.util.ArrayList;
 
+//Brings everything together
 public class GameManager {
 	private Player player;
 	private Dice dice;
@@ -20,6 +21,7 @@ public class GameManager {
 		this.turn = 0;
 	}
 
+	//*************Player*************************************************************
 	public void createPlayer(String playerName) {
 		Player newPlayer = new Player(playerName);
 		this.player = newPlayer;
@@ -29,7 +31,7 @@ public class GameManager {
 		return this.player;
 	}
 
-
+	//*************Dice/Score*************************************************************
 	public void playerRollsDice() {
 		dice.roll();
 		this.currentDiceRoll = dice.getDicePair();
@@ -45,7 +47,6 @@ public class GameManager {
 		return this.currentDiceRoll;
 	}
 
-	
 	public void recordsTheTurnScore(int[] newScore) {
 		score.recordScore(newScore);
 	}
@@ -57,20 +58,7 @@ public class GameManager {
 	public int diceTotalScore() {
 		return dice.getLastRoll();
 	}
-
-	public Boolean getContinueTurn() {
-		return this.turnTracker;
-	}
-
-	public void setContinueTurn(char playerDecision) {
-		if (playerDecision == 'Y' || playerDecision == 'y') {
-			this.turnTracker = true;
-		}
-		else {
-			this.turnTracker = false;
-		}
-	}
-
+	
 	public void checkRollRecord() {
 		if (turnTracker == true) {
 			this.playerRollsDice();
@@ -90,21 +78,45 @@ public class GameManager {
 			endsTurn();
 		}
 	}
+	
+	public int numberOfRolls() {
+		ArrayList<Integer> turnScores = this.sharesTurnScores();
+		return turnScores.size()/2;
+	}
+
+	
+	
+	//*************Managing Turns*************************************************************
+	public Boolean getContinueTurn() {
+		return this.turnTracker;
+	}
+
+	public void setContinueTurn(char playerDecision) {
+		if (playerDecision == 'Y' || playerDecision == 'y') {
+			this.turnTracker = true;
+		}
+		else {
+			this.turnTracker = false;
+		}
+	}
 
 	public void endsTurn() {
 		this.turn++;
 	}
-	
 
 	public int totalTurnScore() {
 		return score.getTotalScoreForTurn();
 	}
 
 	
-	//Is this needed?
-	public int numberOfRolls() {
-		ArrayList<Integer> turnScores = this.sharesTurnScores();
-		return turnScores.size()/2;
+	public Boolean isItSpecial(int[] DiceRoll) {
+		if (DiceRoll[0] == 1 || DiceRoll[1] == 1) {
+			return true;
+		}
+		else if ((DiceRoll[0] == 2 || DiceRoll[1] == 2) && ((DiceRoll[0] == 1 || DiceRoll[1] == 1))) {
+			return true;
+		}
+		return false;
 	}
 
 }
