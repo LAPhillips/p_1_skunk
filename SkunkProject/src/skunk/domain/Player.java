@@ -25,7 +25,12 @@ public class Player {
 	}
 
 	public void removeChips(int chipsLost) {
-		this.chips = this.chips - chipsLost;
+		this.chips -= chipsLost;
+	}
+
+	public void gainChips(int chipsGained) {
+		this.chips += chipsGained;
+		
 	}
 
 
