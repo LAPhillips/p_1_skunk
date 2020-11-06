@@ -9,6 +9,7 @@ public class Player {
 	public Player(String enteredName){
 		this.playerName = enteredName;
 		this.chips = 50;
+		this.chipsAtStartOfTurn = 50;
 	}
 
 	public String getPlayerName() {

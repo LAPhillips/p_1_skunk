@@ -50,6 +50,17 @@ class ControllerTest {
 		int chips = player.getChips();
 		assertEquals(45, chips);
 	}
+	
+	@Test
+	void controller_gets_lost_chips_from_manager() {
+		Controller control = new Controller();
+		control.giveNametoManager("joe");
+		Player player = control.getPlayerFromManager();
+		int lost = 5;
+		player.removeChips(lost);
+		int chips = player.getLostChips();
+		assertEquals(lost, chips);
+	}
 
 
 	@Test
