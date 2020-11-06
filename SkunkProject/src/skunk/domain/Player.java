@@ -2,10 +2,12 @@ package skunk.domain;
 
 public class Player {
 	private String playerName;
+	private int chips;
 	
 	
 	public Player(String enteredName){
 		this.playerName = enteredName;
+		this.chips = 50;
 	}
 
 	public String getPlayerName() {
@@ -19,7 +21,7 @@ public class Player {
 	}
 
 	public int getChips() {
-		return 0;
+		return this.chips;
 	}
 
 

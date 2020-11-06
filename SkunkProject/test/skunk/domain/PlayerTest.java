@@ -17,7 +17,7 @@ class PlayerTest {
 	void player_has_chips() {
 		Player player = new Player("player1");
 		int result = player.getChips();
-		assertNotNull(result);	
+		assertTrue(result >= 0 && result <= 50);
 	}
 
 }
