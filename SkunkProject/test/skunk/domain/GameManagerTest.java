@@ -120,7 +120,16 @@ class GameManagerTest {
 		manager.checkRollRecord(5,4);
 		int [] newScore = manager.returnDiceRoll();
 		ArrayList<Integer> actualTurnScores = manager.sharesTurnScores();
-		assertTrue(newScore[0]== actualTurnScores.get(0) && newScore[1] == actualTurnScores.get(1));
+		assertTrue(newScore[0]== actualTurnScores.get(0) && newScore[1] == actualTurnScores.get(1));		
+	}
+	
+	@Test
+	void game_manager_records_after_successful_roll_but_not_skunk() {
+		GameManager manager = new GameManager();
+		manager.checkRollRecord(5,4);
+		manager.checkRollRecord(1,4);
+		ArrayList<Integer> actualTurnScores = manager.sharesTurnScores();
+		assertEquals(2, actualTurnScores.size());
 	}
 	
 	@Test

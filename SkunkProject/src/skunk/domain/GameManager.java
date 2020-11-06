@@ -59,25 +59,6 @@ public class GameManager {
 		return dice.getLastRoll();
 	}
 	
-	public void checkRollRecord() {
-		if (turnTracker == true) {
-			this.playerRollsDice();
-			this.recordsTheTurnScore(this.currentDiceRoll);
-		}
-		else {
-			endsTurn();
-		}
-	}
-	
-	public void checkRollRecord(int die1, int die2) {
-		if (turnTracker == true) {
-			this.playerRollsDice(die1, die2);
-			this.recordsTheTurnScore(this.currentDiceRoll);
-		}
-		else {
-			endsTurn();
-		}
-	}
 	
 	public int numberOfRolls() {
 		ArrayList<Integer> turnScores = this.sharesTurnScores();
@@ -127,5 +108,24 @@ public class GameManager {
 
 
 
+	public void checkRollRecord() {
+		if (turnTracker == true) {
+			this.playerRollsDice();
+			this.checkThenRecord(this.currentDiceRoll);
+		}
+		else {
+			endsTurn();
+		}
+	}
+	
+	public void checkRollRecord(int die1, int die2) {
+		if (turnTracker == true) {
+			this.playerRollsDice(die1, die2);
+			this.checkThenRecord(this.currentDiceRoll);
+		}
+		else {
+			endsTurn();
+		}
+	}
 
 }
