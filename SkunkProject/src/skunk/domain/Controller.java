@@ -79,6 +79,10 @@ public class Controller {
 		return player.getPlayerName();
 	}
 	
+	public int getPlayerChipsFromManager() {
+		Player player = getPlayerFromManager();
+		return player.getChips();
+	}
 	
 
 
