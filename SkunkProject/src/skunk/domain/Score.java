@@ -31,6 +31,17 @@ public class Score {
 	public ArrayList<Integer> getTurnScores() {
 		return playerScoreBoard.getTurnScores();
 	}
+
+	public Boolean isSpecial(int [] diceRoll) {
+			if (diceRoll[0] == 1 || diceRoll[1] == 1) {
+				return true;
+			}
+			else if ((diceRoll[0] == 2 || diceRoll[1] == 2) && ((diceRoll[0] == 1 || diceRoll[1] == 1))) {
+				return true;
+			}
+			return false;
+	}
+	
 	
 
 	/* Possibly not needed because we get the single turn die after the die is rolled

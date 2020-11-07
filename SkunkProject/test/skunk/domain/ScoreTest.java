@@ -76,6 +76,14 @@ class ScoreTest {
 		assertEquals(expected, result);
 	}	
 	
+	@Test
+	void score_does_not_record_special_rolls() {
+		Score score = new Score();
+		int [] firstRoll = new int[] {2,3};
+		Boolean special = score.isSpecial(firstRoll);
+		assertFalse(special);
+	}
+	
 
 
 }

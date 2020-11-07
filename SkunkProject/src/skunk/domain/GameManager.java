@@ -106,8 +106,6 @@ public class GameManager {
 		return false;
 	}
 
-
-
 	public void checkRollRecord() {
 		if (turnTracker == true) {
 			this.playerRollsDice();
