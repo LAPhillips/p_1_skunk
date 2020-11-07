@@ -41,8 +41,18 @@ public class Score {
 			}
 			return false;
 	}
+
 	
-	
+	public void checkThenRecord(int[] scores) {
+		if (isSpecial(scores)) {
+			
+		}
+		else {
+			this.recordScore(scores);
+		}
+	}
+
+
 
 	/* Possibly not needed because we get the single turn die after the die is rolled
 	public int getTotalScoreForRoll() {

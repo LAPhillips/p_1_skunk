@@ -19,7 +19,7 @@ public class SkunkUI {
 		do {
 			playerRolls();
 			System.out.println("Do you want to roll again? [Y/N]");
-			playerInputs = scan.next().charAt(0);
+			playerInputs = scan.next().charAt(0); //read as string 
 			control.setPlayerInput(playerInputs);
 		} while(control.startNewRoll());
 		playerEndsTurn();

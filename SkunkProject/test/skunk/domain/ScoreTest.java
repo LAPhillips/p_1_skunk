@@ -89,9 +89,17 @@ class ScoreTest {
 		
 		int[] thirdRoll = new int[] {1, 2};
 		Boolean roll3 = score.isSpecial(thirdRoll);
-		assertTrue(roll3);
-		
+		assertTrue(roll3);	
 	}
+	
+	@Test
+	void score_wont_record_Special_scores() {
+		Score score = new Score();
+		int[]scores = new int[] {1,2};
+		score.checkThenRecord(scores);
+		assertEquals(0, score.getTotalScoreForTurn());
+	}	
+
 
 	
 	
