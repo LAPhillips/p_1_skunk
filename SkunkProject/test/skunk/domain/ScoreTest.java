@@ -77,12 +77,20 @@ class ScoreTest {
 	}	
 	
 	@Test
-	void score_does_not_record_special_rolls() {
+	void score_checks_for_special_rolls() {
 		Score score = new Score();
 		int [] firstRoll = new int[] {2,3};
-		Boolean special = score.isSpecial(firstRoll);
-		assertFalse(special);
+		Boolean roll1 = score.isSpecial(firstRoll);
+		assertFalse(roll1);
+		
+		int[] secondRoll = new int[] {1, 1};
+		Boolean roll2 = score.isSpecial(secondRoll);
+		assertTrue(roll2);
+		
 	}
+	
+
+	
 	
 
 
