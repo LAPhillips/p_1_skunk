@@ -95,9 +95,15 @@ class ScoreTest {
 	@Test
 	void score_wont_record_Special_scores() {
 		Score score = new Score();
-		int[]scores = new int[] {1,2};
+		int[]scores = new int[] {2,2};
 		score.checkThenRecord(scores);
-		assertEquals(0, score.getTotalScoreForTurn());
+		assertEquals(4, score.getTotalScoreForTurn());
+		
+		int[]scores2 = new int[] {1,2};
+		score.checkThenRecord(scores2);
+		assertEquals(4, score.getTotalScoreForTurn());
+		
+		
 	}	
 
 
