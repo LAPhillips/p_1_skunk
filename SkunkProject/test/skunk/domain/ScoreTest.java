@@ -87,8 +87,11 @@ class ScoreTest {
 		Boolean roll2 = score.isSpecial(secondRoll);
 		assertTrue(roll2);
 		
+		int[] thirdRoll = new int[] {1, 2};
+		Boolean roll3 = score.isSpecial(thirdRoll);
+		assertTrue(roll3);
+		
 	}
-	
 
 	
 	
