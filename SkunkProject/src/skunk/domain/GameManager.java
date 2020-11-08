@@ -19,6 +19,37 @@ public class GameManager {
 		this.currentDiceRoll = new int[2];
 	}
 
+	//*************Regulating Turn Mechanics*************************************************************
+	public void checkRollRecord() {
+		if (this.turn.getTurnStatus()) { //checks to make sure turn status is not false
+			this.playerRollsDice();      // player rolls dice
+			this.checkSpecialStatus();   //checks to make sure the dice are not special
+			if(this.turn.getTurnStatus()) {
+				this.recordsTheTurnScore(this.currentDiceRoll);
+			}
+			else {
+			}
+		
+		}
+		else {
+		}
+	}
+	
+	public void checkRollRecord(int die1, int die2) {
+		if (this.turn.getTurnStatus()) {  //checks to make sure turn status is not false
+			this.playerRollsDice(die1, die2);      // player rolls dice
+			this.checkSpecialStatus();   //checks to make sure the dice are not special
+			if(this.turn.getTurnStatus()) {
+			this.recordsTheTurnScore(this.currentDiceRoll);
+			}
+			else {
+			}
+		
+		}
+		else {
+		}
+	}
+
 	//*************Player*************************************************************
 	public void createPlayer(String playerName) {
 		Player newPlayer = new Player(playerName);
@@ -46,7 +77,7 @@ public class GameManager {
 	}
 
 	public void recordsTheTurnScore(int[] newScore) {
-		score.checkThenRecord(newScore);;
+		score.checkThenRecord(newScore);
 	}
 
 	public ArrayList<Integer> sharesTurnScores() {
@@ -75,24 +106,6 @@ public class GameManager {
 		this.turn.playersDecision(playerInput);
 	}
 
-	public void checkRollRecord() {
-		if (this.turn.getTurnStatus()) {
-			this.playerRollsDice();
-			this.recordsTheTurnScore(this.currentDiceRoll);
-		}
-		else {
-		}
-	}
-	
-	public void checkRollRecord(int die1, int die2) {
-		if (this.turn.getTurnStatus()) {
-			this.playerRollsDice(die1, die2);
-			this.recordsTheTurnScore(this.currentDiceRoll);;
-		}
-		else {
-		}
-	}
-
 	public void checkSpecialStatus() {
 		if (score.isSpecial(currentDiceRoll)) {
 			turn.endTurn();
@@ -100,6 +113,12 @@ public class GameManager {
 		else {
 			
 		}
+	}
+	
+
+	public SpecialRolls getRollType() {
+		score.setTypeSpecial(currentDiceRoll);
+		return this.score.getSpecialRollType();
 	}
 
 }
