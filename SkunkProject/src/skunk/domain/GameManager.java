@@ -73,12 +73,8 @@ public class GameManager {
 		return this.turns.getTurnStatus();
 	}
 
-	public void setContinueTurn(char playerDecision) {
-		if (playerDecision == 'Y' || playerDecision == 'y') {
-		}
-		else {
-			this.turns.endTurn();
-		}
+	public void setContinueTurn(char playerInput) {
+		this.turns.playersDecision(playerInput);
 	}
 
 	public void endsTurn() {
