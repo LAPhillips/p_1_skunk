@@ -7,8 +7,7 @@ public class GameManager {
 	private Player player;
 	private Dice dice;
 	private Score score;
-	private int turn;
-	private Turn turns;
+	private Turn turn;
 	private int [] currentDiceRoll;
 
 	
@@ -16,9 +15,8 @@ public class GameManager {
 		this.player = null;
 		this.dice = new Dice();
 		this.score = new Score();
-		this.turns = new Turn();
+		this.turn = new Turn();
 		this.currentDiceRoll = new int[2];
-		this.turn = 0;
 	}
 
 	//*************Player*************************************************************
@@ -70,44 +68,28 @@ public class GameManager {
 	
 	//*************Managing Turns*************************************************************
 	public Boolean getContinueTurn() {
-		return this.turns.getTurnStatus();
+		return this.turn.getTurnStatus();
 	}
 
 	public void setContinueTurn(char playerInput) {
-		this.turns.playersDecision(playerInput);
-	}
-
-	public void endsTurn() {
-		this.turn++;
-	}
-
-	public Boolean isItSpecial(int[] DiceRoll) {
-		if (DiceRoll[0] == 1 || DiceRoll[1] == 1) {
-			return true;
-		}
-		else if ((DiceRoll[0] == 2 || DiceRoll[1] == 2) && ((DiceRoll[0] == 1 || DiceRoll[1] == 1))) {
-			return true;
-		}
-		return false;
+		this.turn.playersDecision(playerInput);
 	}
 
 	public void checkRollRecord() {
-		if (this.turns.getTurnStatus()) {
+		if (this.turn.getTurnStatus()) {
 			this.playerRollsDice();
 			this.recordsTheTurnScore(this.currentDiceRoll);
 		}
 		else {
-			endsTurn();
 		}
 	}
 	
 	public void checkRollRecord(int die1, int die2) {
-		if (this.turns.getTurnStatus()) {
+		if (this.turn.getTurnStatus()) {
 			this.playerRollsDice(die1, die2);
 			this.recordsTheTurnScore(this.currentDiceRoll);;
 		}
 		else {
-			endsTurn();
 		}
 	}
 

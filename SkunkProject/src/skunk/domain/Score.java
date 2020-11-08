@@ -6,9 +6,11 @@ import java.util.ArrayList;
 public class Score {
 
 	private Scoreboard playerScoreBoard;
+	private SpecialRolls special;
 	
 	public Score() {
 		this.playerScoreBoard = new Scoreboard();
+		this.special = SpecialRolls.DOUBLE_SKUNK;
 	}
 	
 	public int getTotalScoreForTurn() {
@@ -52,23 +54,23 @@ public class Score {
 		}
 	}
 
+	public void setTypeSpecial(int[] scores) {
+		int score1 = scores[0];
+		int score2 = scores[1];
+		
+		if (score1 == 1) {
+			if (score2 == 1) {
+				this.special = SpecialRolls.DOUBLE_SKUNK;
+			}
+			
+		}
 
+		
+	}
 
-	/* Possibly not needed because we get the single turn die after the die is rolled
-	public int getTotalScoreForRoll() {
-		int[] lastTwo = this.getLastTwoRecorded();
-		int combinedRoll = lastTwo[0] + lastTwo[1];
-		return combinedRoll;
-	}*/
-	
-	/* Possibly not needed because we get the single turn die after the die is rolled
-	public int[] getLastTwoRecorded() {
-		int [] lastTwo = new int[2];
-		int scoreArraySize = this.getTurnScores().size();
-		lastTwo[0] = this.getSpecificRecordedScore(scoreArraySize-2);
-		lastTwo[1] = this.getSpecificRecordedScore(scoreArraySize-1);
-		return lastTwo;
-	}	}*/
+	public SpecialRolls getSpecialRollType() {
+		return this.special;
+	}
 
 
 }
