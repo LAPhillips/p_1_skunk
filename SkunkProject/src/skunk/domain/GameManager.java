@@ -9,6 +9,7 @@ public class GameManager {
 	private Score score;
 	private Turn turn;
 	private int [] currentDiceRoll;
+	private SpecialRolls specialRoll;
 
 
 	
@@ -18,6 +19,7 @@ public class GameManager {
 		this.score = new Score();
 		this.turn = new Turn();
 		this.currentDiceRoll = new int[2];
+		this.specialRoll = null;
 
 	}
 
@@ -25,13 +27,7 @@ public class GameManager {
 	public void checkRollRecord() {
 		if (this.turn.getTurnStatus()) { //checks to make sure turn status is not false
 			this.playerRollsDice();      // player rolls dice
-			this.checkSpecialStatus();   //checks to make sure the dice are not special
-			if(this.turn.getTurnStatus()) {
-				this.recordsTheTurnScore(this.currentDiceRoll);
-			}
-			else {
-			}
-		
+			this.recordsTheTurnScore(this.currentDiceRoll);
 		}
 		else {
 		}
@@ -40,13 +36,7 @@ public class GameManager {
 	public void checkRollRecord(int die1, int die2) {
 		if (this.turn.getTurnStatus()) {  //checks to make sure turn status is not false
 			this.playerRollsDice(die1, die2);      // player rolls dice
-			this.checkSpecialStatus();   //checks to make sure the dice are not special
-			if(this.turn.getTurnStatus()) {
 			this.recordsTheTurnScore(this.currentDiceRoll);
-			}
-			else {
-			}
-		
 		}
 		else {
 		}

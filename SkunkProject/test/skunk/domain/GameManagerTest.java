@@ -160,6 +160,25 @@ class GameManagerTest {
 		turn = manager.getContinueTurn();
 		assertFalse(turn);
 	} 
+	
+	@Test
+	void game_manager_flow_should_also_report_special() {
+		GameManager manager = new GameManager();
+		manager.checkRollRecord(1,1);
+		SpecialRolls rollType = manager.getRollType();
+		SpecialRolls expected = SpecialRolls.DOUBLE_SKUNK;
+		assertEquals(expected, rollType);
+		
+		manager.checkRollRecord(2,1);
+		rollType = manager.getRollType();
+		expected = SpecialRolls.SKUNK_DEUCE;
+		assertEquals(expected, rollType);
+		
+		manager.checkRollRecord(3,1);
+		rollType = manager.getRollType();
+		expected = SpecialRolls.SKUNK;
+		assertEquals(expected, rollType);
+		}
 
 	@Test
 	void game_manager_reports_type_of_Special_Roll() {
@@ -185,5 +204,7 @@ class GameManagerTest {
 		expected = SpecialRolls.SKUNK;
 		assertEquals(expected, rollType);
 		}
+	
+
 	
 }

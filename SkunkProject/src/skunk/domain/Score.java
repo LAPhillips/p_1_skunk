@@ -38,7 +38,7 @@ public class Score {
 	//makes sure it does not record any special rolls
 	public void checkThenRecord(int[] scores) {
 		if (isSpecial(scores)) {
-			
+			this.setTypeSpecial(scores);
 		}
 		else {
 			this.recordScore(scores);
