@@ -5,7 +5,7 @@ public class Player {
 	private int chips;
 	private int chipsAtStartOfTurn;
 	
-	
+
 	public Player(String enteredName){
 		this.playerName = enteredName;
 		this.chips = 50;

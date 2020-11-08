@@ -23,7 +23,7 @@ public class GameManager {
 
 	}
 
-	//*************Regulating Turn Mechanics*************************************************************
+	//*************Regulating Turn Flow*************************************************************
 	public void checkRollRecord() {
 		if (this.turn.getTurnStatus()) { //checks to make sure turn status is not false
 			this.playerRollsDice();      // player rolls dice
@@ -109,7 +109,6 @@ public class GameManager {
 		}
 	}
 	
-
 	public SpecialRolls getRollType() {
 		score.setTypeSpecial(currentDiceRoll);
 		return this.score.getSpecialRollType();

@@ -29,6 +29,7 @@ public class Turn {
 		return this.numberOfTurns;
 	}
 
+	//this isn't used yet, but will be needed when there is more than one turn
 	public void startNewTurn() {
 		this.status = true;
 		this.numberOfTurns ++;

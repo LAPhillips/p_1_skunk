@@ -64,7 +64,7 @@ public class SkunkUI {
 		System.out.println("Total Score: " + control.totalTurnScore());
 	}
 	
-	public void  playerEndsTurn() {
+	public void playerEndsTurn() {
 		System.out.println(control.getPlayerNameFromManager() + ", here is your turn review: ");
 		System.out.println("----------------------------------------------");
 		int rolls = control.numberOfRolls();

@@ -77,6 +77,9 @@ public class Controller {
 		return manager.getContinueTurn();
 	}
 	
+	public SpecialRolls reportsSpecialRoll() {
+		return manager.getRollType();
+	}
 	
 	//*************Scores******************************************************** 
 
@@ -84,7 +87,6 @@ public class Controller {
 		return manager.totalTurnScore();
 	}
 
-	
 	public int reportsSpecificRoll(int rolls) {
 		return manager.sharesTurnScores().get(rolls);
 	}
@@ -94,10 +96,6 @@ public class Controller {
 	}
 
 
-
-	public SpecialRolls reportsSpecialRoll() {
-		return manager.getRollType();
-	}
 
 
 

@@ -10,7 +10,7 @@ public class Score {
 	
 	public Score() {
 		this.playerScoreBoard = new Scoreboard();
-		this.special = null;
+		this.special = null; // only ever reports the most recent special roll
 	}
 	
 	//*************Recording/Reporting Scores*************************************************************
