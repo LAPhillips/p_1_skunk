@@ -17,12 +17,22 @@ public class SkunkUI {
 	
 	public void doesPlayerRoll() {
 		do {
-			playerRolls();
-			System.out.println("Do you want to roll again? [Y/N]");
-			playerInputs = scan.next().charAt(0); //read as string 
-			control.setPlayerInput(playerInputs);
+			this.playerRolls();
+			if(control.startNewRoll() == false) {
+				this.playerRollsSpecial();
+			}
+			else {
+				rollAgain();
+			}
+			
 		} while(control.startNewRoll());
 		playerEndsTurn();
+	}
+	
+	public void rollAgain() {
+		System.out.println("Do you want to roll again? [Y/N]");
+		playerInputs = scan.next().charAt(0); //read as string 
+		control.setPlayerInput(playerInputs);
 	}
 	
 	public void enterName() {
@@ -54,7 +64,6 @@ public class SkunkUI {
 		System.out.println("Total Score: " + control.totalTurnScore());
 	}
 	
-
 	public void  playerEndsTurn() {
 		System.out.println(control.getPlayerNameFromManager() + ", here is your turn review: ");
 		System.out.println("----------------------------------------------");
@@ -70,6 +79,11 @@ public class SkunkUI {
 		System.out.println("----------------------------------------------");
 		System.out.println("TOTAL TURN SCORE:" + control.totalTurnScore());
 		System.out.println("CHIPS LOST: " + control.getLostChips());
+	}
+	
+	public void playerRollsSpecial() {
+		System.out.println("You rolled a " + control.reportsSpecialRoll().toString() + "! Turn Over!");
+		System.out.println();
 	}
 
 	

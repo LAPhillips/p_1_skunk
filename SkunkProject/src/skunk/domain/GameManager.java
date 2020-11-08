@@ -27,6 +27,7 @@ public class GameManager {
 	public void checkRollRecord() {
 		if (this.turn.getTurnStatus()) { //checks to make sure turn status is not false
 			this.playerRollsDice();      // player rolls dice
+			this.checkSpecialStatus();
 			this.recordsTheTurnScore(this.currentDiceRoll);
 		}
 		else {
@@ -35,7 +36,8 @@ public class GameManager {
 	
 	public void checkRollRecord(int die1, int die2) {
 		if (this.turn.getTurnStatus()) {  //checks to make sure turn status is not false
-			this.playerRollsDice(die1, die2);      // player rolls dice
+			this.playerRollsDice(die1, die2);    // player rolls dice
+			this.checkSpecialStatus();
 			this.recordsTheTurnScore(this.currentDiceRoll);
 		}
 		else {
