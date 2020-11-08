@@ -20,5 +20,4 @@ class TurnTest {
 		Boolean status = turn.getTurnStatus();
 		assertFalse(status);
 	}
-
 }

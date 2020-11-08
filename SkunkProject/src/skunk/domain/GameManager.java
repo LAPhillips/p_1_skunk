@@ -8,7 +8,8 @@ public class GameManager {
 	private Dice dice;
 	private Score score;
 	private int turn;
-	private Boolean turnTracker;
+//	private Boolean turnTracker;
+	private Turn turns;
 	private int [] currentDiceRoll;
 
 	
@@ -16,7 +17,8 @@ public class GameManager {
 		this.player = null;
 		this.dice = new Dice();
 		this.score = new Score();
-		this.turnTracker = true;
+	//	this.turnTracker = true;
+		this.turns = new Turn();
 		this.currentDiceRoll = new int[2];
 		this.turn = 0;
 	}
@@ -70,15 +72,14 @@ public class GameManager {
 	
 	//*************Managing Turns*************************************************************
 	public Boolean getContinueTurn() {
-		return this.turnTracker;
+		return this.turns.getTurnStatus();
 	}
 
 	public void setContinueTurn(char playerDecision) {
 		if (playerDecision == 'Y' || playerDecision == 'y') {
-			this.turnTracker = true;
 		}
 		else {
-			this.turnTracker = false;
+			this.turns.endTurn();
 		}
 	}
 
@@ -97,7 +98,7 @@ public class GameManager {
 	}
 
 	public void checkRollRecord() {
-		if (turnTracker == true) {
+		if (this.turns.getTurnStatus()) {
 			this.playerRollsDice();
 			this.recordsTheTurnScore(this.currentDiceRoll);
 		}
@@ -107,7 +108,7 @@ public class GameManager {
 	}
 	
 	public void checkRollRecord(int die1, int die2) {
-		if (turnTracker == true) {
+		if (this.turns.getTurnStatus()) {
 			this.playerRollsDice(die1, die2);
 			this.recordsTheTurnScore(this.currentDiceRoll);;
 		}

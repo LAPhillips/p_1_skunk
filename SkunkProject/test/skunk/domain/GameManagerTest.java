@@ -142,6 +142,12 @@ class GameManagerTest {
 		assertEquals(10, numberOfRolls);	
 	}
 	
+	@Test
+	void game_manager_can_see_turn_status() {
+		GameManager manager = new GameManager();
+		assertTrue(manager.getContinueTurn());
+	}
+	
 /*
 	To be worked on
 	@Test
