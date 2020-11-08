@@ -20,4 +20,13 @@ class TurnTest {
 		Boolean status = turn.getTurnStatus();
 		assertFalse(status);
 	}
+	
+	@Test
+	void player_can_end_turn() {
+		Turn turn = new Turn();
+		char playerInput = 'N';
+		turn.playersDecision(playerInput);
+		Boolean status = turn.getTurnStatus();
+		assertFalse(status);
+	}
 }

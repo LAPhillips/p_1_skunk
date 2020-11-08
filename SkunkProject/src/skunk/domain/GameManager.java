@@ -8,7 +8,6 @@ public class GameManager {
 	private Dice dice;
 	private Score score;
 	private int turn;
-//	private Boolean turnTracker;
 	private Turn turns;
 	private int [] currentDiceRoll;
 
@@ -17,7 +16,6 @@ public class GameManager {
 		this.player = null;
 		this.dice = new Dice();
 		this.score = new Score();
-	//	this.turnTracker = true;
 		this.turns = new Turn();
 		this.currentDiceRoll = new int[2];
 		this.turn = 0;
