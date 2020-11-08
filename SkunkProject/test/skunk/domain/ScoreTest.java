@@ -73,19 +73,33 @@ class ScoreTest {
 	void score_shares_type_special_rolls() {
 		Score score = new Score();
 		int[]scores = new int[] {1,1};
-		SpecialRolls expected = SpecialRolls.DOUBLE_SKUNK;
+		SpecialRolls expected = null;
 		SpecialRolls special = score.getSpecialRollType();
 		assertEquals(expected, special);
 	}
 	
-	/*
+
 	@Test
 	void score_categorizes_special_rolls() {
 		Score score = new Score();
-	//	int[]scores = new int[] {5,3};
+		int[]scores = new int[] {1,1};
 		score.setTypeSpecial(scores);
-		assertTrue(false);
-	}*/
+		SpecialRolls special = score.getSpecialRollType();
+		SpecialRolls expected = SpecialRolls.DOUBLE_SKUNK;
+		assertEquals(expected, special);
+		
+		int[]scores2 = new int[] {1,2};
+		score.setTypeSpecial(scores2);
+		special = score.getSpecialRollType();
+		expected = SpecialRolls.SKUNK_DEUCE;
+		assertEquals(expected, special);
+		
+		int[]scores3 = new int[] {5,1};
+		score.setTypeSpecial(scores3);
+		special = score.getSpecialRollType();
+		expected = SpecialRolls.SKUNK;
+		assertEquals(expected, special);
+	}
 
 
 	

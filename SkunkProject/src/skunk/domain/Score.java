@@ -10,7 +10,7 @@ public class Score {
 	
 	public Score() {
 		this.playerScoreBoard = new Scoreboard();
-		this.special = SpecialRolls.DOUBLE_SKUNK;
+		this.special = null;
 	}
 	
 	public int getTotalScoreForTurn() {
@@ -60,12 +60,21 @@ public class Score {
 		
 		if (score1 == 1) {
 			if (score2 == 1) {
-				this.special = SpecialRolls.DOUBLE_SKUNK;
+				this.special = SpecialRolls.DOUBLE_SKUNK; //1,1
 			}
-			
+			else if (score2 == 2){
+				this.special = SpecialRolls.SKUNK_DEUCE; // 1,2
+			}
+			else {
+				this.special = SpecialRolls.SKUNK; // 1,x
+			}
 		}
-
-		
+		else if (score1 == 2) {
+				this.special = SpecialRolls.SKUNK_DEUCE; // 2,1
+		}
+		else if (score2 == 1) {
+			this.special = SpecialRolls.SKUNK; // x,1
+		}
 	}
 
 	public SpecialRolls getSpecialRollType() {
