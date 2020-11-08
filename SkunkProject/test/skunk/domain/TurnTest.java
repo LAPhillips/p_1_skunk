@@ -29,4 +29,11 @@ class TurnTest {
 		Boolean status = turn.getTurnStatus();
 		assertFalse(status);
 	}
+	
+	@Test
+	void turn_tracks_number_of_turns() {
+		Turn turn = new Turn();
+		int numberOfTurns = turn.getnumberOfTurns();
+		assertEquals(1, numberOfTurns);
+	}
 }

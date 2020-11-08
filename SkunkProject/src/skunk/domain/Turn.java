@@ -2,9 +2,11 @@ package skunk.domain;
 
 public class Turn {
 	private Boolean status;
+	private int numberOfTurns;
 	
-	Turn(){
+	public Turn(){
 		this.status = true;
+		this.numberOfTurns = 1;
 	}
 
 	public Boolean getTurnStatus() {
@@ -21,6 +23,10 @@ public class Turn {
 		else {
 			this.endTurn();
 		}
+	}
+
+	public int getnumberOfTurns() {
+		return this.numberOfTurns;
 	}
 	
 }
