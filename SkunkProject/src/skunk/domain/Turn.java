@@ -11,4 +11,10 @@ public class Turn {
 		return this.status;
 	}
 
+	public void endTurn() {
+		this.status = false;
+	}
+
+
+
 }

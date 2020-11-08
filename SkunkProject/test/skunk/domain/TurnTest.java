@@ -12,5 +12,13 @@ class TurnTest {
 		Boolean status = turn.getTurnStatus();
 		assertTrue(status);
 	}
+	
+	@Test
+	void turn_changes_status() {
+		Turn turn = new Turn();
+		turn.endTurn();
+		Boolean status = turn.getTurnStatus();
+		assertFalse(status);
+	}
 
 }
