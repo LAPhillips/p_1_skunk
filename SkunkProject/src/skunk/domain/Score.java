@@ -10,7 +10,7 @@ public class Score {
 	
 	public Score() {
 		this.playerScoreBoard = new Scoreboard();
-		this.special = SpecialRolls.SKUNK;
+		this.special = null;
 	}
 	
 	//*************Recording/Reporting Scores*************************************************************

@@ -9,7 +9,7 @@ public class GameManager {
 	private Score score;
 	private Turn turn;
 	private int [] currentDiceRoll;
-	private SpecialRolls specialRolls;
+
 
 	
 	public GameManager() {
@@ -18,7 +18,7 @@ public class GameManager {
 		this.score = new Score();
 		this.turn = new Turn();
 		this.currentDiceRoll = new int[2];
-		this.specialRolls = score.getSpecialRollType();
+
 	}
 
 	//*************Regulating Turn Mechanics*************************************************************

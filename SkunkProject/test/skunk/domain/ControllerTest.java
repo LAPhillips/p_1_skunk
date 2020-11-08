@@ -142,8 +142,7 @@ class ControllerTest {
 	void controller_shares_special_rolls() {
 		Controller control = new Controller();
 		SpecialRolls roll = control.reportsSpecialRoll();
-		assertNotNull(roll);
-		
+		assertNull(roll);
 	}
 	
 
