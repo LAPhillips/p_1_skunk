@@ -95,5 +95,11 @@ public class Controller {
 
 
 
+	public SpecialRolls reportsSpecialRoll() {
+		return manager.getRollType();
+	}
+
+
+
 
 }

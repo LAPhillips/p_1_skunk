@@ -128,7 +128,7 @@ class ControllerTest {
 	}
 
 	@Test 
-	void controler_gets_number_of_rolls(){
+	void controller_gets_number_of_rolls(){
 		Controller control = new Controller();
 		//for three rolls
 				for (int i = 0; i < 4; i++) {
@@ -138,12 +138,13 @@ class ControllerTest {
 		assertEquals(4, numRolls);
 	}
 	
-	/*
 	@Test
-	void controler_shares_player_chips() {
+	void controller_shares_special_rolls() {
 		Controller control = new Controller();
-		int chips = control.getPlayerChips();
-		assertEquals(50, chips);
+		SpecialRolls roll = control.reportsSpecialRoll();
+		assertNotNull(roll);
+		
 	}
-	*/
+	
+
 }
