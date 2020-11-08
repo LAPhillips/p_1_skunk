@@ -11,12 +11,6 @@ public class SkunkApp {
 	//	ui.enterName();
 		ui.doesPlayerRoll();
 
-	
-		
-		
-		
-		
-		
 		/*
 		int [] array = {1, 2, 3, 4};
 		Dice skunkDice = new Dice();

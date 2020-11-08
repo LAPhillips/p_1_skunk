@@ -48,7 +48,7 @@ public class GameManager {
 	}
 
 	public void recordsTheTurnScore(int[] newScore) {
-		score.recordScore(newScore);
+		score.checkThenRecord(newScore);;
 	}
 
 	public ArrayList<Integer> sharesTurnScores() {
@@ -59,7 +59,6 @@ public class GameManager {
 		return dice.getLastRoll();
 	}
 	
-	
 	public int numberOfRolls() {
 		ArrayList<Integer> turnScores = this.sharesTurnScores();
 		return turnScores.size()/2;
@@ -67,15 +66,6 @@ public class GameManager {
 
 	public int totalTurnScore() {
 		return score.getTotalScoreForTurn();
-	}
-
-	public void checkThenRecord(int[] diceRoll) {
-		if (this.isItSpecial(diceRoll)) {
-			System.out.println("SKUNK");
-		}
-		else {
-			this.recordsTheTurnScore(diceRoll);
-		}
 	}
 	
 	//*************Managing Turns*************************************************************
@@ -109,7 +99,7 @@ public class GameManager {
 	public void checkRollRecord() {
 		if (turnTracker == true) {
 			this.playerRollsDice();
-			this.checkThenRecord(this.currentDiceRoll);
+			this.recordsTheTurnScore(this.currentDiceRoll);
 		}
 		else {
 			endsTurn();
@@ -119,7 +109,7 @@ public class GameManager {
 	public void checkRollRecord(int die1, int die2) {
 		if (turnTracker == true) {
 			this.playerRollsDice(die1, die2);
-			this.checkThenRecord(this.currentDiceRoll);
+			this.recordsTheTurnScore(this.currentDiceRoll);;
 		}
 		else {
 			endsTurn();

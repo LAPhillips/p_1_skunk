@@ -142,22 +142,6 @@ class GameManagerTest {
 		assertEquals(10, numberOfRolls);	
 	}
 	
-
-
-	@Test
-	void game_manager_wont_record_special_rolls() {
-		GameManager manager = new GameManager();
-		manager.playerRollsDice(2, 6);
-		int[] roll1 = manager.returnDiceRoll();
-		manager.checkThenRecord(roll1);
-		assertEquals(8, manager.totalTurnScore());
-		
-		manager.playerRollsDice(1, 6);
-		int[] roll2 = manager.returnDiceRoll();
-		manager.checkThenRecord(roll2);
-		assertEquals(8, manager.totalTurnScore());
-	}
-	
 /*
 	To be worked on
 	@Test

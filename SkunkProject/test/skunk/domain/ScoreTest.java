@@ -57,7 +57,6 @@ class ScoreTest {
 	void score_shares_scoreboard() {
 		Score score = new Score();
 		int[]scores = new int[] {5,3};
-		score.recordScore(scores);
 		ArrayList<Integer> retreivedScore = score.getTurnScores();
 		assertEquals(scores[1], retreivedScore.get(1));
 	}	
@@ -102,8 +101,6 @@ class ScoreTest {
 		int[]scores2 = new int[] {1,2};
 		score.checkThenRecord(scores2);
 		assertEquals(4, score.getTotalScoreForTurn());
-		
-		
 	}	
 
 
