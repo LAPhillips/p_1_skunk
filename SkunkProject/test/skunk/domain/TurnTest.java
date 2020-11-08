@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 class TurnTest {
 
 	@Test
-	void turn_signals_to_go_or_not() {
+	void turn_gives_turn_status() {
 		Turn turn = new Turn();
-		Boolean status = turn.statusTracker();
-		assertFalse(status);
+		Boolean status = turn.getTurnStatus();
+		assertTrue(status);
 	}
 
 }
