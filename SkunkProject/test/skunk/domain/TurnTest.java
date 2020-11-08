@@ -36,4 +36,13 @@ class TurnTest {
 		int numberOfTurns = turn.getnumberOfTurns();
 		assertEquals(1, numberOfTurns);
 	}
+	
+	@Test
+	void when_new_turn_starts_counter_increases() {
+		Turn turn = new Turn();
+		turn.endTurn();
+		turn.startNewTurn();
+		int numberOfTurns = turn.getnumberOfTurns();
+		assertEquals(2, numberOfTurns);
+	}
 }

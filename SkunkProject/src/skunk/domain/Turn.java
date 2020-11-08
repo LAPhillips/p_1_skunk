@@ -28,5 +28,10 @@ public class Turn {
 	public int getnumberOfTurns() {
 		return this.numberOfTurns;
 	}
+
+	public void startNewTurn() {
+		this.status = true;
+		this.numberOfTurns ++;
+	}
 	
 }
