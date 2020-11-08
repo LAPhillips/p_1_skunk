@@ -93,4 +93,13 @@ public class GameManager {
 		}
 	}
 
+	public void checkSpecialStatus() {
+		if (score.isSpecial(currentDiceRoll)) {
+			turn.endTurn();
+		}
+		else {
+			
+		}
+	}
+
 }

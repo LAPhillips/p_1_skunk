@@ -13,6 +13,7 @@ public class Score {
 		this.special = null;
 	}
 	
+	//*************Recording/Reporting Scores*************************************************************
 	public int getTotalScoreForTurn() {
 		ArrayList<Integer> turnTotals = this.getTurnScores();
 		int scoreTotals = 0;
@@ -34,17 +35,7 @@ public class Score {
 		return playerScoreBoard.getTurnScores();
 	}
 
-	public Boolean isSpecial(int [] diceRoll) {
-			if (diceRoll[0] == 1 || diceRoll[1] == 1) {
-				return true;
-			}
-			else if ((diceRoll[0] == 2 || diceRoll[1] == 2) && ((diceRoll[0] == 1 || diceRoll[1] == 1))) {
-				return true;
-			}
-			return false;
-	}
-
-	
+	//makes sure it does not record any special rolls
 	public void checkThenRecord(int[] scores) {
 		if (isSpecial(scores)) {
 			
@@ -54,6 +45,18 @@ public class Score {
 		}
 	}
 
+//*************Managing Special Rolls*************************************************************
+
+	public Boolean isSpecial(int [] diceRoll) {
+		if (diceRoll[0] == 1 || diceRoll[1] == 1) {
+			return true;
+		}
+		else if ((diceRoll[0] == 2 || diceRoll[1] == 2) && ((diceRoll[0] == 1 || diceRoll[1] == 1))) {
+			return true;
+		}
+		return false;
+}
+	
 	public void setTypeSpecial(int[] scores) {
 		int score1 = scores[0];
 		int score2 = scores[1];

@@ -78,7 +78,6 @@ class ScoreTest {
 		assertEquals(expected, special);
 	}
 	
-
 	@Test
 	void score_categorizes_special_rolls() {
 		Score score = new Score();
@@ -100,7 +99,6 @@ class ScoreTest {
 		expected = SpecialRolls.SKUNK;
 		assertEquals(expected, special);
 	}
-
 
 	
 	

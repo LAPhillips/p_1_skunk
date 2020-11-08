@@ -148,15 +148,17 @@ class GameManagerTest {
 		assertTrue(manager.getContinueTurn());
 	}
 	
-/*
-	To be worked on
 	@Test
-	void game_manager_ends_Turn() {
+	void game_manager_ends_Turn_if_Roll_is_Special() {
 		GameManager manager = new GameManager();
-		manager.setContinueTurn('N');
-		Boolean playerInput = manager.getContinueTurn();
-		manager.endsTurn();
-		assertTrue(playerInput);
-	} */
+		manager.checkSpecialStatus();
+		Boolean turn = manager.getContinueTurn();
+		assertTrue(turn);
+		
+		manager.checkRollRecord(1, 1);
+		manager.checkSpecialStatus();
+		turn = manager.getContinueTurn();
+		assertFalse(turn);
+	} 
 	
 }
