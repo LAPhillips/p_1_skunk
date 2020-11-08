@@ -141,9 +141,23 @@ class ControllerTest {
 	@Test
 	void controller_shares_special_rolls() {
 		Controller control = new Controller();
+		control.shareRoll(1,3);
 		SpecialRolls roll = control.reportsSpecialRoll();
-		assertNull(roll);
+		SpecialRolls expected = SpecialRolls.SKUNK;
+		assertEquals(expected, roll);
+		
+		control.shareRoll(1,1);
+		roll = control.reportsSpecialRoll();
+		expected = SpecialRolls.DOUBLE_SKUNK;
+		assertEquals(expected, roll);
+		
+		control.shareRoll(2,1);
+		roll = control.reportsSpecialRoll();
+		expected = SpecialRolls.SKUNK_DEUCE;
+		assertEquals(expected, roll);
+		
 	}
+	
 	
 
 }
