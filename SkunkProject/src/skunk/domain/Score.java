@@ -7,10 +7,27 @@ public class Score {
 
 	private Scoreboard playerScoreBoard;
 	private SpecialRolls special;
+	private int finalScore;
 	
 	public Score() {
 		this.playerScoreBoard = new Scoreboard();
 		this.special = null; // only ever reports the most recent special roll
+		this.finalScore = 0;
+	}
+	
+	//*************Score Flow*************************************************************
+
+	//makes sure it does not record any special rolls
+	public void checkThenRecord(int[] scoreAfterRoll) {
+		if (isSpecial(scoreAfterRoll)) {
+		}
+		else {
+			this.recordScore(scoreAfterRoll);
+		}
+	}
+	
+	public int getFinalScore() {
+		return this.finalScore;
 	}
 	
 	//*************Recording/Reporting Scores*************************************************************
@@ -35,14 +52,6 @@ public class Score {
 		return playerScoreBoard.getTurnScores();
 	}
 
-	//makes sure it does not record any special rolls
-	public void checkThenRecord(int[] scores) {
-		if (isSpecial(scores)) {
-		}
-		else {
-			this.recordScore(scores);
-		}
-	}
 
 //*************Managing Special Rolls*************************************************************
 
@@ -82,6 +91,9 @@ public class Score {
 	public SpecialRolls getSpecialRollType() {
 		return this.special;
 	}
+
+	
+
 
 
 }

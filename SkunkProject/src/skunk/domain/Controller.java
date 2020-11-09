@@ -1,5 +1,5 @@
 package skunk.domain;
-
+//Controller should only report to and from the UI; does not decide things on its own
 public class Controller {
 	private String playerName;
 	private char playerControls;

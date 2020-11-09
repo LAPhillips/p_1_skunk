@@ -99,8 +99,22 @@ class ScoreTest {
 		expected = SpecialRolls.SKUNK;
 		assertEquals(expected, special);
 	}
-
 	
+	@Test
+	void score_can_get_final_score() {
+		Score score = new Score();
+		int finalScore = score.getFinalScore();
+		assertEquals(0, finalScore);
+	}	
+
+	/*@Test
+	void score_can_void_final_score() {
+		Score score = new Score();
+		int[]scores = new int[] {1,1};
+		score.recordScore(scores);
+		int finalScore = score.getFinalScore();
+		assertEquals(1, finalScore);
+	}	*/
 	
 
 
