@@ -94,10 +94,20 @@ public class Score {
 		return this.finalScore;
 	}
 	
-	
+	/*
 	public void setFinalScore(int newFinalScore) {
 		this.finalScore = newFinalScore;
 	}
+
+	public void editFinalScore(int[] diceRoll) {
+		if(this.isSpecial(diceRoll)) {
+			this.setFinalScore(0);
+		}
+		else {
+			this.setFinalScore(newFinalScore);
+		}
+
+	}*/
 
 	
 
