@@ -25,11 +25,7 @@ public class Score {
 			this.recordScore(scoreAfterRoll);
 		}
 	}
-	
-	public int getFinalScore() {
-		return this.finalScore;
-	}
-	
+
 	//*************Recording/Reporting Scores*************************************************************
 	public int getTotalScoreForTurn() {
 		ArrayList<Integer> turnTotals = this.getTurnScores();
@@ -90,6 +86,17 @@ public class Score {
 
 	public SpecialRolls getSpecialRollType() {
 		return this.special;
+	}
+
+	
+	
+	public int getFinalScore() {
+		return this.finalScore;
+	}
+	
+	
+	public void setFinalScore(int newFinalScore) {
+		this.finalScore = newFinalScore;
 	}
 
 	

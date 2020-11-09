@@ -106,6 +106,14 @@ class ScoreTest {
 		int finalScore = score.getFinalScore();
 		assertEquals(0, finalScore);
 	}	
+	
+	@Test
+	void score_can_set_final_score() {
+		Score score = new Score();
+		int finalScore = 5;
+		score.setFinalScore(finalScore);
+		assertEquals(finalScore, score.getFinalScore());
+	}
 
 	/*@Test
 	void score_can_void_final_score() {
