@@ -26,11 +26,4 @@ public class Scoreboard {
 		singleTurn.add(newRoll[1]);
 	}
 
-	public int totalScore() {
-		int score = 0;
-		for (int singleDie : singleTurn) {
-			score += singleDie;
-		}
-		return score;
-	}
 }

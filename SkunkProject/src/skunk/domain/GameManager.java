@@ -88,7 +88,7 @@ public class GameManager {
 	}
 
 	public int totalTurnScore() {
-		return score.getTotalScoreForTurn();
+		return score.getFinalScore();
 	}
 	
 	//*************Managing Turns*************************************************************

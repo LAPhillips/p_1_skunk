@@ -19,11 +19,12 @@ public class Score {
 
 	//makes sure it does not record any special rolls
 	public void checkThenRecord(int[] scoreAfterRoll) {
-		if (isSpecial(scoreAfterRoll)) {
+		if (this.isSpecial(scoreAfterRoll)) {
 		}
 		else {
 			this.recordScore(scoreAfterRoll);
 		}
+		this.editFinalScore(scoreAfterRoll);
 	}
 
 	//*************Recording/Reporting Scores*************************************************************
@@ -104,9 +105,19 @@ public class Score {
 			this.setFinalScore(0);
 		}
 		else {
-			this.setFinalScore(playerScoreBoard.totalScore());
+			this.setFinalScore(this.totalScore());
 		}
 
+	}
+
+	
+	public int totalScore() {
+		ArrayList<Integer> fullScores = playerScoreBoard.getTurnScores();
+		int totalScore = 0;
+		for (int dieRoll : fullScores) {
+			totalScore += dieRoll;
+		}
+		return totalScore;
 	}
 
 	

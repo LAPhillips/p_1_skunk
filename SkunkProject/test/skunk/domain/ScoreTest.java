@@ -138,7 +138,16 @@ class ScoreTest {
 		finalScore = score.getFinalScore();
 		assertEquals(0, finalScore);
 	}	
-	
+
+	@Test
+	void score_gives_a_cumulative_score() {
+		Score score = new Score();
+		int expected = 10;
+		int[]scores = new int[] {5,5};
+		score.checkThenRecord(scores);
+		int result = score.totalScore();
+		assertEquals(expected, result);
+	}
 
 
 }

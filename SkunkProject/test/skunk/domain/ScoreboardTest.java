@@ -36,15 +36,4 @@ class ScoreboardTest {
 		assertEquals(7, scores.getSpecificTurnScores(2));
 	}
 
-	@Test
-	void scoreboard_reports_cumulative_score() {
-		Scoreboard scores = new Scoreboard();
-		ArrayList<Integer> turnscore = scores.getTurnScores();
-		turnscore.add(2);
-		turnscore.add(3);
-		turnscore.add(7);
-		int totalScore = scores.totalScore();
-		assertEquals((2+3+7), totalScore);
-		
-	}
 }
