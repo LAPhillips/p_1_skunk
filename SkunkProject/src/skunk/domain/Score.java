@@ -94,7 +94,7 @@ public class Score {
 		return this.finalScore;
 	}
 	
-	/*
+	
 	public void setFinalScore(int newFinalScore) {
 		this.finalScore = newFinalScore;
 	}
@@ -104,10 +104,10 @@ public class Score {
 			this.setFinalScore(0);
 		}
 		else {
-			this.setFinalScore(newFinalScore);
+			this.setFinalScore(playerScoreBoard.totalScore());
 		}
 
-	}*/
+	}
 
 	
 

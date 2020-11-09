@@ -107,7 +107,7 @@ class ScoreTest {
 		assertEquals(0, finalScore);
 	}	
 	
-	/*
+	
 	@Test
 	void score_can_set_final_score() {
 		Score score = new Score();
@@ -124,14 +124,21 @@ class ScoreTest {
 		
 		score.editFinalScore(scores);
 		int finalScore = score.getFinalScore();
-		/*
-		int[]scores2 = new int[] {1,1};
-		score.recordScore(scores);
+		assertEquals(10, finalScore);
 		
-		int finalScore = score.editFinalScore();
-		assertEquals(1, finalScore);
+		int[]scores3 = new int[] {2,2};
+		score.recordScore(scores3);
+		score.editFinalScore(scores3);
+		finalScore = score.getFinalScore();
+		assertEquals(14, finalScore);
+		
+		int[]scores2 = new int[] {1,1};
+		score.recordScore(scores2);	
+		score.editFinalScore(scores2);
+		finalScore = score.getFinalScore();
+		assertEquals(0, finalScore);
 	}	
-	*/
+	
 
 
 }
