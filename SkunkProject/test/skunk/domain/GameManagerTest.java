@@ -221,10 +221,10 @@ class GameManagerTest {
 		GameManager manager = new GameManager();
 		manager.createPlayer("mike");
 		Player player = manager.getPlayer();
-		int amountToAdjust = manager.amountToAdjustChips(SpecialRolls.SKUNK);
+		int amountToAdjust = manager.amountToAdjustChips(SpecialRolls.DOUBLE_SKUNK);
 		manager.adjustChips(amountToAdjust);
 		int playerChips = manager.getChips();
-		assertEquals(49, playerChips, "after a skunk the chips should be reduced by one - so 49");
+		assertEquals(46, playerChips, "after a doubleskunk the chips reduced by 4");
 	}
 
 

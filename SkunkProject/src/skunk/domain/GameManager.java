@@ -128,7 +128,7 @@ public class GameManager {
 		if (rollType == SpecialRolls.SKUNK) {
 			amountLost = -1;
 		}
-		else if (rollType == SpecialRolls.DOUBLE_SKUNK) {
+		else if (rollType == SpecialRolls.SKUNK_DEUCE) {
 			amountLost = -2;
 		}
 		else {
