@@ -143,7 +143,7 @@ public class GameManager {
 	}
 
 	public String playerName() {
-		return "player1";
+		return player.getPlayerName();
 	}
 
 }
