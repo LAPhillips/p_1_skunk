@@ -2,7 +2,7 @@ package skunk.domain;
 
 import java.util.ArrayList;
 
-//Brings everything together
+//Brings everything together -- manages the game for a single player
 public class GameManager {
 	private Player player;
 	private Dice dice;
@@ -136,6 +136,10 @@ public class GameManager {
 		}
 		
 		return amountLost;
+	}
+
+	public int getLostChips() {
+		return player.getLostChips();
 	}
 
 }

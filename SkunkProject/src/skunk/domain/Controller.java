@@ -51,8 +51,7 @@ public class Controller {
 	}
 	
 	public int getLostChips() {
-		Player player = getPlayerFromManager();
-		return player.getLostChips();
+		return 0;
 	}
 
 	

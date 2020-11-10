@@ -213,7 +213,7 @@ class GameManagerTest {
 		Player player = manager.getPlayer();
 		manager.adjustChips(-10);
 		int playerChips = manager.getChips();
-		assertEquals(40, playerChips, "Default (50) -10 should be 40");
+		assertEquals(40, playerChips);
 	}
 	
 	@Test
@@ -224,10 +224,19 @@ class GameManagerTest {
 		int amountToAdjust = manager.amountToAdjustChips(SpecialRolls.DOUBLE_SKUNK);
 		manager.adjustChips(amountToAdjust);
 		int playerChips = manager.getChips();
-		assertEquals(46, playerChips, "after a doubleskunk the chips reduced by 4");
+		assertEquals(46, playerChips);
 	}
-
-
+	
+	@Test
+	void game_manager_informs_shares_lost_chips() {
+		GameManager manager = new GameManager();
+		manager.createPlayer("mike");
+		Player player = manager.getPlayer();
+		int amountToAdjust = manager.amountToAdjustChips(SpecialRolls.DOUBLE_SKUNK);
+		manager.adjustChips(amountToAdjust);
+		int lostChips = manager.getLostChips();
+		assertEquals(4, lostChips);
+	}
 	
 	
 
