@@ -45,21 +45,19 @@ class ControllerTest {
 	void controller_gets_chips_from_manager() {
 		Controller control = new Controller();
 		control.giveNametoManager("joe");
-		Player player = control.getPlayerFromManager();
-//		player.removeChips(5);
 		int chips = control.getPlayerChipsFromManager();
-		assertEquals(45, chips);
+		assertEquals(50, chips, "expect 50, b/c default is 50");
 	}
 	
 	@Test
 	void controller_gets_lost_chips_from_manager() {
 		Controller control = new Controller();
 		control.giveNametoManager("joe");
-		Player player = control.getPlayerFromManager();
-		int lost = 5;
-//		player.removeChips(lost);
+		Player player = control.getPlayerFromManager(); //would not normally call player but this is to test #chips
+		int lost = -5;
+		player.adjustChips(lost);
 		int chips = control.getLostChips();
-		assertEquals(lost, chips);
+		assertEquals(5, chips, "the amount lost will be negative");
 	}
 
 
@@ -145,17 +143,6 @@ class ControllerTest {
 		SpecialRolls roll = control.reportsSpecialRoll();
 		SpecialRolls expected = SpecialRolls.SKUNK;
 		assertEquals(expected, roll);
-		
-		control.shareRoll(1,1);
-		roll = control.reportsSpecialRoll();
-		expected = SpecialRolls.DOUBLE_SKUNK;
-		assertEquals(expected, roll);
-		
-		control.shareRoll(2,1);
-		roll = control.reportsSpecialRoll();
-		expected = SpecialRolls.SKUNK_DEUCE;
-		assertEquals(expected, roll);
-		
 	}
 	
 	
