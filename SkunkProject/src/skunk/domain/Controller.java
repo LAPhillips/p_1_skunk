@@ -50,6 +50,7 @@ public class Controller {
 	}
 	
 	public int getLostChips() {
+		Player player = getPlayerFromManager();
 		return this.manager.getLostChips();
 	}
 

@@ -49,11 +49,12 @@ class ControllerTest {
 		assertEquals(50, chips, "expect 50, b/c default is 50");
 	}
 	
+	
 	@Test
 	void controller_gets_lost_chips_from_manager() {
 		Controller control = new Controller();
 		control.giveNametoManager("joe");
-		Player player = control.getPlayerFromManager(); //would not normally call player but this is to test #chips
+		Player player = control.getPlayerFromManager(); 
 		int lost = -5;
 		player.adjustChips(lost);
 		int chips = control.getLostChips();

@@ -14,6 +14,15 @@ class GameManagerTest {
 	}
 	
 	@Test
+	void game_manager_shares_player_name() {
+		GameManager manager = new GameManager();
+		String expected = "player1";
+		manager.createPlayer(expected);
+		String result = manager.playerName();
+		assertTrue(expected.equals(result));
+	}
+	
+	@Test
 	void game_manager_returns_dice_array() {
 		GameManager manager = new GameManager();
 		int expected1 = 2;

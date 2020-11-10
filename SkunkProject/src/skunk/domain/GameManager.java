@@ -142,4 +142,8 @@ public class GameManager {
 		return player.getLostChips();
 	}
 
+	public String playerName() {
+		return "player1";
+	}
+
 }
