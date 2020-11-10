@@ -216,6 +216,16 @@ class GameManagerTest {
 		assertEquals(40, playerChips, "Default (50) -10 should be 40");
 	}
 	
+	@Test
+	void game_manager_informs_player_amount_of_chips_lost_or_gained() {
+		GameManager manager = new GameManager();
+		manager.createPlayer("mike");
+		Player player = manager.getPlayer();
+		int amountToAdjust = manager.amountToAdjustChips(SpecialRolls.SKUNK);
+		manager.adjustChips(amountToAdjust);
+		int playerChips = manager.getChips();
+		assertEquals(49, playerChips, "after a skunk the chips should be reduced by one - so 49");
+	}
 
 
 	

@@ -123,4 +123,19 @@ public class GameManager {
 	
 	}
 
+	public int amountToAdjustChips(SpecialRolls rollType) {
+		int amountLost = 0;
+		if (rollType == SpecialRolls.SKUNK) {
+			amountLost = -1;
+		}
+		else if (rollType == SpecialRolls.DOUBLE_SKUNK) {
+			amountLost = -2;
+		}
+		else {
+			amountLost = -4;
+		}
+		
+		return amountLost;
+	}
+
 }
