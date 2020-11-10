@@ -23,7 +23,7 @@ class PlayerTest {
 	@Test
 	void player_can_lose_chips() {
 		Player player = new Player("player1");
-		player.removeChips(2);
+		player.adjustChips(-2);
 		int result = player.getChips();
 		assertEquals(result, 48);
 	}
@@ -31,7 +31,7 @@ class PlayerTest {
 	@Test
 	void player_can_gain_chips() {
 		Player player = new Player("player1");
-		player.gainChips(2);
+		player.adjustChips(2);
 		int result = player.getChips();
 		assertEquals(result, 52);
 	}
@@ -48,8 +48,8 @@ class PlayerTest {
 	void player_keeps_track_of_lost_chips() {
 		Player player = new Player("player1");
 		player.setChips(50);
-		player.gainChips(1);
-		player.removeChips(5);
+		player.adjustChips(1);
+		player.adjustChips(-5);
 		int result = player.getLostChips();
 		assertEquals(result, 4);
 	}

@@ -26,10 +26,6 @@ public class Player {
 		return this.chips;
 	}
 
-	public void removeChips(int chipsLost) {
-		this.chips -= chipsLost;
-	}
-
 	public void gainChips(int chipsGained) {
 		this.chips += chipsGained;
 		
@@ -41,6 +37,11 @@ public class Player {
 
 	public void setChips(int startingChips) {
 		this.chipsAtStartOfTurn = startingChips;
+	}
+
+	public void adjustChips(int chipChange) {
+		this.chips += chipChange;
+		
 	}
 
 

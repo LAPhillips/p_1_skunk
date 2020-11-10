@@ -46,7 +46,7 @@ class ControllerTest {
 		Controller control = new Controller();
 		control.giveNametoManager("joe");
 		Player player = control.getPlayerFromManager();
-		player.removeChips(5);
+//		player.removeChips(5);
 		int chips = control.getPlayerChipsFromManager();
 		assertEquals(45, chips);
 	}
@@ -57,7 +57,7 @@ class ControllerTest {
 		control.giveNametoManager("joe");
 		Player player = control.getPlayerFromManager();
 		int lost = 5;
-		player.removeChips(lost);
+//		player.removeChips(lost);
 		int chips = control.getLostChips();
 		assertEquals(lost, chips);
 	}

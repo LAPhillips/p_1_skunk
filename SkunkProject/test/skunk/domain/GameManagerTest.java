@@ -207,7 +207,7 @@ class GameManagerTest {
 	}
 	
 	@Test
-	void game_manager_removes_chips_from_player() {
+	void game_manager_adjusts_chip_amount_from_player() {
 		GameManager manager = new GameManager();
 		manager.createPlayer("mike");
 		Player player = manager.getPlayer();
@@ -215,6 +215,9 @@ class GameManagerTest {
 		int playerChips = manager.getChips();
 		assertEquals(40, playerChips, "Default (50) -10 should be 40");
 	}
+	
+
+
 	
 	
 
