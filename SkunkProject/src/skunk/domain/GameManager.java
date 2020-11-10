@@ -9,7 +9,7 @@ public class GameManager {
 	private Score score;
 	private Turn turn;
 	private int [] currentDiceRoll;
-	private SpecialRolls specialRoll;
+	private RollTypes types;
 
 
 	
@@ -19,7 +19,7 @@ public class GameManager {
 		this.score = new Score();
 		this.turn = new Turn();
 		this.currentDiceRoll = new int[2];
-		this.specialRoll = null;
+		this.types = RollTypes.NORMAL;
 
 	}
 
@@ -27,8 +27,9 @@ public class GameManager {
 	public void checkRollRecord() {
 		if (this.turn.getTurnStatus()) { //checks to make sure turn status is not false
 			this.playerRollsDice();// player rolls dice
-			this.checkSpecialStatus();
 			this.recordsTheTurnScore(this.currentDiceRoll);
+			this.updatesForSpecialRolls();
+			System.out.println(this.getChips() + " " + this.getLostChips());
 		}
 		else {
 		}
@@ -37,8 +38,8 @@ public class GameManager {
 	public void checkRollRecord(int die1, int die2) {
 		if (this.turn.getTurnStatus()) {  //checks to make sure turn status is not false
 			this.playerRollsDice(die1, die2);    // player rolls dice
-			this.checkSpecialStatus();
 			this.recordsTheTurnScore(this.currentDiceRoll);
+			this.updatesForSpecialRolls();
 		}
 		else {
 		}
@@ -71,7 +72,7 @@ public class GameManager {
 	}
 
 	public void recordsTheTurnScore(int[] newScore) {
-		score.checkThenRecord(newScore);;
+		score.recordAndUpdate(newScore);
 	}
 
 	public ArrayList<Integer> sharesTurnScores() {
@@ -100,8 +101,9 @@ public class GameManager {
 		this.turn.playersDecision(playerInput);
 	}
 
-	public void checkSpecialStatus() {
+	public void updatesForSpecialRolls() {
 		if (score.isSpecial(currentDiceRoll)) {
+			this.adjustChipsForRollType();
 			turn.endTurn();
 		}
 		else {
@@ -109,7 +111,7 @@ public class GameManager {
 		}
 	}
 	
-	public SpecialRolls getRollType() {
+	public RollTypes getRollType() {
 		score.setTypeSpecial(currentDiceRoll);
 		return this.score.getSpecialRollType();
 	}
@@ -118,20 +120,20 @@ public class GameManager {
 		return player.getChips();
 	}
 
-	public void adjustChips(int chipsToRemove) {
-		player.adjustChips(chipsToRemove);
+	public void adjustChips(int amountToAdjust) {
+		player.adjustChips(amountToAdjust);
 	
 	}
 
-	public int amountToAdjustChips(SpecialRolls rollType) {
+	public int amountToAdjustChips(RollTypes roll) {
 		int amountLost = 0;
-		if (rollType == SpecialRolls.SKUNK) {
+		if (roll == RollTypes.SKUNK) {
 			amountLost = -1;
 		}
-		else if (rollType == SpecialRolls.SKUNK_DEUCE) {
+		else if (roll == RollTypes.SKUNK_DEUCE){
 			amountLost = -2;
 		}
-		else {
+		else if (roll == RollTypes.DOUBLE_SKUNK){
 			amountLost = -4;
 		}
 		
@@ -146,4 +148,11 @@ public class GameManager {
 		return player.getPlayerName();
 	}
 
+	public void adjustChipsForRollType() {
+		RollTypes type = this.getRollType();
+		int amountToAdjust = this.amountToAdjustChips(type);
+		this.adjustChips(amountToAdjust);
+	}
+
+	
 }

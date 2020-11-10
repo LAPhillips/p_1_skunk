@@ -139,8 +139,8 @@ class ControllerTest {
 	void controller_shares_special_rolls() {
 		Controller control = new Controller();
 		control.shareRoll(1,3);
-		SpecialRolls roll = control.reportsSpecialRoll();
-		SpecialRolls expected = SpecialRolls.SKUNK;
+		RollTypes roll = control.reportsSpecialRoll();
+		RollTypes expected = RollTypes.SKUNK;
 		assertEquals(expected, roll);
 	}
 	

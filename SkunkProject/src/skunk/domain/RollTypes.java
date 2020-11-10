@@ -1,6 +1,6 @@
 package skunk.domain;
 
-	public enum SpecialRolls{
+	public enum RollTypes{
 		SKUNK {
 			@Override
 			public String toString() {
@@ -18,6 +18,13 @@ package skunk.domain;
 			@Override
 			public String toString() {
 				return "Skunk and Deuce";
+			}
+		},
+		
+		NORMAL {
+			@Override
+			public String toString() {
+				return "Nice roll!";
 			}
 		};
 	}

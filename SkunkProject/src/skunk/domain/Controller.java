@@ -49,7 +49,6 @@ public class Controller {
 	}
 	
 	public int getLostChips() {
-		Player player = getPlayerFromManager();
 		return this.manager.getLostChips();
 	}
 
@@ -75,7 +74,7 @@ public class Controller {
 		return manager.getContinueTurn();
 	}
 	
-	public SpecialRolls reportsSpecialRoll() {
+	public RollTypes reportsSpecialRoll() {
 		return manager.getRollType();
 	}
 	

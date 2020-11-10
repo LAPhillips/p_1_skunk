@@ -160,22 +160,23 @@ class GameManagerTest {
 	@Test
 	void game_manager_ends_Turn_if_Roll_is_Special() {
 		GameManager manager = new GameManager();
-		manager.checkSpecialStatus();
+		manager.updatesForSpecialRolls();
 		Boolean turn = manager.getContinueTurn();
-		assertTrue(turn);
+		assertTrue(turn, "first assert");
 		
-		manager.checkRollRecord(1, 1);
-		manager.checkSpecialStatus();
+		manager.playerRollsDice(1, 1);
+		manager.updatesForSpecialRolls();
 		turn = manager.getContinueTurn();
-		assertFalse(turn);
+		System.out.println("second assert, after continue turn");
+		assertFalse(turn, "second assert");
 	} 
 	
 	@Test
 	void game_manager_flow_should_also_report_special() {
 		GameManager manager = new GameManager();
 		manager.checkRollRecord(1,1);
-		SpecialRolls rollType = manager.getRollType();
-		SpecialRolls expected = SpecialRolls.DOUBLE_SKUNK;
+		RollTypes rollType = manager.getRollType();
+		RollTypes expected = RollTypes.DOUBLE_SKUNK;
 		assertEquals(expected, rollType, "first roll");
 
 		}
@@ -187,22 +188,22 @@ class GameManagerTest {
 		manager.playerRollsDice(1,1);
 		int[] newScore = manager.returnDiceRoll();
 		manager.recordsTheTurnScore(newScore);
-		SpecialRolls rollType = manager.getRollType();
-		SpecialRolls expected = SpecialRolls.DOUBLE_SKUNK;
+		RollTypes rollType = manager.getRollType();
+		RollTypes expected = RollTypes.DOUBLE_SKUNK;
 		assertEquals(expected, rollType);
 		
 		manager.playerRollsDice(1,2);
 		newScore = manager.returnDiceRoll();
 		manager.recordsTheTurnScore(newScore);
 		rollType = manager.getRollType();
-		expected = SpecialRolls.SKUNK_DEUCE;
+		expected = RollTypes.SKUNK_DEUCE;
 		assertEquals(expected, rollType);
 		
 		manager.playerRollsDice(3,1);
 		newScore = manager.returnDiceRoll();
 		manager.recordsTheTurnScore(newScore);
 		rollType = manager.getRollType();
-		expected = SpecialRolls.SKUNK;
+		expected = RollTypes.SKUNK;
 		assertEquals(expected, rollType);
 		}
 	
@@ -210,7 +211,6 @@ class GameManagerTest {
 	void game_manager_gets_amount_chips_from_player() {
 		GameManager manager = new GameManager();
 		manager.createPlayer("mike");
-		Player player = manager.getPlayer();
 		int playerChips = manager.getChips();
 		assertEquals(50, playerChips, "default it should be 50");
 	}
@@ -219,7 +219,6 @@ class GameManagerTest {
 	void game_manager_adjusts_chip_amount_from_player() {
 		GameManager manager = new GameManager();
 		manager.createPlayer("mike");
-		Player player = manager.getPlayer();
 		manager.adjustChips(-10);
 		int playerChips = manager.getChips();
 		assertEquals(40, playerChips);
@@ -229,8 +228,7 @@ class GameManagerTest {
 	void game_manager_informs_player_amount_of_chips_lost_or_gained() {
 		GameManager manager = new GameManager();
 		manager.createPlayer("mike");
-		Player player = manager.getPlayer();
-		int amountToAdjust = manager.amountToAdjustChips(SpecialRolls.DOUBLE_SKUNK);
+		int amountToAdjust = manager.amountToAdjustChips(RollTypes.DOUBLE_SKUNK);
 		manager.adjustChips(amountToAdjust);
 		int playerChips = manager.getChips();
 		assertEquals(46, playerChips);
@@ -240,13 +238,20 @@ class GameManagerTest {
 	void game_manager_informs_shares_lost_chips() {
 		GameManager manager = new GameManager();
 		manager.createPlayer("mike");
-		Player player = manager.getPlayer();
-		int amountToAdjust = manager.amountToAdjustChips(SpecialRolls.DOUBLE_SKUNK);
+		int amountToAdjust = manager.amountToAdjustChips(RollTypes.DOUBLE_SKUNK);
 		manager.adjustChips(amountToAdjust);
 		int lostChips = manager.getLostChips();
 		assertEquals(4, lostChips);
 	}
 	
+	@Test
+	void game_manager_updates_chips_based_on_Roll_type() {
+		GameManager manager = new GameManager();
+		manager.createPlayer("mike");
+		manager.adjustChipsForRollType();
+		int lostChips = manager.getLostChips();
+		assertEquals(4, lostChips);
+	}
 	
 
 	

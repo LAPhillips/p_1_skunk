@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Score {
 
 	private Scoreboard playerScoreBoard;
-	private SpecialRolls special;
+	private RollTypes special;
 	private int finalScore;
 	
 	public Score() {
@@ -17,13 +17,9 @@ public class Score {
 	
 	//*************Score Flow*************************************************************
 
-	//makes sure it does not record any special rolls
-	public void checkThenRecord(int[] scoreAfterRoll) {
-		if (this.isSpecial(scoreAfterRoll)) {
-		}
-		else {
-			this.recordScore(scoreAfterRoll);
-		}
+	//records & edits score 
+	public void recordAndUpdate(int[] scoreAfterRoll) {
+		this.recordScore(scoreAfterRoll);
 		this.editFinalScore(scoreAfterRoll);
 	}
 
@@ -68,24 +64,24 @@ public class Score {
 		
 		if (score1 == 1) {
 			if (score2 == 1) {
-				this.special = SpecialRolls.DOUBLE_SKUNK; //1,1
+				this.special = RollTypes.DOUBLE_SKUNK; //1,1
 			}
 			else if (score2 == 2){
-				this.special = SpecialRolls.SKUNK_DEUCE; // 1,2
+				this.special = RollTypes.SKUNK_DEUCE; // 1,2
 			}
 			else {
-				this.special = SpecialRolls.SKUNK; // 1,x
+				this.special = RollTypes.SKUNK; // 1,x
 			}
 		}
 		else if (score1 == 2) {
-				this.special = SpecialRolls.SKUNK_DEUCE; // 2,1
+				this.special = RollTypes.SKUNK_DEUCE; // 2,1
 		}
 		else if (score2 == 1) {
-			this.special = SpecialRolls.SKUNK; // x,1
+			this.special = RollTypes.SKUNK; // x,1
 		}
 	}
 
-	public SpecialRolls getSpecialRollType() {
+	public RollTypes getSpecialRollType() {
 		return this.special;
 	}
 
