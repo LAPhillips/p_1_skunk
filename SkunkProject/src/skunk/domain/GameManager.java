@@ -118,8 +118,9 @@ public class GameManager {
 		return player.getChips();
 	}
 
-	public void removeChips(int chipsToRemove) {
-	//	player.removeChips(chipsToRemove);
+	public void adjustChips(int chipsToRemove) {
+		player.adjustChips(chipsToRemove);
+	
 	}
 
 }

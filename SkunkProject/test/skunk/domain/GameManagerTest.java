@@ -211,7 +211,7 @@ class GameManagerTest {
 		GameManager manager = new GameManager();
 		manager.createPlayer("mike");
 		Player player = manager.getPlayer();
-		manager.removeChips(10);
+		manager.adjustChips(-10);
 		int playerChips = manager.getChips();
 		assertEquals(40, playerChips, "Default (50) -10 should be 40");
 	}
