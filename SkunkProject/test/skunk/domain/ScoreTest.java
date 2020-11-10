@@ -52,7 +52,7 @@ class ScoreTest {
 		Boolean roll2 = score.isSpecial(secondRoll);
 		assertTrue(roll2);
 		
-		int[] thirdRoll = new int[] {1, 2};
+		int[] thirdRoll = new int[] {2,1};
 		Boolean roll3 = score.isSpecial(thirdRoll);
 		assertTrue(roll3);	
 	}
@@ -87,7 +87,7 @@ class ScoreTest {
 		SpecialRolls expected = SpecialRolls.DOUBLE_SKUNK;
 		assertEquals(expected, special);
 		
-		int[]scores2 = new int[] {1,2};
+		int[]scores2 = new int[] {2,1};
 		score.setTypeSpecial(scores2);
 		special = score.getSpecialRollType();
 		expected = SpecialRolls.SKUNK_DEUCE;

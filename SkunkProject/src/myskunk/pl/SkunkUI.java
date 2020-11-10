@@ -70,7 +70,7 @@ public class SkunkUI {
 		int rolls = control.numberOfRolls();
 		int announceRolls = 1;
 		for (int i = 0; i < rolls*2; i++) {
-			System.out.print("(TURN #" + (announceRolls) + ") ");
+			System.out.print("(ROLL #" + (announceRolls) + ") ");
 			System.out.print(" Die One: " + control.reportsSpecificRoll(i));
 			i++;
 			System.out.println("      Die Two: " + control.reportsSpecificRoll(i));

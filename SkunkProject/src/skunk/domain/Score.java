@@ -89,12 +89,9 @@ public class Score {
 		return this.special;
 	}
 
-	
-	
 	public int getFinalScore() {
 		return this.finalScore;
 	}
-	
 	
 	public void setFinalScore(int newFinalScore) {
 		this.finalScore = newFinalScore;
@@ -110,7 +107,6 @@ public class Score {
 
 	}
 
-	
 	public int totalScore() {
 		ArrayList<Integer> fullScores = playerScoreBoard.getTurnScores();
 		int totalScore = 0;

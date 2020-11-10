@@ -167,18 +167,10 @@ class GameManagerTest {
 		manager.checkRollRecord(1,1);
 		SpecialRolls rollType = manager.getRollType();
 		SpecialRolls expected = SpecialRolls.DOUBLE_SKUNK;
-		assertEquals(expected, rollType);
-		
-		manager.checkRollRecord(2,1);
-		rollType = manager.getRollType();
-		expected = SpecialRolls.SKUNK_DEUCE;
-		assertEquals(expected, rollType);
-		
-		manager.checkRollRecord(3,1);
-		rollType = manager.getRollType();
-		expected = SpecialRolls.SKUNK;
-		assertEquals(expected, rollType);
+		assertEquals(expected, rollType, "first roll");
+
 		}
+	
 
 	@Test
 	void game_manager_reports_type_of_Special_Roll() {
@@ -204,6 +196,14 @@ class GameManagerTest {
 		expected = SpecialRolls.SKUNK;
 		assertEquals(expected, rollType);
 		}
+	
+	@Test
+	void game_manager_gets_amount_chips_from_player() {
+		GameManager manager = new GameManager();
+		int playerChips = manager.getChips();
+		assertEquals(50, playerChips, "default it should be 50");
+	}
+	
 	
 
 	

@@ -26,7 +26,7 @@ public class GameManager {
 	//*************Regulating Turn Flow*************************************************************
 	public void checkRollRecord() {
 		if (this.turn.getTurnStatus()) { //checks to make sure turn status is not false
-			this.playerRollsDice();      // player rolls dice
+			this.playerRollsDice();// player rolls dice
 			this.checkSpecialStatus();
 			this.recordsTheTurnScore(this.currentDiceRoll);
 		}
@@ -71,7 +71,7 @@ public class GameManager {
 	}
 
 	public void recordsTheTurnScore(int[] newScore) {
-		score.checkThenRecord(newScore);
+		score.checkThenRecord(newScore);;
 	}
 
 	public ArrayList<Integer> sharesTurnScores() {
@@ -112,6 +112,10 @@ public class GameManager {
 	public SpecialRolls getRollType() {
 		score.setTypeSpecial(currentDiceRoll);
 		return this.score.getSpecialRollType();
+	}
+
+	public int getChips() {
+		return 50;
 	}
 
 }
