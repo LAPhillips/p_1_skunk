@@ -115,7 +115,7 @@ public class GameManager {
 	}
 
 	public int getChips() {
-		return 50;
+		return player.getChips();
 	}
 
 }

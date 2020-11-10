@@ -200,6 +200,8 @@ class GameManagerTest {
 	@Test
 	void game_manager_gets_amount_chips_from_player() {
 		GameManager manager = new GameManager();
+		manager.createPlayer("mike");
+		Player player = manager.getPlayer();
 		int playerChips = manager.getChips();
 		assertEquals(50, playerChips, "default it should be 50");
 	}
