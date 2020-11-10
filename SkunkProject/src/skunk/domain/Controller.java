@@ -46,12 +46,11 @@ public class Controller {
 	}
 	
 	public int getPlayerChipsFromManager() {
-		Player player = getPlayerFromManager();
-		return player.getChips();
+		return this.manager.getChips();
 	}
 	
 	public int getLostChips() {
-		return 0;
+		return this.manager.getLostChips();
 	}
 
 	
