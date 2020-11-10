@@ -41,8 +41,7 @@ public class Controller {
 	}
 	
 	public String getPlayerNameFromManager() {
-		Player player = getPlayerFromManager();
-		return player.getPlayerName();
+		return this.manager.playerName();
 	}
 	
 	public int getPlayerChipsFromManager() {
