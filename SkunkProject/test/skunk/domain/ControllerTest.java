@@ -36,7 +36,8 @@ class ControllerTest {
 	void controller_gets_name_from_manager() {
 		Controller control = new Controller();
 		String defaultName = "noName";
-		assertTrue(defaultName.equals(control.getPlayerName()));
+		String playerName = control.getPlayerName();
+		assertTrue(defaultName.equals(playerName));
 	}
 	
 	@Test
@@ -65,6 +66,13 @@ class ControllerTest {
 		Controller control = new Controller();
 		int[] dice = control.shareRoll(2,5);
 		assertTrue(dice[0] == 2 && dice[1] == 5);
+	}
+	
+	@Test
+	void controller_gets_random_roll_from_manager() {
+		Controller control = new Controller();
+		int[] dice = control.shareRoll(2,5);
+		assertTrue((dice[0] > 0 && dice[0] < 7) &&(dice[0]> 0 && dice[1] < 7));
 	}
 	
 	@Test
