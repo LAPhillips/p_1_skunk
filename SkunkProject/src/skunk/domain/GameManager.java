@@ -29,7 +29,6 @@ public class GameManager {
 			this.playerRollsDice();// player rolls dice
 			this.recordsTheTurnScore(this.currentDiceRoll);
 			this.updatesForSpecialRolls();
-			System.out.println(this.getChips() + " " + this.getLostChips());
 		}
 		else {
 		}
@@ -104,12 +103,13 @@ public class GameManager {
 	public void updatesForSpecialRolls() {
 		if (score.isSpecial(currentDiceRoll)) {
 			this.adjustChipsForRollType();
-			turn.endTurn();
+			this.turn.endTurn();
 		}
 		else {
 			
 		}
 	}
+	
 	
 	public RollTypes getRollType() {
 		score.setTypeSpecial(currentDiceRoll);
@@ -121,8 +121,7 @@ public class GameManager {
 	}
 
 	public void adjustChips(int amountToAdjust) {
-		player.adjustChips(amountToAdjust);
-	
+		this.player.adjustChips(amountToAdjust);
 	}
 
 	public int amountToAdjustChips(RollTypes roll) {

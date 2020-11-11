@@ -52,11 +52,11 @@ public class Score {
 		if (diceRoll[0] == 1 || diceRoll[1] == 1) {
 			return true;
 		}
-		else if ((diceRoll[0] == 2 || diceRoll[1] == 2) && ((diceRoll[0] == 1 || diceRoll[1] == 1))) {
+		else if ((diceRoll[0] == 1 || diceRoll[1] == 1) && (diceRoll[0] == 2 && diceRoll[1] == 1)) {
 			return true;
 		}
 		return false;
-}
+	}
 	
 	public void setTypeSpecial(int[] scores) {
 		int score1 = scores[0];

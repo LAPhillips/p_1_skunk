@@ -40,7 +40,7 @@ class GameManagerTest {
 		manager.playerRollsDice();
 		int[] result = manager.returnDiceRoll();
 		int sumOfDice = result[0] + result[1];
-		assertTrue( sumOfDice > 2 && sumOfDice < 13);
+		assertTrue( sumOfDice >= 2 && sumOfDice < 13);
 	}
 	
 	@Test
@@ -133,12 +133,13 @@ class GameManagerTest {
 	}
 	
 	@Test
-	void game_manager_records_after_successful_roll_but_not_skunk() {
+	void game_manager_records_both_special_and_normal_rolls() {
 		GameManager manager = new GameManager();
+		manager.createPlayer("mike");
 		manager.checkRollRecord(5,4);
 		manager.checkRollRecord(1,4);
 		ArrayList<Integer> actualTurnScores = manager.sharesTurnScores();
-		assertEquals(2, actualTurnScores.size());
+		assertEquals(4, actualTurnScores.size());
 	}
 	
 	@Test
@@ -160,20 +161,23 @@ class GameManagerTest {
 	@Test
 	void game_manager_ends_Turn_if_Roll_is_Special() {
 		GameManager manager = new GameManager();
+		manager.createPlayer("mike");
 		manager.updatesForSpecialRolls();
 		Boolean turn = manager.getContinueTurn();
-		assertTrue(turn, "first assert");
+		assertTrue(turn);
 		
-		manager.playerRollsDice(1, 1);
+		manager.checkRollRecord(1,1);
 		manager.updatesForSpecialRolls();
 		turn = manager.getContinueTurn();
-		System.out.println("second assert, after continue turn");
-		assertFalse(turn, "second assert");
+		assertFalse(turn);
 	} 
+	
+
 	
 	@Test
 	void game_manager_flow_should_also_report_special() {
 		GameManager manager = new GameManager();
+		manager.createPlayer("mike");
 		manager.checkRollRecord(1,1);
 		RollTypes rollType = manager.getRollType();
 		RollTypes expected = RollTypes.DOUBLE_SKUNK;
@@ -248,6 +252,7 @@ class GameManagerTest {
 	void game_manager_updates_chips_based_on_Roll_type() {
 		GameManager manager = new GameManager();
 		manager.createPlayer("mike");
+		manager.playerRollsDice(1, 1);
 		manager.adjustChipsForRollType();
 		int lostChips = manager.getLostChips();
 		assertEquals(4, lostChips);

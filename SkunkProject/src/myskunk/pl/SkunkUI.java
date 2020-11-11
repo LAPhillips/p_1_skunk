@@ -1,15 +1,15 @@
 package myskunk.pl;
 import java.util.Scanner;
+
+import edu.princeton.cs.introcs.StdIn;
 import skunk.domain.Controller;
 
 public class SkunkUI {
-	private Scanner scan;
 	private String playerName;
 	private char playerInputs;
 	private Controller control; 
 
 	public SkunkUI(){
-		this.scan = new Scanner(System.in);
 		this.control = new Controller();
 		this.playerName = control.getPlayerName();
 		this.playerInputs = control.getsPlayerDecision();
@@ -30,20 +30,20 @@ public class SkunkUI {
 	}
 	
 	public void rollAgain() {
-		System.out.println("Do you want to roll again? [Y/N]");
-		playerInputs = scan.next().charAt(0); //read as string 
+		System.out.println(control.getPlayerName() + ", do you want to roll again? [Y/N]");
+		playerInputs = StdIn.readString().charAt(0);
 		control.setPlayerInput(playerInputs);
 	}
 	
 	public void enterName() {
 		System.out.println("What is your name?");
-		String playerName = scan.nextLine();
+		String playerName = StdIn.readLine();
 		control.setsPlayerName(playerName);
 	}
 	
 	public void playerRolls() {
 //for testing only
-		control.setsPlayerName("<Your Name>");
+//		control.setsPlayerName("<Your Name>");
 //
 		System.out.println();
 		System.out.println(control.getPlayerNameFromManager() + " rolls .... ");
@@ -53,7 +53,6 @@ public class SkunkUI {
 		String rollLabel1 = "First Die:";
 		String rollLabel2 = "Second Die:";
 		String rollLabel3 = "Roll Total:";
-		String rollLabel4 = "Grand Total:";
 		String format = "%-20s%s%n";;
 		System.out.printf(format, rollLabel1, currentRoll[0]);
 		System.out.printf(format, rollLabel2, currentRoll[1]);
@@ -65,7 +64,8 @@ public class SkunkUI {
 	}
 	
 	public void playerEndsTurn() {
-		System.out.println(control.getPlayerNameFromManager() + ", here is your turn review: ");
+	    StdIn.readLine(); //requires a player presses enter to continue 
+	    System.out.println(control.getPlayerNameFromManager() + ", here is your turn review: ");
 		System.out.println("----------------------------------------------");
 		int rolls = control.numberOfRolls();
 		int announceRolls = 1;
@@ -77,14 +77,17 @@ public class SkunkUI {
 			announceRolls++;
 		}
 		System.out.println("----------------------------------------------");
-		System.out.println("TOTAL TURN SCORE:" + control.totalTurnScore());
+		System.out.println("TOTAL TURN SCORE: " + control.totalTurnScore());
 		System.out.println("CHIPS LOST: " + control.getLostChips());
 	}
 	
 	public void playerRollsSpecial() {
-		System.out.println("You rolled a " + control.reportsSpecialRoll().toString() + "! Turn Over!");
+		System.out.println("You rolled a " + control.reportsSpecialRoll().toString() + "!");
+		System.out.println("Press [ENTER] to continue.");
+	    StdIn.readLine(); //requires a player presses enter to continue 
 		System.out.println();
 	}
+	
 
 	
 	

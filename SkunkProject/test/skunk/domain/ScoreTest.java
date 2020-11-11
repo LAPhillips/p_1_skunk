@@ -55,6 +55,19 @@ class ScoreTest {
 		int[] thirdRoll = new int[] {2,1};
 		Boolean roll3 = score.isSpecial(thirdRoll);
 		assertTrue(roll3);	
+		
+		int[] fourthRoll = new int[] {3, 1};
+		Boolean roll4 = score.isSpecial(fourthRoll);
+		assertTrue(roll4);
+		
+		int[] fifthRoll = new int[] {1,3};
+		Boolean roll5 = score.isSpecial(thirdRoll);
+		assertTrue(roll5);	
+		
+		int[] sixthRoll = new int[] {1,2};
+		Boolean roll6 = score.isSpecial(sixthRoll);
+		assertTrue(roll6);	
+
 	}
 	
 

@@ -16,11 +16,6 @@ public class Player {
 		return this.playerName;
 	}
 	
-	@Override
-	public String toString() // this OVERRIDES the default Object.toString()
-	{
-		return "Player " + this.getPlayerName() + " --- Score: " ;
-	}
 
 	public int getChips() {
 		return this.chips;
