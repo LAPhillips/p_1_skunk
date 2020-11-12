@@ -96,8 +96,8 @@ public class Controller {
 
 
 
-	public void setNumberPlayers() {
-		
+	public void setNumberPlayers(int enteredAmount) {
+		this.numberPlayers = enteredAmount;
 	}
 
 

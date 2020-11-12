@@ -161,6 +161,14 @@ class ControllerTest {
 		assertEquals(1, numberOfPlayers); //default 1
 	}
 	
+	@Test
+	void controller_sets_number_of_players() {
+		Controller control = new Controller();
+		control.setNumberPlayers(3);
+		int numberOfPlayers = control.getNumPlayers();
+		assertEquals(3, numberOfPlayers); //default 1
+	}
+	
 	
 
 }
