@@ -124,44 +124,20 @@ public class GameManager {
 		return activePlayer.getChips();
 	}
 
-	/*
-	public void adjustChips(int amountToAdjust) {
-		this.activePlayer.adjustChips(amountToAdjust);
-	}
-*/
-	public int amountToAdjustChips(RollTypes roll) {
-		int amountLost = 0;
-		if (roll == RollTypes.SKUNK) {
-			amountLost = -1;
-		}
-		else if (roll == RollTypes.SKUNK_DEUCE){
-			amountLost = -2;
-		}
-		else if (roll == RollTypes.DOUBLE_SKUNK){
-			amountLost = -4;
-		}
-		
-		return amountLost;
-	}
-
 	public int getLostChips() {
 		return activePlayer.getLostChips();
 	}
 
-	/*
-
-	public void adjustChipsForRollType() {
-		RollTypes type = this.getRollType();
-		int amountToAdjust = this.amountToAdjustChips(type);
-		this.adjustChips(amountToAdjust);
-	}
-*/
 	public void giveNumPlayers(int enteredAmount) {
 		this.numPlayers = enteredAmount;
 	}
 	
 	public int getNumPlayers() {
 		return this.numPlayers;
+	}
+
+	public void tellsPlayerToAdjustChips(RollTypes roll) {
+		this.activePlayer.chipsCalculatesLostGained(roll);
 	}
 
 	

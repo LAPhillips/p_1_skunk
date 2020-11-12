@@ -27,15 +27,34 @@ class PlayerTest {
 		int result = player.getChips();
 		assertEquals(45, result);
 	}
-	/*
+	
 	@Test
-	void player_can_gain_chips() {
+	void player_can_share_lost_or_gained_chips() {
 		Player player = new Player("player1");
-		player.adjustChips(2);
-		int result = player.getChips();
-		assertEquals(result, 52);
+		int result = player.getLostChips();
+		assertEquals(0, result); //default is 0
 	}
 	
+	@Test
+	void player_can_gives_roll_type_to_chips() {
+		Player player = new Player("player1");
+		player.chipsCalculatesLostGained(RollTypes.SKUNK);
+		int result = player.getLostChips();
+		assertEquals(-1, result); //skunk is -1
+		
+		player.chipsCalculatesLostGained(RollTypes.DOUBLE_SKUNK);
+		result = player.getLostChips();
+		assertEquals(-4, result); //double Skunk is -4
+		
+		
+		player.chipsCalculatesLostGained(RollTypes.SKUNK_DEUCE);
+		result = player.getLostChips();
+		assertEquals(-2, result); //skunk and deuce is -2
+	}
+	
+	
+
+	/*
 	@Test
 	void player_sets_chips() {
 		Player player = new Player("player1");

@@ -3,8 +3,6 @@ package skunk.domain;
 public class Player {
 	private String playerName;
 	private Chips chips;
-//	private int chips;
-	private int chipsAtStartOfTurn;
 	
 
 	public Player(String enteredName){
@@ -26,11 +24,16 @@ public class Player {
 	}
 
 	public int getLostChips() {
-		return this.chipsAtStartOfTurn - this.getChips();
+		return this.chips.amountChange();
 	}
 
-	public void setChips(int startingChips) {
-		this.chipsAtStartOfTurn = startingChips;
+	public void chipsCalculatesLostGained(RollTypes roll) {
+		this.chips.calculateChipChange(roll);
 	}
+	
+//	public void setChips(int startingChips) {
+//		this.chipsAtStartOfTurn = startingChips;
+//	}
+
 
 }

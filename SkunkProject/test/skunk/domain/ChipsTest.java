@@ -20,5 +20,20 @@ class ChipsTest {
 		int startingChips = chips.getNumChips();
 		assertEquals(45, startingChips);
 	}
+	
+	@Test
+	void chips_reports_lost_and_gained_chips() {
+		Chips chips = new Chips();
+		int change = chips.amountChange();
+		assertEquals(0, change);
+	}
+	
+	@Test
+	void chips_calculates_lost_or_gained_chips() {
+		Chips chips = new Chips();
+		chips.calculateChipChange(RollTypes.SKUNK);
+		int change = chips.amountChange();
+		assertEquals(-1, change);
+	}
 
 }

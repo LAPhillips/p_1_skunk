@@ -220,29 +220,19 @@ class GameManagerTest {
 	}
 	
 	@Test
-	void game_manager_adjusts_chip_amount_from_player() {
-		GameManager manager = new GameManager();
-		manager.createPlayer("mike");
-	//	manager.adjustChips(-10);
-		int playerChips = manager.getChips();
-		assertEquals(40, playerChips);
-	}
-	
-	@Test
 	void game_manager_informs_player_amount_of_chips_lost_or_gained() {
 		GameManager manager = new GameManager();
 		manager.createPlayer("mike");
-		int amountToAdjust = manager.amountToAdjustChips(RollTypes.DOUBLE_SKUNK);
-//		manager.adjustChips(amountToAdjust);
-		int playerChips = manager.getChips();
-		assertEquals(46, playerChips);
+		manager.tellsPlayerToAdjustChips(RollTypes.DOUBLE_SKUNK);
+		int playerChips = manager.getLostChips();
+		assertEquals(-4, playerChips);
 	}
 	
 	@Test
 	void game_manager_informs_shares_lost_chips() {
 		GameManager manager = new GameManager();
 		manager.createPlayer("mike");
-		int amountToAdjust = manager.amountToAdjustChips(RollTypes.DOUBLE_SKUNK);
+//		int amountToAdjust = manager.amountToAdjustChips(RollTypes.DOUBLE_SKUNK);
 //		manager.adjustChips(amountToAdjust);
 		int lostChips = manager.getLostChips();
 		assertEquals(4, lostChips);
