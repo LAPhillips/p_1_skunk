@@ -53,6 +53,10 @@ public class GameManager {
 	public Player getPlayer() {
 		return this.activePlayer;
 	}
+	
+	public String playerName() {
+		return activePlayer.getPlayerName();
+	}
 
 	//*************Dice/Score*************************************************************
 	public void playerRollsDice() {
@@ -143,9 +147,7 @@ public class GameManager {
 		return activePlayer.getLostChips();
 	}
 
-	public String playerName() {
-		return activePlayer.getPlayerName();
-	}
+
 
 	public void adjustChipsForRollType() {
 		RollTypes type = this.getRollType();
