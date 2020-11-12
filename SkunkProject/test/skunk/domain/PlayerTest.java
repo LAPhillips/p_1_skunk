@@ -52,6 +52,22 @@ class PlayerTest {
 		assertEquals(-2, result); //skunk and deuce is -2
 	}
 	
+	@Test
+	void player_records_most_current_score() {
+		Player player = new Player("player1");
+		int[] newScore = new int[] {3,4};
+		player.recordsIndividualScore(newScore);
+		int score = player.getIndividualScore();
+		assertEquals(7, score); 
+	}
+	
+	@Test
+	void player_shares_most_current_score() {
+		Player player = new Player("player1");
+		int score = player.getIndividualScore();
+		assertEquals(0, score); //default score is 0
+	}
+	
 	
 
 	/*

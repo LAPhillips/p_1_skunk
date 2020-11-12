@@ -6,12 +6,12 @@ import java.util.ArrayList;
 public class Score {
 
 	private Scoreboard playerScoreBoard;
-	private RollTypes special;
+	private RollTypes rollType;
 	private int finalScore;
 	
 	public Score() {
 		this.playerScoreBoard = new Scoreboard();
-		this.special = null; // only ever reports the most recent special roll
+		this.rollType = RollTypes.NORMAL; // only ever reports the most recent roll
 		this.finalScore = 0;
 	}
 	
@@ -64,25 +64,28 @@ public class Score {
 		
 		if (score1 == 1) {
 			if (score2 == 1) {
-				this.special = RollTypes.DOUBLE_SKUNK; //1,1
+				this.rollType = RollTypes.DOUBLE_SKUNK; //1,1
 			}
 			else if (score2 == 2){
-				this.special = RollTypes.SKUNK_DEUCE; // 1,2
+				this.rollType = RollTypes.SKUNK_DEUCE; // 1,2
 			}
 			else {
-				this.special = RollTypes.SKUNK; // 1,x
+				this.rollType = RollTypes.SKUNK; // 1,x
 			}
 		}
 		else if (score1 == 2) {
-				this.special = RollTypes.SKUNK_DEUCE; // 2,1
+				this.rollType = RollTypes.SKUNK_DEUCE; // 2,1
 		}
 		else if (score2 == 1) {
-			this.special = RollTypes.SKUNK; // x,1
+			this.rollType = RollTypes.SKUNK; // x,1
+		}
+		else {
+			this.rollType = RollTypes.NORMAL;
 		}
 	}
 
 	public RollTypes getSpecialRollType() {
-		return this.special;
+		return this.rollType;
 	}
 
 	public int getFinalScore() {

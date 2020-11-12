@@ -57,6 +57,14 @@ public class GameManager {
 	public String playerName() {
 		return activePlayer.getPlayerName();
 	}
+	
+	public int getNumPlayers() {
+		return this.numPlayers;
+	}
+	
+	public void giveNumPlayers(int enteredAmount) {
+		this.numPlayers = enteredAmount;
+	}
 
 	//*************Dice/Score*************************************************************
 	public void playerRollsDice() {
@@ -74,6 +82,50 @@ public class GameManager {
 		return this.currentDiceRoll;
 	}
 
+	public int numberOfRolls() {
+		ArrayList<Integer> turnScores = this.sharesTurnScores();
+		return turnScores.size()/2;
+	}
+
+	//*************Managing Turns*************************************************************
+	public Boolean getContinueTurn() {
+		return this.turn.getTurnStatus();
+	}
+
+	public void setContinueTurn(char playerInput) {
+		this.turn.playersDecision(playerInput);
+	}
+
+	//*************Managing Special Rolls*************************************************************
+	public void updatesForSpecialRolls() {
+		if (score.isSpecial(currentDiceRoll)) {
+	//		this.adjustChipsForRollType();
+			this.turn.endTurn();
+		}
+		else {
+			
+		}
+	}
+	
+	public RollTypes getRollType() {
+		score.setTypeSpecial(currentDiceRoll);
+		return this.score.getSpecialRollType();
+	}
+
+	//*************Keeping Score*************************************************************
+	public int getChips() {
+		return activePlayer.getChips();
+	}
+
+	public int getLostChips() {
+		return activePlayer.getLostChips();
+	}
+
+	public void tellsPlayerToAdjustChips(RollTypes roll) {
+		this.activePlayer.chipsCalculatesLostGained(roll);
+	}
+	
+
 	public void recordsTheTurnScore(int[] newScore) {
 		score.recordAndUpdate(newScore);
 	}
@@ -85,60 +137,9 @@ public class GameManager {
 	public int diceTotalScore() {
 		return dice.getLastRoll();
 	}
-	
-	public int numberOfRolls() {
-		ArrayList<Integer> turnScores = this.sharesTurnScores();
-		return turnScores.size()/2;
-	}
 
 	public int totalTurnScore() {
 		return score.getFinalScore();
 	}
-	
-	//*************Managing Turns*************************************************************
-	public Boolean getContinueTurn() {
-		return this.turn.getTurnStatus();
-	}
-
-	public void setContinueTurn(char playerInput) {
-		this.turn.playersDecision(playerInput);
-	}
-
-	public void updatesForSpecialRolls() {
-		if (score.isSpecial(currentDiceRoll)) {
-	//		this.adjustChipsForRollType();
-			this.turn.endTurn();
-		}
-		else {
-			
-		}
-	}
-	
-	
-	public RollTypes getRollType() {
-		score.setTypeSpecial(currentDiceRoll);
-		return this.score.getSpecialRollType();
-	}
-
-	public int getChips() {
-		return activePlayer.getChips();
-	}
-
-	public int getLostChips() {
-		return activePlayer.getLostChips();
-	}
-
-	public void giveNumPlayers(int enteredAmount) {
-		this.numPlayers = enteredAmount;
-	}
-	
-	public int getNumPlayers() {
-		return this.numPlayers;
-	}
-
-	public void tellsPlayerToAdjustChips(RollTypes roll) {
-		this.activePlayer.chipsCalculatesLostGained(roll);
-	}
-
 	
 }
