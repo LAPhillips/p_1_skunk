@@ -19,15 +19,15 @@ class PlayerTest {
 		int result = player.getChips();
 		assertEquals(50, result);
 	}
-	/*
+
 	@Test
 	void player_can_lose_chips() {
 		Player player = new Player("player1");
-		player.adjustChips(-2);
+		player.adjustChips(-5);
 		int result = player.getChips();
-		assertEquals(result, 48);
+		assertEquals(45, result);
 	}
-	
+	/*
 	@Test
 	void player_can_gain_chips() {
 		Player player = new Player("player1");

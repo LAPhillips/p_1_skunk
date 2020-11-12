@@ -21,9 +21,9 @@ public class Player {
 		return this.chips.getNumChips();
 	}
 	
-//	public void adjustChips(int chipChange) {
-//		this.chips += chipChange;
-//	}
+	public void adjustChips(int chipChange) {
+		this.chips.adjustChips(chipChange);
+	}
 
 	public int getLostChips() {
 		return this.chipsAtStartOfTurn - this.getChips();
