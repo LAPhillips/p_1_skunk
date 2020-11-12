@@ -258,6 +258,21 @@ class GameManagerTest {
 		assertEquals(4, lostChips);
 	}
 	
+	@Test
+	void game_manager_gets_num_players() {
+		GameManager manager = new GameManager();
+		int numPlayers = manager.getNumPlayers();
+		assertEquals(1, numPlayers);
+	}
+	
+	@Test
+	void game_manager_gets_num_players_from_controller() {
+		GameManager manager = new GameManager();
+		manager.giveNumPlayers(3);
+		int numPlayers = manager.getNumPlayers();
+		assertEquals(3, numPlayers);
+	}
+	
 
 	
 }

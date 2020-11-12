@@ -97,18 +97,12 @@ public class Controller {
 
 
 	public void setNumberPlayers(int enteredAmount) {
+		this.manager.giveNumPlayers(enteredAmount);
 		this.numberPlayers = enteredAmount;
 	}
-
-
 
 	public int getNumPlayers() {
 		return this.numberPlayers;
 	}
-
-
-
-
-
 
 }

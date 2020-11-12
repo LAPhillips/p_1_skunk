@@ -2,22 +2,24 @@ package skunk.domain;
 
 import java.util.ArrayList;
 
-//Brings everything together -- manages the game for a single player
+//Brings everything together -- manages the game 
 public class GameManager {
-	private Player player;
+	private Player activePlayer;
 	private Dice dice;
 	private Score score;
 	private Turn turn;
 	private int [] currentDiceRoll;
 	private RollTypes types;
+	private int numPlayers;
 
 	public GameManager() {
-		this.player = null;
+		this.activePlayer = null;
 		this.dice = new Dice();
 		this.score = new Score();
 		this.turn = new Turn();
 		this.currentDiceRoll = new int[2];
 		this.types = RollTypes.NORMAL;
+		this.numPlayers = 1;
 
 	}
 
@@ -45,11 +47,11 @@ public class GameManager {
 	//*************Player*************************************************************
 	public void createPlayer(String playerName) {
 		Player newPlayer = new Player(playerName);
-		this.player = newPlayer;
+		this.activePlayer = newPlayer;
 	}
 	
 	public Player getPlayer() {
-		return this.player;
+		return this.activePlayer;
 	}
 
 	//*************Dice/Score*************************************************************
@@ -115,11 +117,11 @@ public class GameManager {
 	}
 
 	public int getChips() {
-		return player.getChips();
+		return activePlayer.getChips();
 	}
 
 	public void adjustChips(int amountToAdjust) {
-		this.player.adjustChips(amountToAdjust);
+		this.activePlayer.adjustChips(amountToAdjust);
 	}
 
 	public int amountToAdjustChips(RollTypes roll) {
@@ -138,17 +140,25 @@ public class GameManager {
 	}
 
 	public int getLostChips() {
-		return player.getLostChips();
+		return activePlayer.getLostChips();
 	}
 
 	public String playerName() {
-		return player.getPlayerName();
+		return activePlayer.getPlayerName();
 	}
 
 	public void adjustChipsForRollType() {
 		RollTypes type = this.getRollType();
 		int amountToAdjust = this.amountToAdjustChips(type);
 		this.adjustChips(amountToAdjust);
+	}
+
+	public void giveNumPlayers(int enteredAmount) {
+		this.numPlayers = enteredAmount;
+	}
+	
+	public int getNumPlayers() {
+		return this.numPlayers;
 	}
 
 	
