@@ -212,7 +212,7 @@ class GameManagerTest {
 		}
 	
 	@Test
-	void game_manager_gets_amount_chips_from_player() {
+	void game_manager_gets_total_chips_from_player() {
 		GameManager manager = new GameManager();
 		manager.createPlayer("mike");
 		int playerChips = manager.getChips();
@@ -229,23 +229,12 @@ class GameManagerTest {
 	}
 	
 	@Test
-	void game_manager_informs_shares_lost_chips() {
+	void game_manager_shares_lost_chips() {
 		GameManager manager = new GameManager();
 		manager.createPlayer("mike");
-//		int amountToAdjust = manager.amountToAdjustChips(RollTypes.DOUBLE_SKUNK);
-//		manager.adjustChips(amountToAdjust);
+		manager.tellsPlayerToAdjustChips(RollTypes.DOUBLE_SKUNK);
 		int lostChips = manager.getLostChips();
-		assertEquals(4, lostChips);
-	}
-	
-	@Test
-	void game_manager_updates_chips_based_on_Roll_type() {
-		GameManager manager = new GameManager();
-		manager.createPlayer("mike");
-		manager.playerRollsDice(1, 1);
-//		manager.adjustChipsForRollType();
-		int lostChips = manager.getLostChips();
-		assertEquals(4, lostChips);
+		assertEquals(-4, lostChips);
 	}
 	
 	@Test
