@@ -48,7 +48,7 @@ class ControllerTest {
 		assertEquals(50, chips, "expect 50, b/c default is 50");
 	}
 	
-	
+	/*
 	@Test
 	void controller_gets_lost_chips_from_manager() {
 		Controller control = new Controller();
@@ -58,7 +58,7 @@ class ControllerTest {
 		player.adjustChips(lost);
 		int chips = control.getLostChips();
 		assertEquals(5, chips, "the amount lost will be negative");
-	}
+	}*/
 
 
 	@Test

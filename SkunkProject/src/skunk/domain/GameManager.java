@@ -106,7 +106,7 @@ public class GameManager {
 
 	public void updatesForSpecialRolls() {
 		if (score.isSpecial(currentDiceRoll)) {
-			this.adjustChipsForRollType();
+	//		this.adjustChipsForRollType();
 			this.turn.endTurn();
 		}
 		else {
@@ -124,10 +124,11 @@ public class GameManager {
 		return activePlayer.getChips();
 	}
 
+	/*
 	public void adjustChips(int amountToAdjust) {
 		this.activePlayer.adjustChips(amountToAdjust);
 	}
-
+*/
 	public int amountToAdjustChips(RollTypes roll) {
 		int amountLost = 0;
 		if (roll == RollTypes.SKUNK) {
@@ -147,14 +148,14 @@ public class GameManager {
 		return activePlayer.getLostChips();
 	}
 
-
+	/*
 
 	public void adjustChipsForRollType() {
 		RollTypes type = this.getRollType();
 		int amountToAdjust = this.amountToAdjustChips(type);
 		this.adjustChips(amountToAdjust);
 	}
-
+*/
 	public void giveNumPlayers(int enteredAmount) {
 		this.numPlayers = enteredAmount;
 	}

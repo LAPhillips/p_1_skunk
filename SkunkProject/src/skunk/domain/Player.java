@@ -2,14 +2,14 @@ package skunk.domain;
 
 public class Player {
 	private String playerName;
-	private int chips;
+	private Chips chips;
+//	private int chips;
 	private int chipsAtStartOfTurn;
 	
 
 	public Player(String enteredName){
 		this.playerName = enteredName;
-		this.chips = 50;
-		this.chipsAtStartOfTurn = 50;
+		this.chips = new Chips();
 	}
 
 	public String getPlayerName() {
@@ -18,12 +18,12 @@ public class Player {
 	
 
 	public int getChips() {
-		return this.chips;
+		return this.chips.getNumChips();
 	}
 	
-	public void adjustChips(int chipChange) {
-		this.chips += chipChange;
-	}
+//	public void adjustChips(int chipChange) {
+//		this.chips += chipChange;
+//	}
 
 	public int getLostChips() {
 		return this.chipsAtStartOfTurn - this.getChips();

@@ -11,4 +11,8 @@ public class Chips {
 		return this.numChips;
 	}
 
+	public void adjustChips(int chipChange) {
+		this.numChips += chipChange;
+	}
+
 }
