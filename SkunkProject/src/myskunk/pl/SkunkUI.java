@@ -7,12 +7,14 @@ import skunk.domain.Controller;
 public class SkunkUI {
 	private String playerName;
 	private char playerInputs;
+	private int numberPlayers;
 	private Controller control; 
 
 	public SkunkUI(){
 		this.control = new Controller();
 		this.playerName = control.getPlayerName();
 		this.playerInputs = control.getsPlayerDecision();
+		this.numberPlayers = 0;
 	}
 	
 	public void doesPlayerRoll() {
@@ -33,6 +35,11 @@ public class SkunkUI {
 		System.out.println(control.getPlayerName() + ", do you want to roll again? [Y/N]");
 		playerInputs = StdIn.readString().charAt(0);
 		control.setPlayerInput(playerInputs);
+	}
+	
+	public void howMany() {
+		System.out.println("How many players are there?");
+		numberPlayers = StdIn.readInt();
 	}
 	
 	public void enterName() {

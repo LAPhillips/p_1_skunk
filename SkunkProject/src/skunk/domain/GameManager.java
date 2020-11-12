@@ -11,8 +11,6 @@ public class GameManager {
 	private int [] currentDiceRoll;
 	private RollTypes types;
 
-
-	
 	public GameManager() {
 		this.player = null;
 		this.dice = new Dice();

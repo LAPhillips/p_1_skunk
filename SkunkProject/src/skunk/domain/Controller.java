@@ -4,11 +4,13 @@ public class Controller {
 	private String playerName;
 	private char playerControls;
 	private GameManager manager;
+	private int numberPlayers;
 	
 	public Controller() {
 		this.playerName = "noName";
 		this.playerControls = 'Y';
 		this.manager = new GameManager();
+		this.numberPlayers = 1;
 	}
 
 	
@@ -90,6 +92,18 @@ public class Controller {
 
 	public int numberOfRolls() {
 		return manager.numberOfRolls();
+	}
+
+
+
+	public void setNumberPlayers() {
+		
+	}
+
+
+
+	public int getNumPlayers() {
+		return this.numberPlayers;
 	}
 
 
