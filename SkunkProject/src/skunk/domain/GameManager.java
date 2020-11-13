@@ -16,7 +16,7 @@ public class GameManager {
 		this.dice = new Dice();
 		this.score = new Score();
 		this.turn = new Turn();
-		this.currentDiceRoll = new int[2];
+		this.currentDiceRoll = new int[] {0,0};
 		this.numPlayers = 1;
 
 	}
@@ -117,14 +117,8 @@ public class GameManager {
 	}
 
 	public int getLostChips() {
-		return activePlayer.getLostChips();
+		return activePlayer.chipsFlow(this.currentDiceRoll);
 	}
-
-	public void tellsPlayerToAdjustChips(RollTypes roll) {
-		this.activePlayer.setRollType(roll);
-		this.activePlayer.givesChipsRollType(roll);
-	}
-	
 
 	public void recordsTheTurnScore(int[] newScore) {
 		score.recordAndUpdate(newScore);
