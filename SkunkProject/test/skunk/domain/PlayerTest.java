@@ -74,7 +74,7 @@ class PlayerTest {
 		Player player = new Player("player1");
 		int[] newScore = new int[] {3,4};
 		player.recordScore(newScore);
-		int score = player.getIndividualScore();
+		int score = player.getFinalScore();
 		assertEquals(7, score); 
 	}
 	
@@ -93,10 +93,19 @@ class PlayerTest {
 	}
 	
 	@Test
-	void player_shares_most_current_score() {
+	void player_shares_most_final_score() {
 		Player player = new Player("player1");
-		int score = player.getIndividualScore();
+		int score = player.getFinalScore();
 		assertEquals(0, score); //default score is 0
+		
+		int[] roll = new int[] {2,3};
+		player.recordScore(roll);
+		score = player.getFinalScore();
+		assertEquals(5, score);
+		
+		
+		
+		
 	}
 	
 	@Test

@@ -60,8 +60,8 @@ public class Player {
 	
 	//*************Score***************************************
 	
-	public int getIndividualScore() {
-		return score.getTotalScoreForTurn();
+	public int getFinalScore() { //player shouldn't care what the ACTUAL score is, just the final one
+		return score.getFinalScore();
 	}
 
 	public void recordScore(int[] newScore) {
@@ -72,6 +72,7 @@ public class Player {
 		this.score.setTypeSpecial(roll);
 		return this.score.getSpecialRollType();
 	}
+	
 
 
 	public ArrayList<Integer> getScoreboard() {
