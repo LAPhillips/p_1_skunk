@@ -3,12 +3,12 @@ package skunk.domain;
 public class Player {
 	private String playerName;
 	private Chips chips;
-	private int ongoingScore;
+	private int totalTally;
 
 	public Player(String enteredName){
 		this.playerName = enteredName;
 		this.chips = new Chips();
-		this.ongoingScore = 0;
+		this.totalTally = 0;
 	}
 
 	
@@ -18,7 +18,7 @@ public class Player {
 	}
 	
 	public int getOngoingScore() {
-		return this.ongoingScore;
+		return this.totalTally;
 	}
 
 	//*************chips***************************************
@@ -38,6 +38,11 @@ public class Player {
 
 	public void givesChipsRollType(RollTypes roll) {
 		this.chips.calculateChipChange(roll); //player gives roll type to chips
+	}
+
+
+	public void updateTally(int turnScore) {
+		this.totalTally += turnScore;
 	}
 
 

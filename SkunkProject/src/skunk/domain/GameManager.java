@@ -63,6 +63,10 @@ public class GameManager {
 	public void giveNumPlayers(int enteredAmount) {
 		this.numPlayers = enteredAmount;
 	}
+	
+	public int getPlayerTally() {
+		return 0;
+	}
 
 	//*************Dice/Score*************************************************************
 	public void playerRollsDice() {
@@ -136,6 +140,8 @@ public class GameManager {
 	public int getFinalTurnScore() {
 		return this.score.getFinalScore();
 	}
+
+
 
 
 	

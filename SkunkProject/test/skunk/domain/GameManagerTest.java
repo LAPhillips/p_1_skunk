@@ -271,6 +271,13 @@ class GameManagerTest {
 		assertEquals(RollTypes.DOUBLE_SKUNK, roll);
 	}
 	
+	
+	@Test
+	void GM_informs_gets_tally_from_player() {
+		GameManager manager = new GameManager();
+		int tally = manager.getPlayerTally();
+		assertEquals(0, tally); //default is 0
+	}
 
 
 }
