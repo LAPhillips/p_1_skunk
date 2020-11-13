@@ -52,6 +52,14 @@ class PlayerTest {
 	}
 	
 	@Test
+	void player_gives_roll_to_chips_gets_back() {
+		Player player = new Player("player1");
+		RollTypes type = RollTypes.DOUBLE_SKUNK;
+		int change = player.chipsFlow(type);
+		assertEquals(-4, change); //would expect -4 for double skunk
+	}
+	
+	@Test
 	void player_updates_roll_type() {
 		Player player = new Player("player1");
 		player.updateRollType(RollTypes.SKUNK);
@@ -74,5 +82,22 @@ class PlayerTest {
 		int score = player.getIndividualScore();
 		assertEquals(0, score); //default score is 0
 	}
+	
+	@Test
+	void player_gets_the_current_dice_roll() {
+		Player player = new Player("player1");
+		int [] roll = player.getCurrentRoll();
+		assertNull(roll); //default is null
+	}
+	
+	@Test
+	void player_sets_the_current_dice_roll() {
+		Player player = new Player("player1");
+		int[] roll = new int[] {2,3};
+		player.setCurrentRoll(roll);
+		int [] newRoll = player.getCurrentRoll();
+		assertEquals(roll[1], newRoll[1]);
+	}
+
 
 }

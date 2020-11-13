@@ -80,6 +80,7 @@ public class GameManager {
 		return this.currentDiceRoll;
 	}
 
+	//should be in score
 	public int numberOfRolls() {
 		ArrayList<Integer> turnScores = this.sharesTurnScores();
 		return turnScores.size()/2;
@@ -120,6 +121,7 @@ public class GameManager {
 	}
 
 	public void tellsPlayerToAdjustChips(RollTypes roll) {
+		this.activePlayer.updateRollType(roll);
 		this.activePlayer.givesChipsRollType(roll);
 	}
 	
@@ -138,6 +140,10 @@ public class GameManager {
 
 	public int totalTurnScore() {
 		return score.getFinalScore();
+	}
+
+	public void givePlayerDice(int[] roll) {
+		this.activePlayer.setCurrentRoll(roll);
 	}
 	
 }

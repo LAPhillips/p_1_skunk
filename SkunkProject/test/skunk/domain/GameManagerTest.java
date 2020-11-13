@@ -252,6 +252,15 @@ class GameManagerTest {
 		assertEquals(3, numPlayers);
 	}
 	
+	@Test
+	void game_manager_lets_player_know_their_roll() {
+		GameManager manager = new GameManager();
+		int [] roll = new int[] {2,3};
+		manager.givePlayerDice(roll);
+		assertTrue(false);
+	}
+	
+	
 
 	
 }
