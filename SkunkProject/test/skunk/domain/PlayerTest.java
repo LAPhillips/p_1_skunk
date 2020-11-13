@@ -54,8 +54,8 @@ class PlayerTest {
 	@Test
 	void player_gives_roll_to_chips_gets_back() {
 		Player player = new Player("player1");
-		RollTypes type = RollTypes.DOUBLE_SKUNK;
-		int change = player.chipsFlow(type);
+		int[] newScore = new int[] {1,1};
+		int change = player.chipsFlow(newScore);
 		assertEquals(-4, change); //would expect -4 for double skunk
 	}
 	

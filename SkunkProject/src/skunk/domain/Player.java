@@ -38,9 +38,9 @@ public class Player {
 
 	//*************chips***************************************
 
-	public int chipsFlow(RollTypes roll) {
-		//should give dice to score to get roll type
-		this.givesChipsRollType(roll);
+	public int chipsFlow(int[] currentRoll) {
+		RollTypes rollType = this.getRollTypeFromScore(currentRoll);
+		this.givesChipsRollType(rollType);
 		return this.chips.amountChange();
 	}
 	
