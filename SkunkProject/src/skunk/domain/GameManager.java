@@ -65,7 +65,7 @@ public class GameManager {
 	}
 	
 	public int getPlayerTally() {
-		return 0;
+		return this.activePlayer.getTally();
 	}
 
 	//*************Dice/Score*************************************************************

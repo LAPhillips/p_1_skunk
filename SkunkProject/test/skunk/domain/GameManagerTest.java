@@ -275,6 +275,7 @@ class GameManagerTest {
 	@Test
 	void GM_informs_gets_tally_from_player() {
 		GameManager manager = new GameManager();
+		manager.createPlayer("mike");
 		int tally = manager.getPlayerTally();
 		assertEquals(0, tally); //default is 0
 	}

@@ -60,7 +60,7 @@ class PlayerTest {
 	@Test
 	void player_gets_ongoing_score() {
 		Player player = new Player("player1");
-		int score = player.getOngoingScore();
+		int score = player.getTally();
 		assertEquals(0, score); //default score is 0
 	}
 	
@@ -68,7 +68,7 @@ class PlayerTest {
 	void player_updates_ongoing_score() {
 		Player player = new Player("player1");
 		player.updateTally(4);
-		int score = player.getOngoingScore();
+		int score = player.getTally();
 		assertEquals(4, score); //default score is 0
 	}
 

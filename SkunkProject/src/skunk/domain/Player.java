@@ -17,7 +17,7 @@ public class Player {
 		return this.playerName;
 	}
 	
-	public int getOngoingScore() {
+	public int getTally() {
 		return this.totalTally;
 	}
 
