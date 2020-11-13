@@ -141,6 +141,10 @@ public class GameManager {
 		return this.score.getFinalScore();
 	}
 
+	public void shareFinalScore(int finalScore) {
+		this.activePlayer.updateTally(finalScore);
+	}
+
 
 
 

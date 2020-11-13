@@ -273,12 +273,22 @@ class GameManagerTest {
 	
 	
 	@Test
-	void GM_informs_gets_tally_from_player() {
+	void GM_gets_tally_from_player() {
 		GameManager manager = new GameManager();
 		manager.createPlayer("mike");
 		int tally = manager.getPlayerTally();
 		assertEquals(0, tally); //default is 0
 	}
+	
+	@Test
+	void GM_informs_player_of_final_score() {
+		GameManager manager = new GameManager();
+		manager.createPlayer("mike");
+		manager.shareFinalScore(5);
+		int tally = manager.getPlayerTally();
+		assertEquals(5, tally); //default is 0
+	}
+
 
 
 }

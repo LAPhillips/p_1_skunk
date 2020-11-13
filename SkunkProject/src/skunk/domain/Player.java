@@ -42,7 +42,7 @@ public class Player {
 
 
 	public void updateTally(int turnScore) {
-		this.totalTally += turnScore;
+		this.totalTally =+ turnScore;
 	}
 
 
