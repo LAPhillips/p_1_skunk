@@ -103,8 +103,15 @@ class PlayerTest {
 		score = player.getFinalScore();
 		assertEquals(5, score);
 		
+		roll = new int[] {3,3};
+		player.recordScore(roll);
+		score = player.getFinalScore();
+		assertEquals(11, score);
 		
-		
+		roll = new int[] {1,1};
+		player.recordScore(roll);
+		score = player.getFinalScore();
+		assertEquals(11, score);  //expect final score to be 0 because we rolled a double skunk
 		
 	}
 	
