@@ -62,7 +62,7 @@ class PlayerTest {
 	@Test
 	void player_updates_roll_type() {
 		Player player = new Player("player1");
-		player.updateRollType(RollTypes.SKUNK);
+		player.setRollType(RollTypes.SKUNK);
 		RollTypes type = player.getRollType();
 		assertEquals(RollTypes.SKUNK, type); //default score is 0
 	}
@@ -97,6 +97,14 @@ class PlayerTest {
 		player.setCurrentRoll(roll);
 		int [] newRoll = player.getCurrentRoll();
 		assertEquals(roll[1], newRoll[1]);
+	}
+	
+	@Test
+	void player_gets_rollType_from_score() {
+		Player player = new Player("player1");
+		int[] roll = new int[] {2,3};
+		RollTypes type = player.getRollTypeFromScore(roll);
+		assertNull(type); //default is null
 	}
 
 

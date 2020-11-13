@@ -121,7 +121,7 @@ public class GameManager {
 	}
 
 	public void tellsPlayerToAdjustChips(RollTypes roll) {
-		this.activePlayer.updateRollType(roll);
+		this.activePlayer.setRollType(roll);
 		this.activePlayer.givesChipsRollType(roll);
 	}
 	

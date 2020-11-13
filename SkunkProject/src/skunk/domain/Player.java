@@ -15,13 +15,8 @@ public class Player {
 		this.rollType = RollTypes.NORMAL;
 	}
 
-	///player needs to be able to give roll to chips and then chips give back lost; should not have to adjust itself
 	
-	//player gives roll type to chips
-	//chips calculates change
-	//player gets change (int) from chips
-	
-	
+	//*************basics***************************************
 	public String getPlayerName() {
 		return this.playerName;
 	}
@@ -33,15 +28,21 @@ public class Player {
 	public int[] getCurrentRoll() {
 		return this.currentRoll;
 	}
-
+	
+	public void setRollType(RollTypes type) {
+		this.rollType = type;
+	}
+	public RollTypes getRollType() {
+		return this.rollType;
+	}
 
 	//*************chips***************************************
 
 	public int chipsFlow(RollTypes roll) {
+		//should give dice to score to get roll type
 		this.givesChipsRollType(roll);
 		return this.chips.amountChange();
 	}
-	
 	
 	
 	public int getChips() {
@@ -56,7 +57,7 @@ public class Player {
 		this.chips.calculateChipChange(roll); //player gives roll type to chips
 	}
 	
-	//*************chips***************************************
+	//*************Score***************************************
 	
 	public int getIndividualScore() {
 		return score.getTotalScoreForTurn();
@@ -66,14 +67,14 @@ public class Player {
 		this.score.recordAndUpdate(newScore);
 	}
 
-	public RollTypes getRollType() {
-		return this.rollType;
+
+	public RollTypes getRollTypeFromScore(int[] roll) {
+		return null;
 	}
 
-	public void updateRollType(RollTypes type) {
-		this.rollType = type;
-		
-	}
+
+
+
 
 
 	
