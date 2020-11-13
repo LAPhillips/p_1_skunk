@@ -92,7 +92,7 @@ public class GameManager {
 
 	//*************Managing Turns*************************************************************
 	public Boolean getContinueTurn() {
-		return this.turn.getTurnStatus();
+		return this.activePlayer.getTurnStatus();
 	}
 
 	public void setContinueTurn(char playerInput) {

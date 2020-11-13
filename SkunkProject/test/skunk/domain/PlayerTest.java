@@ -78,4 +78,12 @@ class PlayerTest {
 		Boolean turn = player.getTurnStatus();
 		assertTrue(turn); //default is true
 	}
+	
+	@Test
+	void player_sets_turn_status() {
+		Player player = new Player("player1");
+		player.endTurn();
+		Boolean turn = player.getTurnStatus();
+		assertFalse(turn); //after endTurn() players turn status should be false
+	}
 }

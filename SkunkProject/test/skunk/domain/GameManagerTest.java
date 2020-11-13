@@ -101,6 +101,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_reads_player_decision() {
 		GameManager manager = new GameManager();
+		manager.createPlayer("mike");
 		Boolean playerInput = manager.getContinueTurn();
 		assertTrue(playerInput);
 	}
@@ -108,6 +109,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_sets_player_decision() {
 		GameManager manager = new GameManager();
+		manager.createPlayer("mike");
 		char playerDecision = 'N';
 		Boolean expected = false;
 		manager.setContinueTurn(playerDecision);
@@ -162,7 +164,8 @@ class GameManagerTest {
 	@Test
 	void game_manager_can_see_turn_status() {
 		GameManager manager = new GameManager();
-		assertTrue(manager.getContinueTurn());
+		manager.createPlayer("mike");
+		assertTrue(manager.getContinueTurn()); //default is true
 	}
 	
 	@Test

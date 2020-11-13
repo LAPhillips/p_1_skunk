@@ -55,6 +55,10 @@ public class Player {
 		return this.turn.getTurnStatus();
 	}
 
+	public void endTurn() {
+		this.turn.endTurn();
+	}
+
 
 
 
