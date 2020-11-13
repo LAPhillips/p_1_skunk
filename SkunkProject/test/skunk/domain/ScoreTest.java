@@ -23,7 +23,7 @@ class ScoreTest {
 		Score score = new Score();
 		int[]scores = new int[] {5,3};
 		score.recordScore(scores);
-		ArrayList<Integer> retreivedScore = score.getTurnScores();
+		ArrayList<Integer> retreivedScore = score.getScoreboard();
 		assertEquals(scores[1], retreivedScore.get(1));
 	}	
 	

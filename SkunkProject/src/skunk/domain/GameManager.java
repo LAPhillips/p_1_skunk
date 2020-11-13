@@ -125,7 +125,7 @@ public class GameManager {
 	}
 
 	public ArrayList<Integer> sharesTurnScores() {
-		return score.getTurnScores();
+		return this.activePlayer.getScoreboard();
 	}
 
 	public int diceTotalScore() {

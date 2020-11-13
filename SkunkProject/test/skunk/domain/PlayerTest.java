@@ -84,7 +84,12 @@ class PlayerTest {
 		int[] newScore = new int[] {3,4};
 		player.recordScore(newScore);
 		ArrayList<Integer> playerSB = player.getScoreboard();
-		assertNull(playerSB);
+		assertEquals(4, playerSB.get(1));
+		
+		int[] newScore2 = new int[] {9,3};
+		player.recordScore(newScore2);
+		playerSB = player.getScoreboard();
+		assertEquals(9, playerSB.get(2));
 	}
 	
 	@Test

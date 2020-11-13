@@ -25,7 +25,7 @@ public class Score {
 
 	//*************Recording/Reporting Scores*************************************************************
 	public int getTotalScoreForTurn() {
-		ArrayList<Integer> turnTotals = this.getTurnScores();
+		ArrayList<Integer> turnTotals = this.getScoreboard();
 		int scoreTotals = 0;
 		for (int scores : turnTotals) {
 			scoreTotals += scores;
@@ -41,7 +41,7 @@ public class Score {
 		return this.playerScoreBoard.getSpecificTurnScores(index);
 	}
 
-	public ArrayList<Integer> getTurnScores() {
+	public ArrayList<Integer> getScoreboard() {
 		return playerScoreBoard.getTurnScores();
 	}
 

@@ -75,8 +75,7 @@ public class Player {
 
 
 	public ArrayList<Integer> getScoreboard() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.score.getScoreboard();
 	}
 
 
