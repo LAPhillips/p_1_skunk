@@ -117,7 +117,7 @@ public class GameManager {
 	}
 
 	public int getLostChips() {
-		return activePlayer.chipsFlow(this.currentDiceRoll);
+		return (-1*activePlayer.chipsFlow(this.currentDiceRoll)); //update score so that it comes out positive in UI
 	}
 
 	public void recordsTheTurnScore(int[] newScore) {

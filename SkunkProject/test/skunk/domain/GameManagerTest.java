@@ -225,7 +225,7 @@ class GameManagerTest {
 		manager.createPlayer("mike");
 		manager.checkRollRecord(1, 1);
 		int lostChips = manager.getLostChips();
-		assertEquals(-4, lostChips);
+		assertEquals(4, lostChips);
 	}
 	
 	
