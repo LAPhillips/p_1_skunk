@@ -9,7 +9,6 @@ public class GameManager {
 	private Score score;
 	private Turn turn;
 	private int [] currentDiceRoll;
-	private RollTypes types;
 	private int numPlayers;
 
 	public GameManager() {
@@ -18,7 +17,6 @@ public class GameManager {
 		this.score = new Score();
 		this.turn = new Turn();
 		this.currentDiceRoll = new int[2];
-		this.types = RollTypes.NORMAL;
 		this.numPlayers = 1;
 
 	}
@@ -122,7 +120,7 @@ public class GameManager {
 	}
 
 	public void tellsPlayerToAdjustChips(RollTypes roll) {
-		this.activePlayer.chipsCalculatesLostGained(roll);
+		this.activePlayer.givesChipsRollType(roll);
 	}
 	
 

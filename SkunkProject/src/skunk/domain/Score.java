@@ -73,7 +73,7 @@ public class Score {
 				this.rollType = RollTypes.SKUNK; // 1,x
 			}
 		}
-		else if (score1 == 2) {
+		else if (score1 == 2 && score2 == 1) {
 				this.rollType = RollTypes.SKUNK_DEUCE; // 2,1
 		}
 		else if (score2 == 1) {

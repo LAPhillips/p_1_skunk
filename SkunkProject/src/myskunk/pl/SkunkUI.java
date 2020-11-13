@@ -50,7 +50,7 @@ public class SkunkUI {
 	
 	public void playerRolls() {
 //for testing only
-//		control.setsPlayerName("<Your Name>");
+		control.setsPlayerName("<Your Name>");
 //
 		System.out.println();
 		System.out.println(control.getPlayerNameFromManager() + " rolls .... ");
