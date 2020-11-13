@@ -45,6 +45,21 @@ class PlayerTest {
 	}
 	
 	@Test
+	void player_gets_roll_type() {
+		Player player = new Player("player1");
+		RollTypes type = player.getRollType();
+		assertEquals(RollTypes.NORMAL, type); //default score is 0
+	}
+	
+	@Test
+	void player_updates_roll_type() {
+		Player player = new Player("player1");
+		player.updateRollType(RollTypes.SKUNK);
+		RollTypes type = player.getRollType();
+		assertEquals(RollTypes.SKUNK, type); //default score is 0
+	}
+	
+	@Test
 	void player_records_most_current_score() {
 		Player player = new Player("player1");
 		int[] newScore = new int[] {3,4};
@@ -59,31 +74,5 @@ class PlayerTest {
 		int score = player.getIndividualScore();
 		assertEquals(0, score); //default score is 0
 	}
-	
-	
-
-	/*
-	@Test
-	void player_sets_chips() {
-		Player player = new Player("player1");
-		player.setChips(55);
-		int result = player.getLostChips();
-		assertEquals(result, 5);
-	}
-	
-	@Test
-	void player_keeps_track_of_lost_chips() {
-		Player player = new Player("player1");
-		player.setChips(50);
-		player.adjustChips(1);
-		player.adjustChips(-5);
-		int result = player.getLostChips();
-		assertEquals(result, 4);
-	}
-	
-
-	*/
-	
-	
 
 }

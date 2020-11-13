@@ -38,6 +38,15 @@ public class Player {
 	public void recordScore(int[] newScore) {
 		this.score.recordAndUpdate(newScore);
 	}
+
+	public RollTypes getRollType() {
+		return this.rollType;
+	}
+
+	public void updateRollType(RollTypes type) {
+		this.rollType = type;
+		
+	}
 	
 
 
