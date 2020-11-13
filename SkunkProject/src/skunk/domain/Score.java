@@ -47,7 +47,10 @@ public class Score {
 	}
 	
 	public int getNumRolls() {
-		return 0;
+		if (scoreboard.size() == 0) {
+			return 0;
+		}
+		return scoreboard.size()/2;
 	}
 
 

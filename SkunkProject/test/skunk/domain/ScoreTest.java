@@ -156,6 +156,17 @@ class ScoreTest {
 		Score score = new Score();
 		int rolls = score.getNumRolls();
 		assertEquals(0, rolls); //default is 0
+		
+		int[]scores = new int[] {5,5};
+		score.recordAndUpdate(scores);
+		rolls = score.getNumRolls();
+		assertEquals(1, rolls); //after one roll
+		
+		for (int i = 0; i < 10; i++) {
+			score.recordAndUpdate(scores);
+		}
+		rolls = score.getNumRolls();
+		assertEquals(11, rolls); //rolling 10 more times
 	}
 
 
