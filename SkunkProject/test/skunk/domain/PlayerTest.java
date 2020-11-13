@@ -2,6 +2,8 @@ package skunk.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 class PlayerTest {
@@ -74,6 +76,15 @@ class PlayerTest {
 		player.recordScore(newScore);
 		int score = player.getIndividualScore();
 		assertEquals(7, score); 
+	}
+	
+	@Test
+	void player_shares_scoreboard() {
+		Player player = new Player("player1");
+		int[] newScore = new int[] {3,4};
+		player.recordScore(newScore);
+		ArrayList<Integer> playerSB = player.getScoreboard();
+		assertNull(playerSB);
 	}
 	
 	@Test

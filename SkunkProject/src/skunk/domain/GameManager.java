@@ -121,7 +121,7 @@ public class GameManager {
 	}
 
 	public void recordsTheTurnScore(int[] newScore) {
-		score.recordAndUpdate(newScore);
+		this.activePlayer.recordScore(newScore);
 	}
 
 	public ArrayList<Integer> sharesTurnScores() {

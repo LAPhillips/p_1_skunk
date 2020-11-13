@@ -54,6 +54,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_shares_turn_scores() {
 		GameManager manager = new GameManager();
+		manager.createPlayer("player1");
 		ArrayList<Integer> turnScores = manager.sharesTurnScores();
 		int[] newScore = new int[] {3,6};
 		manager.recordsTheTurnScore(newScore);
@@ -63,8 +64,10 @@ class GameManagerTest {
 	@Test
 	void game_manager_records_TurnScore() {
 		GameManager manager = new GameManager();
+		manager.createPlayer("player1");
 		int[] newScore = new int[] {3,4};
 		manager.recordsTheTurnScore(newScore);
+		
 		int[] anotherRoll = new int[] {5,2};
 		manager.recordsTheTurnScore(anotherRoll);
 		ArrayList <Integer> scoreboard = manager.sharesTurnScores();
@@ -114,6 +117,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_sees_if_roll_again_before_rolling() {
 		GameManager manager = new GameManager();
+		manager.createPlayer("player1");
 		int expected = 4; 
 		manager.checkRollRecord(2, expected);
 		int [] diceRoll = manager.returnDiceRoll();
@@ -124,10 +128,11 @@ class GameManagerTest {
 	}
 	
 	@Test
-	void game_manager_records_after_successful_roll() {
+	void game_manager_records_after_roll() {
 		GameManager manager = new GameManager();
-		manager.checkRollRecord(5,4);
+		manager.createPlayer("player1");
 		int [] newScore = manager.returnDiceRoll();
+		manager.recordsTheTurnScore(newScore);
 		ArrayList<Integer> actualTurnScores = manager.sharesTurnScores();
 		assertTrue(newScore[0]== actualTurnScores.get(0) && newScore[1] == actualTurnScores.get(1));		
 	}
@@ -145,6 +150,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_gets_number_of_rolls() {
 		GameManager manager = new GameManager();
+		manager.createPlayer("player1");
 		for (int i = 0; i < 10; i++) {
 			manager.checkRollRecord(2, 3);
 		}
@@ -189,6 +195,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_reports_type_of_Special_Roll() {
 		GameManager manager = new GameManager();
+		manager.createPlayer("player1");
 		manager.playerRollsDice(1,1);
 		int[] newScore = manager.returnDiceRoll();
 		manager.recordsTheTurnScore(newScore);

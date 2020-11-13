@@ -1,5 +1,7 @@
 package skunk.domain;
 
+import java.util.ArrayList;
+
 public class Player {
 	private String playerName;
 	private int[] currentRoll;
@@ -44,7 +46,6 @@ public class Player {
 		return this.chips.amountChange();
 	}
 	
-	
 	public int getChips() {
 		return this.chips.getNumChips(); //total number of chips currently
 	}
@@ -67,10 +68,15 @@ public class Player {
 		this.score.recordAndUpdate(newScore);
 	}
 
-
 	public RollTypes getRollTypeFromScore(int[] roll) {
 		this.score.setTypeSpecial(roll);
 		return this.score.getSpecialRollType();
+	}
+
+
+	public ArrayList<Integer> getScoreboard() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
