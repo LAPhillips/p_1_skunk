@@ -17,20 +17,20 @@ class ControllerTest {
 	@Test
 	void controller_sets_player_name() {
 		Controller control = new Controller();
-		String newName = "mike";
+		String newName = "player1";
 		control.setsPlayerName(newName);
 		String result = control.getPlayerName();
 		assertTrue( result.equals(newName));
 	}
 	
-	@Test
-	void controller_gives_name_to_manager() {
-		Controller control = new Controller();
-		String newName = "mike";
-		control.giveNametoManager(newName);
-		Player player = control.getPlayerFromManager();
-		assertNotNull(player);
-	}
+//	@Test
+//	void controller_gives_name_to_manager() {
+//		Controller control = new Controller();
+//		String newName = "player1";
+//		control.giveNametoManager(newName);
+//		Player player = control.getPlayerFromManager();
+//		assertNotNull(player);
+//	}
 
 	@Test
 	void controller_gets_name_from_manager() {
@@ -64,7 +64,7 @@ class ControllerTest {
 	@Test
 	void controller_gets_roll_from_manager() {
 		Controller control = new Controller();
-		control.giveNametoManager("mike");
+		control.giveNametoManager("player1");
 		int[] dice = control.shareRoll(2,5);
 		assertTrue(dice[0] == 2 && dice[1] == 5);
 	}
@@ -72,7 +72,7 @@ class ControllerTest {
 	@Test
 	void controller_gets_random_roll_from_manager() {
 		Controller control = new Controller();
-		control.giveNametoManager("mike");
+		control.giveNametoManager("player1");
 		int[] dice = control.shareRoll(2,5);
 		assertTrue((dice[0] > 0 && dice[0] < 7) &&(dice[0]> 0 && dice[1] < 7));
 	}
@@ -80,7 +80,7 @@ class ControllerTest {
 	@Test
 	void controller_gets_total_roll_from_manager() {
 		Controller control = new Controller();
-		control.giveNametoManager("mike");
+		control.giveNametoManager("player1");
 		control.shareRoll(3, 4);
 		int expected = 7;
 		int actual = control.rollTotal();
@@ -97,6 +97,7 @@ class ControllerTest {
 	@Test
 	void controller_sets_player_roll_input() {
 		Controller control = new Controller();
+		control.giveNametoManager("player1");
 		char expected = 'N';
 		control.setPlayerInput('N');
 		char actual = control.getsPlayerDecision();
@@ -106,6 +107,7 @@ class ControllerTest {
 	@Test
 	void controller_sees_if_the_player_wants_another_round() {
 		Controller control = new Controller();
+		control.giveNametoManager("player1");
 		Boolean newRoll = control.startNewRoll();
 		assertTrue(newRoll);
 	}
@@ -113,7 +115,7 @@ class ControllerTest {
 	@Test
 	void controller_shares_total_score() {
 		Controller control = new Controller();
-		control.giveNametoManager("mike");
+		control.giveNametoManager("player1");
 		int die1 = 3;
 		int die2 = 4;
 		control.shareRoll(die1, die2);
@@ -129,7 +131,7 @@ class ControllerTest {
 	@Test
 	void controller_reports_play_by_play() {
 		Controller control = new Controller();
-		control.giveNametoManager("mike");
+		control.giveNametoManager("player1");
 		//for three rolls
 		for (int i = 0; i < 3; i++) {
 			control.shareRoll(2, 3);
@@ -141,7 +143,7 @@ class ControllerTest {
 	@Test 
 	void controller_gets_number_of_rolls(){
 		Controller control = new Controller();
-		control.giveNametoManager("mike");
+		control.giveNametoManager("player1");
 		//for three rolls
 				for (int i = 0; i < 4; i++) {
 					control.shareRoll(2, 3);
@@ -153,7 +155,7 @@ class ControllerTest {
 	@Test
 	void controller_shares_special_rolls() {
 		Controller control = new Controller();
-		control.giveNametoManager("mike");
+		control.giveNametoManager("player1");
 		control.shareRoll(1, 3);
 		RollTypes roll = control.reportsSpecialRoll();
 		RollTypes expected = RollTypes.SKUNK;

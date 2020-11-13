@@ -7,20 +7,37 @@ public class GameManager {
 	private Player activePlayer;
 	private Dice dice;
 	private Score score;
-	private Turn turn;
 	private int [] currentDiceRoll;
 	private int numPlayers;
 
 	public GameManager() {
 		this.activePlayer = null;
 		this.dice = new Dice();
-		this.score = new Score();
-		this.turn = new Turn();
+		this.score = new Score(); //start new score for each player?
 		this.currentDiceRoll = new int[] {0,0};
 		this.numPlayers = 1;
 
 	}
 
+	//*************setting up game*************************************************************	
+	
+	public void createPlayer(String playerName) {
+		Player newPlayer = new Player(playerName);
+		this.activePlayer = newPlayer;
+	}
+	
+	public String playerName() {
+		return activePlayer.getPlayerName();
+	}
+	
+	public int getNumPlayers() {
+		return this.numPlayers;
+	}
+	
+	public void giveNumPlayers(int enteredAmount) {
+		this.numPlayers = enteredAmount;
+	}
+	
 	//*************Regulating Turn Flow*************************************************************
 	public void checkRollRecord() {
 		if (this.activePlayer.getTurnStatus()) { //checks to make sure turn status is not false
@@ -43,31 +60,14 @@ public class GameManager {
 	}
 
 	//*************Player*************************************************************
-	public void createPlayer(String playerName) {
-		Player newPlayer = new Player(playerName);
-		this.activePlayer = newPlayer;
-	}
-	
-	public Player getPlayer() {
-		return this.activePlayer;
-	}
-	
-	public String playerName() {
-		return activePlayer.getPlayerName();
-	}
-	
-	public int getNumPlayers() {
-		return this.numPlayers;
-	}
-	
-	public void giveNumPlayers(int enteredAmount) {
-		this.numPlayers = enteredAmount;
-	}
 	
 	public int getPlayerTally() {
 		return this.activePlayer.getTally();
 	}
 
+	public Boolean getContinueTurn() {
+		return this.activePlayer.getTurnStatus();
+	}
 	//*************Dice/Score*************************************************************
 	public void playerRollsDice() {
 		dice.roll();
@@ -89,11 +89,13 @@ public class GameManager {
 		ArrayList<Integer> turnScores = this.sharesTurnScores();
 		return turnScores.size()/2;
 	}
+	
+	public RollTypes getRollType() {
+		score.setRollType(currentDiceRoll);
+		return this.score.getRollType();
+	}
 
 	//*************Managing Turns*************************************************************
-	public Boolean getContinueTurn() {
-		return this.activePlayer.getTurnStatus();
-	}
 
 	public void setContinueTurn(char playerInput) {
 		if (playerInput == 'Y' || playerInput == 'y') {
@@ -102,8 +104,7 @@ public class GameManager {
 			this.activePlayer.endTurn();
 		}
 	}
-
-	//*************Managing Special Rolls*************************************************************
+	
 	public void updatesForSpecialRolls() {
 		if (score.isSpecial(currentDiceRoll)) {
 			this.activePlayer.endTurn();
@@ -111,11 +112,6 @@ public class GameManager {
 		else {
 			
 		}
-	}
-	
-	public RollTypes getRollType() {
-		score.setTypeSpecial(currentDiceRoll);
-		return this.score.getSpecialRollType();
 	}
 
 	//*************Keeping Score*************************************************************

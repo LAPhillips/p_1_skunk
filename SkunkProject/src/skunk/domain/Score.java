@@ -45,6 +45,10 @@ public class Score {
 	public ArrayList<Integer> getScoreboard() {
 		return this.scoreboard;
 	}
+	
+	public int getNumRolls() {
+		return 0;
+	}
 
 
 //*************Managing Special Rolls*************************************************************
@@ -59,7 +63,7 @@ public class Score {
 		return false;
 	}
 	
-	public void setTypeSpecial(int[] scores) {
+	public void setRollType(int[] scores) {
 		int score1 = scores[0];
 		int score2 = scores[1];
 		
@@ -85,7 +89,7 @@ public class Score {
 		}
 	}
 
-	public RollTypes getSpecialRollType() {
+	public RollTypes getRollType() {
 		return this.rollType;
 	}
 
@@ -115,4 +119,7 @@ public class Score {
 		}
 		return totalScore;
 	}
+
+	
+
 }

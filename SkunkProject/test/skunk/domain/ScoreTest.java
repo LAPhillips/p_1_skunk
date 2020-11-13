@@ -75,29 +75,29 @@ class ScoreTest {
 	void score_shares_type_special_rolls() {
 		Score score = new Score();
 		int[]scores = new int[] {1,1};
-		RollTypes expected = null;
-		RollTypes special = score.getSpecialRollType();
-		assertEquals(expected, special);
+		RollTypes expected = RollTypes.NORMAL;
+		RollTypes special = score.getRollType();
+		assertEquals(expected, special); //default is Normal
 	}
 	
 	@Test
 	void score_categorizes_special_rolls() {
 		Score score = new Score();
 		int[]scores = new int[] {1,1};
-		score.setTypeSpecial(scores);
-		RollTypes special = score.getSpecialRollType();
+		score.setRollType(scores);
+		RollTypes special = score.getRollType();
 		RollTypes expected = RollTypes.DOUBLE_SKUNK;
 		assertEquals(expected, special);
 		
 		int[]scores2 = new int[] {2,1};
-		score.setTypeSpecial(scores2);
-		special = score.getSpecialRollType();
+		score.setRollType(scores2);
+		special = score.getRollType();
 		expected = RollTypes.SKUNK_DEUCE;
 		assertEquals(expected, special);
 		
 		int[]scores3 = new int[] {5,1};
-		score.setTypeSpecial(scores3);
-		special = score.getSpecialRollType();
+		score.setRollType(scores3);
+		special = score.getRollType();
 		expected = RollTypes.SKUNK;
 		assertEquals(expected, special);
 	}
@@ -149,6 +149,13 @@ class ScoreTest {
 		score.recordAndUpdate(scores);
 		int result = score.totalScore();
 		assertEquals(expected, result);
+	}
+	
+	@Test
+	void score_gives_number_of_rolls() {
+		Score score = new Score();
+		int rolls = score.getNumRolls();
+		assertEquals(0, rolls); //default is 0
 	}
 
 

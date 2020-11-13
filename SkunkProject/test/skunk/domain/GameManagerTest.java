@@ -5,13 +5,6 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 class GameManagerTest {
-
-	@Test
-	void game_manager_makes_players() {
-		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
-		assertNotNull(manager.getPlayer());
-	}
 	
 	@Test
 	void game_manager_shares_player_name() {
@@ -181,8 +174,6 @@ class GameManagerTest {
 		turn = manager.getContinueTurn();
 		assertFalse(turn);
 	} 
-	
-
 	
 	@Test
 	void game_manager_flow_should_also_report_special() {
