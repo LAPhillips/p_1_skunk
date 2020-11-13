@@ -14,7 +14,7 @@ class PlayerTest {
 		String result = player.getPlayerName();
 		assertNotNull(result);	
 	}
-	
+	//*************chips*************************************************************
 	@Test
 	void player_has_chips() {
 		Player player = new Player("player1");
@@ -45,9 +45,7 @@ class PlayerTest {
 		result = player.getLostChips();
 		assertEquals(-2, result); //skunk and deuce is -2
 	}
-	
 
-	
 	@Test
 	void player_gives_roll_to_chips_gets_back() {
 		Player player = new Player("player1");
@@ -56,7 +54,7 @@ class PlayerTest {
 		assertEquals(-4, change); //would expect -4 for double skunk
 	}
 	
-	
+	//*************final Score*************************************************************
 	@Test
 	void player_gets_ongoing_score() {
 		Player player = new Player("player1");
@@ -71,5 +69,13 @@ class PlayerTest {
 		int score = player.getTally();
 		assertEquals(4, score); //default score is 0
 	}
+	
+	//*************managing turn*************************************************************
 
+	@Test
+	void player_gets_turn_status() {
+		Player player = new Player("player1");
+		Boolean turn = player.getTurnStatus();
+		assertTrue(turn); //default is true
+	}
 }

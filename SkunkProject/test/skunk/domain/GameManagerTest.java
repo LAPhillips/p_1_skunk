@@ -286,7 +286,7 @@ class GameManagerTest {
 		manager.createPlayer("mike");
 		manager.shareFinalScore(5);
 		int tally = manager.getPlayerTally();
-		assertEquals(5, tally); //default is 0
+		assertEquals(5, tally); 
 	}
 
 

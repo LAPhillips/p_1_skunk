@@ -4,11 +4,13 @@ public class Player {
 	private String playerName;
 	private Chips chips;
 	private int totalTally;
+	private Turn turn;
 
 	public Player(String enteredName){
 		this.playerName = enteredName;
 		this.chips = new Chips();
 		this.totalTally = 0;
+		this.turn = new Turn();
 	}
 
 	
@@ -46,8 +48,13 @@ public class Player {
 	}
 
 
+	//*************Managing Turns*************************************************************
 	
-	
+
+	public Boolean getTurnStatus() {
+		return this.turn.getTurnStatus();
+	}
+
 
 
 
