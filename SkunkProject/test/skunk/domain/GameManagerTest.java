@@ -259,5 +259,18 @@ class GameManagerTest {
 		int numPlayers = manager.getNumPlayers();
 		assertEquals(3, numPlayers);
 	}
+	
+	@Test
+	void game_manager_gets_rollType_Score() {
+		GameManager manager = new GameManager();
+		RollTypes roll = manager.getRollType();
+		assertEquals(RollTypes.NORMAL, roll); //expect default to be normal
+		
+		manager.checkRollRecord(1, 1);
+		roll = manager.getRollType();
+		assertEquals(RollTypes.DOUBLE_SKUNK, roll);
+	}
+	
+
 
 }

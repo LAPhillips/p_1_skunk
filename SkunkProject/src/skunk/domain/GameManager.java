@@ -98,7 +98,6 @@ public class GameManager {
 	//*************Managing Special Rolls*************************************************************
 	public void updatesForSpecialRolls() {
 		if (score.isSpecial(currentDiceRoll)) {
-	//		this.adjustChipsForRollType();
 			this.turn.endTurn();
 		}
 		else {
@@ -117,11 +116,13 @@ public class GameManager {
 	}
 
 	public int getLostChips() {
-		return (-1*activePlayer.chipsFlow(this.currentDiceRoll)); //update score so that it comes out positive in UI
+		RollTypes roll = this.getRollType();
+		return (-1*activePlayer.chipsFlow(roll)); //update score so that it comes out positive in UI
 	}
 
 	public void recordsTheTurnScore(int[] newScore) {
 		this.score.recordAndUpdate(newScore);
+
 	}
 
 	public ArrayList<Integer> sharesTurnScores() {
@@ -136,8 +137,6 @@ public class GameManager {
 		return this.score.getFinalScore();
 	}
 
-	public void givePlayerDice(int[] roll) {
-		this.activePlayer.setCurrentRoll(roll);
-	}
+
 	
 }
