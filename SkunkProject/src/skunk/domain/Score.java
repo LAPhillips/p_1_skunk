@@ -5,14 +5,14 @@ import java.util.ArrayList;
 //Score is responsible for moderating the score of a single turn
 public class Score {
 
-	private Scoreboard playerScoreBoard;
 	private RollTypes rollType;
 	private int finalScore;
+	private ArrayList<Integer> scoreboard;
 	
 	public Score() {
-		this.playerScoreBoard = new Scoreboard();
 		this.rollType = RollTypes.NORMAL; // only ever reports the most recent roll
 		this.finalScore = 0;
+		this.scoreboard = new ArrayList<>();
 	}
 	
 	//*************Score Flow*************************************************************
@@ -33,16 +33,17 @@ public class Score {
 		return scoreTotals;
 	}
 	
-	public void recordScore(int[] scoreAfterRoll) {
-		this.playerScoreBoard.recordRoll(scoreAfterRoll);
+	public void recordScore(int[] newRoll) {
+		scoreboard.add(newRoll[0]);
+		scoreboard.add(newRoll[1]);
 	}
 
 	public int getSpecificRecordedScore(int index) {
-		return this.playerScoreBoard.getSpecificTurnScores(index);
+		return scoreboard.get(index);
 	}
 
 	public ArrayList<Integer> getScoreboard() {
-		return playerScoreBoard.getTurnScores();
+		return this.scoreboard;
 	}
 
 
@@ -107,16 +108,11 @@ public class Score {
 	}
 
 	public int totalScore() {
-		ArrayList<Integer> fullScores = playerScoreBoard.getTurnScores();
+		ArrayList<Integer> fullScores = this.scoreboard;
 		int totalScore = 0;
 		for (int dieRoll : fullScores) {
 			totalScore += dieRoll;
 		}
 		return totalScore;
 	}
-
-	
-
-
-
 }

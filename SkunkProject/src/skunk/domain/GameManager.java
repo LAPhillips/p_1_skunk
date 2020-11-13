@@ -121,19 +121,19 @@ public class GameManager {
 	}
 
 	public void recordsTheTurnScore(int[] newScore) {
-		this.activePlayer.recordScore(newScore);
+		this.score.recordAndUpdate(newScore);
 	}
 
 	public ArrayList<Integer> sharesTurnScores() {
-		return this.activePlayer.getScoreboard();
+		return this.score.getScoreboard();
 	}
 
 	public int diceTotalScore() {
 		return dice.getLastRoll();
 	}
 
-	public int totalTurnScore() {
-		return score.getFinalScore();
+	public int getFinalTurnScore() {
+		return this.score.getFinalScore();
 	}
 
 	public void givePlayerDice(int[] roll) {

@@ -86,6 +86,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_shares_turn_total_score() {
 		GameManager manager = new GameManager();
+		manager.createPlayer("player1");
 		int die1 = 3;
 		int die2 = 4;
 		int die3 = 6;
@@ -93,7 +94,7 @@ class GameManagerTest {
 		int expected = die1 + die2 + die3 + die4;
 		manager.checkRollRecord(die1, die2);
 		manager.checkRollRecord(die3, die4);
-		int actual = manager.totalTurnScore();
+		int actual = manager.getFinalTurnScore();
 		assertEquals(expected, actual);
 	}
 	

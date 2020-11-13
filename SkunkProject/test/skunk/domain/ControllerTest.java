@@ -64,6 +64,7 @@ class ControllerTest {
 	@Test
 	void controller_gets_roll_from_manager() {
 		Controller control = new Controller();
+		control.giveNametoManager("mike");
 		int[] dice = control.shareRoll(2,5);
 		assertTrue(dice[0] == 2 && dice[1] == 5);
 	}
@@ -71,6 +72,7 @@ class ControllerTest {
 	@Test
 	void controller_gets_random_roll_from_manager() {
 		Controller control = new Controller();
+		control.giveNametoManager("mike");
 		int[] dice = control.shareRoll(2,5);
 		assertTrue((dice[0] > 0 && dice[0] < 7) &&(dice[0]> 0 && dice[1] < 7));
 	}
@@ -78,6 +80,7 @@ class ControllerTest {
 	@Test
 	void controller_gets_total_roll_from_manager() {
 		Controller control = new Controller();
+		control.giveNametoManager("mike");
 		control.shareRoll(3, 4);
 		int expected = 7;
 		int actual = control.rollTotal();
@@ -110,11 +113,13 @@ class ControllerTest {
 	@Test
 	void controller_shares_total_score() {
 		Controller control = new Controller();
+		control.giveNametoManager("mike");
 		int die1 = 3;
 		int die2 = 4;
+		control.shareRoll(die1, die2);
+		
 		int die3 = 6;
 		int die4 = 7;
-		control.shareRoll(die1, die2);
 		control.shareRoll(die3, die4);
 		int expected = die1 + die2 + die3 + die4;
 		int actual = control.totalTurnScore();
@@ -124,6 +129,7 @@ class ControllerTest {
 	@Test
 	void controller_reports_play_by_play() {
 		Controller control = new Controller();
+		control.giveNametoManager("mike");
 		//for three rolls
 		for (int i = 0; i < 3; i++) {
 			control.shareRoll(2, 3);
@@ -135,6 +141,7 @@ class ControllerTest {
 	@Test 
 	void controller_gets_number_of_rolls(){
 		Controller control = new Controller();
+		control.giveNametoManager("mike");
 		//for three rolls
 				for (int i = 0; i < 4; i++) {
 					control.shareRoll(2, 3);

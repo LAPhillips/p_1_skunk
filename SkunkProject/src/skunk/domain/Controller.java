@@ -83,7 +83,7 @@ public class Controller {
 	//*************Scores******************************************************** 
 
 	public int totalTurnScore() {
-		return manager.totalTurnScore();
+		return manager.getFinalTurnScore();
 	}
 
 	public int reportsSpecificRoll(int rolls) {
@@ -93,8 +93,6 @@ public class Controller {
 	public int numberOfRolls() {
 		return manager.numberOfRolls();
 	}
-
-
 
 	public void setNumberPlayers(int enteredAmount) {
 		this.manager.giveNumPlayers(enteredAmount);
