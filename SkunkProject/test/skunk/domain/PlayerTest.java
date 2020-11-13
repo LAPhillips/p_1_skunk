@@ -102,9 +102,9 @@ class PlayerTest {
 	@Test
 	void player_gets_rollType_from_score() {
 		Player player = new Player("player1");
-		int[] roll = new int[] {2,3};
+		int[] roll = new int[] {1,1};
 		RollTypes type = player.getRollTypeFromScore(roll);
-		assertNull(type); //default is null
+		assertEquals(RollTypes.DOUBLE_SKUNK, type); //expect a double skunk
 	}
 
 

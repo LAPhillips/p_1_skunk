@@ -69,7 +69,8 @@ public class Player {
 
 
 	public RollTypes getRollTypeFromScore(int[] roll) {
-		return null;
+		this.score.setTypeSpecial(roll);
+		return this.score.getSpecialRollType();
 	}
 
 
