@@ -50,13 +50,16 @@ public class Player {
 
 	//*************Managing Turns*************************************************************
 	
-
 	public Boolean getTurnStatus() {
 		return this.turn.getTurnStatus();
 	}
 
 	public void endTurn() {
 		this.turn.endTurn();
+	}
+
+	public void startTurn() {
+		this.turn.startNewTurn();
 	}
 
 

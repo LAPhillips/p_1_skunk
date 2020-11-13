@@ -22,15 +22,6 @@ class TurnTest {
 	}
 	
 	@Test
-	void player_can_end_turn() {
-		Turn turn = new Turn();
-		char playerInput = 'N';
-		turn.playersDecision(playerInput);
-		Boolean status = turn.getTurnStatus();
-		assertFalse(status);
-	}
-	
-	@Test
 	void turn_tracks_number_of_turns() {
 		Turn turn = new Turn();
 		int numberOfTurns = turn.getnumberOfTurns();

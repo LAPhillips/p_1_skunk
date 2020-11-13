@@ -80,10 +80,22 @@ class PlayerTest {
 	}
 	
 	@Test
-	void player_sets_turn_status() {
+	void player_ends_turn() {
 		Player player = new Player("player1");
 		player.endTurn();
 		Boolean turn = player.getTurnStatus();
 		assertFalse(turn); //after endTurn() players turn status should be false
+	}
+	
+	@Test
+	void player_gets_starts_new_turn() {
+		Player player = new Player("player1");
+		player.endTurn();
+		Boolean turn = player.getTurnStatus();
+		assertFalse(turn); //after endTurn() players turn status should be false
+		
+		player.startTurn();
+		turn = player.getTurnStatus();
+		assertTrue(turn); //when starting new turn it should be true
 	}
 }

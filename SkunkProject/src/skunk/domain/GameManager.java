@@ -23,7 +23,7 @@ public class GameManager {
 
 	//*************Regulating Turn Flow*************************************************************
 	public void checkRollRecord() {
-		if (this.turn.getTurnStatus()) { //checks to make sure turn status is not false
+		if (this.activePlayer.getTurnStatus()) { //checks to make sure turn status is not false
 			this.playerRollsDice();// player rolls dice
 			this.recordsTheTurnScore(this.currentDiceRoll);
 			this.updatesForSpecialRolls();
@@ -33,7 +33,7 @@ public class GameManager {
 	}
 	
 	public void checkRollRecord(int die1, int die2) {
-		if (this.turn.getTurnStatus()) {  //checks to make sure turn status is not false
+		if (this.activePlayer.getTurnStatus()) {  //checks to make sure turn status is not false
 			this.playerRollsDice(die1, die2);    // player rolls dice
 			this.recordsTheTurnScore(this.currentDiceRoll);
 			this.updatesForSpecialRolls();
@@ -96,13 +96,17 @@ public class GameManager {
 	}
 
 	public void setContinueTurn(char playerInput) {
-		this.turn.playersDecision(playerInput);
+		if (playerInput == 'Y' || playerInput == 'y') {
+		}
+		else {
+			this.activePlayer.endTurn();
+		}
 	}
 
 	//*************Managing Special Rolls*************************************************************
 	public void updatesForSpecialRolls() {
 		if (score.isSpecial(currentDiceRoll)) {
-			this.turn.endTurn();
+			this.activePlayer.endTurn();
 		}
 		else {
 			
@@ -144,9 +148,4 @@ public class GameManager {
 	public void shareFinalScore(int finalScore) {
 		this.activePlayer.updateTally(finalScore);
 	}
-
-
-
-
-	
 }
