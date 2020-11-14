@@ -40,6 +40,15 @@ class GameSetupTest {
 		assertTrue(player.equals(firstPlayer));
 	}
 	
+	@Test
+	void setup_can_create_new_player() {
+		GameSetup setup = new GameSetup();
+		setup.createPlayersInGame(3);
+		setup.createPlayer("playerName");
+		Player firstPlayer = setup.getSinglePlayer(0);
+		assertNotNull(firstPlayer); 
+	}
+	
 
 
 }

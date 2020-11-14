@@ -8,7 +8,8 @@ public class GameSetup {
 	}
 
 	public void createPlayer(String playerName) {
-		
+		Player player = new Player(playerName);
+		this.addPlayer(player);
 	}
 	
 	public Player[] getPlayers() {
