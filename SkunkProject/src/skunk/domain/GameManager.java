@@ -46,7 +46,6 @@ public class GameManager {
 			this.updatesForSpecialRolls();
 		}
 		else {
-			this.shareFinalScore(this.getFinalTurnScore());
 		}
 	}
 	
@@ -57,7 +56,6 @@ public class GameManager {
 			this.updatesForSpecialRolls();
 		}
 		else {
-			this.shareFinalScore(this.getFinalTurnScore()); //need to test
 		}
 	}
 
@@ -67,7 +65,7 @@ public class GameManager {
 		return this.activePlayer.getTally();
 	}
 
-	public Boolean getContinueTurn() {
+	public Boolean getTurnStatus() {
 		return this.activePlayer.getTurnStatus();
 	}
 	//*************Dice/Score*************************************************************
@@ -100,19 +98,23 @@ public class GameManager {
 		if (playerInput == 'Y' || playerInput == 'y') {
 		}
 		else {
-			this.activePlayer.endTurn();
+			this.endTurn();
 		}
 	}
 	
 	public void updatesForSpecialRolls() {
 		if (score.isSpecial(currentDiceRoll)) {
-			this.activePlayer.endTurn();
+			this.endTurn();
 			this.shareFinalScore(this.getFinalTurnScore());
-			System.out.println("Player Tally: " + this.getPlayerTally());   ///remove this later
 		}
 		else {
 			
 		}
+	}
+	
+	public void endTurn() {
+		this.activePlayer.endTurn();
+		this.shareFinalScore(this.getFinalTurnScore());
 	}
 
 	//*************Keeping Score*************************************************************
@@ -145,4 +147,6 @@ public class GameManager {
 	public void shareFinalScore(int finalScore) {
 		this.activePlayer.updateTally(finalScore);
 	}
+
+
 }

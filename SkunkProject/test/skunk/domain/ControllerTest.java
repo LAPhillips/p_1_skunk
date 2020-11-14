@@ -38,7 +38,7 @@ class ControllerTest {
 		GameManager manager = control.getManager();
 		control.sharePlayerName("player1");
 		control.sharePlayerInputs('N');	
-		Boolean result = manager.getContinueTurn();
+		Boolean result = manager.getTurnStatus();
 		assertFalse(result);
 	}
 	

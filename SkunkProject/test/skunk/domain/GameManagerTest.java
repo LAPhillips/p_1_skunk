@@ -95,7 +95,7 @@ class GameManagerTest {
 	void game_manager_reads_player_decision() {
 		GameManager manager = new GameManager();
 		manager.createPlayer("player1");
-		Boolean playerInput = manager.getContinueTurn();
+		Boolean playerInput = manager.getTurnStatus();
 		assertTrue(playerInput);
 	}
 	
@@ -106,7 +106,7 @@ class GameManagerTest {
 		char playerDecision = 'N';
 		Boolean expected = false;
 		manager.setContinueTurn(playerDecision);
-		Boolean actual = manager.getContinueTurn();
+		Boolean actual = manager.getTurnStatus();
 		assertEquals(expected, actual);
 	}
 	
@@ -158,7 +158,7 @@ class GameManagerTest {
 	void game_manager_can_see_turn_status() {
 		GameManager manager = new GameManager();
 		manager.createPlayer("player1");
-		assertTrue(manager.getContinueTurn()); //default is true
+		assertTrue(manager.getTurnStatus()); //default is true
 	}
 	
 	@Test
@@ -166,12 +166,12 @@ class GameManagerTest {
 		GameManager manager = new GameManager();
 		manager.createPlayer("player1");
 		manager.updatesForSpecialRolls();
-		Boolean turn = manager.getContinueTurn();
+		Boolean turn = manager.getTurnStatus();
 		assertTrue(turn);
 		
 		manager.checkRollRecord(1,1);
 		manager.updatesForSpecialRolls();
-		turn = manager.getContinueTurn();
+		turn = manager.getTurnStatus();
 		assertFalse(turn);
 	} 
 	
@@ -282,5 +282,14 @@ class GameManagerTest {
 		manager.shareFinalScore(5);
 		int tally = manager.getPlayerTally();
 		assertEquals(5, tally); 
+	}
+	
+	@Test
+	void GM_ends_player_turn() {
+		GameManager manager = new GameManager();
+		manager.createPlayer("player1");
+		manager.endTurn();
+		Boolean playerTurn = manager.getTurnStatus();
+		assertFalse(playerTurn);
 	}
 }

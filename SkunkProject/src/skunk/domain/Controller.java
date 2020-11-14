@@ -22,8 +22,9 @@ public class Controller {
 		return this.manager.playerName();
 	}
 	
+	//to use for testing in JUnit
 	public GameManager getManager() {
-		return this.manager; //to use for testing
+		return this.manager; 
 	}
 
 	public void sharePlayerInputs(char playerInput) {
@@ -37,8 +38,16 @@ public class Controller {
 	public int getLostChips() {
 		return this.manager.getLostChips();
 	}
-
 	
+	public void setNumberPlayers(int enteredAmount) {
+		this.manager.giveNumPlayers(enteredAmount);
+		this.numberPlayers = enteredAmount;
+	}
+
+	public int getNumPlayers() {
+		return this.numberPlayers;
+	}
+
 	//*************Dice/Rolls********************************************************
 	//normal dice
 	public int[] shareRoll() {
@@ -57,7 +66,7 @@ public class Controller {
 	}
 
 	public Boolean startNewRoll() {
-		return manager.getContinueTurn();
+		return manager.getTurnStatus();
 	}
 	
 	public RollTypes reportsSpecialRoll() {
@@ -76,15 +85,6 @@ public class Controller {
 
 	public int numberOfRolls() {
 		return manager.numberOfRolls();
-	}
-
-	public void setNumberPlayers(int enteredAmount) {
-		this.manager.giveNumPlayers(enteredAmount);
-		this.numberPlayers = enteredAmount;
-	}
-
-	public int getNumPlayers() {
-		return this.numberPlayers;
 	}
 
 }
