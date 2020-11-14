@@ -7,7 +7,7 @@ public class GameSetup {
 		this.players = null;
 	}
 
-	public void createPlayer(String string) {
+	public void createPlayer(String playerName) {
 		
 	}
 	
@@ -17,6 +17,10 @@ public class GameSetup {
 
 	public void createPlayersInGame(int numberOfPlayers) {
 		this.players = new Player[numberOfPlayers];
+	}
+
+	public Player getSinglePlayer(int index) {
+		return this.players[index];
 	}
 	
 	
