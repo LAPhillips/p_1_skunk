@@ -56,6 +56,13 @@ class GameSetupTest {
 		assertEquals(1, numPlayers); //default is 1
 	}
 	
+	@Test
+	void setup_sets_number_Players_from_controller() {
+		GameSetup setup = new GameSetup();
+		setup.setNumberOfPlayers(3);
+		assertEquals(3, setup.getNumPlayers()); 
+	}
+	
 
 
 }

@@ -49,6 +49,9 @@ public class GameSetup {
 		return this.NumPlayers;
 	}
 	
+
+	
+
 	
 
 }
