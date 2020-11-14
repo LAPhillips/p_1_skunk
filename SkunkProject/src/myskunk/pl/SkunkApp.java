@@ -1,6 +1,4 @@
 package myskunk.pl;
-import edu.princeton.cs.introcs.*;
-import skunk.domain.Dice;
 
 public class SkunkApp {
 

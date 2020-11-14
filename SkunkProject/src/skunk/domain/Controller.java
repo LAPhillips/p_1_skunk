@@ -1,13 +1,11 @@
 package skunk.domain;
 //Controller should only report to and from the UI; does not decide things on its own
 public class Controller {
-	private String playerName;
 	private char playerControls;
 	private GameManager manager;
 	private int numberPlayers;
 	
 	public Controller() {
-		this.playerName = "noName";
 		this.playerControls = 'Y';
 		this.manager = new GameManager();
 		this.numberPlayers = 1;
@@ -16,34 +14,21 @@ public class Controller {
 	
 	
 	//*************Player*************************************************************
-	public void setsPlayerName(String name) {
-		this.playerName = name;
-		this.giveNametoManager(name);
-	}
-
-	public String getPlayerName() {
-		return this.playerName;
-	}
-	
-	public char getsPlayerDecision() {
-		return this.playerControls;
-	}
-
-	public void setPlayerInput(char playerInput) {
-		this.playerControls = playerInput;
-		manager.setContinueTurn(playerInput);
-	}
-	
-	public void giveNametoManager(String name) {
+	public void sharePlayerName(String name) {
 		this.manager.createPlayer(name);
 	}
-
-//	public Player getPlayerFromManager() {
-//		return this.manager.getPlayer();
-//	}
 	
 	public String getPlayerNameFromManager() {
 		return this.manager.playerName();
+	}
+	
+	public GameManager getManager() {
+		return this.manager; //to use for testing
+	}
+
+	public void sharePlayerInputs(char playerInput) {
+//		this.playerControls = playerInput;
+		manager.setContinueTurn(playerInput);
 	}
 	
 	public int getPlayerChipsFromManager() {
