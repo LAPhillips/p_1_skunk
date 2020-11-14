@@ -46,6 +46,7 @@ public class GameManager {
 			this.updatesForSpecialRolls();
 		}
 		else {
+			this.shareFinalScore(this.getFinalTurnScore());
 		}
 	}
 	
@@ -56,6 +57,7 @@ public class GameManager {
 			this.updatesForSpecialRolls();
 		}
 		else {
+			this.shareFinalScore(this.getFinalTurnScore()); //need to test
 		}
 	}
 
@@ -83,13 +85,10 @@ public class GameManager {
 	public int[] returnDiceRoll() {
 		return this.currentDiceRoll;
 	}
-
-	//should be in score
-	public int numberOfRolls() {
-		ArrayList<Integer> turnScores = this.sharesTurnScores();
-		return turnScores.size()/2;
-	}
 	
+	public int numberOfRolls() {
+		return this.score.getNumRolls();
+	}
 	public RollTypes getRollType() {
 		score.setRollType(currentDiceRoll);
 		return this.score.getRollType();
@@ -108,6 +107,8 @@ public class GameManager {
 	public void updatesForSpecialRolls() {
 		if (score.isSpecial(currentDiceRoll)) {
 			this.activePlayer.endTurn();
+			this.shareFinalScore(this.getFinalTurnScore());
+			System.out.println("Player Tally: " + this.getPlayerTally());   ///remove this later
 		}
 		else {
 			

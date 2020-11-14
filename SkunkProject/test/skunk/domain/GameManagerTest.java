@@ -283,7 +283,4 @@ class GameManagerTest {
 		int tally = manager.getPlayerTally();
 		assertEquals(5, tally); 
 	}
-
-
-
 }

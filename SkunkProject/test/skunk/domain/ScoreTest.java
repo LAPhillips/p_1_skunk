@@ -168,6 +168,4 @@ class ScoreTest {
 		rolls = score.getNumRolls();
 		assertEquals(11, rolls); //rolling 10 more times
 	}
-
-
 }
