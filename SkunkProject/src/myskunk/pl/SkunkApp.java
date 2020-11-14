@@ -7,7 +7,7 @@ public class SkunkApp {
 		
 		System.out.println("Welcome to Skunk");
 	//	ui.howMany();
-	//	ui.enterName();
+		ui.enterName();
 		ui.doesPlayerRoll();
 
 	}
