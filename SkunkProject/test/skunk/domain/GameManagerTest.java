@@ -10,7 +10,7 @@ class GameManagerTest {
 	void game_manager_shares_player_name() {
 		GameManager manager = new GameManager();
 		String expected = "player1";
-		manager.createPlayer(expected);
+		manager.assignPlayer(expected);
 		String result = manager.playerName();
 		assertTrue(expected.equals(result));
 	}
@@ -47,7 +47,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_shares_turn_scores() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		ArrayList<Integer> turnScores = manager.sharesTurnScores();
 		int[] newScore = new int[] {3,6};
 		manager.recordsTheTurnScore(newScore);
@@ -57,7 +57,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_records_TurnScore() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		int[] newScore = new int[] {3,4};
 		manager.recordsTheTurnScore(newScore);
 		
@@ -79,7 +79,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_shares_turn_total_score() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		int die1 = 3;
 		int die2 = 4;
 		int die3 = 6;
@@ -94,7 +94,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_reads_player_decision() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		Boolean playerInput = manager.getTurnStatus();
 		assertTrue(playerInput);
 	}
@@ -102,7 +102,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_sets_player_decision() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		char playerDecision = 'N';
 		Boolean expected = false;
 		manager.setContinueTurn(playerDecision);
@@ -113,7 +113,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_sees_if_roll_again_before_rolling() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		int expected = 4; 
 		manager.checkRollRecord(2, expected);
 		int [] diceRoll = manager.returnDiceRoll();
@@ -126,7 +126,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_records_after_roll() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		int [] newScore = manager.returnDiceRoll();
 		manager.recordsTheTurnScore(newScore);
 		ArrayList<Integer> actualTurnScores = manager.sharesTurnScores();
@@ -136,7 +136,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_records_both_special_and_normal_rolls() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		manager.checkRollRecord(5,4);
 		manager.checkRollRecord(1,4);
 		ArrayList<Integer> actualTurnScores = manager.sharesTurnScores();
@@ -146,7 +146,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_gets_number_of_rolls() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		for (int i = 0; i < 10; i++) {
 			manager.checkRollRecord(2, 3);
 		}
@@ -157,14 +157,14 @@ class GameManagerTest {
 	@Test
 	void game_manager_can_see_turn_status() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		assertTrue(manager.getTurnStatus()); //default is true
 	}
 	
 	@Test
 	void game_manager_ends_Turn_if_Roll_is_Special() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		manager.updatesForSpecialRolls();
 		Boolean turn = manager.getTurnStatus();
 		assertTrue(turn);
@@ -178,7 +178,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_flow_should_also_report_special() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		manager.checkRollRecord(1,1);
 		RollTypes rollType = manager.getRollType();
 		RollTypes expected = RollTypes.DOUBLE_SKUNK;
@@ -190,7 +190,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_reports_type_of_Special_Roll() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		manager.playerRollsDice(1,1);
 		int[] newScore = manager.returnDiceRoll();
 		manager.recordsTheTurnScore(newScore);
@@ -216,7 +216,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_gets_total_chips_from_player() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		int playerChips = manager.getChips();
 		assertEquals(50, playerChips, "default it should be 50");
 	}
@@ -224,7 +224,7 @@ class GameManagerTest {
 	@Test
 	void GM_gets_lost_chips_from_player() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		manager.checkRollRecord(1, 1);
 		int lostChips = manager.getLostChips();
 		assertEquals(4, lostChips);
@@ -234,7 +234,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_shares_lost_chips() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		int lostChips = manager.getLostChips();
 		assertEquals(0, lostChips); //default is 0
 	}
@@ -257,7 +257,7 @@ class GameManagerTest {
 	@Test
 	void game_manager_gets_rollType_Score() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		RollTypes roll = manager.getRollType();
 		assertEquals(RollTypes.NORMAL, roll); //expect default to be normal
 		
@@ -270,7 +270,7 @@ class GameManagerTest {
 	@Test
 	void GM_gets_tally_from_player() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		int tally = manager.getPlayerTally();
 		assertEquals(0, tally); //default is 0
 	}
@@ -278,7 +278,7 @@ class GameManagerTest {
 	@Test
 	void GM_informs_player_of_final_score() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		manager.shareFinalScore(5);
 		int tally = manager.getPlayerTally();
 		assertEquals(5, tally); 
@@ -287,7 +287,7 @@ class GameManagerTest {
 	@Test
 	void GM_ends_player_turn() {
 		GameManager manager = new GameManager();
-		manager.createPlayer("player1");
+		manager.assignPlayer("player1");
 		manager.endTurn();
 		Boolean playerTurn = manager.getTurnStatus();
 		assertFalse(playerTurn);

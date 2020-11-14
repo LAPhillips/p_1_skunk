@@ -9,6 +9,7 @@ public class GameManager {
 	private Score score;
 	private int [] currentDiceRoll;
 	private int numPlayers;
+	private Player[] players;
 
 	public GameManager() {
 		this.activePlayer = null;
@@ -16,16 +17,16 @@ public class GameManager {
 		this.score = new Score(); //start new score for each player?
 		this.currentDiceRoll = new int[] {0,0};
 		this.numPlayers = 1;
-
+		this.players = null;
 	}
 
 	//*************setting up game*************************************************************	
 	
-	public void createPlayer(String playerName) {
+	public void assignPlayer(String playerName) {
 		Player newPlayer = new Player(playerName);
 		this.activePlayer = newPlayer;
 	}
-	
+
 	public String playerName() {
 		return activePlayer.getPlayerName();
 	}
@@ -87,6 +88,7 @@ public class GameManager {
 	public int numberOfRolls() {
 		return this.score.getNumRolls();
 	}
+	
 	public RollTypes getRollType() {
 		score.setRollType(currentDiceRoll);
 		return this.score.getRollType();
@@ -147,6 +149,5 @@ public class GameManager {
 	public void shareFinalScore(int finalScore) {
 		this.activePlayer.updateTally(finalScore);
 	}
-
 
 }
