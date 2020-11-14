@@ -85,4 +85,8 @@ public class Controller {
 		return manager.numberOfRolls();
 	}
 
+	public Player[] getPlayers() {
+		return this.setup.getPlayers();
+	}
+
 }

@@ -158,6 +158,13 @@ class ControllerTest {
 		assertEquals(1, numberOfPlayers); //default 1
 	}
 	
+	@Test
+	void controller_gets_all_players() {
+		Controller control = new Controller();
+		Player[] player = control.getPlayers();
+		assertNull(player);
+	}
+	
 	
 
 }
