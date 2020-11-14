@@ -61,6 +61,12 @@ public class Player {
 	public void startTurn() {
 		this.turn.startNewTurn();
 	}
+	
+	@Override
+	public String toString() {
+		return playerName;
+		
+	}
 
 
 

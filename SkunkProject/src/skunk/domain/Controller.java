@@ -13,7 +13,7 @@ public class Controller {
 
 	//*************Player*************************************************************
 	public void sharePlayerName(String name) {
-		
+		this.setup.createPlayer(name);
 		this.manager.assignPlayer(name);
 	}
 	

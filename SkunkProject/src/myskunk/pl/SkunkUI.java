@@ -3,6 +3,7 @@ package myskunk.pl;
 
 import edu.princeton.cs.introcs.StdIn;
 import skunk.domain.Controller;
+import skunk.domain.Player;
 
 public class SkunkUI {
 	private char playerInputs;
@@ -40,6 +41,10 @@ public class SkunkUI {
 			this.enterName(i+1);
 		}
 		
+		//Player[] players = control.getPlayers(); //just for testing
+		//for (Player p : players) {
+		//	System.out.println(p);
+		//}
 		
 	}
 	
