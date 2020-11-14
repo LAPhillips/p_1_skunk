@@ -2,35 +2,72 @@ package skunk.domain;
 
 public class Player {
 	private String playerName;
-	private int chips;
-	private int chipsAtStartOfTurn;
-	
+	private Chips chips;
+	private int totalTally;
+	private Turn turn;
 
 	public Player(String enteredName){
 		this.playerName = enteredName;
-		this.chips = 50;
-		this.chipsAtStartOfTurn = 50;
+		this.chips = new Chips();
+		this.totalTally = 0;
+		this.turn = new Turn();
 	}
 
+	
+	//*************basics***************************************
 	public String getPlayerName() {
 		return this.playerName;
 	}
 	
+	public int getTally() {
+		return this.totalTally;
+	}
 
-	public int getChips() {
-		return this.chips;
+	//*************chips***************************************
+
+	public int chipsFlow(RollTypes rollType) {
+		this.givesChipsRollType(rollType);
+		return this.chips.amountChange();
 	}
 	
-	public void adjustChips(int chipChange) {
-		this.chips += chipChange;
+	public int getChips() {
+		return this.chips.getNumChips(); //total number of chips currently
 	}
 
 	public int getLostChips() {
-		return this.chipsAtStartOfTurn - this.getChips();
+		return this.chips.amountChange(); //amount of chips changed per turn
 	}
 
-	public void setChips(int startingChips) {
-		this.chipsAtStartOfTurn = startingChips;
+	public void givesChipsRollType(RollTypes roll) {
+		this.chips.calculateChipChange(roll); //player gives roll type to chips
 	}
+
+
+	public void updateTally(int turnScore) {
+		this.totalTally =+ turnScore;
+	}
+
+
+	//*************Managing Turns*************************************************************
+	
+	public Boolean getTurnStatus() {
+		return this.turn.getTurnStatus();
+	}
+
+	public void endTurn() {
+		this.turn.endTurn();
+	}
+
+	public void startTurn() {
+		this.turn.startNewTurn();
+	}
+
+
+
+
+
+
+	
+
 
 }

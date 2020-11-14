@@ -2,30 +2,46 @@ package skunk.domain;
 
 import java.util.ArrayList;
 
-//Brings everything together -- manages the game for a single player
+//Brings everything together -- manages the game 
 public class GameManager {
-	private Player player;
+	private Player activePlayer;
 	private Dice dice;
 	private Score score;
-	private Turn turn;
 	private int [] currentDiceRoll;
-	private RollTypes types;
+	private int numPlayers;
+	private Player[] players;
 
-
-	
 	public GameManager() {
-		this.player = null;
+		this.activePlayer = null;
 		this.dice = new Dice();
-		this.score = new Score();
-		this.turn = new Turn();
-		this.currentDiceRoll = new int[2];
-		this.types = RollTypes.NORMAL;
-
+		this.score = new Score(); //start new score for each player?
+		this.currentDiceRoll = new int[] {0,0};
+		this.numPlayers = 1;
+		this.players = null;
 	}
 
+	//*************setting up game*************************************************************	
+	
+	public void assignPlayer(String playerName) {
+		Player newPlayer = new Player(playerName);
+		this.activePlayer = newPlayer;
+	}
+
+	public String playerName() {
+		return activePlayer.getPlayerName();
+	}
+	
+	public int getNumPlayers() {
+		return this.numPlayers;
+	}
+	
+	public void giveNumPlayers(int enteredAmount) {
+		this.numPlayers = enteredAmount;
+	}
+	
 	//*************Regulating Turn Flow*************************************************************
 	public void checkRollRecord() {
-		if (this.turn.getTurnStatus()) { //checks to make sure turn status is not false
+		if (this.activePlayer.getTurnStatus()) { //checks to make sure turn status is not false
 			this.playerRollsDice();// player rolls dice
 			this.recordsTheTurnScore(this.currentDiceRoll);
 			this.updatesForSpecialRolls();
@@ -35,7 +51,7 @@ public class GameManager {
 	}
 	
 	public void checkRollRecord(int die1, int die2) {
-		if (this.turn.getTurnStatus()) {  //checks to make sure turn status is not false
+		if (this.activePlayer.getTurnStatus()) {  //checks to make sure turn status is not false
 			this.playerRollsDice(die1, die2);    // player rolls dice
 			this.recordsTheTurnScore(this.currentDiceRoll);
 			this.updatesForSpecialRolls();
@@ -45,15 +61,14 @@ public class GameManager {
 	}
 
 	//*************Player*************************************************************
-	public void createPlayer(String playerName) {
-		Player newPlayer = new Player(playerName);
-		this.player = newPlayer;
-	}
 	
-	public Player getPlayer() {
-		return this.player;
+	public int getPlayerTally() {
+		return this.activePlayer.getTally();
 	}
 
+	public Boolean getTurnStatus() {
+		return this.activePlayer.getTurnStatus();
+	}
 	//*************Dice/Score*************************************************************
 	public void playerRollsDice() {
 		dice.roll();
@@ -69,89 +84,70 @@ public class GameManager {
 	public int[] returnDiceRoll() {
 		return this.currentDiceRoll;
 	}
-
-	public void recordsTheTurnScore(int[] newScore) {
-		score.recordAndUpdate(newScore);
-	}
-
-	public ArrayList<Integer> sharesTurnScores() {
-		return score.getTurnScores();
-	}
-
-	public int diceTotalScore() {
-		return dice.getLastRoll();
-	}
 	
 	public int numberOfRolls() {
-		ArrayList<Integer> turnScores = this.sharesTurnScores();
-		return turnScores.size()/2;
-	}
-
-	public int totalTurnScore() {
-		return score.getFinalScore();
+		return this.score.getNumRolls();
 	}
 	
-	//*************Managing Turns*************************************************************
-	public Boolean getContinueTurn() {
-		return this.turn.getTurnStatus();
+	public RollTypes getRollType() {
+		score.setRollType(currentDiceRoll);
+		return this.score.getRollType();
 	}
+
+	//*************Managing Turns*************************************************************
 
 	public void setContinueTurn(char playerInput) {
-		this.turn.playersDecision(playerInput);
+		if (playerInput == 'Y' || playerInput == 'y') {
+		}
+		else {
+			this.endTurn();
+		}
 	}
-
+	
 	public void updatesForSpecialRolls() {
 		if (score.isSpecial(currentDiceRoll)) {
-			this.adjustChipsForRollType();
-			this.turn.endTurn();
+			this.endTurn();
+			this.shareFinalScore(this.getFinalTurnScore());
 		}
 		else {
 			
 		}
 	}
 	
-	
-	public RollTypes getRollType() {
-		score.setTypeSpecial(currentDiceRoll);
-		return this.score.getSpecialRollType();
+	public void endTurn() {
+		this.activePlayer.endTurn();
+		this.shareFinalScore(this.getFinalTurnScore());
 	}
 
+	//*************Keeping Score*************************************************************
 	public int getChips() {
-		return player.getChips();
-	}
-
-	public void adjustChips(int amountToAdjust) {
-		this.player.adjustChips(amountToAdjust);
-	}
-
-	public int amountToAdjustChips(RollTypes roll) {
-		int amountLost = 0;
-		if (roll == RollTypes.SKUNK) {
-			amountLost = -1;
-		}
-		else if (roll == RollTypes.SKUNK_DEUCE){
-			amountLost = -2;
-		}
-		else if (roll == RollTypes.DOUBLE_SKUNK){
-			amountLost = -4;
-		}
-		
-		return amountLost;
+		return activePlayer.getChips();
 	}
 
 	public int getLostChips() {
-		return player.getLostChips();
+		RollTypes roll = this.getRollType();
+		return (-1*activePlayer.chipsFlow(roll)); //update score so that it comes out positive in UI
 	}
 
-	public String playerName() {
-		return player.getPlayerName();
+	public void recordsTheTurnScore(int[] newScore) {
+		this.score.recordAndUpdate(newScore);
+
 	}
 
-	public void adjustChipsForRollType() {
-		RollTypes type = this.getRollType();
-		int amountToAdjust = this.amountToAdjustChips(type);
-		this.adjustChips(amountToAdjust);
+	public ArrayList<Integer> sharesTurnScores() {
+		return this.score.getScoreboard();
 	}
 
-	
+	public int diceTotalScore() {
+		return dice.getLastRoll();
+	}
+
+	public int getFinalTurnScore() {
+		return this.score.getFinalScore();
+	}
+
+	public void shareFinalScore(int finalScore) {
+		this.activePlayer.updateTally(finalScore);
+	}
+
 }

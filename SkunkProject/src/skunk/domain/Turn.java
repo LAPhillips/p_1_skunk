@@ -17,14 +17,6 @@ public class Turn {
 		this.status = false;
 	}
 
-	public void playersDecision(char playerInput) {
-		if (playerInput == 'Y' || playerInput == 'y') {
-		}
-		else {
-			this.endTurn();
-		}
-	}
-
 	public int getnumberOfTurns() {
 		return this.numberOfTurns;
 	}

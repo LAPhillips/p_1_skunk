@@ -1,47 +1,33 @@
 package skunk.domain;
 //Controller should only report to and from the UI; does not decide things on its own
 public class Controller {
-	private String playerName;
-	private char playerControls;
 	private GameManager manager;
+	private GameSetup setup;
+	private int numberPlayers;
 	
 	public Controller() {
-		this.playerName = "noName";
-		this.playerControls = 'Y';
 		this.manager = new GameManager();
+		this.setup = new GameSetup();
+		this.numberPlayers = 1;
 	}
 
-	
-	
 	//*************Player*************************************************************
-	public void setsPlayerName(String name) {
-		this.playerName = name;
-		this.giveNametoManager(name);
-	}
-
-	public String getPlayerName() {
-		return this.playerName;
-	}
-	
-	public char getsPlayerDecision() {
-		return this.playerControls;
-	}
-
-	public void setPlayerInput(char playerInput) {
-		this.playerControls = playerInput;
-		manager.setContinueTurn(playerInput);
-	}
-	
-	public void giveNametoManager(String name) {
-		this.manager.createPlayer(name);
-	}
-
-	public Player getPlayerFromManager() {
-		return this.manager.getPlayer();
+	public void sharePlayerName(String name) {
+		
+		this.manager.assignPlayer(name);
 	}
 	
 	public String getPlayerNameFromManager() {
 		return this.manager.playerName();
+	}
+	
+	//to use for testing in JUnit
+	public GameManager getManager() {
+		return this.manager; 
+	}
+
+	public void sharePlayerInputs(char playerInput) {
+		manager.setContinueTurn(playerInput);
 	}
 	
 	public int getPlayerChipsFromManager() {
@@ -51,8 +37,16 @@ public class Controller {
 	public int getLostChips() {
 		return this.manager.getLostChips();
 	}
-
 	
+	public void setNumberPlayers(int enteredAmount) {
+		this.manager.giveNumPlayers(enteredAmount);
+		this.numberPlayers = enteredAmount;
+	}
+
+	public int getNumPlayers() {
+		return this.numberPlayers;
+	}
+
 	//*************Dice/Rolls********************************************************
 	//normal dice
 	public int[] shareRoll() {
@@ -71,7 +65,7 @@ public class Controller {
 	}
 
 	public Boolean startNewRoll() {
-		return manager.getContinueTurn();
+		return manager.getTurnStatus();
 	}
 	
 	public RollTypes reportsSpecialRoll() {
@@ -81,7 +75,7 @@ public class Controller {
 	//*************Scores******************************************************** 
 
 	public int totalTurnScore() {
-		return manager.totalTurnScore();
+		return manager.getFinalTurnScore();
 	}
 
 	public int reportsSpecificRoll(int rolls) {
@@ -91,10 +85,5 @@ public class Controller {
 	public int numberOfRolls() {
 		return manager.numberOfRolls();
 	}
-
-
-
-
-
 
 }

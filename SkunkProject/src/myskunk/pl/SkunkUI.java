@@ -7,12 +7,14 @@ import skunk.domain.Controller;
 public class SkunkUI {
 	private String playerName;
 	private char playerInputs;
+	private int numberPlayers;
 	private Controller control; 
 
 	public SkunkUI(){
 		this.control = new Controller();
-		this.playerName = control.getPlayerName();
-		this.playerInputs = control.getsPlayerDecision();
+		this.playerName = null; 
+		this.playerInputs = 'Y'; 
+		this.numberPlayers = 0;
 	}
 	
 	public void doesPlayerRoll() {
@@ -30,20 +32,25 @@ public class SkunkUI {
 	}
 	
 	public void rollAgain() {
-		System.out.println(control.getPlayerName() + ", do you want to roll again? [Y/N]");
+		System.out.println(control.getPlayerNameFromManager() + ", do you want to roll again? [Y/N]");
 		playerInputs = StdIn.readString().charAt(0);
-		control.setPlayerInput(playerInputs);
+		control.sharePlayerInputs(playerInputs);
+	}
+	
+	public void howMany() {
+		System.out.println("How many players are there?");
+		numberPlayers = StdIn.readInt();
 	}
 	
 	public void enterName() {
 		System.out.println("What is your name?");
 		String playerName = StdIn.readLine();
-		control.setsPlayerName(playerName);
+		control.sharePlayerName(playerName);
 	}
 	
 	public void playerRolls() {
 //for testing only
-//		control.setsPlayerName("<Your Name>");
+//		control.sharePlayerName("<Your Name>");
 //
 		System.out.println();
 		System.out.println(control.getPlayerNameFromManager() + " rolls .... ");
@@ -88,38 +95,4 @@ public class SkunkUI {
 		System.out.println();
 	}
 	
-
-	
-	
-	
-	/*+
-	 * UI Needs to:
-	 * 
-	 * 
-	 * 
-	 * PerTurn
-	 * 1. Intro
-	 * 		a. player name
-	 * 		b. do they wish to roll
-	 * 
-	 * 2. Report users roll outcome
-	 * 		a. name of player x
-	 * 		b. value of each dice x
-	 * 		c. kind of Skunk (single/deuce/double) if any
-	 * 		d. current turn score for player
-	 *3. Final end of turn summary
-	 * 		a. player's name x
-	 * 		b. complete sequence of rolls x
-	 * 		c. final turn score x
-	 * 		d. how many chips they lost x
-	 * 4. Turn ends 
-	 * 		a. after either user declines to roll OR skunk
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
-
 }

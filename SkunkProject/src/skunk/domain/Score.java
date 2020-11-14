@@ -5,14 +5,14 @@ import java.util.ArrayList;
 //Score is responsible for moderating the score of a single turn
 public class Score {
 
-	private Scoreboard playerScoreBoard;
-	private RollTypes special;
+	private RollTypes rollType;
 	private int finalScore;
+	private ArrayList<Integer> scoreboard;
 	
 	public Score() {
-		this.playerScoreBoard = new Scoreboard();
-		this.special = null; // only ever reports the most recent special roll
+		this.rollType = RollTypes.NORMAL; // only ever reports the most recent roll
 		this.finalScore = 0;
+		this.scoreboard = new ArrayList<>();
 	}
 	
 	//*************Score Flow*************************************************************
@@ -25,7 +25,7 @@ public class Score {
 
 	//*************Recording/Reporting Scores*************************************************************
 	public int getTotalScoreForTurn() {
-		ArrayList<Integer> turnTotals = this.getTurnScores();
+		ArrayList<Integer> turnTotals = this.getScoreboard();
 		int scoreTotals = 0;
 		for (int scores : turnTotals) {
 			scoreTotals += scores;
@@ -33,16 +33,24 @@ public class Score {
 		return scoreTotals;
 	}
 	
-	public void recordScore(int[] scoreAfterRoll) {
-		this.playerScoreBoard.recordRoll(scoreAfterRoll);
+	public void recordScore(int[] newRoll) {
+		scoreboard.add(newRoll[0]);
+		scoreboard.add(newRoll[1]);
 	}
 
 	public int getSpecificRecordedScore(int index) {
-		return this.playerScoreBoard.getSpecificTurnScores(index);
+		return scoreboard.get(index);
 	}
 
-	public ArrayList<Integer> getTurnScores() {
-		return playerScoreBoard.getTurnScores();
+	public ArrayList<Integer> getScoreboard() {
+		return this.scoreboard;
+	}
+	
+	public int getNumRolls() {
+		if (scoreboard.size() == 0) {
+			return 0;
+		}
+		return scoreboard.size()/2;
 	}
 
 
@@ -58,31 +66,34 @@ public class Score {
 		return false;
 	}
 	
-	public void setTypeSpecial(int[] scores) {
+	public void setRollType(int[] scores) {
 		int score1 = scores[0];
 		int score2 = scores[1];
 		
 		if (score1 == 1) {
 			if (score2 == 1) {
-				this.special = RollTypes.DOUBLE_SKUNK; //1,1
+				this.rollType = RollTypes.DOUBLE_SKUNK; //1,1
 			}
 			else if (score2 == 2){
-				this.special = RollTypes.SKUNK_DEUCE; // 1,2
+				this.rollType = RollTypes.SKUNK_DEUCE; // 1,2
 			}
 			else {
-				this.special = RollTypes.SKUNK; // 1,x
+				this.rollType = RollTypes.SKUNK; // 1,x
 			}
 		}
-		else if (score1 == 2) {
-				this.special = RollTypes.SKUNK_DEUCE; // 2,1
+		else if (score1 == 2 && score2 == 1) {
+				this.rollType = RollTypes.SKUNK_DEUCE; // 2,1
 		}
 		else if (score2 == 1) {
-			this.special = RollTypes.SKUNK; // x,1
+			this.rollType = RollTypes.SKUNK; // x,1
+		}
+		else {
+			this.rollType = RollTypes.NORMAL;
 		}
 	}
 
-	public RollTypes getSpecialRollType() {
-		return this.special;
+	public RollTypes getRollType() {
+		return this.rollType;
 	}
 
 	public int getFinalScore() {
@@ -104,7 +115,7 @@ public class Score {
 	}
 
 	public int totalScore() {
-		ArrayList<Integer> fullScores = playerScoreBoard.getTurnScores();
+		ArrayList<Integer> fullScores = this.scoreboard;
 		int totalScore = 0;
 		for (int dieRoll : fullScores) {
 			totalScore += dieRoll;
@@ -113,7 +124,5 @@ public class Score {
 	}
 
 	
-
-
 
 }
