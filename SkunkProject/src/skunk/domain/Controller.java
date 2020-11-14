@@ -27,7 +27,6 @@ public class Controller {
 	}
 
 	public void sharePlayerInputs(char playerInput) {
-//		this.playerControls = playerInput;
 		manager.setContinueTurn(playerInput);
 	}
 	

@@ -8,7 +8,17 @@ import org.junit.jupiter.api.Test;
 class ControllerTest {
 	
 	@Test
-	void controller_gives_recieve_name_from_manager() {
+	void controller_recieves_name_from_manager() {
+		Controller control = new Controller();
+		GameManager manage = control.getManager();
+		String newName = "player1";
+		control.sharePlayerName(newName);
+		String result = manage.playerName();
+		assertTrue( result.equals(newName));
+	}
+	
+	@Test
+	void controller_gets_name_from_manager() {
 		Controller control = new Controller();
 		String newName = "player1";
 		control.sharePlayerName(newName);
