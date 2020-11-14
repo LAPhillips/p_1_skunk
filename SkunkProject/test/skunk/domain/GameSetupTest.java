@@ -49,6 +49,13 @@ class GameSetupTest {
 		assertNotNull(firstPlayer); 
 	}
 	
+	@Test
+	void setup_gets_number_of_players() {
+		GameSetup setup = new GameSetup();
+		int numPlayers = setup.getNumPlayers();
+		assertEquals(1, numPlayers); //default is 1
+	}
+	
 
 
 }

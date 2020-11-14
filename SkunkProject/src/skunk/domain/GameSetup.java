@@ -2,9 +2,11 @@ package skunk.domain;
 
 public class GameSetup {
 	private Player[] players;
+	private int NumPlayers;
 	
 	public GameSetup() {
 		this.players = null;
+		this.NumPlayers = 1;
 	}
 
 	public void createPlayer(String playerName) {
@@ -35,6 +37,16 @@ public class GameSetup {
 				break;
 			}
 		}
+	}
+	
+
+	public void setNumberOfPlayers(int numberPlayers) {
+		this.NumPlayers = numberPlayers;
+		
+	}
+
+	public int getNumPlayers() {
+		return this.NumPlayers;
 	}
 	
 	
