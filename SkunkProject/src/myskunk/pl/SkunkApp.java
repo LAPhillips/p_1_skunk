@@ -6,8 +6,9 @@ public class SkunkApp {
 		SkunkUI ui = new SkunkUI();
 		
 		System.out.println("Welcome to Skunk");
-	//	ui.howMany();
-		ui.enterName();
+		System.out.println();
+	//	ui.setupGame();
+	//	ui.enterName();
 		ui.doesPlayerRoll();
 
 	}

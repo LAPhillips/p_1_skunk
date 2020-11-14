@@ -5,16 +5,12 @@ import edu.princeton.cs.introcs.StdIn;
 import skunk.domain.Controller;
 
 public class SkunkUI {
-	private String playerName;
 	private char playerInputs;
-	private int numberPlayers;
 	private Controller control; 
 
 	public SkunkUI(){
 		this.control = new Controller();
-		this.playerName = null; 
 		this.playerInputs = 'Y'; 
-		this.numberPlayers = 0;
 	}
 	
 	public void doesPlayerRoll() {
@@ -37,20 +33,31 @@ public class SkunkUI {
 		control.sharePlayerInputs(playerInputs);
 	}
 	
-	public void howMany() {
-		System.out.println("How many players are there?");
-		numberPlayers = StdIn.readInt();
+	public void setupGame() {
+		this.howMany();
+		System.out.println("Great, we will make a game with " + this.control.getNumPlayers() + " players.");
+		for (int i = 0; i < this.control.getNumPlayers(); i++) {
+			this.enterName(i+1);
+		}
+		
+		
 	}
 	
-	public void enterName() {
-		System.out.println("What is your name?");
-		String playerName = StdIn.readLine();
+	public void howMany() {
+		System.out.println("How many players are there?");
+		int numberPlayers = StdIn.readInt();
+		this.control.setNumberPlayers(numberPlayers);
+	}
+	
+	public void enterName(int playerNumber) {
+		System.out.println("What is player #" + playerNumber + "'s name?");
+		String playerName = StdIn.readString();
 		control.sharePlayerName(playerName);
 	}
 	
 	public void playerRolls() {
 //for testing only
-//		control.sharePlayerName("<Your Name>");
+		control.sharePlayerName("<Your Name>");
 //
 		System.out.println();
 		System.out.println(control.getPlayerNameFromManager() + " rolls .... ");

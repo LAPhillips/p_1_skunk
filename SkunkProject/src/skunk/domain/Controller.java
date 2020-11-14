@@ -39,12 +39,11 @@ public class Controller {
 	}
 	
 	public void setNumberPlayers(int enteredAmount) {
-		this.manager.giveNumPlayers(enteredAmount);
-		this.numberPlayers = enteredAmount;
+		this.setup.setNumberOfPlayers(enteredAmount);
 	}
-
+	
 	public int getNumPlayers() {
-		return this.numberPlayers;
+		return this.setup.getNumPlayers();
 	}
 
 	//*************Dice/Rolls********************************************************
