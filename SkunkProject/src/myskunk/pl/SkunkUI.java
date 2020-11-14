@@ -46,7 +46,7 @@ public class SkunkUI {
 	public void howMany() {
 		System.out.println("How many players are there?");
 		int numberPlayers = StdIn.readInt();
-		this.control.setNumberPlayers(numberPlayers);
+		this.control.setupGame(numberPlayers);
 	}
 	
 	public void enterName(int playerNumber) {

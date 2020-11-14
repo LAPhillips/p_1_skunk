@@ -15,14 +15,14 @@ class GameSetupTest {
 	@Test
 	void setup_can_initalize_new_players_array() {
 		GameSetup setup = new GameSetup();
-		setup.createPlayersInGame(3);
+		setup.setupGame(3);
 		assertNotNull(setup.getPlayers()); //should be initialized now
 	}
 	
 	@Test
 	void setup_can_share_new_player_from_array() {
 		GameSetup setup = new GameSetup();
-		setup.createPlayersInGame(3);
+		setup.setupGame(3);
 		Player[] players = setup.getPlayers();
 		Player player = new Player("Player1");
 		players[0] = player; //Manually adding player for the test	
@@ -34,7 +34,7 @@ class GameSetupTest {
 	void setup_can_add_new_players_array() {
 		GameSetup setup = new GameSetup();
 		Player player = new Player("Player1");
-		setup.createPlayersInGame(3);
+		setup.setupGame(3);
 		setup.addPlayer(player);
 		Player firstPlayer = setup.getSinglePlayer(0);
 		assertTrue(player.equals(firstPlayer));
@@ -43,7 +43,7 @@ class GameSetupTest {
 	@Test
 	void setup_can_create_new_player() {
 		GameSetup setup = new GameSetup();
-		setup.createPlayersInGame(3);
+		setup.setupGame(3);
 		setup.createPlayer("playerName");
 		Player firstPlayer = setup.getSinglePlayer(0);
 		assertNotNull(firstPlayer); 
@@ -59,9 +59,8 @@ class GameSetupTest {
 	@Test
 	void setup_sets_number_Players_from_controller() {
 		GameSetup setup = new GameSetup();
-		setup.setNumberOfPlayers(3);
+		setup.setupGame(3);
 		assertEquals(3, setup.getNumPlayers()); 
 	}
 	
-
 }

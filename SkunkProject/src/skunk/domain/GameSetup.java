@@ -2,13 +2,18 @@ package skunk.domain;
 
 public class GameSetup {
 	private Player[] players;
-	private int NumPlayers;
+	private int numPlayers;
 	
 	public GameSetup() {
 		this.players = null;
-		this.NumPlayers = 1;
+		this.numPlayers = 1;
 	}
 
+	public void setupGame(int numberPlayers) {
+		this.numPlayers = numberPlayers;
+		this.players = new Player[numberPlayers];
+	}
+	
 	public void createPlayer(String playerName) {
 		Player player = new Player(playerName);
 		this.addPlayer(player);
@@ -18,9 +23,6 @@ public class GameSetup {
 		return players;
 	}
 
-	public void createPlayersInGame(int numberOfPlayers) {
-		this.players = new Player[numberOfPlayers];
-	}
 
 	public Player getSinglePlayer(int index) {
 		return this.players[index];
@@ -40,13 +42,10 @@ public class GameSetup {
 	}
 	
 
-	public void setNumberOfPlayers(int numberPlayers) {
-		this.NumPlayers = numberPlayers;
-		
-	}
+
 
 	public int getNumPlayers() {
-		return this.NumPlayers;
+		return this.numPlayers;
 	}
 	
 

@@ -38,8 +38,8 @@ public class Controller {
 		return this.manager.getLostChips();
 	}
 	
-	public void setNumberPlayers(int enteredAmount) {
-		this.setup.setNumberOfPlayers(enteredAmount);
+	public void setupGame(int enteredAmount) {
+		this.setup.setupGame(enteredAmount);;
 	}
 	
 	public int getNumPlayers() {

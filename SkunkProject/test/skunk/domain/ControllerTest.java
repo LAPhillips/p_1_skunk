@@ -162,7 +162,11 @@ class ControllerTest {
 	void controller_gets_all_players() {
 		Controller control = new Controller();
 		Player[] player = control.getPlayers();
-		assertNull(player);
+		assertNull(player); //default is null
+		
+		control.setupGame(3);
+		player = control.getPlayers();
+		assertEquals(3, control.getNumPlayers());
 	}
 	
 	
