@@ -22,6 +22,19 @@ public class GameSetup {
 	public Player getSinglePlayer(int index) {
 		return this.players[index];
 	}
+
+	public void addPlayer(Player player) { //adds player to next open slot
+		int size = players.length;
+		for (int i = 0; i < size; i++) { 
+			if (players[i] != null) {
+				continue;
+			}
+			else if (players[i] == null) {
+				players[i] = player;
+				break;
+			}
+		}
+	}
 	
 	
 

@@ -29,5 +29,17 @@ class GameSetupTest {
 		Player firstPlayer = setup.getSinglePlayer(0);
 		assertTrue(player.equals(firstPlayer));
 	}
+	
+	@Test
+	void setup_can_add_new_players_array() {
+		GameSetup setup = new GameSetup();
+		Player player = new Player("Player1");
+		setup.createPlayersInGame(3);
+		setup.addPlayer(player);
+		Player firstPlayer = setup.getSinglePlayer(0);
+		assertTrue(player.equals(firstPlayer));
+	}
+	
+
 
 }
