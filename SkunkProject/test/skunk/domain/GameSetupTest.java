@@ -11,5 +11,12 @@ class GameSetupTest {
 		GameSetup setup = new GameSetup();
 		assertNull(setup.getPlayers()); //default is null
 	}
+	
+	@Test
+	void setup_can_initalize_players() {
+		GameSetup setup = new GameSetup();
+		setup.createPlayersInGame(3);
+		assertNotNull(setup.getPlayers()); //should be initialized now
+	}
 
 }

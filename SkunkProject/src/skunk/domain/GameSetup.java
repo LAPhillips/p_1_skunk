@@ -14,6 +14,10 @@ public class GameSetup {
 	public Player[] getPlayers() {
 		return players;
 	}
+
+	public void createPlayersInGame(int numberOfPlayers) {
+		this.players = new Player[numberOfPlayers];
+	}
 	
 	
 
