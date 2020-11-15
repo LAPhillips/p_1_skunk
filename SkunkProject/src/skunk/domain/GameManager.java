@@ -40,6 +40,7 @@ public class GameManager {
 				break;
 			}
 		}
+		this.sharesActivePlayer(players[0]); //setting TM's first player
 	}
 	
 	public int getNumPlayers() {

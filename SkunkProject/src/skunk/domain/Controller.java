@@ -14,7 +14,6 @@ public class Controller {
 	//*************Player*************************************************************
 	public void sharePlayerName(String name) {
 		this.gameManage.createPlayer(name);
-		this.turnManage.assignPlayer(name);
 	}
 	
 	public String getPlayerNameFromManager() {

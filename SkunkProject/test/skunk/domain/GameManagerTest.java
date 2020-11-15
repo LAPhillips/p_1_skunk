@@ -107,11 +107,24 @@ class GameManagerTest {
 	@Test
 	void game_manager_shares_current_player() {
 		GameManager manager = new GameManager();
-		manager.setupGame(1);
+		manager.setupGame(2);
 		manager.createPlayer("playerName");
+		manager.createPlayer("playerName2");
 		Player player = manager.getSinglePlayer(0);
 		manager.sharesActivePlayer(player);
 		assertEquals(player, manager.getPlayerFromTurnManager());
+	}
+	
+	@Test
+	void game_manager_always_sets_first_player() {
+		GameManager manager = new GameManager();
+		manager.setupGame(2);
+		manager.createPlayer("playerName");
+		manager.createPlayer("playerName2");
+		Player player = manager.getSinglePlayer(0);
+		Player player2 = manager.getSinglePlayer(1);
+		Player activePlayer = manager.getPlayerFromTurnManager();
+		assertEquals(player, activePlayer); //active player before game start should always be first one
 	}
 	
 }
