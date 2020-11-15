@@ -50,7 +50,10 @@ public class TurnManager {
 	}
 
 	//*************Player*************************************************************
-	
+	public void setActivePlayer(Player player) {
+		this.activePlayer = player;
+	}
+
 	public int getPlayerTally() {
 		return this.activePlayer.getTally();
 	}
@@ -142,6 +145,7 @@ public class TurnManager {
 	public void shareFinalScore(int finalScore) {
 		this.activePlayer.updateTally(finalScore);
 	}
+
 
 
 

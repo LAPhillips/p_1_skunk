@@ -66,6 +66,11 @@ public class GameManager {
 	public TurnManager getTurnManager() {
 		return this.turnManager;
 	}
+
+	
+	public void sharesActivePlayer(Player player) {
+		this.turnManager.setActivePlayer(player);
+	}
 	
 
 	

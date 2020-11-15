@@ -104,4 +104,14 @@ class GameManagerTest {
 		assertNull(player); //default is null
 	}
 	
+	@Test
+	void game_manager_shares_current_player() {
+		GameManager manager = new GameManager();
+		manager.setupGame(1);
+		manager.createPlayer("playerName");
+		Player player = manager.getSinglePlayer(0);
+		manager.sharesActivePlayer(player);
+		assertEquals(player, manager.getPlayerFromTurnManager());
+	}
+	
 }

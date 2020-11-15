@@ -23,6 +23,15 @@ class TurnManagerTest {
 	}
 	
 	@Test
+	void turn_manager_sets_active_player() {
+		TurnManager manager = new TurnManager();
+		Player player = new Player("playerName");
+		manager.setActivePlayer(player);
+		Player activePlayer = manager.getPlayer();
+		assertTrue(player.equals(activePlayer));
+	}
+	
+	@Test
 	void turn_manager_returns_dice_array() {
 		TurnManager manager = new TurnManager();
 		int expected1 = 2;
