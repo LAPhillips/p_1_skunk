@@ -59,8 +59,8 @@ public class GameManager {
 		
 	}
 
-	public Player getPlayerFromManager() {
-		return null;
+	public Player getPlayerFromTurnManager() {
+		return this.turnManager.getPlayer();
 	}
 
 	public TurnManager getTurnManager() {

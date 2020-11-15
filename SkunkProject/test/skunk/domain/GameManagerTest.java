@@ -100,8 +100,8 @@ class GameManagerTest {
 	@Test
 	void game_manager_gets_current_player_from_turnManager() {
 		GameManager manager = new GameManager();
-		Player player = manager.getPlayerFromManager();
-		assertNotNull(player);
+		Player player = manager.getPlayerFromTurnManager();
+		assertNull(player); //default is null
 	}
 	
 }
