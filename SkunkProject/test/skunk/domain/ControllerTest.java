@@ -97,17 +97,6 @@ class ControllerTest {
 		assertEquals(expected, actual);
 	}
 
-	
-	
-	@Test
-	void controller_sees_if_the_player_wants_another_round() {
-		Controller control = new Controller();
-		control.setupGame(2);
-		control.sharePlayerName("player1");
-		Boolean newRoll = control.startNewRoll();
-		assertTrue(newRoll);
-	}
-
 	@Test
 	void controller_shares_total_score() {
 		Controller control = new Controller();
@@ -189,6 +178,22 @@ class ControllerTest {
 		Player[] player = control.getPlayers();
 		Boolean turnStatus = control.playerTurnStatus();
 		assertTrue(turnStatus);
+	}
+	
+	
+	@Test
+	void controller_gets_new_turn() {
+		Controller control = new Controller();
+		control.setupGame(3);
+		control.sharePlayerName("player1");
+		control.sharePlayerName("player2");
+		TurnManager TM = control.getManager();
+		String TMname = TM.getPlayer().getPlayerName();
+		
+		control.startNewTurn();
+		TM = control.getManager();
+		String TM2name = TM.getPlayer().getPlayerName();
+		assertNotEquals(TMname, TM2name);
 	}
 	
 	

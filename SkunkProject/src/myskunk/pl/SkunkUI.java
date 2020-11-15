@@ -3,7 +3,6 @@ package myskunk.pl;
 
 import edu.princeton.cs.introcs.StdIn;
 import skunk.domain.Controller;
-import skunk.domain.Player;
 
 public class SkunkUI {
 	private char playerInputs;
@@ -16,24 +15,30 @@ public class SkunkUI {
 	
 	public void gameStructure() {
 		doesPlayerRoll();
-		playerEndsTurn();
+		getNextPlayer();
+		doesPlayerRoll();
 	}
-	
+
+	private void getNextPlayer() {
+		control.startNewTurn();
+	}
+
 	public void doesPlayerRoll() {
 		do {
 			this.playerRolls();
-			if(control.startNewRoll() == false) {
+			if(control.playerTurnStatus() == false) {
 				this.playerRollsSpecial();
 			}
 			else {
 				rollAgain();
 			}
 			
-		} while(control.startNewRoll());
+		} while(control.playerTurnStatus());
+		playerEndsTurn();
 	}
 	
 	public void rollAgain() {
-		System.out.println(control.getPlayerNameFromManager() + ", do you want to roll again? [Y/N]");
+		System.out.println(control.getPlayerNameFromManager() + ", do you want to roll? [Y/N]");
 		playerInputs = StdIn.readString().charAt(0);
 		control.sharePlayerInputs(playerInputs);
 	}

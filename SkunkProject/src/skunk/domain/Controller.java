@@ -59,10 +59,6 @@ public class Controller {
 	public int rollTotal() {
 		return turnManage.diceTotalScore();
 	}
-
-	public Boolean startNewRoll() {
-		return turnManage.getTurnStatus();
-	}
 	
 	public RollTypes reportsSpecialRoll() {
 		return turnManage.getRollType();
@@ -88,6 +84,11 @@ public class Controller {
 
 	public Boolean playerTurnStatus() {
 		return this.turnManage.getTurnStatus();
+	}
+
+	public void startNewTurn() {
+		this.gameManage.createNewTurn();
+		this.turnManage = this.gameManage.getTurnManager();
 	}
 
 }
