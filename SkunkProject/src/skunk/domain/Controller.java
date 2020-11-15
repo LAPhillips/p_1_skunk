@@ -7,7 +7,8 @@ public class Controller {
 	
 	public Controller() {
 		this.numberPlayers = 1;
-		this.turnManage = new TurnManager();
+		this.gameManage = new GameManager();
+		this.turnManage = gameManage.getTurnManager();
 	}
 
 	//*************Player*************************************************************

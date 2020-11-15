@@ -25,7 +25,6 @@ public class GameManager {
 		return this.players;
 	}
 
-
 	public Player getSinglePlayer(int index) {
 		return this.players[index];
 	}
@@ -43,9 +42,6 @@ public class GameManager {
 		}
 	}
 	
-
-
-
 	public int getNumPlayers() {
 		return this.numPlayers;
 	}

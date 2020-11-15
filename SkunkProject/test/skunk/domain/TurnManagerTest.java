@@ -16,6 +16,13 @@ class TurnManagerTest {
 	}
 	
 	@Test
+	void turn_manager_shares_player() {
+		TurnManager manager = new TurnManager();
+		Player player = manager.getPlayer();
+		assertNull(player); //default is null
+	}
+	
+	@Test
 	void turn_manager_returns_dice_array() {
 		TurnManager manager = new TurnManager();
 		int expected1 = 2;
@@ -240,21 +247,6 @@ class TurnManagerTest {
 	}
 	
 	@Test
-	void turn_manager_gets_num_players() {
-		TurnManager manager = new TurnManager();
-		int numPlayers = manager.getNumPlayers();
-		assertEquals(1, numPlayers);
-	}
-	
-	@Test
-	void turn_manager_gets_num_players_from_controller() {
-		TurnManager manager = new TurnManager();
-		manager.giveNumPlayers(3);
-		int numPlayers = manager.getNumPlayers();
-		assertEquals(3, numPlayers);
-	}
-	
-	@Test
 	void turn_manager_gets_rollType_Score() {
 		TurnManager manager = new TurnManager();
 		manager.assignPlayer("player1");
@@ -268,7 +260,7 @@ class TurnManagerTest {
 	
 	
 	@Test
-	void GM_gets_tally_from_player() {
+	void TM_gets_tally_from_player() {
 		TurnManager manager = new TurnManager();
 		manager.assignPlayer("player1");
 		int tally = manager.getPlayerTally();
@@ -276,7 +268,7 @@ class TurnManagerTest {
 	}
 	
 	@Test
-	void GM_informs_player_of_final_score() {
+	void TM_informs_player_of_final_score() {
 		TurnManager manager = new TurnManager();
 		manager.assignPlayer("player1");
 		manager.shareFinalScore(5);
@@ -285,7 +277,7 @@ class TurnManagerTest {
 	}
 	
 	@Test
-	void GM_ends_player_turn() {
+	void TM_ends_player_turn() {
 		TurnManager manager = new TurnManager();
 		manager.assignPlayer("player1");
 		manager.endTurn();

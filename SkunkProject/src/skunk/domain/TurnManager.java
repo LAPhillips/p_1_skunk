@@ -8,14 +8,12 @@ public class TurnManager {
 	private Dice dice;
 	private Score score;
 	private int [] currentDiceRoll;
-	private int numPlayers;
 
 	public TurnManager() {
 		this.activePlayer = null;
 		this.dice = new Dice();
 		this.score = new Score(); //start new score for each player?
 		this.currentDiceRoll = new int[] {0,0};
-		this.numPlayers = 1;
 	}
 
 	//*************setting up game*************************************************************	
@@ -29,13 +27,6 @@ public class TurnManager {
 		return activePlayer.getPlayerName();
 	}
 	
-	public int getNumPlayers() {
-		return this.numPlayers;
-	}
-	
-	public void giveNumPlayers(int enteredAmount) {
-		this.numPlayers = enteredAmount;
-	}
 	
 	//*************Regulating Turn Flow*************************************************************
 	public void checkRollRecord() {
@@ -66,6 +57,10 @@ public class TurnManager {
 
 	public Boolean getTurnStatus() {
 		return this.activePlayer.getTurnStatus();
+	}
+	
+	public Player getPlayer() {
+		return this.activePlayer;
 	}
 	//*************Dice/Score*************************************************************
 	public void playerRollsDice() {
@@ -147,5 +142,7 @@ public class TurnManager {
 	public void shareFinalScore(int finalScore) {
 		this.activePlayer.updateTally(finalScore);
 	}
+
+
 
 }
