@@ -134,4 +134,16 @@ class GameManagerTest {
 		assertEquals(0, counter); //default is 0
 	}
 	
+	@Test
+	void playerCounter_increases() {
+		GameManager manager = new GameManager();
+		int counter = manager.getPlayerCounter();
+		assertEquals(0, counter); //default is 0
+		
+		manager.setupGame(2);
+		manager.createPlayer("playerName");
+		manager.createPlayer("playerName2");
+		counter = manager.getPlayerCounter();
+		assertEquals(1, counter);
+	}
 }

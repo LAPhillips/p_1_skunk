@@ -39,9 +39,11 @@ public class GameManager {
 			}
 			else if (this.players[i] == null) {
 				this.players[i] = player;
-				this.sharesActivePlayer(players[0]); //setting TM's first player
 				break;
 			}
+		}
+		if(this.turnManager.getPlayer() == null) {
+			this.sharesActivePlayer(players[0]); //setting TM's first player
 		}
 
 	}
