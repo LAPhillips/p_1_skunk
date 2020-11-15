@@ -43,7 +43,7 @@ public class GameManager {
 			}
 		}
 		if(this.turnManager.getPlayer() == null) {
-			this.sharesActivePlayer(players[0]); //setting TM's first player
+			this.sharesActivePlayer(0); //setting TM's first player
 		}
 
 	}
@@ -74,8 +74,8 @@ public class GameManager {
 	}
 
 	
-	public void sharesActivePlayer(Player player) {
-		this.turnManager.setActivePlayer(player);
+	public void sharesActivePlayer(int count) {
+		this.turnManager.setActivePlayer(this.getSinglePlayer(count));
 		this.playerCounter++;
 	}
 

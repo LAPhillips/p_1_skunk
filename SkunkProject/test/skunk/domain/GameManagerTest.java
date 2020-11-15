@@ -111,7 +111,7 @@ class GameManagerTest {
 		manager.createPlayer("playerName");
 		manager.createPlayer("playerName2");
 		Player player = manager.getSinglePlayer(0);
-		manager.sharesActivePlayer(player);
+		manager.sharesActivePlayer(0);
 		assertEquals(player, manager.getPlayerFromTurnManager());
 	}
 	
@@ -146,4 +146,6 @@ class GameManagerTest {
 		counter = manager.getPlayerCounter();
 		assertEquals(1, counter);
 	}
+	
+
 }
