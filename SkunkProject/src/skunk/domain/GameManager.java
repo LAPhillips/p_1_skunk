@@ -72,7 +72,6 @@ public class GameManager {
 	public TurnManager getTurnManager() {
 		return this.turnManager;
 	}
-
 	
 	public void sharesActivePlayer(int count) {
 		this.turnManager.setActivePlayer(this.getSinglePlayer(count));
@@ -82,6 +81,13 @@ public class GameManager {
 	public int getPlayerCounter() {
 		return this.playerCounter;
 	}
+
+	
+	public void createNewTurn() {
+		this.turnManager = new TurnManager();
+		this.sharesActivePlayer(playerCounter);
+	}
+	
 	
 
 	

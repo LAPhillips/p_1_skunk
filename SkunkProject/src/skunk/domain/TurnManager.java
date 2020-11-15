@@ -8,12 +8,14 @@ public class TurnManager {
 	private Dice dice;
 	private Score score;
 	private int [] currentDiceRoll;
+	private boolean turnEnd;
 
 	public TurnManager() {
 		this.activePlayer = null;
 		this.dice = new Dice();
 		this.score = new Score(); //start new score for each player?
 		this.currentDiceRoll = new int[] {0,0};
+		this.turnEnd = true;
 	}
 
 	//*************setting up game*************************************************************	

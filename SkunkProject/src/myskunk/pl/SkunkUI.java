@@ -14,6 +14,11 @@ public class SkunkUI {
 		this.playerInputs = 'Y'; 
 	}
 	
+	public void gameStructure() {
+		doesPlayerRoll();
+		playerEndsTurn();
+	}
+	
 	public void doesPlayerRoll() {
 		do {
 			this.playerRolls();
@@ -25,7 +30,6 @@ public class SkunkUI {
 			}
 			
 		} while(control.startNewRoll());
-		playerEndsTurn();
 	}
 	
 	public void rollAgain() {

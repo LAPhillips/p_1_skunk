@@ -147,5 +147,20 @@ class GameManagerTest {
 		assertEquals(1, counter);
 	}
 	
+	@Test
+	void manager_creates_new_turn_when_player_turn_ends() {
+		GameManager manager = new GameManager();
+		manager.setupGame(2);
+		manager.createPlayer("playerName");
+		manager.createPlayer("playerName2");
+		TurnManager original = manager.getTurnManager();
+		manager.createNewTurn();
+		
+		TurnManager newTurn = manager.getTurnManager();
+		assertNotEquals(original, newTurn); //default is 1
+	}
+	
+
+	
 
 }
