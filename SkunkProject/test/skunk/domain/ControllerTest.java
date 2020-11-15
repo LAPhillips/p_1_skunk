@@ -10,8 +10,9 @@ class ControllerTest {
 	@Test
 	void controller_recieves_name_from_manager() {
 		Controller control = new Controller();
-		GameManager manage = control.getManager();
+		TurnManager manage = control.getManager();
 		String newName = "player1";
+		control.setupGame(2);
 		control.sharePlayerName(newName);
 		String result = manage.playerName();
 		assertTrue( result.equals(newName));
@@ -21,6 +22,7 @@ class ControllerTest {
 	void controller_gets_name_from_manager() {
 		Controller control = new Controller();
 		String newName = "player1";
+		control.setupGame(2);
 		control.sharePlayerName(newName);
 		String result = control.getPlayerNameFromManager();
 		assertTrue( result.equals(newName));
@@ -29,13 +31,14 @@ class ControllerTest {
 	@Test
 	void controler_shares_manager() {
 		Controller control = new Controller();
-		GameManager manager = control.getManager();
+		TurnManager manager = control.getManager();
 		assertNotNull(manager);
 	}
 	@Test
 	void controller_sets_player_roll_input() {
 		Controller control = new Controller();
-		GameManager manager = control.getManager();
+		TurnManager manager = control.getManager();
+		control.setupGame(2);
 		control.sharePlayerName("player1");
 		control.sharePlayerInputs('N');	
 		Boolean result = manager.getTurnStatus();
@@ -46,6 +49,7 @@ class ControllerTest {
 	@Test
 	void controller_gets_chips_from_manager() {
 		Controller control = new Controller();
+		control.setupGame(2);
 		control.sharePlayerName("joe");
 		int chips = control.getPlayerChipsFromManager();
 		assertEquals(50, chips, "expect 50, b/c default is 50");
@@ -67,6 +71,7 @@ class ControllerTest {
 	@Test
 	void controller_gets_roll_from_manager() {
 		Controller control = new Controller();
+		control.setupGame(2);
 		control.sharePlayerName("player1");
 		int[] dice = control.shareRoll(2,5);
 		assertTrue(dice[0] == 2 && dice[1] == 5);
@@ -75,6 +80,7 @@ class ControllerTest {
 	@Test
 	void controller_gets_random_roll_from_manager() {
 		Controller control = new Controller();
+		control.setupGame(2);
 		control.sharePlayerName("player1");
 		int[] dice = control.shareRoll(2,5);
 		assertTrue((dice[0] > 0 && dice[0] < 7) &&(dice[0]> 0 && dice[1] < 7));
@@ -83,6 +89,7 @@ class ControllerTest {
 	@Test
 	void controller_gets_total_roll_from_manager() {
 		Controller control = new Controller();
+		control.setupGame(2);
 		control.sharePlayerName("player1");
 		control.shareRoll(3, 4);
 		int expected = 7;
@@ -90,19 +97,10 @@ class ControllerTest {
 		assertEquals(expected, actual);
 	}
 
-	
-	
-	@Test
-	void controller_sees_if_the_player_wants_another_round() {
-		Controller control = new Controller();
-		control.sharePlayerName("player1");
-		Boolean newRoll = control.startNewRoll();
-		assertTrue(newRoll);
-	}
-
 	@Test
 	void controller_shares_total_score() {
 		Controller control = new Controller();
+		control.setupGame(2);
 		control.sharePlayerName("player1");
 		int die1 = 3;
 		int die2 = 4;
@@ -119,6 +117,7 @@ class ControllerTest {
 	@Test
 	void controller_reports_play_by_play() {
 		Controller control = new Controller();
+		control.setupGame(2);
 		control.sharePlayerName("player1");
 		//for three rolls
 		for (int i = 0; i < 3; i++) {
@@ -131,6 +130,7 @@ class ControllerTest {
 	@Test 
 	void controller_gets_number_of_rolls(){
 		Controller control = new Controller();
+		control.setupGame(2);
 		control.sharePlayerName("player1");
 		//for three rolls
 				for (int i = 0; i < 4; i++) {
@@ -143,6 +143,7 @@ class ControllerTest {
 	@Test
 	void controller_shares_special_rolls() {
 		Controller control = new Controller();
+		control.setupGame(2);
 		control.sharePlayerName("player1");
 		control.shareRoll(1, 3);
 		RollTypes roll = control.reportsSpecialRoll();
@@ -159,11 +160,40 @@ class ControllerTest {
 	}
 	
 	@Test
-	void controller_sets_number_of_players() {
+	void controller_gets_all_players() {
 		Controller control = new Controller();
-		control.setNumberPlayers(3);
-		int numberOfPlayers = control.getNumPlayers();
-		assertEquals(3, numberOfPlayers); //default 1
+		Player[] player = control.getPlayers();
+		assertNull(player); //default is null
+		
+		control.setupGame(3);
+		player = control.getPlayers();
+		assertEquals(3, control.getNumPlayers());
+	}
+	
+	@Test
+	void controller_gets_player_turn_status() {
+		Controller control = new Controller();
+		control.setupGame(3);
+		control.sharePlayerName("player1");
+		Player[] player = control.getPlayers();
+		Boolean turnStatus = control.playerTurnStatus();
+		assertTrue(turnStatus);
+	}
+	
+	
+	@Test
+	void controller_gets_new_turn() {
+		Controller control = new Controller();
+		control.setupGame(3);
+		control.sharePlayerName("player1");
+		control.sharePlayerName("player2");
+		TurnManager TM = control.getManager();
+		String TMname = TM.getPlayer().getPlayerName();
+		
+		control.startNewTurn();
+		TM = control.getManager();
+		String TM2name = TM.getPlayer().getPlayerName();
+		assertNotEquals(TMname, TM2name);
 	}
 	
 	
