@@ -60,6 +60,10 @@ public class GameManager {
 		}
 		
 	}
+
+	public Player getPlayerFromManager() {
+		return null;
+	}
 	
 
 	

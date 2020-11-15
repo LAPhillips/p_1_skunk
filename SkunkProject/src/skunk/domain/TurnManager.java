@@ -9,7 +9,6 @@ public class TurnManager {
 	private Score score;
 	private int [] currentDiceRoll;
 	private int numPlayers;
-	private Player[] players;
 
 	public TurnManager() {
 		this.activePlayer = null;
@@ -17,7 +16,6 @@ public class TurnManager {
 		this.score = new Score(); //start new score for each player?
 		this.currentDiceRoll = new int[] {0,0};
 		this.numPlayers = 1;
-		this.players = null;
 	}
 
 	//*************setting up game*************************************************************	
