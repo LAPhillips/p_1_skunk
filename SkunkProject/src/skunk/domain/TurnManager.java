@@ -113,6 +113,7 @@ public class TurnManager {
 	public void endTurn() {
 		this.activePlayer.endTurn();
 		this.shareFinalScore(this.getFinalTurnScore());
+		//set newActive player
 	}
 
 	//*************Keeping Score*************************************************************
@@ -127,7 +128,6 @@ public class TurnManager {
 
 	public void recordsTheTurnScore(int[] newScore) {
 		this.score.recordAndUpdate(newScore);
-
 	}
 
 	public ArrayList<Integer> sharesTurnScores() {

@@ -40,12 +40,6 @@ public class SkunkUI {
 		for (int i = 0; i < this.control.getNumPlayers(); i++) {
 			this.enterName(i+1);
 		}
-		
-		//Player[] players = control.getPlayers(); //just for testing
-		//for (Player p : players) {
-		//	System.out.println(p);
-		//}
-		
 	}
 	
 	public void howMany() {

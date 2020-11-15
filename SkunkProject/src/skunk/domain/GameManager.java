@@ -4,11 +4,13 @@ public class GameManager {
 	private Player[] players;
 	private TurnManager turnManager;
 	private int numPlayers;
+	private int playerCounter;
 	
 	public GameManager() {
 		this.players = null;
 		this.turnManager = new TurnManager();
 		this.numPlayers = 1;
+		this.playerCounter = 0;
 	}
 
 	public void setupGame(int numberPlayers) {
@@ -37,10 +39,11 @@ public class GameManager {
 			}
 			else if (this.players[i] == null) {
 				this.players[i] = player;
+				this.sharesActivePlayer(players[0]); //setting TM's first player
 				break;
 			}
 		}
-		this.sharesActivePlayer(players[0]); //setting TM's first player
+
 	}
 	
 	public int getNumPlayers() {
@@ -71,7 +74,14 @@ public class GameManager {
 	
 	public void sharesActivePlayer(Player player) {
 		this.turnManager.setActivePlayer(player);
+		this.playerCounter++;
 	}
+
+	public int getPlayerCounter() {
+		return this.playerCounter;
+	}
+	
+
 	
 
 	

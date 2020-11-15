@@ -3,10 +3,8 @@ package skunk.domain;
 public class Controller {
 	private GameManager gameManage;
 	private TurnManager turnManage;
-	private int numberPlayers;
 	
 	public Controller() {
-		this.numberPlayers = 1;
 		this.gameManage = new GameManager();
 		this.turnManage = gameManage.getTurnManager();
 	}

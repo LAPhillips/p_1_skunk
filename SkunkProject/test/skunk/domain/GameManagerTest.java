@@ -127,4 +127,11 @@ class GameManagerTest {
 		assertEquals(player, activePlayer); //active player before game start should always be first one
 	}
 	
+	@Test
+	void game_manager_returns_playerCounter() {
+		GameManager manager = new GameManager();
+		int counter = manager.getPlayerCounter();
+		assertEquals(0, counter); //default is 0
+	}
+	
 }
