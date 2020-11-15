@@ -20,7 +20,7 @@ public class GameSetup {
 	}
 	
 	public Player[] getPlayers() {
-		return players;
+		return this.players;
 	}
 
 
@@ -29,13 +29,13 @@ public class GameSetup {
 	}
 
 	public void addPlayer(Player player) { //adds player to next open slot
-		int size = players.length;
+		int size = this.players.length;
 		for (int i = 0; i < size; i++) { 
-			if (players[i] != null) {
+			if (this.players[i] != null) {
 				continue;
 			}
-			else if (players[i] == null) {
-				players[i] = player;
+			else if (this.players[i] == null) {
+				this.players[i] = player;
 				break;
 			}
 		}
@@ -46,6 +46,19 @@ public class GameSetup {
 
 	public int getNumPlayers() {
 		return this.numPlayers;
+	}
+
+	public void changeTurnStatus() {
+		for (int i = 0; i < this.players.length; i++) {
+			Player player = this.players[i];
+			if (player.getTurnStatus()) {
+				player.endTurn();
+			}
+			else {
+				player.startTurn();
+			}
+		}
+		
 	}
 	
 

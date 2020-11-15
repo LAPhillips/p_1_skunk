@@ -63,4 +63,31 @@ class GameSetupTest {
 		assertEquals(3, setup.getNumPlayers()); 
 	}
 	
+	@Test
+	void setup_can_change_turn_status_for_all_players() {
+		GameSetup setup = new GameSetup();
+		setup.setupGame(3);
+		setup.createPlayer("playerName");
+		setup.createPlayer("playerName2");
+		setup.createPlayer("playerName3");
+		Player player = setup.getSinglePlayer(1);
+		
+		Boolean turnStatus = player.getTurnStatus();
+		assertTrue(turnStatus); //default should be true
+		
+		setup.changeTurnStatus();
+		player = setup.getSinglePlayer(0);
+		turnStatus = player.getTurnStatus();
+		
+		assertFalse(turnStatus);
+		
+		player = setup.getSinglePlayer(1);
+		turnStatus = player.getTurnStatus();
+		assertFalse(turnStatus);
+		
+		player = setup.getSinglePlayer(2);
+		turnStatus = player.getTurnStatus();
+		assertFalse(turnStatus);
+	}
+	
 }
