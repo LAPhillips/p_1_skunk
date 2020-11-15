@@ -36,7 +36,7 @@ public class Controller {
 	}
 	
 	public void setupGame(int enteredAmount) {
-		this.gameManage.setupGame(enteredAmount);;
+		this.gameManage.setupGame(enteredAmount);
 	}
 	
 	public int getNumPlayers() {
@@ -84,6 +84,10 @@ public class Controller {
 
 	public Player[] getPlayers() {
 		return this.gameManage.getPlayers();
+	}
+
+	public Boolean playerTurnStatus() {
+		return this.turnManage.getTurnStatus();
 	}
 
 }
