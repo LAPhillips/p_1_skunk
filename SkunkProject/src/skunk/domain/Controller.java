@@ -1,13 +1,13 @@
 package skunk.domain;
 //Controller should only report to and from the UI; does not decide things on its own
 public class Controller {
-	private GameManager manager;
-	private GameSetup setup;
+	private TurnManager manager;
+	private GameManager setup;
 	private int numberPlayers;
 	
 	public Controller() {
-		this.manager = new GameManager();
-		this.setup = new GameSetup();
+		this.manager = new TurnManager();
+		this.setup = new GameManager();
 		this.numberPlayers = 1;
 	}
 
@@ -22,7 +22,7 @@ public class Controller {
 	}
 	
 	//to use for testing in JUnit
-	public GameManager getManager() {
+	public TurnManager getManager() {
 		return this.manager; 
 	}
 

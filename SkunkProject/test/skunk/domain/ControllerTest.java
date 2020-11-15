@@ -10,7 +10,7 @@ class ControllerTest {
 	@Test
 	void controller_recieves_name_from_manager() {
 		Controller control = new Controller();
-		GameManager manage = control.getManager();
+		TurnManager manage = control.getManager();
 		String newName = "player1";
 		control.sharePlayerName(newName);
 		String result = manage.playerName();
@@ -29,13 +29,13 @@ class ControllerTest {
 	@Test
 	void controler_shares_manager() {
 		Controller control = new Controller();
-		GameManager manager = control.getManager();
+		TurnManager manager = control.getManager();
 		assertNotNull(manager);
 	}
 	@Test
 	void controller_sets_player_roll_input() {
 		Controller control = new Controller();
-		GameManager manager = control.getManager();
+		TurnManager manager = control.getManager();
 		control.sharePlayerName("player1");
 		control.sharePlayerInputs('N');	
 		Boolean result = manager.getTurnStatus();
