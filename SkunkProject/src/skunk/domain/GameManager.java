@@ -2,10 +2,12 @@ package skunk.domain;
 
 public class GameManager {
 	private Player[] players;
+	private TurnManager turnManager;
 	private int numPlayers;
 	
 	public GameManager() {
 		this.players = null;
+		this.turnManager = new TurnManager();
 		this.numPlayers = 1;
 	}
 
@@ -63,6 +65,10 @@ public class GameManager {
 
 	public Player getPlayerFromManager() {
 		return null;
+	}
+
+	public TurnManager getTurnManager() {
+		return this.turnManager;
 	}
 	
 

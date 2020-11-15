@@ -1,92 +1,91 @@
 package skunk.domain;
 //Controller should only report to and from the UI; does not decide things on its own
 public class Controller {
-	private TurnManager manager;
-	private GameManager setup;
+	private GameManager gameManage;
+	private TurnManager turnManage;
 	private int numberPlayers;
 	
 	public Controller() {
-		this.manager = new TurnManager();
-		this.setup = new GameManager();
 		this.numberPlayers = 1;
+		this.turnManage = new TurnManager();
 	}
 
 	//*************Player*************************************************************
 	public void sharePlayerName(String name) {
-		this.setup.createPlayer(name);
-		this.manager.assignPlayer(name);
+		this.gameManage.createPlayer(name);
+		this.turnManage.assignPlayer(name);
 	}
 	
 	public String getPlayerNameFromManager() {
-		return this.manager.playerName();
+		return this.turnManage.playerName();
 	}
 	
 	//to use for testing in JUnit
 	public TurnManager getManager() {
-		return this.manager; 
+		return this.turnManage; 
 	}
 
 	public void sharePlayerInputs(char playerInput) {
-		manager.setContinueTurn(playerInput);
+		turnManage.setContinueTurn(playerInput);
 	}
 	
 	public int getPlayerChipsFromManager() {
-		return this.manager.getChips();
+		return this.turnManage.getChips();
 	}
 	
 	public int getLostChips() {
-		return this.manager.getLostChips();
+		return this.turnManage.getLostChips();
 	}
 	
 	public void setupGame(int enteredAmount) {
-		this.setup.setupGame(enteredAmount);;
+		this.gameManage.setupGame(enteredAmount);;
 	}
 	
 	public int getNumPlayers() {
-		return this.setup.getNumPlayers();
+		return this.gameManage.getNumPlayers();
 	}
 
 	//*************Dice/Rolls********************************************************
 	//normal dice
 	public int[] shareRoll() {
-		manager.checkRollRecord();
-		return manager.returnDiceRoll();
+		turnManage.checkRollRecord();
+		return turnManage.returnDiceRoll();
 	}
 	
 	//fixed dice
 	public int[] shareRoll(int die1, int die2) {
-		manager.checkRollRecord(die1, die2);
-		return manager.returnDiceRoll();
+		turnManage.checkRollRecord(die1, die2);
+		return turnManage.returnDiceRoll();
 	}
 
 	public int rollTotal() {
-		return manager.diceTotalScore();
+		return turnManage.diceTotalScore();
 	}
 
 	public Boolean startNewRoll() {
-		return manager.getTurnStatus();
+		return turnManage.getTurnStatus();
 	}
 	
 	public RollTypes reportsSpecialRoll() {
-		return manager.getRollType();
+		return turnManage.getRollType();
 	}
 	
 	//*************Scores******************************************************** 
 
 	public int totalTurnScore() {
-		return manager.getFinalTurnScore();
+		return turnManage.getFinalTurnScore();
 	}
 
 	public int reportsSpecificRoll(int rolls) {
-		return manager.sharesTurnScores().get(rolls);
+		return turnManage.sharesTurnScores().get(rolls);
 	}
 
 	public int numberOfRolls() {
-		return manager.numberOfRolls();
+		return turnManage.numberOfRolls();
 	}
 
 	public Player[] getPlayers() {
-		return this.setup.getPlayers();
+		return this.gameManage.getPlayers();
 	}
 
 }
