@@ -3,14 +3,17 @@ package skunk.domain;
 public class Player {
 	private String playerName;
 	private Chips chips;
+	private Score score;
 	private int totalTally;
 	private Turn turn;
+
 
 	public Player(String enteredName){
 		this.playerName = enteredName;
 		this.chips = new Chips();
 		this.totalTally = 0;
 		this.turn = new Turn();
+		this.score = new Score();
 	}
 
 	
@@ -22,29 +25,31 @@ public class Player {
 	public int getTally() {
 		return this.totalTally;
 	}
-
-	//*************chips***************************************
-
-	public int chipsFlow(RollTypes rollType) {
-		this.givesChipsRollType(rollType);
-		return this.chips.amountChange();
-	}
 	
 	public int getChips() {
 		return this.chips.getNumChips(); //total number of chips currently
 	}
 
-	public int getLostChips() {
-		return this.chips.amountChange(); //amount of chips changed per turn
+	public int getNetLostChips() {
+		return this.getNetLostChips();
+	}
+	
+	public int getSingleTurnChipsChange() {
+		return this.chips.amountChange();
 	}
 
-	public void givesChipsRollType(RollTypes roll) {
-		this.chips.calculateChipChange(roll); //player gives roll type to chips
-	}
+	//*************chips***************************************
 
+	public void updateChips(RollTypes rollType) {
+		this.chips.adjustNetChips(rollType);
+	}
 
 	public void updateTally(int turnScore) {
-		this.totalTally =+ turnScore;
+		this.totalTally += turnScore;
+	}
+	
+	public void setTally(int setScore) {
+		this.totalTally = setScore;
 	}
 
 
@@ -64,16 +69,9 @@ public class Player {
 	
 	@Override
 	public String toString() {
-		return playerName;
-		
+		return playerName + "'s current Total Score is " + this.getTally();
 	}
-
-
-
-
-
-
 	
-
-
+	
+	
 }

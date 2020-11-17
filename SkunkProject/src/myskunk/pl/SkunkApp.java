@@ -1,14 +1,14 @@
 package myskunk.pl;
 
+import skunk.domain.GamePlay;
+
 public class SkunkApp {
 
 	public static void main(String[] args) {
-		SkunkUI ui = new SkunkUI();
+		GamePlay play = new GamePlay();
 		
-		System.out.println("Welcome to Skunk");
-		System.out.println();
-		ui.setupGame();
-		ui.gameStructure();
+		play.howManyPlayers();
+		play.allPlayersOneTurn();
 	}
 
 }

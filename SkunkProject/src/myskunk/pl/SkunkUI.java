@@ -1,5 +1,5 @@
 package myskunk.pl;
-
+/*
 
 import edu.princeton.cs.introcs.StdIn;
 import skunk.domain.Controller;
@@ -109,5 +109,5 @@ public class SkunkUI {
 	    StdIn.readLine(); //requires a player presses enter to continue 
 		System.out.println();
 	}
-	
-}
+	*/
+
