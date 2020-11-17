@@ -12,6 +12,7 @@ public class GamePlay {
 	private Score score; 
 	private Player[] players;
 	private int playerTracker; 
+	private int finalTracker;
 	
 	public GamePlay() {
 		this.activePlayer = new Player("name");
@@ -20,6 +21,7 @@ public class GamePlay {
 		this.score = null; 
 		this.players = null;
 		this.playerTracker = 0;
+		this.finalTracker = 0;
 	}
 	
 	
@@ -41,13 +43,78 @@ public class GamePlay {
 		}
 	}
 	
-	public void allPlayersOneTurn() {
-		while(this.activePlayer.getTally() < 100){
+	public void fullGame() {
+		while(this.activePlayer.getTally() < 25){
 			severalTurns();
 			System.out.println();
+			if(this.activePlayer.getTally() >= 25) {
+				this.finalTracker = this.playerTracker;
+				break;
+			}
 			nextPlayer();
 		}
+		finalRound();
 	}
+	
+	public void finalRound() {
+		System.out.println(this.activePlayer.getPlayerName() + " scored 100 points or more. Now everyone else gets once more chance to roll");
+		for (int i = finalTracker; i < players.length+finalTracker-1; i++) {
+			nextPlayer();
+			severalTurns();
+		}
+		finalScore();
+	}
+	
+	public void finalScore() {
+		System.out.println();
+		winner();
+		System.out.println(" FINAL SCORES");
+		System.out.println("--------------------");
+		for (Player player : players) {
+			System.out.println(player.toString());
+			System.out.println();
+		}
+	}
+	
+	public Player highestScore() {
+		Player winner = new Player("winner");
+		
+		for (Player player : players) {
+			if (winner.getTally() < player.getTally()) {
+				winner = player;
+			}
+		}
+		return winner;
+	}
+	
+	public void winner() {
+		this.activePlayer = highestScore();
+		System.out.println(this.activePlayer.getPlayerName() + " wins the round!");
+		System.out.println();
+		subtractFinalChips();
+		giveWinnerChips();
+	}
+	
+	
+	public void subtractFinalChips() {
+		for (Player player : players) {
+			if (player.getTally() == 0) {
+				player.subtractChips(10);
+			}
+			else {
+				player.subtractChips(5);
+			}
+		}
+	}
+	
+	public void giveWinnerChips() {
+		int kitty = 0;
+		for (Player player: players) {
+			kitty += player.getLostChips();
+		}
+		this.activePlayer.addChips(kitty);
+	}
+
 	
 	public Player nextPlayer() {
 		playerTracker++;
@@ -90,8 +157,7 @@ public class GamePlay {
 		score.editFinalScore(currentRoll);
 		this.activePlayer.updateTally(score.getFinalScore());
 		System.out.println("Total Score: " + this.activePlayer.getTally()); 
-		System.out.println("Lost Chips This Turn: " + (activePlayer.getSingleTurnChipsChange()));
-		System.out.println("Total Lost Chips" + (activePlayer.getNetLostChips()));
+		System.out.println("Total Lost Chips: " + (activePlayer.getLostChips()));
 	}
 	
 	public void singleRoll() {
@@ -105,11 +171,16 @@ public class GamePlay {
 	
 	public void checkSpecial() {
 		if (isSpecial() != RollTypes.NORMAL) {
-			System.out.println("sorry, you rolled a " + isSpecial());
+			activePlayer.updateChipsForRoll(isSpecial());
+			
 			if (isSpecial() == RollTypes.DOUBLE_SKUNK) {
 				activePlayer.setTally(0);
+				System.out.println("sorry, you rolled a " + isSpecial());
+				System.out.println("You lost " + activePlayer.chipsLostPerRollType(isSpecial()) + " chips and your total score is set to 0");
 			}
-			activePlayer.updateChips(isSpecial());
+			else {
+				System.out.println("Sorry, you rolled a " + isSpecial() + ". Chips lost: " + activePlayer.chipsLostPerRollType(isSpecial()));
+			}
 			activePlayer.endTurn();
 		}
 		else {

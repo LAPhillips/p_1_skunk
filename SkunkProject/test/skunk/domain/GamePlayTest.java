@@ -22,5 +22,4 @@ class GamePlayTest {
 		assertEquals(player2, play.getActivePlayer());		
 	}
 
-
 }

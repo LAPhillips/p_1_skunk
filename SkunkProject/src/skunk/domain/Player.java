@@ -26,34 +26,38 @@ public class Player {
 		return this.totalTally;
 	}
 	
-	public int getChips() {
-		return this.chips.getNumChips(); //total number of chips currently
-	}
-
-	public int getNetLostChips() {
-		return this.getNetLostChips();
-	}
-	
-	public int getSingleTurnChipsChange() {
-		return this.chips.amountChange();
+	public void updateTally(int turnScore) {
+		this.totalTally += turnScore;
 	}
 
 	//*************chips***************************************
 
-	public void updateChips(RollTypes rollType) {
-		this.chips.adjustNetChips(rollType);
-	}
-
-	public void updateTally(int turnScore) {
-		this.totalTally += turnScore;
+	public void updateChipsForRoll(RollTypes rollType) {
+		this.chips.adjustChipsForRoll(rollType);
 	}
 	
-	public void setTally(int setScore) {
-		this.totalTally = setScore;
+	public int chipsLostPerRollType(RollTypes rollType) {
+		return chips.calculateChipChange(rollType);
 	}
 
-
+	public void addChips(int amount) {
+		this.chips.addChips(amount);
+	}
+	
+	public void subtractChips(int amount) {
+		this.chips.subtractChips(amount);
+	}
+	
+	public int getLostChips() {
+		return this.chips.lostChips();
+	}
+	
+	public int getChips() {
+		return this.chips.getChips(); //total number of chips currently
+	}
+	
 	//*************Managing Turns*************************************************************
+	
 	
 	public Boolean getTurnStatus() {
 		return this.turn.getTurnStatus();
@@ -67,9 +71,13 @@ public class Player {
 		this.turn.startNewTurn();
 	}
 	
+	public void setTally(int setScore) {
+		this.totalTally = setScore;
+	}
+	
 	@Override
 	public String toString() {
-		return playerName + "'s current Total Score is " + this.getTally();
+		return playerName + " \n" + "Final Score: " + this.getTally() + " \n" + "Chips Count: " + this.getChips();
 	}
 	
 	

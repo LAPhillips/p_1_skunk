@@ -2,51 +2,43 @@ package skunk.domain;
 
 public class Chips {
 	private int numChips;
-	private int change;
-	private int netLost;
-	
-	
+
 	public Chips(){
-		int numChips = 50;
-		int netLost = 0;
-		this.change= 0;
+		this.numChips = 50;
 	}
 	
-	public int getNumChips() {
+	public int getChips() {
 		return this.numChips;
 	}
-
-	public int getNetLost() {
-		return this.netLost;
+	
+	public void subtractChips(int amount) {
+		this.numChips -= amount;
 	}
 	
-	public void adjustChips(int chipChange) {
-		this.numChips += chipChange;
-	}
-
-	public int amountChange() {
-		return change;
+	public void adjustChipsForRoll(RollTypes roll) {
+		int lost = calculateChipChange(roll);
+		subtractChips(lost);
 	}
 	
-	public int adjustNetChips(RollTypes roll) {
-		calculateChipChange(roll);
-		this.netLost += this.change;
-		return this.netLost;
+	public void addChips(int amount) {
+		this.numChips += amount;
 	}
-
-	public void calculateChipChange(RollTypes roll) {
+	
+	public int lostChips() {
+		return 50 - this.numChips;
+	}
+	
+	public int calculateChipChange(RollTypes roll) {
 		if (roll == RollTypes.SKUNK) {
-			this.change = 1;
+			return 1;
 		}
 		else if (roll == RollTypes.SKUNK_DEUCE){
-			this.change = 2;
+			return 2;
 		}
 		else if (roll == RollTypes.DOUBLE_SKUNK){
-			this.change = 4;
+			return 4;
 		}
-		else {
-			this.change = 0;
-		}	
+		return 0;
 	}
 
 }

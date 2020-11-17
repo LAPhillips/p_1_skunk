@@ -8,7 +8,7 @@ public class SkunkApp {
 		GamePlay play = new GamePlay();
 		
 		play.howManyPlayers();
-		play.allPlayersOneTurn();
+		play.fullGame();
 	}
 
 }

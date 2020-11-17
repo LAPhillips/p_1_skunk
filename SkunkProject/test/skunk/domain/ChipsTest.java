@@ -9,22 +9,14 @@ class ChipsTest {
 	@Test
 	void chips_has_number_of_chips() {
 		Chips chips = new Chips();
-		int startingChips = chips.getNumChips();
+		int startingChips = chips.getChips();
 		assertEquals(50, startingChips);
-	}
-	
-	@Test
-	void chips_adjusts_chips() {
-		Chips chips = new Chips();
-		chips.adjustChips(-5);
-		int startingChips = chips.getNumChips();
-		assertEquals(45, startingChips);
 	}
 	
 	@Test
 	void chips_reports_lost_and_gained_chips() {
 		Chips chips = new Chips();
-		int change = chips.amountChange();
+		int change = chips.lostChips();
 		assertEquals(0, change);
 	}
 	
@@ -32,7 +24,7 @@ class ChipsTest {
 	void chips_calculates_lost_or_gained_chips() {
 		Chips chips = new Chips();
 		chips.calculateChipChange(RollTypes.SKUNK);
-		int change = chips.amountChange();
+		int change = chips.lostChips();
 		assertEquals(-1, change);
 	}
 

@@ -25,24 +25,24 @@ class PlayerTest {
 	@Test
 	void player_can_share_lost_or_gained_chips() {
 		Player player = new Player("player1");
-		int result = player.getNetLostChips();
+		int result = player.getLostChips();
 		assertEquals(0, result); //default is 0
 	}
 	
 	@Test
 	void player_can_gives_roll_type_to_chips() {
 		Player player = new Player("player1");
-		player.updateChips(RollTypes.SKUNK);
-		int result = player.getNetLostChips();
+		player.updateChipsForRoll(RollTypes.SKUNK);
+		int result = player.getLostChips();
 		assertEquals(-1, result); //skunk is -1
 		
-		player.updateChips(RollTypes.DOUBLE_SKUNK);
-		result = player.getSingleTurnChipsChange();
+		player.updateChipsForRoll(RollTypes.DOUBLE_SKUNK);
+		result = player.getLostChips();
 		assertEquals(-4, result); //double Skunk is -4
 		
 		
-		player.updateChips(RollTypes.SKUNK_DEUCE);
-		result = player.getSingleTurnChipsChange();
+		player.updateChipsForRoll(RollTypes.SKUNK_DEUCE);
+		result = player.getLostChips();
 		assertEquals(-2, result); //skunk and deuce is -2
 	}
 	
