@@ -1,17 +1,17 @@
 package skunk.domain;
 
+import java.util.ArrayList;
+
 public class Player {
 	private String playerName;
 	private Chips chips;
 	private Score score;
-	private int totalTally;
 	private Turn turn;
 
 
 	public Player(String enteredName){
 		this.playerName = enteredName;
 		this.chips = new Chips();
-		this.totalTally = 0;
 		this.turn = new Turn();
 		this.score = new Score();
 	}
@@ -21,19 +21,14 @@ public class Player {
 	public String getPlayerName() {
 		return this.playerName;
 	}
-	
-	public int getTally() {
-		return this.totalTally;
-	}
-	
-	public void updateTally(int turnScore) {
-		this.totalTally += turnScore;
-	}
 
 	//*************chips***************************************
 
-	public void updateChipsForRoll(RollTypes rollType) {
-		this.chips.adjustChipsForRoll(rollType);
+	public void updateForSpecial(RollTypes rollType) {
+		chips.adjustChipsForRoll(rollType);
+		if(rollType == RollTypes.DOUBLE_SKUNK) {
+			score.updateForDoubleSkunk();
+		}
 	}
 	
 	public int chipsLostPerRollType(RollTypes rollType) {
@@ -58,28 +53,40 @@ public class Player {
 	
 	//*************Managing Turns*************************************************************
 	
-	
 	public Boolean getTurnStatus() {
-		return this.turn.getTurnStatus();
+		return turn.getTurnStatus();
 	}
 
 	public void endTurn() {
-		this.turn.endTurn();
+		turn.endTurn();
+		score.updateFinalScore();
 	}
 
 	public void startTurn() {
-		this.turn.startNewTurn();
+		score.startNewTurn();
+		turn.startNewTurn();
 	}
 	
-	public void setTally(int setScore) {
-		this.totalTally = setScore;
+	//*************Managing Score*************************************************************
+	
+	public void playerGetsDiceRoll(int [] newRoll) {
+		score.recordScore(newRoll);
+	}
+	
+	public int getFinalScore() {
+		return score.getFinalScore();
+	}
+	
+	public ArrayList<Integer> getScoreboard() {
+		return score.getScoreboard();
+	}
+	
+	public int getTotalTurnScore(boolean isSpecial) {
+		return score.finalTurnScore(isSpecial);
 	}
 	
 	@Override
 	public String toString() {
-		return playerName + " \n" + "Final Score: " + this.getTally() + " \n" + "Chips Count: " + this.getChips();
+		return playerName + " \n" + "Final Score: " + getFinalScore() + " \n" + "Chips Count: " + this.getChips();
 	}
-	
-	
-	
 }

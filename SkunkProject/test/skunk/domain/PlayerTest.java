@@ -32,34 +32,18 @@ class PlayerTest {
 	@Test
 	void player_can_gives_roll_type_to_chips() {
 		Player player = new Player("player1");
-		player.updateChipsForRoll(RollTypes.SKUNK);
+		player.updateForSpecial(RollTypes.SKUNK);
 		int result = player.getLostChips();
 		assertEquals(-1, result); //skunk is -1
 		
-		player.updateChipsForRoll(RollTypes.DOUBLE_SKUNK);
+		player.updateForSpecial(RollTypes.DOUBLE_SKUNK);
 		result = player.getLostChips();
 		assertEquals(-4, result); //double Skunk is -4
 		
 		
-		player.updateChipsForRoll(RollTypes.SKUNK_DEUCE);
+		player.updateForSpecial(RollTypes.SKUNK_DEUCE);
 		result = player.getLostChips();
 		assertEquals(-2, result); //skunk and deuce is -2
-	}
-	
-	//*************final Score*************************************************************
-	@Test
-	void player_gets_ongoing_score() {
-		Player player = new Player("player1");
-		int score = player.getTally();
-		assertEquals(0, score); //default score is 0
-	}
-	
-	@Test
-	void player_updates_ongoing_score() {
-		Player player = new Player("player1");
-		player.updateTally(4);
-		int score = player.getTally();
-		assertEquals(4, score); //default score is 0
 	}
 	
 	//*************managing turn*************************************************************

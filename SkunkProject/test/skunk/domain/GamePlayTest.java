@@ -21,5 +21,15 @@ class GamePlayTest {
 		
 		assertEquals(player2, play.getActivePlayer());		
 	}
+	
+	@Test
+	void GP_updates_player_decision() {
+		GamePlay play = new GamePlay();
+		play.playerDecision('y');
+		boolean decision = play.getPlayerDecision();
+		
+		assertEquals(true, decision);		
+	}
+	
 
 }

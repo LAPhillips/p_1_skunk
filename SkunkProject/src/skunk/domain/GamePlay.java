@@ -9,45 +9,48 @@ public class GamePlay {
 	private Player activePlayer;
 	private Dice dice;
 	private int[] currentRoll;
-	private Score score; 
+	private RollAdvisor advisor;
 	private Player[] players;
 	private int playerTracker; 
 	private int finalTracker;
+	private boolean playerDecision;
 	
 	public GamePlay() {
-		this.activePlayer = new Player("name");
+		this.activePlayer = new Player(" ");
 		this.dice = new Dice();
 		this.currentRoll = new int[2]; 
-		this.score = null; 
+		this.advisor = new RollAdvisor();
 		this.players = null;
 		this.playerTracker = 0;
 		this.finalTracker = 0;
+		this.playerDecision = true;
 	}
 	
-	
-	public void howManyPlayers() {
-		System.out.println("How many players? ");
-		int numberPlayers = StdIn.readInt();
+	public void createPlayers(int numberPlayers) {
 		this.players = new Player[numberPlayers];
-		askNames();
-		this.activePlayer = players[playerTracker];
 	}
 	
-	public void askNames() {
+	public void createPlayer(String name) {
+		Player player = new Player(name);
+		addPlayer(player);
+	}
+	
+	public void addPlayer(Player player) {
 		for (int i = 0; i < players.length; i++) {
-			System.out.println("What is player " + (i+1) + "'s name?" );
-			String name = StdIn.readString();
-			Player player = new Player(name);
-			players[i] = player;
-			this.score = new Score();
+			if (players[i] == null) {
+				players[i] = player; 
+				break;
+			}
 		}
+		this.activePlayer = players[0];
 	}
 	
+	/*
 	public void fullGame() {
-		while(this.activePlayer.getTally() < 25){
-			severalTurns();
+		while(this.activePlayer.getFinalScore()< 25){
+			singleTurn();
 			System.out.println();
-			if(this.activePlayer.getTally() >= 25) {
+			if(this.activePlayer.getFinalScore() >= 25) {
 				this.finalTracker = this.playerTracker;
 				break;
 			}
@@ -60,7 +63,7 @@ public class GamePlay {
 		System.out.println(this.activePlayer.getPlayerName() + " scored 100 points or more. Now everyone else gets once more chance to roll");
 		for (int i = finalTracker; i < players.length+finalTracker-1; i++) {
 			nextPlayer();
-			severalTurns();
+			singleTurn();
 		}
 		finalScore();
 	}
@@ -80,7 +83,7 @@ public class GamePlay {
 		Player winner = new Player("winner");
 		
 		for (Player player : players) {
-			if (winner.getTally() < player.getTally()) {
+			if (winner.getFinalScore() < player.getFinalScore()) {
 				winner = player;
 			}
 		}
@@ -98,7 +101,7 @@ public class GamePlay {
 	
 	public void subtractFinalChips() {
 		for (Player player : players) {
-			if (player.getTally() == 0) {
+			if (player.getFinalScore() == 0) {
 				player.subtractChips(10);
 			}
 			else {
@@ -115,7 +118,7 @@ public class GamePlay {
 		this.activePlayer.addChips(kitty);
 	}
 
-	
+	*/
 	public Player nextPlayer() {
 		playerTracker++;
 		if (playerTracker < players.length) {
@@ -126,87 +129,46 @@ public class GamePlay {
 			this.activePlayer = players[playerTracker];
 		}
 		this.activePlayer.startTurn();
-		this.score = new Score();
 		return this.activePlayer;	
 	}
 
-	public void severalTurns() {
+	
+	
+	private void finalReadOut() {
+		System.out.println("Your Score:");
+		ArrayList<Integer> scores = activePlayer.getScoreboard();
+		for (int i = 0; i < scores.size(); i+=2) {
+			System.out.println("Die 1: " + scores.get(i) + "    Die 2: " + scores.get(i+1));
+		}
+		System.out.println("Total Score: " + this.activePlayer.getFinalScore()); 
+		System.out.println("Total Lost Chips: " + (activePlayer.getLostChips()));
+	}
+	
+	public int[] diceRoll() {
+		dice.roll();
+		currentRoll = dice.getDicePair();
+		activePlayer.playerGetsDiceRoll(currentRoll);
+		activePlayer.updateForSpecial(isSpecial());
+		return currentRoll;
+	}
+	
+	/*
+	public void singleTurn() {
 		while(activePlayer.getTurnStatus()) {
-			this.singleTurn();
+			this.singleRoll();
 		}
 		this.finalReadOut();
 	}
 	
-	public void singleTurn() {
-		System.out.println(this.activePlayer.getPlayerName() + ", do you want to roll? [Y/N]");
-		char playerInputs = StdIn.readString().charAt(0);
-		if (rollOrNot(playerInputs)) {
-			singleRoll();
-		}
-		else {
-			activePlayer.endTurn();
-		}
-	}
-	
-	private void finalReadOut() {
-		System.out.println("Your Score:");
-		ArrayList<Integer> scores = score.getScoreboard();
-		for (int i = 0; i < scores.size(); i+=2) {
-			System.out.println("Die 1: " + scores.get(i) + "    Die 2: " + scores.get(i+1));
-		}
-		score.editFinalScore(currentRoll);
-		this.activePlayer.updateTally(score.getFinalScore());
-		System.out.println("Total Score: " + this.activePlayer.getTally()); 
-		System.out.println("Total Lost Chips: " + (activePlayer.getLostChips()));
-	}
-	
-	public void singleRoll() {
-			System.out.println(this.activePlayer.getPlayerName() + " turn to roll....");
-			dice.roll();
-			currentRoll = dice.getDicePair();
-			score.recordAndUpdate(currentRoll);
-			checkSpecial();
-			System.out.println("Your roll was " + currentRoll[0] + " " + currentRoll[1]);
-	}
-	
-	public void checkSpecial() {
-		if (isSpecial() != RollTypes.NORMAL) {
-			activePlayer.updateChipsForRoll(isSpecial());
-			
-			if (isSpecial() == RollTypes.DOUBLE_SKUNK) {
-				activePlayer.setTally(0);
-				System.out.println("sorry, you rolled a " + isSpecial());
-				System.out.println("You lost " + activePlayer.chipsLostPerRollType(isSpecial()) + " chips and your total score is set to 0");
-			}
-			else {
-				System.out.println("Sorry, you rolled a " + isSpecial() + ". Chips lost: " + activePlayer.chipsLostPerRollType(isSpecial()));
-			}
-			activePlayer.endTurn();
-		}
-		else {
-		}
-	}
-	
-	public boolean rollOrNot(char playerInput) {
-		if(playerInput == 'y' || playerInput == 'Y') {
-			return true;
-		}
-		return false;
-	}
+	public void playerRollsOrNot(char decision) {
+		playerDecision(decision);
+		singleRoll();
+	}*/
+
 	
 	public RollTypes isSpecial() {
-		if ((currentRoll[0] + currentRoll[1]) == 2) {
-			return RollTypes.DOUBLE_SKUNK;
-		}
-		else if ((currentRoll[0] + currentRoll[1]) == 3) {
-			return RollTypes.SKUNK_DEUCE;
-		}
-		else if (currentRoll[0] == 1 || currentRoll[1] == 1){
-			return RollTypes.SKUNK;
-		}
-		else {
-			return RollTypes.NORMAL;
-		}
+		advisor.setRollType(currentRoll);
+		return advisor.getRollType();
 	}
 	
 	public Player getActivePlayer() {
@@ -232,6 +194,30 @@ public class GamePlay {
 	public void setPlayerTracker(int number) {
 		this.playerTracker = number;
 	}
+	
+	public void playerDecision(char decision) {
+		if (decision == 'y' || decision == 'Y') {
+			this.playerDecision = true;
+		}
+		else {
+			this.playerDecision = false;
+		}
+
+	}
+	
+	public boolean getPlayerDecision() {
+		return this.playerDecision;
+	}
+	
+	public void endTurn(boolean endOrNot) {
+		if (endOrNot == true) {
+			activePlayer.endTurn();
+		}
+	}
+	
+
+
+
 
 }
 

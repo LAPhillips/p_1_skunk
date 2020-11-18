@@ -4,20 +4,20 @@ package skunk.domain;
 		SKUNK {
 			@Override
 			public String toString() {
-				return "Skunk";
+				return "Sorry, you rolled a Skunk! Your turn ends, and you lose 1 Chip.";
 			}
 		},
 		
 		DOUBLE_SKUNK {
 			@Override
 			public String toString() {
-				return "Two Skunks";
+				return "Sorry, you rolled Two Skunks! Your turn ends, you lose all your points, and you lose 4 Chips.";
 			}
 		},
 		SKUNK_DEUCE {
 			@Override
 			public String toString() {
-				return "Skunk and Deuce";
+				return "Sorry, you rolled a Skunk and Deuce! Your turn ends, and you lose 2 Chips";
 			}
 		},
 		
