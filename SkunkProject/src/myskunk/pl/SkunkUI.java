@@ -1,113 +1,129 @@
 package myskunk.pl;
-/*
 
+import java.util.ArrayList;
 import edu.princeton.cs.introcs.StdIn;
 import skunk.domain.Controller;
+import skunk.domain.Player;
+import skunk.domain.RollTypes;
 
 public class SkunkUI {
-	private char playerInputs;
-	private Controller control; 
-
-	public SkunkUI(){
+	private Controller control;
+	private int numberPlayers;
+	private Player player;
+	
+	public SkunkUI() {
 		this.control = new Controller();
-		this.playerInputs = 'Y'; 
+		this.numberPlayers = 0;
+		this.player = null;
 	}
 	
-	public void gameStructure() {
-		doesPlayerRoll();
-		getNextPlayer();
-		doesPlayerRoll();
-	}
-
-	private void getNextPlayer() {
-		control.startNewTurn();
-	}
-
-	public void doesPlayerRoll() {
-		do {
-			this.playerRolls();
-			if(control.playerTurnStatus() == false) {
-				this.playerRollsSpecial();
-			}
-			else {
-				rollAgain();
-			}
-			
-		} while(control.playerTurnStatus());
-		playerEndsTurn();
+	public void fullGame() {
+		startGame();
+		howManyPlayers();
+		playerNames();
+		singleTurn();
 	}
 	
-	public void rollAgain() {
-		System.out.println(control.getPlayerNameFromManager() + ", do you want to roll? [Y/N]");
-		playerInputs = StdIn.readString().charAt(0);
-		control.sharePlayerInputs(playerInputs);
-	}
-	
-	public void setupGame() {
-		this.howMany();
-		System.out.println("Great, we will make a game with " + this.control.getNumPlayers() + " players.");
-		for (int i = 0; i < this.control.getNumPlayers(); i++) {
-			this.enterName(i+1);
-		}
-	}
-	
-	public void howMany() {
-		System.out.println("How many players are there?");
-		int numberPlayers = StdIn.readInt();
-		this.control.setupGame(numberPlayers);
-	}
-	
-	public void enterName(int playerNumber) {
-		System.out.println("What is player #" + playerNumber + "'s name?");
-		String playerName = StdIn.readString();
-		control.sharePlayerName(playerName);
-	}
-	
-	public void playerRolls() {
-//for testing only
-		control.sharePlayerName("<Your Name>");
-//
+	public void startGame() {
+		System.out.println("Welcome to Skunk");
 		System.out.println();
-		System.out.println(control.getPlayerNameFromManager() + " rolls .... ");
-		int [] currentRoll = control.shareRoll();
+		System.out.println("Would you like to review the rules before we start?");
+		//rules system
 		
-		//UI design
-		String rollLabel1 = "First Die:";
-		String rollLabel2 = "Second Die:";
-		String rollLabel3 = "Roll Total:";
-		String format = "%-20s%s%n";;
-		System.out.printf(format, rollLabel1, currentRoll[0]);
-		System.out.printf(format, rollLabel2, currentRoll[1]);
-		System.out.println("------------------------");
-		System.out.printf(format, rollLabel3, control.rollTotal());
-		System.out.println();
-
-		System.out.println("Total Score: " + control.totalTurnScore());
 	}
 	
-	public void playerEndsTurn() {
-	    StdIn.readLine(); //requires a player presses enter to continue 
-	    System.out.println(control.getPlayerNameFromManager() + ", here is your turn review: ");
-		System.out.println("----------------------------------------------");
-		int rolls = control.numberOfRolls();
-		int announceRolls = 1;
-		for (int i = 0; i < rolls*2; i++) {
-			System.out.print("(ROLL #" + (announceRolls) + ") ");
-			System.out.print(" Die One: " + control.reportsSpecificRoll(i));
-			i++;
-			System.out.println("      Die Two: " + control.reportsSpecificRoll(i));
-			announceRolls++;
+	public void howManyPlayers() {
+		System.out.println("How many players? ");
+		numberPlayers = StdIn.readInt();
+		control.setNumberOfPlayers(numberPlayers);
+	}
+	
+	public void playerNames() {
+		for (int i = 0; i < numberPlayers; i++) {
+			System.out.println("What is player #" + (i+1) + "'s name?");
+			String playerName = StdIn.readString();
+			control.setPlayerNames(playerName);
 		}
-		System.out.println("----------------------------------------------");
-		System.out.println("TOTAL TURN SCORE: " + control.totalTurnScore());
-		System.out.println("CHIPS LOST: " + control.getLostChips());
+		setActivePlayer();
 	}
 	
-	public void playerRollsSpecial() {
-		System.out.println("You rolled a " + control.reportsSpecialRoll().toString() + "!");
-		System.out.println("Press [ENTER] to continue.");
-	    StdIn.readLine(); //requires a player presses enter to continue 
-		System.out.println();
+	public void singleRoll() {
+		System.out.println(this.player.getPlayerName() + "'s turn to roll....");
+		int[] currentRoll = control.diceRoll(); //rolls and records the roll
+		diceRollReadout(currentRoll[0], currentRoll[1]); 
+		checkSpecial(control.getRollType()); //checks to see if the roll is special
 	}
-	*/
+	
+	public void checkSpecial(RollTypes rollType) {
+		if (rollType != RollTypes.NORMAL) {
+			player.updateForSpecial(rollType);
+			System.out.println(rollType.toString());
+			System.out.println();
+			System.out.println("Total Score: " + player.getTotalTurnScore(true));
+			control.isTurnOver(true);
+		}
+		else {
+			System.out.println();
+			System.out.println("Total Score: " + player.getTotalTurnScore(false));
+		}
+	}
+	
+	public void singleTurn() {
+		while(player.getTurnStatus()) {
+			System.out.println(player.getPlayerName() + ", do you want to roll? [Y/N]");
+			char decision = StdIn.readString().charAt(0);
+			if (yesOrNo(decision)) {
+				singleRoll();
+			}
+		}
+		turnReadout();
+	}
+	
+	
+	
+	
+	private void turnReadout() {
+		 StdIn.readLine(); //requires a player presses enter to continue 
+		    System.out.println(player.getPlayerName() + ", here is your turn review: ");
+			System.out.println("----------------------------------------------");
+			ArrayList<Integer> turnScores = player.getScoreboard();
+			int announceRolls = 1;
+			
+			for (int i = 0; i < turnScores.size(); i+=2) {
+				System.out.print("(ROLL #" + (announceRolls) + ") ");
+				System.out.println("Die One: " + turnScores.get(i) + "      Die Two: " + turnScores.get(i + 1));
+				announceRolls++;
+			}
+			System.out.println("----------------------------------------------");
+			System.out.println("TOTAL TURN SCORE: " + player.getFinalScore());
+			System.out.println("CHIPS LOST: " + player.getLostChips());
+		
+	}
 
+	public boolean yesOrNo(char decision) {
+		return control.yesOrNo(decision);
+	}
+	
+	public void setActivePlayer() {
+		this.player = control.getPlayer();
+	}
+	
+	public void diceRollReadout(int die1, int die2) {
+		//UI design
+				String rollLabel1 = "First Die:";
+				String rollLabel2 = "Second Die:";
+				String rollLabel3 = "Roll Total:";
+				String format = "%-20s%s%n";;
+				System.out.printf(format, rollLabel1, die1);
+				System.out.printf(format, rollLabel2, die2);
+				System.out.println("------------------------");
+				System.out.printf(format, rollLabel3, (die1+die2));
+				System.out.println();
+	}
+	
+	
+	
+	
+	
+	
+}

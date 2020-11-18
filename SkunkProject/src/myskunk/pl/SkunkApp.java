@@ -8,7 +8,7 @@ public class SkunkApp {
 	
 	public static void main(String[] args) {
 		
-		SkunkInterface ui = new SkunkInterface();
+		SkunkUI ui = new SkunkUI();
 		
 		ui.fullGame();
 	}
