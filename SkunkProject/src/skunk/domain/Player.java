@@ -62,16 +62,12 @@ public class Player {
 		this.chips.subtractChips(amount);
 	}
 
-	
 	public void updateForSpecial(RollTypes rollType) {
 		chips.adjustChipsForRoll(rollType);
 		if(rollType == RollTypes.DOUBLE_SKUNK) {
 			score.updateForDoubleSkunk();
 		}
 	}
-	
-
-
 	
 	//*************Managing Turns*************************************************************
 
@@ -86,7 +82,7 @@ public class Player {
 	}
 	
 	public void checkForFinalTurn() {
-		if (score.getFinalScore() >= 25) {
+		if (score.getFinalScore() >= 100) {
 			updateFinalTurn();
 		}
 	}
@@ -108,7 +104,7 @@ public class Player {
 		}
 	}
 	
-	@Override
+	@Override 
 	public String toString() {
 		return playerName + "\n" + "--------- Final Score: " + getFinalScore() + "\n" +  "--------- Chips Count: " + this.getChips();
 	}
