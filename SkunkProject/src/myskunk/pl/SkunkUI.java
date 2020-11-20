@@ -62,7 +62,6 @@ public class SkunkUI {
 	public void checkSpecial(int[] currentRoll) {
 		RollTypes rollType = control.getRollType();
 		if (rollType != RollTypes.NORMAL) {
-			player.updateForSpecial(rollType);
 			System.out.println(rollType.toString());
 			player.updateTurnScore(currentRoll, true);
 			control.isTurnOver(true);
@@ -105,12 +104,11 @@ public class SkunkUI {
 	
 	public void finalScores() {
 		System.out.println();
-		System.out.println("-----------------------------------------------------------------------------------------------");
-		System.out.println();
+		System.out.println("------- THE WINNER ------- ");
 		Player winner = control.winner();
 		System.out.println(winner.getPlayerName() + " has the highest score. " + winner.getPlayerName() + " wins!");
 		System.out.println();
-		System.out.println(" FINAL SCORES");
+		System.out.println("-------  FINAL SCORES  ------- ");
 		System.out.println();
 		for (int i = 0; i < numberPlayers; i++) {
 			player = control.nextPlayer();

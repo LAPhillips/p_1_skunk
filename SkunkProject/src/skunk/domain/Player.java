@@ -103,6 +103,6 @@ public class Player {
 	
 	@Override
 	public String toString() {
-		return playerName + "\n" + "--------- Final Score: " + getFinalScore() +  " Chips Count: " + this.getChips();
+		return playerName + "\n" + "--------- Final Score: " + getFinalScore() + "\n" +  "--------- Chips Count: " + this.getChips();
 	}
 }
