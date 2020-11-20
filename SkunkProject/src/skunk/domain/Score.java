@@ -27,15 +27,6 @@ public class Score {
 		turnScore += amount;
 	}
 
-	public int allRollsOneTurn() {
-		ArrayList<Integer> fullScores = this.scoreboard;
-		int score = 0;
-		for (int dieRoll : fullScores) {
-			score += dieRoll;
-		}
-		return score;
-	}
-	
 	public void updateTurnScore(int[] currentRoll, boolean isSpecial) {
 		if (isSpecial) {
 			turnScore = 0;
