@@ -27,7 +27,7 @@ class ScoreTest {
 		int [] secondRoll = new int[] {expected1, expected2};
 		score.recordScore(secondRoll);
 		int expected = expected1 + expected2 + 2 + 3;
-		int result = score.turnScore();
+		int result = score.allRollsOneTurn();
 		assertEquals(expected, result);
 	}	
 	

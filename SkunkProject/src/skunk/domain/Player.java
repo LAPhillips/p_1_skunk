@@ -8,7 +8,6 @@ public class Player {
 	private Score score;
 	private Turn turn;
 
-
 	public Player(String enteredName){
 		this.playerName = enteredName;
 		this.chips = new Chips();
@@ -58,13 +57,21 @@ public class Player {
 	}
 
 	public void endTurn() {
-		turn.endTurn();
 		score.updateFinalScore();
+		turn.endTurn();
 	}
 
 	public void startTurn() {
 		score.startNewTurn();
 		turn.startNewTurn();
+	}
+	
+	public void updateFinalTurn() {
+		turn.updateFinalTurn();
+	}
+	
+	public boolean getFinalTurn() {
+		return turn.getFinalTurn();
 	}
 	
 	//*************Managing Score*************************************************************
@@ -81,12 +88,21 @@ public class Player {
 		return score.getScoreboard();
 	}
 	
-	public int getTotalTurnScore(boolean isSpecial) {
-		return score.finalTurnScore(isSpecial);
+	public int getTurnScore() {
+		return score.getTurnScore();
+	}
+	
+	public void updateTurnScore(int[] currentRoll, boolean isSpecial) {
+		score.updateTurnScore(currentRoll, isSpecial);
+		
+	}
+	
+	public void updateFinalScore() {
+		
 	}
 	
 	@Override
 	public String toString() {
-		return playerName + " \n" + "Final Score: " + getFinalScore() + " \n" + "Chips Count: " + this.getChips();
+		return playerName + "\n" + "--------- Final Score: " + getFinalScore() +  " Chips Count: " + this.getChips();
 	}
 }

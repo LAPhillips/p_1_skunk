@@ -20,6 +20,7 @@ public class Controller {
 	}
 	
 	public boolean yesOrNo(char decision) {
+		play.playerDecision(decision);
 		return play.getPlayerDecision();
 	}
 	
@@ -33,6 +34,18 @@ public class Controller {
 	
 	public void isTurnOver(boolean overOrNot) {
 		play.endTurn(overOrNot);
+	}
+	
+	public Player nextPlayer() {
+		return play.nextPlayer();
+	}
+	
+	public Player winner() {
+		Player winner = play.highestScore();
+		play.subtractFinalChips();
+		play.giveWinnerChips();
+		play.setPlayerTracker(0);
+		return winner;
 	}
 	
 

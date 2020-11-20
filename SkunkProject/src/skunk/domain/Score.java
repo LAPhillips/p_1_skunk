@@ -22,8 +22,12 @@ public class Score {
 		scoreboard.add(newRoll[0]);
 		scoreboard.add(newRoll[1]);
 	}
+	
+	public void addToScore(int amount) {
+		turnScore += amount;
+	}
 
-	public int turnScore() {
+	public int allRollsOneTurn() {
 		ArrayList<Integer> fullScores = this.scoreboard;
 		int score = 0;
 		for (int dieRoll : fullScores) {
@@ -31,9 +35,19 @@ public class Score {
 		}
 		return score;
 	}
+	
+	public void updateTurnScore(int[] currentRoll, boolean isSpecial) {
+		if (isSpecial) {
+			turnScore = 0;
+		}
+		else {
+			addToScore(currentRoll[0] + currentRoll[1]);
+		}
+	}
 
 	public void startNewTurn() {
 		this.scoreboard = new ArrayList<>();
+		this.turnScore = 0;
 	}
 	
 	public void updateForDoubleSkunk() {
@@ -53,13 +67,7 @@ public class Score {
 		return this.finalScore;
 	}
 	
-	public int finalTurnScore(boolean isSpecial) {
-		if (isSpecial) {
-			this.turnScore = 0;
-		}
-		else {
-			this.turnScore = turnScore();
-		}
+	public int getTurnScore() {
 		return this.turnScore;
 	}
 
