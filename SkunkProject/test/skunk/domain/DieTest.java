@@ -8,16 +8,14 @@ public class DieTest
 {
 
 	@Test
-	public void die_should_return_fixed_die_number()
-	{
+	public void dice_shares_lastRoll() {
 		Die die = new Die();
-		die.roll(4);
-		int result = die.getLastRoll();
-		assertTrue(result == 4);
+		int lastRoll = die.getLastRoll();
+		assertEquals(0, lastRoll); //lastRoll default should be 0
 	}
 	
 	@Test
-	public void die_should_return_random_Number()
+	public void random_die_should_return_random_Number()
 	{
 		Die die = new Die();
 		die.roll();
@@ -26,20 +24,13 @@ public class DieTest
 	}
 	
 	@Test
-	public void die_should_return_array_die_numbers()
+	public void fixed_die_should_return_fixed_die_number()
 	{
-		int [] fixedArray = {1,3,5,9};
-		int [] actualRolls = {0,0,0,0};
 		Die die = new Die();
-		for (int i = 0; i < fixedArray.length; i++) {
-			die.roll(fixedArray);
-			int result = die.getLastRoll();
-			actualRolls[i] = result;
-		}
-
-		Assert.assertArrayEquals(fixedArray, actualRolls);
+		die.roll(4);
+		int result = die.getLastRoll();
+		assertTrue(result == 4);
 	}
 
-	
 }
 

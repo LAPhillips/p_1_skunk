@@ -43,8 +43,6 @@ public class Dice
 		return this.diePair[index];
 	}
 
-
-
 	//basic roll is random
 	public void roll()
 	{
@@ -67,34 +65,6 @@ public class Dice
 		
 		this.lastRollSum = diePair[0] + diePair[1];
 	}
-	
-	//overloaded with numbers from an array 
-	public void roll(int [] numbers)
-	{
-		die1.roll(numbers);
-		diePair[0] = die1.getLastRoll();
-		die1.roll(numbers);
-		diePair[1] = die1.getLastRoll();
-	
-		this.lastRollSum = diePair[0] + diePair[1];
-	}
-	
-	public void rollInDoubles(int[] numbers) {
-		die1.roll(numbers);
-		die2.roll(numbers);
-		
-		diePair[0] = die1.getLastRoll();
-		diePair[1] = die2.getLastRoll();
-		
-		this.lastRollSum = diePair[0] + diePair[1];
-	}
-	
-	
-	// the following method converts the internals of
-	// this Dice object, and returns a descriptive String:
-	//
-	// Roll of 7 => 4 + 3
-	//
 
 	public String toString()
 	{
