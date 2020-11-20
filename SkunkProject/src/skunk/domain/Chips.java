@@ -14,12 +14,7 @@ public class Chips {
 	public void subtractChips(int amount) {
 		this.numChips -= amount;
 	}
-	
-	public void adjustChipsForRoll(RollTypes roll) {
-		int lost = calculateChipChange(roll);
-		subtractChips(lost);
-	}
-	
+
 	public void addChips(int amount) {
 		this.numChips += amount;
 	}
@@ -39,6 +34,11 @@ public class Chips {
 			return 4;
 		}
 		return 0;
+	}
+	
+	public void adjustChipsForRoll(RollTypes roll) {
+		int lost = calculateChipChange(roll);
+		subtractChips(lost);
 	}
 
 }
