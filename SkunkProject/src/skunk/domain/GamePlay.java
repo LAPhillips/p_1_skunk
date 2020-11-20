@@ -7,7 +7,6 @@ public class GamePlay {
 	private RollAdvisor advisor;
 	private Player[] players;
 	private int playerTracker; 
-
 	private boolean playerDecision;
 	
 	public GamePlay() {
@@ -59,35 +58,19 @@ public class GamePlay {
 		activePlayer.updateForSpecial(isSpecial());
 		return currentRoll;
 	}
-
 	
+	//overloaded
+	public int[] diceRoll(int die1, int die2) {
+		dice.roll(die1, die2);
+		currentRoll = dice.getDicePair();
+		activePlayer.playerGetsDiceRoll(currentRoll);
+		activePlayer.updateForSpecial(isSpecial());
+		return currentRoll;
+	}
+
 	public RollTypes isSpecial() {
 		advisor.setRollType(currentRoll);
 		return advisor.getRollType();
-	}
-	
-	public Player getActivePlayer() {
-		return this.activePlayer;
-	}
-	
-	public void setActivePlayer(Player player) {
-		this.activePlayer = player;
-	}
-	
-	public Player[] getPlayers() {
-		return this.players;
-	}
-	
-	public void setPlayers(Player[] newPlayers) {
-		this.players = newPlayers;
-	}
-	
-	public int getPlayerTracker() {
-		return this.playerTracker;
-	}
-	
-	public void setPlayerTracker(int number) {
-		this.playerTracker = number;
 	}
 	
 	public void playerDecision(char decision) {
@@ -97,11 +80,6 @@ public class GamePlay {
 		else {
 			this.playerDecision = false;
 		}
-
-	}
-	
-	public boolean getPlayerDecision() {
-		return this.playerDecision;
 	}
 	
 	public void endTurn(boolean endOrNot) {
@@ -140,6 +118,31 @@ public class GamePlay {
 		winner.addChips(kitty);
 	}
 
+	//****************Getters & Setters*************************
+	public Player getActivePlayer() {
+		return this.activePlayer;
+	}
+	
+	public void setActivePlayer(Player player) {
+		this.activePlayer = player;
+	}
+	
+	public Player[] getPlayers() {
+		return this.players;
+	}
+	
+	public int getPlayerTracker() {
+		return this.playerTracker;
+	}
+	
+	public void setPlayerTracker(int number) {
+		this.playerTracker = number;
+	}
+	
+	public boolean getPlayerDecision() {
+		return this.playerDecision;
+	}
+	
 }
 
 
