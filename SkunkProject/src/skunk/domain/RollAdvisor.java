@@ -7,17 +7,6 @@ public class RollAdvisor {
 		this.rollType = RollTypes.NORMAL; // only ever reports the most recent roll
 	}
 	
-	public Boolean isSpecial(int [] diceRoll) {
-		if (diceRoll[0] == 1 || diceRoll[1] == 1) {
-			return true;
-		}
-		else if ((diceRoll[0] == 1 || diceRoll[1] == 1) && (diceRoll[0] == 2 && diceRoll[1] == 1)) {
-			return true;
-		}
-		return false;
-	}
-	
-	
 	public void setRollType(int[] scores) {
 		int score1 = scores[0];
 		int score2 = scores[1];
