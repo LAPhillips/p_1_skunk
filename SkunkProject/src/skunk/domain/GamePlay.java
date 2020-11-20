@@ -132,12 +132,12 @@ public class GamePlay {
 		}
 	}
 	
-	public void giveWinnerChips() {
+	public void giveWinnerChips(Player winner) {
 		int kitty = 0;
 		for (Player player: players) {
 			kitty += player.getLostChips();
 		}
-		this.activePlayer.addChips(kitty);
+		winner.addChips(kitty);
 	}
 
 }

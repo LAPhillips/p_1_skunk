@@ -26,6 +26,7 @@ public class SkunkUI {
 		round();
 	}
 	
+	//*****Game Setup*****************
 	public void startGame() {
 		System.out.println("Welcome to Skunk");
 		System.out.println();
@@ -49,6 +50,7 @@ public class SkunkUI {
 		setActivePlayer();
 	}
 	
+	//*****Game Play*****************
 	public void singleRoll() {
 		System.out.println(this.player.getPlayerName() + " rolls....");
 		int[] currentRoll = control.diceRoll(); //rolls and records the roll
@@ -63,12 +65,10 @@ public class SkunkUI {
 		RollTypes rollType = control.getRollType();
 		if (rollType != RollTypes.NORMAL) {
 			System.out.println(rollType.toString());
-			player.updateTurnScore(currentRoll, true);
-			control.isTurnOver(true);
-			player.endTurn();
+			player.updateTurnStatusAndScore(currentRoll, true);
 		}
 		else {
-			player.updateTurnScore(currentRoll, false);
+			player.updateTurnStatusAndScore(currentRoll, false);
 		}
 	}
 	
@@ -76,22 +76,23 @@ public class SkunkUI {
 		while(player.getTurnStatus()) {
 			System.out.println(player.getPlayerName() + ", do you want to roll? [Y/N]");
 			char decision = StdIn.readString().charAt(0);
-			if (yesOrNo(decision)) {
+			if (control.yesOrNo(decision)) {
 				singleRoll();
 			}
 			else {
 				player.endTurn(); 
 			}
 		}
+		player.checkForFinalTurn();
 		turnReadout();
 	}
 	
 	
 	public void round() {
-		while(player.getFinalScore() < 25){
+		while(player.getFinalTurn()){
 			singleTurn();
 			System.out.println();
-			if(player.getFinalScore() >= 25) {
+			if(!player.getFinalTurn()) {
 				break;
 			}
 			player = control.nextPlayer();
@@ -104,27 +105,25 @@ public class SkunkUI {
 	
 	public void finalScores() {
 		System.out.println();
-		System.out.println("------- THE WINNER ------- ");
+		System.out.println("WINNER:");
 		Player winner = control.winner();
 		System.out.println(winner.getPlayerName() + " has the highest score. " + winner.getPlayerName() + " wins!");
 		System.out.println();
-		System.out.println("-------  FINAL SCORES  ------- ");
-		System.out.println();
+		System.out.println("FINAL SCORES:");                    
 		for (int i = 0; i < numberPlayers; i++) {
+			System.out.println();
 			player = control.nextPlayer();
 			System.out.println(player.toString());
 		}
-		System.out.println("-----------------------------------------------------------------------------------------------");
 	}
 	
 	public void finalRound() {
 		System.out.println(player.getPlayerName() + " scored 100 points or more. Now everyone else gets once more chance to roll");
-		player.updateFinalTurn();
 		player = control.nextPlayer();
 		while(player.getFinalTurn()) {
 			singleTurn();
 			player.updateFinalTurn();
-			player = control.nextPlayer();
+			setActivePlayer();
 		}
 
 	}
@@ -146,10 +145,6 @@ public class SkunkUI {
 			System.out.println("TOTAL GAME SCORE:  " + player.getFinalScore());
 			System.out.println("CHIPS LOST: " + player.getLostChips());
 		
-	}
-
-	public boolean yesOrNo(char decision) {
-		return control.yesOrNo(decision);
 	}
 	
 	public void setActivePlayer() {

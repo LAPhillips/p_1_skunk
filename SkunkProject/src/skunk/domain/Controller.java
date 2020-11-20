@@ -43,7 +43,7 @@ public class Controller {
 	public Player winner() {
 		Player winner = play.highestScore();
 		play.subtractFinalChips();
-		play.giveWinnerChips();
+		play.giveWinnerChips(winner);
 		play.setPlayerTracker(0);
 		return winner;
 	}

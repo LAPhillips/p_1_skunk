@@ -66,6 +66,12 @@ public class Player {
 		turn.startNewTurn();
 	}
 	
+	public void checkForFinalTurn() {
+		if (score.getFinalScore() >= 25) {
+			updateFinalTurn();
+		}
+	}
+	
 	public void updateFinalTurn() {
 		turn.updateFinalTurn();
 	}
@@ -92,9 +98,11 @@ public class Player {
 		return score.getTurnScore();
 	}
 	
-	public void updateTurnScore(int[] currentRoll, boolean isSpecial) {
+	public void updateTurnStatusAndScore(int[] currentRoll, boolean isSpecial) {
 		score.updateTurnScore(currentRoll, isSpecial);
-		
+		if(isSpecial) {
+			endTurn();
+		}
 	}
 	
 	public void updateFinalScore() {
