@@ -9,69 +9,53 @@ import org.junit.jupiter.api.Test;
 class PlayerTest {
 
 	@Test
-	void player_has_name() {
-		Player player = new Player("player1");
+	void player_shares_name() {
+		String playerName = "playerName";
+		Player player = new Player(playerName);
 		String result = player.getPlayerName();
-		assertNotNull(result);	
-	}
-	//*************chips*************************************************************
-	@Test
-	void player_has_chips() {
-		Player player = new Player("player1");
-		int result = player.getChips();
-		assertEquals(50, result);
+		assertTrue(playerName.equals(result));	
 	}
 	
 	@Test
-	void player_can_share_lost_or_gained_chips() {
-		Player player = new Player("player1");
-		int result = player.getLostChips();
-		assertEquals(0, result); //default is 0
+	void player_shares_lostChips() {
+		Player player = new Player("playerName");
+		int lostChips = player.getLostChips();
+		assertEquals(0, lostChips); //default is 0
 	}
 	
 	@Test
-	void player_can_gives_roll_type_to_chips() {
-		Player player = new Player("player1");
-		player.updateForSpecial(RollTypes.SKUNK);
-		int result = player.getLostChips();
-		assertEquals(-1, result); //skunk is -1
-		
-		player.updateForSpecial(RollTypes.DOUBLE_SKUNK);
-		result = player.getLostChips();
-		assertEquals(-4, result); //double Skunk is -4
-		
-		
-		player.updateForSpecial(RollTypes.SKUNK_DEUCE);
-		result = player.getLostChips();
-		assertEquals(-2, result); //skunk and deuce is -2
-	}
-	
-	//*************managing turn*************************************************************
-
-	@Test
-	void player_gets_turn_status() {
-		Player player = new Player("player1");
-		Boolean turn = player.getTurnStatus();
-		assertTrue(turn); //default is true
+	void player_shares_chips() {
+		Player player = new Player("playerName");
+		int chips = player.getChips();
+		assertEquals(50, chips); //default is 50
 	}
 	
 	@Test
-	void player_ends_turn() {
-		Player player = new Player("player1");
-		player.endTurn();
-		Boolean turn = player.getTurnStatus();
-		assertFalse(turn); //after endTurn() players turn status should be false
+	void player_shares_turnStatus() {
+		Player player = new Player("playerName");
+		boolean turnStatus = player.getTurnStatus();
+		assertTrue(turnStatus); //default is true
 	}
 	
 	@Test
-	void player_gets_starts_new_turn() {
-		Player player = new Player("player1");
-		player.endTurn();
-		Boolean turn = player.getTurnStatus();
-		assertFalse(turn); //after endTurn() players turn status should be false
-		
-		player.startTurn();
-		turn = player.getTurnStatus();
-		assertTrue(turn); //when starting new turn it should be true
+	void player_shares_finalTurnStatus() {
+		Player player = new Player("playerName");
+		boolean turnStatus = player.getTurnStatus();
+		assertTrue(turnStatus); //default is true
 	}
+	
+	@Test
+	void player_shares_turnScore() {
+		Player player = new Player("playerName");
+		int turnScore = player.getTurnScore();
+		assertEquals(0, turnScore); //default is 0
+	}
+	
+	@Test
+	void player_shares_scoreboard() {
+		Player player = new Player("playerName");
+		ArrayList<Integer> scoreboard = player.getScoreboard();
+		assertEquals(0, scoreboard.size()); //without scores, scoreboard size is 0
+	}
+	
 }

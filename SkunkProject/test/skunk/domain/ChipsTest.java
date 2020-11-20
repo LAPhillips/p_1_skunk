@@ -22,6 +22,14 @@ class ChipsTest {
 	}
 	
 	@Test
+	void chips_adds_chips() {
+		Chips chip = new Chips();
+		chip.addChips(5);
+		int chips = chip.getChips();
+		assertEquals(55, chips); //after adding 5, should have 55 chips
+	}
+	
+	@Test
 	void chips_reports_lostChips() {
 		Chips chip = new Chips();
 		chip.subtractChips(5);

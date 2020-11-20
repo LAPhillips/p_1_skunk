@@ -15,31 +15,8 @@ public class Player {
 		this.score = new Score();
 	}
 
-	
-	//*************basics***************************************
 	public String getPlayerName() {
 		return this.playerName;
-	}
-
-	//*************chips***************************************
-
-	public void updateForSpecial(RollTypes rollType) {
-		chips.adjustChipsForRoll(rollType);
-		if(rollType == RollTypes.DOUBLE_SKUNK) {
-			score.updateForDoubleSkunk();
-		}
-	}
-	
-	public int chipsLostPerRollType(RollTypes rollType) {
-		return chips.calculateChipChange(rollType);
-	}
-
-	public void addChips(int amount) {
-		this.chips.addChips(amount);
-	}
-	
-	public void subtractChips(int amount) {
-		this.chips.subtractChips(amount);
 	}
 	
 	public int getLostChips() {
@@ -50,11 +27,53 @@ public class Player {
 		return this.chips.getChips(); //total number of chips currently
 	}
 	
-	//*************Managing Turns*************************************************************
-	
-	public Boolean getTurnStatus() {
+	public boolean getTurnStatus() {
 		return turn.getTurnStatus();
 	}
+	
+	public boolean getFinalTurn() {
+		return turn.getFinalTurn();
+	}
+	
+	public int getFinalScore() {
+		return score.getFinalScore();
+	}
+	
+	public int getTurnScore() {
+		return score.getTurnScore();
+	}
+	
+	public ArrayList<Integer> getScoreboard() {
+		return score.getScoreboard();
+	}
+	
+
+	//*************chips***************************************
+
+	public int chipsLostPerRollType(RollTypes rollType) {
+		return chips.calculateChipChange(rollType);
+	}
+	
+	public void addChips(int amount) {
+		this.chips.addChips(amount);
+	}
+	
+	public void subtractChips(int amount) {
+		this.chips.subtractChips(amount);
+	}
+
+	
+	public void updateForSpecial(RollTypes rollType) {
+		chips.adjustChipsForRoll(rollType);
+		if(rollType == RollTypes.DOUBLE_SKUNK) {
+			score.updateForDoubleSkunk();
+		}
+	}
+	
+
+
+	
+	//*************Managing Turns*************************************************************
 
 	public void endTurn() {
 		score.updateFinalScore();
@@ -76,26 +95,10 @@ public class Player {
 		turn.updateFinalTurn();
 	}
 	
-	public boolean getFinalTurn() {
-		return turn.getFinalTurn();
-	}
-	
 	//*************Managing Score*************************************************************
 	
 	public void playerGetsDiceRoll(int [] newRoll) {
 		score.recordScore(newRoll);
-	}
-	
-	public int getFinalScore() {
-		return score.getFinalScore();
-	}
-	
-	public ArrayList<Integer> getScoreboard() {
-		return score.getScoreboard();
-	}
-	
-	public int getTurnScore() {
-		return score.getTurnScore();
 	}
 	
 	public void updateTurnStatusAndScore(int[] currentRoll, boolean isSpecial) {
@@ -103,10 +106,6 @@ public class Player {
 		if(isSpecial) {
 			endTurn();
 		}
-	}
-	
-	public void updateFinalScore() {
-		
 	}
 	
 	@Override
