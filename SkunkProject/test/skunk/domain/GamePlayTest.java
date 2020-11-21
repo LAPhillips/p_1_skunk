@@ -237,7 +237,7 @@ class GamePlayTest {
 		play.nextPlayer();
 		Player player3 = play.getActivePlayer();
 		int chips3 = player3.getChips();
-		assertEquals(40, chips2); //because no score 10 chips removed
+		assertEquals(40, chips3); //because no score 10 chips removed
 		
 		play.nextPlayer();
 		int[] currentRoll = play.diceRoll(10,10);  
@@ -300,6 +300,36 @@ class GamePlayTest {
 		
 		play.giveWinnerChips(secondPlayer);
 		assertEquals(60, secondPlayer.getChips()); //got 10 chips from other players, and 5 that they had put in = total of 60
+	}
+	
+	@Test
+	void gp_gets_winner() {
+		GamePlay play = new GamePlay();
+		play.createPlayers(3);
+		play.createPlayer("first");
+		play.createPlayer("second");
+		play.createPlayer("third");
+		int[] currentRoll = play.diceRoll(10,10);  //not real dice rolls, but making it easier for me
+		Player player = play.getActivePlayer();
+		player.updateTurnStatusAndScore(currentRoll, false);
+		player.endTurn();
+		play.nextPlayer();
+		
+		currentRoll = play.diceRoll(50,50);
+		Player secondPlayer = play.getActivePlayer();
+		secondPlayer.updateTurnStatusAndScore(currentRoll, false);
+		secondPlayer.endTurn();
+		play.nextPlayer();
+		
+		currentRoll = play.diceRoll(5,5);
+		Player thirdPlayer = play.getActivePlayer();
+		thirdPlayer.updateTurnStatusAndScore(currentRoll, false);
+		thirdPlayer.endTurn();
+		
+		Player winner = play.winner();
+		assertEquals(secondPlayer, winner);//correct winner
+		assertEquals(0, play.getPlayerTracker()); //player tracker set to 0
+		assertEquals(60, secondPlayer.getChips()); //player should have 50 + 10 chips
 	}
 	
 	

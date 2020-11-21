@@ -7,6 +7,18 @@ public class Controller {
 		this.play = new GamePlay();
 	}
 	
+	public Player getPlayer() {
+		return play.getActivePlayer();
+	}
+	
+	public int[] diceRoll() {
+		return play.diceRoll();
+	}
+
+	public RollTypes getRollType() {
+		return play.isSpecial();
+	}
+	
 	public void setNumberOfPlayers(int numberPlayers) {
 		play.createPlayers(numberPlayers);
 	}
@@ -15,21 +27,9 @@ public class Controller {
 		play.createPlayer(name);
 	}
 	
-	public int[] diceRoll() {
-		return play.diceRoll();
-	}
-	
 	public boolean yesOrNo(char decision) {
 		play.playerDecision(decision);
 		return play.getPlayerDecision();
-	}
-	
-	public Player getPlayer() {
-		return play.getActivePlayer();
-	}
-	
-	public RollTypes getRollType() {
-		return play.isSpecial();
 	}
 	
 	public void isTurnOver(boolean overOrNot) {
@@ -41,13 +41,17 @@ public class Controller {
 	}
 	
 	public Player winner() {
-		Player winner = play.highestScore();
-		play.subtractFinalChips();
-		play.giveWinnerChips(winner);
-		play.setPlayerTracker(0);
-		return winner;
+		return play.winner();
+	}
+	
+	//only need this for Junit tests
+	public GamePlay getGamePlay() {
+		return play;
+	}
+	
+	public int[] diceRoll(int die1, int die2) {
+		return play.diceRoll(die1, die2);
 	}
 	
 
-	
 }

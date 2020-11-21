@@ -117,6 +117,14 @@ public class GamePlay {
 		}
 		winner.addChips(kitty);
 	}
+	
+	public Player winner() {
+		Player winner = highestScore();
+		subtractFinalChips();
+		giveWinnerChips(winner);
+		setPlayerTracker(0);
+		return winner;
+	}
 
 	//****************Getters & Setters*************************
 	public Player getActivePlayer() {
