@@ -25,14 +25,70 @@ public class SkunkUI {
 	
 	//*****Game Setup*****************
 	public void startGame() {
-		System.out.println("Welcome to Skunk");
+		System.out.println("Welcome to Skunk!");
 		System.out.println();
-		System.out.println("Would you like to review the rules before we start?");
-		//rules system
+		System.out.println("Would you like to review the rules before we start? [Y/N]");
+		char decision = StdIn.readString().charAt(0);
+		if (control.yesOrNo(decision)) {
+			skunkRules();
+		}
+	}
+	
+	public void skunkRules() {
+		System.out.println("DIRECTIONS FOR PLAYING:");
+		System.out.println("------------------------");
+		System.out.println("The object of the game is to accumulate a score of 100 points or more."); 
+		System.out.println("Points are made by rolling the dice and combining the points on the two dice.");
+		System.out.println("After a successful roll, can continue to roll to increase his score or can pass ");
+		System.out.println("the dice and wait for his next turn. Passing the dice prevents the possibility ");
+		System.out.println("of rolling a Skunk and losing his score.");
+		
+		System.out.println();
+		System.out.println("EXAMPLE: If a player rolls 4 and 5 that gives him 9 points.  ");
+		System.out.println("If the player decides roll the dice again and gets a 3 and 5 (8 points),  ");
+		System.out.println("he would then have an accumulated total of 17 points for the two rolls. ");
+		System.out.println("The player could choose to stop his turn and keep the 17 points.");
+		System.out.println("If he continued to roll, and rolled a Skunk, he would lose all of the 17 points.");
+		
+		System.out.println();
+		System.out.println("A game can have any number of players. At least two players is recommended. Each player starts with 50 chips.");
+		System.out.println();
+		
+		System.out.println("ROLL PENALTIES:");
+		System.out.println("----------------");
+		System.out.println("Skunk:");
+		System.out.println("What is it? ---- A skunk is any roll with a single 1 (without a 2 or another 1). ");
+		System.out.println("What happens? ---- The score for that turn is voided and the player ends his turn.");
+		System.out.println("How many lost chips? ---- One chip placed in the Kitty (where lost chips are kept).");
+	
+		System.out.println();
+		System.out.println("Skunk & Deuce:");
+		System.out.println("What is it? ---- A roll with a 1 and 2 on the dice. ");
+		System.out.println("What happens? ---- The score for that turn is voided and the player ends his turn.");
+		System.out.println("How many lost chips? ---- 2 chips placed in the Kitty.");
+	
+		System.out.println();
+		System.out.println("Double Skunk:");
+		System.out.println("What is it? ---- A roll with two 1s on the dice (snake-eyes). ");
+		System.out.println("What happens? ---- The ENTIRE accumulated score is voided and the player ends his turn.");
+		System.out.println("How many lost chips? ---- 4 chips placed in the Kitty.");
+	
+		System.out.println();
+		System.out.println("WINNING THE GAME:");
+		System.out.println("------------------");
+		System.out.println("The first player to get 100 or more points can continue to score as many points over 100 ");
+		System.out.println("as he believes is needed to win. When he stops, each other player gets another chance to roll and best his score.  ");
+		System.out.println("Once each player has rolled a last time, the player with the highest score is declared the winner.");
+		System.out.println();
+		System.out.println("The winner of each game collects all chips in Kitty. The winner also gets 5 chips from every losing player,");
+		System.out.println("except for those with no score, -- the winner gets 10 chips from those players.");
 		
 	}
 	
 	public void howManyPlayers() {
+		System.out.println();
+		System.out.println("---------------STARTING THE GAME------------------");
+		System.out.println();
 		System.out.println("How many players? ");
 		numberPlayers = StdIn.readInt();
 		control.setNumberOfPlayers(numberPlayers);
