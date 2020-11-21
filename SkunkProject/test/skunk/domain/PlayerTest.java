@@ -224,5 +224,15 @@ class PlayerTest {
 		status = player.getTurnStatus();
 		assertTrue(score == 0 && status == false); //not special, status remains unchanged
 	}
+	
+	@Test
+	void player_prints_correctly() {
+		Player player = new Player("playerName");
+		int[] newRoll = new int[] {2,3};
+		player.updateTurnStatusAndScore(newRoll, false);
+		player.endTurn();
+		String expected = "playerName" + "\n" + "--------- Final Score: 5"  + "\n" + "--------- Chips Count: 50";
+		assertTrue(player.toString().equals(expected)); 
+	}
 
 }
