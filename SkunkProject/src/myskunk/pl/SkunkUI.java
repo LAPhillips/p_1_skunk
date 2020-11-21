@@ -9,14 +9,11 @@ import skunk.domain.RollTypes;
 public class SkunkUI {
 	private Controller control;
 	private int numberPlayers;
-	private Player player;
 
 	
 	public SkunkUI() {
 		this.control = new Controller();
 		this.numberPlayers = 0;
-		this.player = null;
-
 	}
 	
 	public void fullGame() {
@@ -47,12 +44,12 @@ public class SkunkUI {
 			String playerName = StdIn.readString();
 			control.setPlayerNames(playerName);
 		}
-		setActivePlayer();
 	}
 	
 	//*****Game Play*****************
-	public void singleRoll() {
-		System.out.println(this.player.getPlayerName() + " rolls....");
+	public void singleRoll() { 
+		Player player = control.getPlayer();
+		System.out.println(player.getPlayerName() + " rolls....");
 		int[] currentRoll = control.diceRoll(); //rolls and records the roll
 		diceRollReadout(currentRoll[0], currentRoll[1]); 
 		checkSpecial(currentRoll); //checks to see if the roll is special
@@ -62,6 +59,7 @@ public class SkunkUI {
 		
 	
 	public void checkSpecial(int[] currentRoll) {
+		Player player = control.getPlayer();
 		RollTypes rollType = control.getRollType();
 		if (rollType != RollTypes.NORMAL) {
 			System.out.println(rollType.toString());
@@ -73,6 +71,7 @@ public class SkunkUI {
 	}
 	
 	public void singleTurn() {
+		Player player = control.getPlayer();
 		while(player.getTurnStatus()) {
 			System.out.println(player.getPlayerName() + ", do you want to roll? [Y/N]");
 			char decision = StdIn.readString().charAt(0);
@@ -89,6 +88,7 @@ public class SkunkUI {
 	
 	
 	public void round() {
+		Player player = control.getPlayer();
 		while(player.getFinalTurn()){
 			singleTurn();
 			System.out.println();
@@ -104,6 +104,7 @@ public class SkunkUI {
 	
 	
 	public void finalScores() {
+		Player player = control.getPlayer();
 		System.out.println();
 		System.out.println("WINNER:");
 		Player winner = control.winner();
@@ -118,17 +119,18 @@ public class SkunkUI {
 	}
 	
 	public void finalRound() {
+		Player player = control.getPlayer();
 		System.out.println(player.getPlayerName() + " scored 100 points or more. Now everyone else gets once more chance to roll");
 		player = control.nextPlayer();
 		while(player.getFinalTurn()) {
 			singleTurn();
 			player.updateFinalTurn();
-			setActivePlayer();
 		}
 
 	}
 	
 	private void turnReadout() {
+		Player player = control.getPlayer();
 		 StdIn.readLine(); //requires a player presses enter to continue 
 		    System.out.println(player.getPlayerName() + ", here is your turn review: ");
 			System.out.println("----------------------------------------------");
@@ -145,10 +147,6 @@ public class SkunkUI {
 			System.out.println("TOTAL GAME SCORE:  " + player.getFinalScore());
 			System.out.println("CHIPS LOST: " + player.getLostChips());
 		
-	}
-	
-	public void setActivePlayer() {
-		this.player = control.getPlayer();
 	}
 	
 	public void diceRollReadout(int die1, int die2) {

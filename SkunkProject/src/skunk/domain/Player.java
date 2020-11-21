@@ -7,6 +7,7 @@ public class Player {
 	private Chips chips;
 	private Score score;
 	private Turn turn;
+	private final int SCOREMAX = 100;
 
 	public Player(String enteredName){
 		this.playerName = enteredName;
@@ -82,7 +83,7 @@ public class Player {
 	}
 	
 	public void checkForFinalTurn() {
-		if (score.getFinalScore() >= 100) {
+		if (score.getFinalScore() >= SCOREMAX) {
 			updateFinalTurn();
 		}
 	}
