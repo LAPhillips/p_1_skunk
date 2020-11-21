@@ -1,79 +1,112 @@
 package skunk.domain;
 
+import java.util.ArrayList;
+
 public class Player {
 	private String playerName;
 	private Chips chips;
-	private int totalTally;
+	private Score score;
 	private Turn turn;
+	private final int SCOREMAX = 100;
 
 	public Player(String enteredName){
 		this.playerName = enteredName;
 		this.chips = new Chips();
-		this.totalTally = 0;
 		this.turn = new Turn();
+		this.score = new Score();
 	}
 
-	
-	//*************basics***************************************
 	public String getPlayerName() {
 		return this.playerName;
 	}
 	
-	public int getTally() {
-		return this.totalTally;
-	}
-
-	//*************chips***************************************
-
-	public int chipsFlow(RollTypes rollType) {
-		this.givesChipsRollType(rollType);
-		return this.chips.amountChange();
+	public int getLostChips() {
+		return this.chips.lostChips();
 	}
 	
 	public int getChips() {
-		return this.chips.getNumChips(); //total number of chips currently
+		return this.chips.getChips(); //total number of chips currently
 	}
-
-	public int getLostChips() {
-		return this.chips.amountChange(); //amount of chips changed per turn
-	}
-
-	public void givesChipsRollType(RollTypes roll) {
-		this.chips.calculateChipChange(roll); //player gives roll type to chips
-	}
-
-
-	public void updateTally(int turnScore) {
-		this.totalTally =+ turnScore;
-	}
-
-
-	//*************Managing Turns*************************************************************
 	
-	public Boolean getTurnStatus() {
-		return this.turn.getTurnStatus();
+	public boolean getTurnStatus() {
+		return turn.getTurnStatus();
 	}
+	
+	public boolean getFinalTurn() {
+		return turn.getFinalTurn();
+	}
+	
+	public int getFinalScore() {
+		return score.getFinalScore();
+	}
+	
+	public int getTurnScore() {
+		return score.getTurnScore();
+	}
+	
+	public ArrayList<Integer> getScoreboard() {
+		return score.getScoreboard();
+	}
+	
+
+	//*************chips***************************************
+
+	public int chipsLostPerRollType(RollTypes rollType) {
+		return chips.calculateChipChange(rollType);
+	}
+	
+	public void addChips(int amount) {
+		this.chips.addChips(amount);
+	}
+	
+	public void subtractChips(int amount) {
+		this.chips.subtractChips(amount);
+	}
+
+	public void updateForSpecial(RollTypes rollType) {
+		chips.adjustChipsForRoll(rollType);
+		if(rollType == RollTypes.DOUBLE_SKUNK) {
+			score.updateForDoubleSkunk();
+		}
+	}
+	
+	//*************Managing Turns*************************************************************
 
 	public void endTurn() {
-		this.turn.endTurn();
+		score.updateFinalScore();
+		turn.endTurn();
 	}
 
 	public void startTurn() {
-		this.turn.startNewTurn();
+		score.startNewTurn();
+		turn.startNewTurn();
 	}
 	
-	@Override
+	public void checkForFinalTurn() {
+		if (score.getFinalScore() >= SCOREMAX) {
+			updateFinalTurn();
+		}
+	}
+	
+	public void updateFinalTurn() {
+		turn.updateFinalTurn();
+	}
+	
+	//*************Managing Score*************************************************************
+	
+	public void playerGetsDiceRoll(int [] newRoll) {
+		score.recordScore(newRoll);
+	}
+	
+	public void updateTurnStatusAndScore(int[] currentRoll, boolean isSpecial) {
+		score.updateTurnScore(currentRoll, isSpecial);
+		if(isSpecial) {
+			endTurn();
+		}
+	}
+	
+	@Override 
 	public String toString() {
-		return playerName;
-		
+		return playerName + "\n" + "--------- Final Score: " + getFinalScore() + "\n" +  "--------- Chips Count: " + this.getChips();
 	}
-
-
-
-
-
-
-	
-
-
 }

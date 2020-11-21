@@ -1,94 +1,57 @@
 package skunk.domain;
-//Controller should only report to and from the UI; does not decide things on its own
+
 public class Controller {
-	private GameManager gameManage;
-	private TurnManager turnManage;
+	GamePlay play;
 	
 	public Controller() {
-		this.gameManage = new GameManager();
-		this.turnManage = gameManage.getTurnManager();
-	}
-
-	//*************Player*************************************************************
-	public void sharePlayerName(String name) {
-		this.gameManage.createPlayer(name);
+		this.play = new GamePlay();
 	}
 	
-	public String getPlayerNameFromManager() {
-		return this.turnManage.playerName();
+	public Player getPlayer() {
+		return play.getActivePlayer();
 	}
 	
-	//to use for testing in JUnit
-	public TurnManager getManager() {
-		return this.turnManage; 
+	public int[] diceRoll() {
+		return play.diceRoll();
 	}
 
-	public void sharePlayerInputs(char playerInput) {
-		turnManage.setContinueTurn(playerInput);
+	public RollTypes getRollType() {
+		return play.isSpecial();
 	}
 	
-	public int getPlayerChipsFromManager() {
-		return this.turnManage.getChips();
+	public void setNumberOfPlayers(int numberPlayers) {
+		play.createPlayers(numberPlayers);
 	}
 	
-	public int getLostChips() {
-		return this.turnManage.getLostChips();
+	public void setPlayerNames(String name) {
+		play.createPlayer(name);
 	}
 	
-	public void setupGame(int enteredAmount) {
-		this.gameManage.setupGame(enteredAmount);
+	public boolean yesOrNo(char decision) {
+		play.playerDecision(decision);
+		return play.getPlayerDecision();
 	}
 	
-	public int getNumPlayers() {
-		return this.gameManage.getNumPlayers();
-	}
-
-	//*************Dice/Rolls********************************************************
-	//normal dice
-	public int[] shareRoll() {
-		turnManage.checkRollRecord();
-		return turnManage.returnDiceRoll();
+	public void isTurnOver(boolean overOrNot) {
+		play.endTurn(overOrNot);
 	}
 	
-	//fixed dice
-	public int[] shareRoll(int die1, int die2) {
-		turnManage.checkRollRecord(die1, die2);
-		return turnManage.returnDiceRoll();
-	}
-
-	public int rollTotal() {
-		return turnManage.diceTotalScore();
+	public Player nextPlayer() {
+		return play.nextPlayer();
 	}
 	
-	public RollTypes reportsSpecialRoll() {
-		return turnManage.getRollType();
+	public Player winner() {
+		return play.winner();
 	}
 	
-	//*************Scores******************************************************** 
-
-	public int totalTurnScore() {
-		return turnManage.getFinalTurnScore();
+	//only need this for Junit tests
+	public GamePlay getGamePlay() {
+		return play;
 	}
-
-	public int reportsSpecificRoll(int rolls) {
-		return turnManage.sharesTurnScores().get(rolls);
+	
+	public int[] diceRoll(int die1, int die2) {
+		return play.diceRoll(die1, die2);
 	}
-
-	public int numberOfRolls() {
-		return turnManage.numberOfRolls();
-	}
-
-	public Player[] getPlayers() {
-		return this.gameManage.getPlayers();
-	}
-
-	public Boolean playerTurnStatus() {
-		return this.turnManage.getTurnStatus();
-	}
-
-	public void startNewTurn() {
-		this.gameManage.createNewTurn();
-		this.turnManage = this.gameManage.getTurnManager();
-	}
+	
 
 }

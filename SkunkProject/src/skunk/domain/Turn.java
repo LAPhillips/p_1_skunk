@@ -1,12 +1,12 @@
 package skunk.domain;
 
 public class Turn {
-	private Boolean status;
-	private int numberOfTurns;
+	private boolean status;
+	private boolean finalTurn;
 	
 	public Turn(){
 		this.status = true;
-		this.numberOfTurns = 1;
+		this.finalTurn = true;
 	}
 
 	public Boolean getTurnStatus() {
@@ -16,15 +16,17 @@ public class Turn {
 	public void endTurn() {
 		this.status = false;
 	}
-
-	public int getnumberOfTurns() {
-		return this.numberOfTurns;
-	}
-
-	//this isn't used yet, but will be needed when there is more than one turn
+	
 	public void startNewTurn() {
 		this.status = true;
-		this.numberOfTurns ++;
+	}
+	
+	public void updateFinalTurn() {
+		this.finalTurn = false;
+	}
+	
+	public boolean getFinalTurn() {
+		return this.finalTurn;
 	}
 	
 }

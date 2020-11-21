@@ -7,165 +7,105 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 class ScoreTest {
-
-	
-	@Test
-	void score_can_record_score_from_scoreboard() {
-		Score score = new Score();
-		int[]scores = new int[] {5,3};
-		score.recordScore(scores);
-		int recordedScore = score.getSpecificRecordedScore(1);
-		assertEquals(recordedScore, 3);
-	}
 	
 	@Test
 	void score_shares_scoreboard() {
 		Score score = new Score();
-		int[]scores = new int[] {5,3};
-		score.recordScore(scores);
-		ArrayList<Integer> retreivedScore = score.getScoreboard();
-		assertEquals(scores[1], retreivedScore.get(1));
-	}	
-	
-	@Test
-	void score_keeps_a_running_tally_for_turn() {
-		Score score = new Score();
-		int expected1 = 4;
-		int expected2 = 5;
-		int [] firstRoll = new int[] {2,3};
-		score.recordScore(firstRoll);
-		int [] secondRoll = new int[] {expected1, expected2};
-		score.recordScore(secondRoll);
-		int expected = expected1 + expected2 + 2 + 3;
-		int result = score.getTotalScoreForTurn();
-		assertEquals(expected, result);
-	}	
-	
-	@Test
-	void score_checks_for_special_rolls() {
-		Score score = new Score();
-		int [] firstRoll = new int[] {2,3};
-		Boolean roll1 = score.isSpecial(firstRoll);
-		assertFalse(roll1);
-		
-		int[] secondRoll = new int[] {1, 1};
-		Boolean roll2 = score.isSpecial(secondRoll);
-		assertTrue(roll2);
-		
-		int[] thirdRoll = new int[] {2,1};
-		Boolean roll3 = score.isSpecial(thirdRoll);
-		assertTrue(roll3);	
-		
-		int[] fourthRoll = new int[] {3, 1};
-		Boolean roll4 = score.isSpecial(fourthRoll);
-		assertTrue(roll4);
-		
-		int[] fifthRoll = new int[] {1,3};
-		Boolean roll5 = score.isSpecial(thirdRoll);
-		assertTrue(roll5);	
-		
-		int[] sixthRoll = new int[] {1,2};
-		Boolean roll6 = score.isSpecial(sixthRoll);
-		assertTrue(roll6);	
-
-	}
-	
-
-	@Test
-	void score_shares_type_special_rolls() {
-		Score score = new Score();
-		int[]scores = new int[] {1,1};
-		RollTypes expected = RollTypes.NORMAL;
-		RollTypes special = score.getRollType();
-		assertEquals(expected, special); //default is Normal
+		ArrayList<Integer> scores = score.getScoreboard();
+		assertNotNull(scores);
 	}
 	
 	@Test
-	void score_categorizes_special_rolls() {
-		Score score = new Score();
-		int[]scores = new int[] {1,1};
-		score.setRollType(scores);
-		RollTypes special = score.getRollType();
-		RollTypes expected = RollTypes.DOUBLE_SKUNK;
-		assertEquals(expected, special);
-		
-		int[]scores2 = new int[] {2,1};
-		score.setRollType(scores2);
-		special = score.getRollType();
-		expected = RollTypes.SKUNK_DEUCE;
-		assertEquals(expected, special);
-		
-		int[]scores3 = new int[] {5,1};
-		score.setRollType(scores3);
-		special = score.getRollType();
-		expected = RollTypes.SKUNK;
-		assertEquals(expected, special);
-	}
-	
-	@Test
-	void score_can_get_final_score() {
+	void score_shares_FinalScore() {
 		Score score = new Score();
 		int finalScore = score.getFinalScore();
-		assertEquals(0, finalScore);
-	}	
-	
-	
-	@Test
-	void score_can_set_final_score() {
-		Score score = new Score();
-		int finalScore = 5;
-		score.setFinalScore(finalScore);
-		assertEquals(finalScore, score.getFinalScore());
+		assertEquals(0, finalScore); //expect default to be 0
 	}
-
+	
 	@Test
-	void score_voids_final_score_if_special() {
+	void score_shares_turnScore() {
 		Score score = new Score();
-		int[]scores = new int[] {5,5};
-		score.recordScore(scores);
+		int turnScore = score.getTurnScore();
+		assertEquals(0, turnScore); //expect default to be 0
+	}
+	
+	@Test
+	void score_records_score() {
+		Score score = new Score();
+		int[] newRoll = new int[] {3,2};
+		score.recordScore(newRoll);
+		ArrayList<Integer> scores = score.getScoreboard();
+		assertTrue(scores.get(0) == 3 && scores.get(1) == 2); //expect index 0 to be 3, index 1 to 2
+	}
+	
+	@Test
+	void score_adds_to_score() {
+		Score score = new Score();
+		score.addToScore(3);
+		int turnScore = score.getTurnScore();
+		assertEquals(3, turnScore); //turn score should be 3 after adding it
 		
-		score.editFinalScore(scores);
+		score.addToScore(5);
+		turnScore = score.getTurnScore();
+		assertEquals(8, turnScore); //turn score should be 8 after adding it
+	}
+	
+	@Test
+	void score_updates_TurnScore_differently_for_specialRolls() {
+		Score score = new Score();
+		int[] newRoll = new int[] {3,2};
+		score.updateTurnScore(newRoll, false); //3,2 is not a specialRoll
+		int turnScore = score.getTurnScore();
+		assertEquals(5, turnScore); //expect default to be 5 (3+2)
+		
+		int[] newRoll2 = new int[] {1,1};
+		score.updateTurnScore(newRoll2, true); //1,1 is double skunk
+		turnScore = score.getTurnScore();
+		assertEquals(0, turnScore); //turn score should be 0 after special roll
+	}
+	
+	@Test
+	void score_updates_scoreboard_for_new_turn() {
+		Score score = new Score();
+		int[] newRoll = new int[] {3,2};
+		score.recordScore(newRoll);
+		ArrayList<Integer> scores = score.getScoreboard();
+		assertEquals(2, scores.size()); //after adding 2, size should be 2
+		
+		score.startNewTurn();
+		scores = score.getScoreboard();
+		assertEquals(0, scores.size()); //after starting new turn, array should be empty
+	}
+	
+	@Test
+	void score_updates_finalScore() {
+		Score score = new Score();
+		score.addToScore(3);
+		score.addToScore(3);
+		score.addToScore(4); //10 points added for this turn
+		
+		score.updateFinalScore();
 		int finalScore = score.getFinalScore();
-		assertEquals(10, finalScore);
-		
-		int[]scores3 = new int[] {2,2};
-		score.recordScore(scores3);
-		score.editFinalScore(scores3);
-		finalScore = score.getFinalScore();
-		assertEquals(14, finalScore);
-		
-		int[]scores2 = new int[] {1,1};
-		score.recordScore(scores2);	
-		score.editFinalScore(scores2);
-		finalScore = score.getFinalScore();
-		assertEquals(0, finalScore);
-	}	
-
-	@Test
-	void score_gives_a_cumulative_score() {
-		Score score = new Score();
-		int expected = 10;
-		int[]scores = new int[] {5,5};
-		score.recordAndUpdate(scores);
-		int result = score.totalScore();
-		assertEquals(expected, result);
+		assertEquals(10, finalScore); //expect score to be 10 after turn
 	}
 	
 	@Test
-	void score_gives_number_of_rolls() {
+	void score_can_void_FinalScore() {
 		Score score = new Score();
-		int rolls = score.getNumRolls();
-		assertEquals(0, rolls); //default is 0
+		score.addToScore(3);
+		score.addToScore(3);
+		score.addToScore(4); //10 points added for this turn
 		
-		int[]scores = new int[] {5,5};
-		score.recordAndUpdate(scores);
-		rolls = score.getNumRolls();
-		assertEquals(1, rolls); //after one roll
+		score.updateFinalScore();
+		int finalScore = score.getFinalScore();
+		assertEquals(10, finalScore); //expect score to be 10 after turn
 		
-		for (int i = 0; i < 10; i++) {
-			score.recordAndUpdate(scores);
-		}
-		rolls = score.getNumRolls();
-		assertEquals(11, rolls); //rolling 10 more times
+		score.updateForDoubleSkunk();
+		finalScore = score.getFinalScore();
+		assertEquals(0, finalScore); //expect score to be set to 0
+		
 	}
+	
+	
+
 }
