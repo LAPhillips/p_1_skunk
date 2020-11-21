@@ -185,7 +185,7 @@ public class SkunkUI {
 
 	}
 	
-	private void turnReadout() {
+	public void turnReadout() {
 		Player player = control.getPlayer();
 		 StdIn.readLine(); //requires a player presses enter to continue 
 		    System.out.println(player.getPlayerName() + ", here is your turn review: ");
