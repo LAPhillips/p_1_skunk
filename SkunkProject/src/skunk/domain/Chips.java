@@ -31,10 +31,10 @@ public class Chips {
 		if (roll == RollTypes.SKUNK) {
 			return SKUNK_LOSS;
 		}
-		else if (roll == RollTypes.SKUNK_DEUCE){
+		else if (roll == RollTypes.DOUBLE_SKUNK){
 			return DOUBLESKUNK_LOSS;
 		}
-		else if (roll == RollTypes.DOUBLE_SKUNK){
+		else if (roll == RollTypes.SKUNK_DEUCE){
 			return SKUNK_DEUCE_LOSS;
 		}
 		return 0;
